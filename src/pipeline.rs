@@ -2,9 +2,10 @@
 
 use crate::data::{self, LineGroup, Role};
 use crate::dimensions::{self, ChainInfo, Context as DimContext, DimResult};
-use crate::entities::{self, Entity, num};
+use crate::entities::{self, Entity, Paint, Shape, num};
 use crate::furniture;
 use crate::hatch;
+use crate::image;
 use crate::numbers::{FIT_TOL_MM, cos_sin};
 use crate::read::{
     arr, entities_of, f, orientation_of, p, points, rect_of, rotation_of, st, window_of,
@@ -18,12 +19,19 @@ use std::collections::{BTreeMap, BTreeSet, HashMap};
 /// The furniture layer (clause 16.6.1). It is declared without the document declaring it.
 pub const FURNITURE_LAYER: &str = "TITLEBLOCK";
 /// The version of the standard that this crate reads (clause 18.2).
-pub const SUPPORTED_VERSION: (u32, u32) = (1, 0);
+pub const SUPPORTED_VERSION: (u32, u32) = (1, 1);
 
-/// Where a runner may read the files that a document names (clause 17.3): symbol libraries and
-/// private title block templates. The path is relative to the folder of the document.
+/// Where a runner may read the files that a document names (clause 17.3): symbol libraries,
+/// private title block templates and, from version 1.1, images. The path is relative to the folder
+/// of the document.
 pub trait Files {
     fn read(&self, relative_path: &str) -> Option<String>;
+
+    /// The bytes of a file: an image (clause 9.10). The default reads the file as text, so a
+    /// caller that has images to give must override it.
+    fn read_bytes(&self, relative_path: &str) -> Option<Vec<u8>> {
+        self.read(relative_path).map(String::into_bytes)
+    }
 }
 
 /// No files: a document that names a file then has error 13.1 or 14.2.
@@ -42,6 +50,9 @@ pub struct Normalised {
     pub sheet: SheetInfo,
     pub viewports: Vec<ViewportInfo>,
     pub entities: Vec<Entity>,
+    /// The bytes of each image, keyed by SHA-256, for the SVG and the PDF (clause 15). Not part of
+    /// the normalised content: [`Normalised::to_value`] leaves it out.
+    pub images: BTreeMap<String, Vec<u8>>,
 }
 
 /// The `sheet` member of the normalised content (clause 16.2).
@@ -53,6 +64,8 @@ pub struct SheetInfo {
     pub width_mm: f64,
     pub height_mm: f64,
     pub drawing_space: Rect,
+    /// The `colour` print profile (clause 8.6.4). False is `monochrome`, the default.
+    pub colour: bool,
 }
 
 /// A viewport as resolved (clause 16.2).
@@ -82,6 +95,9 @@ impl Normalised {
         sheet.insert("width_mm".into(), num(self.sheet.width_mm));
         sheet.insert("height_mm".into(), num(self.sheet.height_mm));
         sheet.insert("drawing_space".into(), rect_value(self.sheet.drawing_space));
+        if self.sheet.colour {
+            sheet.insert("print_profile".into(), "colour".into()); // 16.2: only the colour profile is named
+        }
         let viewports = self
             .viewports
             .iter()
@@ -227,6 +243,41 @@ pub(crate) fn line_group_of(size: &str) -> &'static LineGroup {
         .expect("a size accepted by the schema has a line group")
 }
 
+/// The minor version of a document (clause 18.1).
+fn minor_of(doc: &Value) -> u32 {
+    parse_version(st(&doc["standard_version"])).1
+}
+
+/// The colour members of a layer declaration (clause 8.6.5).
+const COLOUR_MEMBERS: [&str; 3] = ["print_colour", "fill_opacity", "halo_colour"];
+
+/// Is the print profile `colour` (clause 8.6.4)?
+pub(crate) fn colour_profile(doc: &Value) -> bool {
+    doc["sheet"].get("print_profile").map(st) == Some("colour")
+}
+
+/// Clause 8.6.5: the colour members of each declared layer that has one; empty under the monochrome
+/// profile.
+pub(crate) fn colour_table(doc: &Value) -> BTreeMap<String, Paint> {
+    if !colour_profile(doc) {
+        return BTreeMap::new();
+    }
+    arr(&doc["layers"])
+        .iter()
+        .filter(|item| COLOUR_MEMBERS.iter().any(|k| item.get(*k).is_some()))
+        .map(|item| {
+            (
+                st(&item["name"]).to_string(),
+                Paint {
+                    print_colour: item.get("print_colour").map(|c| st(c).to_string()),
+                    fill_opacity: item.get("fill_opacity").map(f),
+                    halo_colour: item.get("halo_colour").map(|c| st(c).to_string()),
+                },
+            )
+        })
+        .collect()
+}
+
 // ---------------------------------------------------------------------------------------------
 // the checks
 
@@ -291,6 +342,13 @@ fn containment_points(e: &Value, mapper: &Mapper, rotation: f64) -> Vec<[f64; 2]
             )
             .map_or(vec![], |c| c.to_vec())
         }
+        "image" => {
+            let b = &e["bbox_m"];
+            vec![
+                mapper.point([f(&b[0]), f(&b[1])]),
+                mapper.point([f(&b[2]), f(&b[3])]),
+            ]
+        }
         _ => vec![],
     }
 }
@@ -346,13 +404,15 @@ fn check_entity(
     }
 }
 
-fn resolved_scale(vp: &Value) -> Option<u32> {
+fn resolved_scale(vp: &Value, ratios: &[u32]) -> Option<u32> {
     let window = window_of(&vp["window"]);
     if window.xmax <= window.xmin || window.ymax <= window.ymin {
         return None;
     }
     match &vp["scale"] {
-        Value::String(_) => rules::fit_scale(rect_of(&vp["frame"]), window, rotation_of(vp)),
+        Value::String(_) => {
+            rules::fit_scale_in(ratios, rect_of(&vp["frame"]), window, rotation_of(vp))
+        }
         n => n
             .as_u64()
             .map(|x| x as u32)
@@ -381,6 +441,41 @@ fn check_scale_bar(
             if rules::derived_bar_length(frame.w, n).is_none() {
                 errors.insert("7.9.4".into());
             }
+        }
+    }
+}
+
+/// Clause 9.10: the checks of an image.
+fn check_image(
+    e: &Value,
+    files: &dyn Files,
+    minor: u32,
+    colour: bool,
+    rotation: f64,
+    errors: &mut BTreeSet<String>,
+) {
+    if minor < 1 {
+        errors.insert("18.2.1".into());
+        return;
+    }
+    if !colour {
+        errors.insert("9.10.5".into());
+    }
+    if rotation != 0.0 {
+        errors.insert("9.10.4".into());
+    }
+    let b = &e["bbox_m"];
+    if !(f(&b[2]) > f(&b[0]) && f(&b[3]) > f(&b[1])) {
+        errors.insert("9.10.3".into());
+    }
+    match files.read_bytes(st(&e["path"])) {
+        Some(data) if image::jpeg_info(&data).is_some() => {
+            if image::sha256_hex(&data) != st(&e["sha256"]) {
+                errors.insert("9.10.2".into());
+            }
+        }
+        _ => {
+            errors.insert("9.10.1".into());
         }
     }
 }
@@ -415,6 +510,16 @@ pub fn check_document(doc: &Value, files: &dyn Files) -> BTreeSet<String> {
         errors.insert("6.5.2".into());
     }
     let declared = layer_table(doc, &mut errors);
+    let colour = colour_profile(doc);
+    let coloured = arr(&doc["layers"])
+        .iter()
+        .any(|item| COLOUR_MEMBERS.iter().any(|k| item.get(*k).is_some()));
+    if minor < 1 && (sheet.get("print_profile").is_some() || coloured) {
+        errors.insert("18.2.1".into());
+    } else if coloured && !colour {
+        errors.insert("8.6.5".into());
+    }
+    let ratios = rules::ratios(minor);
     let (libs, lib_errors) = symbols::load_libraries(doc, files);
     errors.extend(lib_errors.iter().cloned());
 
@@ -440,12 +545,14 @@ pub fn check_document(doc: &Value, files: &dyn Files) -> BTreeSet<String> {
         let mut denominator = None;
         if window_ok {
             if vp["scale"].is_string() {
-                denominator = rules::fit_scale(frame, window, rotation);
+                denominator = rules::fit_scale_in(&ratios, frame, window, rotation);
                 if denominator.is_none() {
                     errors.insert("7.5.2".into());
                 }
+            } else if !resolved_scale(vp, &ratios).is_some_and(|n| ratios.contains(&n)) {
+                errors.insert("18.2.1".into()); // a map ratio (7.3.5) in a document of version 1.0
             } else {
-                let n = resolved_scale(vp).unwrap_or(1);
+                let n = resolved_scale(vp, &ratios).unwrap_or(1);
                 denominator = Some(n);
                 if !rules::window_fits(frame, window, n, rotation) {
                     errors.insert("7.5.1".into());
@@ -471,6 +578,9 @@ pub fn check_document(doc: &Value, files: &dyn Files) -> BTreeSet<String> {
                 ids.push(st(id).to_string());
             }
             check_entity(e, &declared, mapper.as_ref(), rotation, frame, &mut errors);
+            if st(&e["type"]) == "image" {
+                check_image(e, files, minor, colour, rotation, &mut errors);
+            }
             let (Some(mapper), Some(n)) = (mapper.as_ref(), denominator) else {
                 continue;
             };
@@ -533,7 +643,10 @@ pub fn check_document(doc: &Value, files: &dyn Files) -> BTreeSet<String> {
     if unique.len() != ids.len() {
         errors.insert("9.8".into());
     }
-    let scales: Vec<Option<u32>> = arr(&doc["viewports"]).iter().map(resolved_scale).collect();
+    let scales: Vec<Option<u32>> = arr(&doc["viewports"])
+        .iter()
+        .map(|vp| resolved_scale(vp, &ratios))
+        .collect();
     let plan = furniture::plan(doc, size, ds, group, &scales, files);
     errors.extend(plan.errors.iter().cloned());
     for frame in &frames {
@@ -911,12 +1024,77 @@ pub(crate) fn entity_style(e: &Value, declared: &Layers, group: &LineGroup) -> (
     (line_type, group.width(role))
 }
 
+/// A white plate under the scale bar or the north arrow of a viewport that holds an image (clause
+/// 8.6.7).
+fn plate(vid: &str, frame: Rect, scale_bar: Option<(u32, &Value)>, thin: f64) -> Entity {
+    let Rect { x, y, w, h } = frame;
+    let (x0, y0, x1, y1) = match scale_bar {
+        Some((denominator, sb)) => {
+            let length = sb
+                .get("length_m")
+                .map(f)
+                .or_else(|| rules::derived_bar_length(w, denominator))
+                .unwrap_or(0.0);
+            let total = length * 1000.0 / f64::from(denominator);
+            (
+                x + 2.0,
+                y + h - 22.0,
+                x + rules::BAR_INSET + total + 10.0,
+                y + h - 2.0,
+            )
+        }
+        None => (x + 8.0, y + 2.0, x + 30.0, y + 30.0),
+    };
+    let mut item = Entity::hatch(
+        &format!("viewport.{vid}.backing"),
+        FURNITURE_LAYER,
+        &[[x0, y0], [x1, y0], [x1, y1], [x0, y1]],
+        &[],
+        "solid",
+        0.0,
+        thin,
+        None,
+    );
+    item.paint.print_colour = Some("#FFFFFF".into());
+    item
+}
+
+/// Clauses 8.6.6 and 16.4.1: the colour members of a layer, on each entity of a viewport that is on
+/// it. The sheet furniture and the scale bar, north arrow and plates of a viewport stay black, and an
+/// image has its own pixels (clause 9.10.6).
+fn apply_colours(entities: &mut [Entity], colours: &BTreeMap<String, Paint>) {
+    for e in entities {
+        let o = e.origin.as_str();
+        if !o.starts_with("viewport.")
+            || o.ends_with(".scale_bar")
+            || o.ends_with(".north_arrow")
+            || o.ends_with(".backing")
+        {
+            continue;
+        }
+        let Some(c) = colours.get(&e.layer) else {
+            continue;
+        };
+        match &e.shape {
+            Shape::Image { .. } => continue,
+            Shape::Hatch { pattern, .. } if pattern == "solid" => {
+                e.paint.fill_opacity = c.fill_opacity;
+            }
+            Shape::Text { .. } => e.paint.halo_colour.clone_from(&c.halo_colour),
+            _ => {}
+        }
+        e.paint.print_colour.clone_from(&c.print_colour);
+    }
+}
+
 fn viewport_entities(
     vp: &Value,
     declared: &Layers,
     group: &LineGroup,
     mapper: &Mapper,
     rotation: f64,
+    files: &dyn Files,
+    images: &mut BTreeMap<String, Vec<u8>>,
 ) -> Vec<Entity> {
     let origin = format!("viewport.{}", st(&vp["id"]));
     let mut out = Vec::new();
@@ -924,6 +1102,26 @@ fn viewport_entities(
         let t = st(&e["type"]);
         if matches!(t, "dimension" | "leader" | "symbol") {
             continue; // their parts are made by `dimensions` and `symbols` (clauses 12.7 and 13.7)
+        }
+        if t == "image" {
+            // 16.6.2: the corners (xmin, ymax) and (xmax, ymin) are mapped. The checks have read the file.
+            let b = &e["bbox_m"];
+            let [x0, y0] = mapper.point([f(&b[0]), f(&b[3])]);
+            let [x1, y1] = mapper.point([f(&b[2]), f(&b[1])]);
+            let data = files.read_bytes(st(&e["path"])).unwrap_or_default();
+            let info = image::jpeg_info(&data).expect("an image that passed clause 9.10.1");
+            out.push(Entity::image(
+                &origin,
+                st(&e["layer"]),
+                [x0, y0, x1, y1],
+                st(&e["sha256"]),
+                [info.width_px, info.height_px],
+                info.components,
+                e.get("opacity").map_or(1.0, f),
+                e.get("id").map(st),
+            ));
+            images.insert(st(&e["sha256"]).to_string(), data);
+            continue;
         }
         let (line_type, width) = entity_style(e, declared, group);
         let layer = st(&e["layer"]);
@@ -1033,21 +1231,35 @@ pub fn normalise_document(doc: &Value, files: &dyn Files) -> Normalised {
     let mut scratch = BTreeSet::new();
     let declared = layer_table(doc, &mut scratch);
     let (libs, _) = symbols::load_libraries(doc, files);
+    let ratios = rules::ratios(minor_of(doc));
+    let colour = colour_profile(doc);
+    let mut images = BTreeMap::new();
     let mut entities = sheet_furniture(size, landscape, group);
-    let scales: Vec<Option<u32>> = arr(&doc["viewports"]).iter().map(resolved_scale).collect();
+    let scales: Vec<Option<u32>> = arr(&doc["viewports"])
+        .iter()
+        .map(|vp| resolved_scale(vp, &ratios))
+        .collect();
     entities.extend(furniture::plan(doc, size, ds, group, &scales, files).entities);
     let mut viewports = Vec::new();
     for vp in doc["viewports"].as_array().map_or(&[][..], Vec::as_slice) {
         let frame = rect_of(&vp["frame"]);
         let rotation = rotation_of(vp);
-        let denominator = resolved_scale(vp).unwrap_or(1);
+        let denominator = resolved_scale(vp, &ratios).unwrap_or(1);
         let mapper = Mapper::new(frame, window_of(&vp["window"]), denominator, rotation);
         viewports.push(ViewportInfo {
             id: st(&vp["id"]).to_string(),
             scale: denominator,
             frame,
         });
-        entities.extend(viewport_entities(vp, &declared, group, &mapper, rotation));
+        entities.extend(viewport_entities(
+            vp,
+            &declared,
+            group,
+            &mapper,
+            rotation,
+            files,
+            &mut images,
+        ));
         let index: HashMap<String, &Value> = entities_of(vp)
             .iter()
             .filter_map(|e| e.get("id").map(|id| (st(id).to_string(), e)))
@@ -1085,12 +1297,28 @@ pub fn normalise_document(doc: &Value, files: &dyn Files) -> Normalised {
                 _ => {}
             }
         }
+        let plated = colour && entities_of(vp).iter().any(|e| st(&e["type"]) == "image");
         if let Some(sb) = vp.get("scale_bar") {
             entities.extend(scale_bar(st(&vp["id"]), frame, denominator, sb, group.thin));
+            if plated {
+                entities.push(plate(
+                    st(&vp["id"]),
+                    frame,
+                    Some((denominator, sb)),
+                    group.thin,
+                ));
+            }
         }
         if let Some(nb) = vp.get("north") {
             entities.extend(north_arrow(st(&vp["id"]), frame, rotation, nb, group.thin));
+            if plated {
+                entities.push(plate(st(&vp["id"]), frame, None, group.thin));
+            }
         }
+    }
+    let colours = colour_table(doc);
+    if !colours.is_empty() {
+        apply_colours(&mut entities, &colours);
     }
     entities.sort_by(entities::compare);
     viewports.sort_by(|a, b| a.id.as_bytes().cmp(b.id.as_bytes()));
@@ -1103,8 +1331,10 @@ pub fn normalise_document(doc: &Value, files: &dyn Files) -> Normalised {
             width_mm: w,
             height_mm: h,
             drawing_space: ds,
+            colour,
         },
         viewports,
         entities,
+        images,
     }
 }

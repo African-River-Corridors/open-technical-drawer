@@ -10,13 +10,18 @@
 //! viewport of the document at its scale. Every entity carries extended data of the application `TDFA`, so
 //! that the normalised content can be made again from the file (clause 15.4.11).
 //!
+//! From version 1.1, an image is an IMAGE in model space with an IMAGEDEF that links the file by its
+//! path, and the colour members of a layer are its true colour and extended data (clause 15.4.12). A
+//! document with neither gives the same bytes as before.
+//!
 //! Two builds of one document give the same bytes: nothing here reads a clock or a random source.
 
 use crate::data::{self, LineGroup, Role};
 use crate::entities::{Entity, Shape};
 use crate::numbers::round_half_even;
 use crate::pipeline::{
-    FURNITURE_LAYER, Files, Layers, Normalised, declared_layers, entity_style, line_group_of,
+    FURNITURE_LAYER, Files, Layers, Normalised, colour_table, declared_layers, entity_style,
+    line_group_of,
 };
 use crate::read::{arr, entities_of, f, p, points, rotation_of, st, window_of};
 use crate::rules::{self, AlignH, AlignV};
@@ -343,6 +348,60 @@ fn write_text(
     xdata(out, tags);
 }
 
+/// An image (clause 15.4.12): an IMAGE in model space over its model box. It returns the IMAGEDEF
+/// handle, the path and the size in pixels, for the OBJECTS section.
+fn write_image(
+    b: &mut Builder,
+    out: &mut Out,
+    e: &Value,
+    item: &Entity,
+    vid: &str,
+) -> Option<(String, String, [u32; 2])> {
+    let Shape::Image {
+        size_px,
+        components,
+        opacity,
+        ..
+    } = &item.shape
+    else {
+        return None;
+    };
+    let owner = b.rec_model.clone();
+    b.head(out, "IMAGE", &owner, false, st(&e["layer"]));
+    let def = b.handles.next();
+    let bb = &e["bbox_m"];
+    let (x0, y0, x1, y1) = (f(&bb[0]), f(&bb[1]), f(&bb[2]), f(&bb[3]));
+    let (w, h) = (f64::from(size_px[0]), f64::from(size_px[1]));
+    out.s(100, "AcDbRasterImage");
+    out.i(90, 0);
+    out.pt3(10, x0, y0);
+    out.pt3(11, (x1 - x0) / w, 0.0);
+    out.pt3(12, 0.0, (y1 - y0) / h);
+    out.pt(13, w, h);
+    out.s(340, &def);
+    out.i(70, 3);
+    out.i(280, 0);
+    out.i(281, 50);
+    out.i(282, 50);
+    out.i(283, ((1.0 - opacity) * 100.0).round() as i64);
+    out.i(71, 1);
+    out.i(91, 2);
+    out.pt(14, -0.5, -0.5);
+    out.pt(14, w - 0.5, h - 0.5);
+    xdata(
+        out,
+        &[
+            ("vp", Some(vid.to_string())),
+            ("id", id_tag(e)),
+            ("type", Some("image".to_string())),
+            ("sha256", Some(st(&e["sha256"]).to_string())),
+            ("components", Some(components.to_string())),
+            ("opacity", Some(format!("{opacity}"))),
+        ],
+    );
+    Some((def, st(&e["path"]).to_string(), *size_px))
+}
+
 // ---- the whole file ------------------------------------------------------------------------------
 
 /// One symbol block (clause 15.4.10).
@@ -407,6 +466,7 @@ pub fn to_dxf(document: &Value, norm: &Normalised, files: &dyn Files) -> DxfOutp
 
     let mut model = Out::default();
     let mut blocks: Vec<SymbolBlock> = Vec::new();
+    let mut image_defs: Vec<(String, String, [u32; 2])> = Vec::new();
     let scale_of = |id: &str| {
         norm.viewports
             .iter()
@@ -422,6 +482,19 @@ pub fn to_dxf(document: &Value, norm: &Normalised, files: &dyn Files) -> DxfOutp
                 "dimension" | "leader" => {} // their parts are paper-space entities (clauses 12.7 and 15.4.5)
                 "symbol" => {
                     symbol_insert(&mut b, &mut model, &mut blocks, e, vid, n, rotation, &libs)
+                }
+                "image" => {
+                    let origin = format!("viewport.{vid}");
+                    let item = norm.entities.iter().find(|x| {
+                        x.origin == origin
+                            && x.id.as_deref() == e.get("id").map(st)
+                            && matches!(&x.shape, Shape::Image { sha256, .. } if sha256 == st(&e["sha256"]))
+                    });
+                    if let Some(def) =
+                        item.and_then(|item| write_image(&mut b, &mut model, e, item, vid))
+                    {
+                        image_defs.push(def);
+                    }
                 }
                 _ => model_entity(&mut b, &mut model, e, vid, n, rotation),
             }
@@ -441,6 +514,7 @@ pub fn to_dxf(document: &Value, norm: &Normalised, files: &dyn Files) -> DxfOutp
             && !origin.ends_with(".hatch")
             && !origin.ends_with(".dimension")
             && !origin.ends_with(".leader")
+            && !origin.ends_with(".backing")
         {
             continue; // made in model space
         }
@@ -505,6 +579,21 @@ pub fn to_dxf(document: &Value, norm: &Normalised, files: &dyn Files) -> DxfOutp
     out.i(91, 0);
     out.i(280, 0);
     out.i(281, 0);
+    if !image_defs.is_empty() {
+        for (name, class, flags, entity) in [
+            ("IMAGE", "AcDbRasterImage", 2175, 1),
+            ("IMAGEDEF", "AcDbRasterImageDef", 0, 0),
+        ] {
+            out.s(0, "CLASS");
+            out.s(1, name);
+            out.s(2, class);
+            out.s(3, "ISM");
+            out.i(90, flags);
+            out.i(91, 0);
+            out.i(280, 0);
+            out.i(281, entity);
+        }
+    }
     out.s(0, "ENDSEC");
     // TABLES
     out.s(0, "SECTION");
@@ -577,6 +666,7 @@ pub fn to_dxf(document: &Value, norm: &Normalised, files: &dyn Files) -> DxfOutp
     }
     out.s(0, "ENDTAB");
     // LAYER
+    let colours = colour_table(document); // 8.6.5: empty under the monochrome profile
     let mut layer_rows: Vec<(String, i64, String, i32, bool)> =
         vec![("0".to_string(), 7, "CONTINUOUS".to_string(), 25, true)];
     for (name, (role, line_type, aci)) in &layers {
@@ -608,10 +698,29 @@ pub fn to_dxf(document: &Value, norm: &Normalised, files: &dyn Files) -> DxfOutp
         out.i(70, 0);
         out.i(62, *aci);
         out.s(6, lt);
+        if let Some(c) = colours.get(name)
+            && let Some(rgb) = &c.print_colour
+        {
+            out.i(
+                420,
+                i64::from_str_radix(rgb.trim_start_matches('#'), 16).unwrap_or(0),
+            );
+        }
         if !plot {
             out.i(290, 0);
         }
         out.i(370, i64::from(*lw));
+        if let Some(c) = colours.get(name) {
+            // 15.4.12: every colour member in the extended data, so the read back gives them again
+            xdata(
+                &mut out,
+                &[
+                    ("print_colour", c.print_colour.clone()),
+                    ("fill_opacity", c.fill_opacity.map(|o| format!("{o}"))),
+                    ("halo_colour", c.halo_colour.clone()),
+                ],
+            );
+        }
     }
     out.s(0, "ENDTAB");
     // STYLE
@@ -703,12 +812,38 @@ pub fn to_dxf(document: &Value, norm: &Normalised, files: &dyn Files) -> DxfOutp
     // OBJECTS
     out.s(0, "SECTION");
     out.s(2, "OBJECTS");
-    dictionary(
-        &mut out,
-        &root_dict,
-        "0",
-        &[("ACAD_GROUP", &group_dict), ("ACAD_LAYOUT", &layout_dict)],
-    );
+    let image_dict = (!image_defs.is_empty()).then(|| b.handles.next());
+    let mut root_entries = vec![("ACAD_GROUP", group_dict.as_str())];
+    if let Some(d) = &image_dict {
+        root_entries.push(("ACAD_IMAGE_DICT", d.as_str()));
+    }
+    root_entries.push(("ACAD_LAYOUT", layout_dict.as_str()));
+    dictionary(&mut out, &root_dict, "0", &root_entries);
+    if let Some(d) = &image_dict {
+        let names: Vec<String> = image_defs
+            .iter()
+            .enumerate()
+            .map(|(i, _)| format!("TDFA_IMAGE_{i}"))
+            .collect();
+        let entries: Vec<(&str, &str)> = names
+            .iter()
+            .zip(&image_defs)
+            .map(|(name, (def, _, _))| (name.as_str(), def.as_str()))
+            .collect();
+        dictionary(&mut out, d, &root_dict, &entries);
+        for (def, path, [w, h]) in &image_defs {
+            out.s(0, "IMAGEDEF");
+            out.s(5, def);
+            out.s(330, d);
+            out.s(100, "AcDbRasterImageDef");
+            out.i(90, 0);
+            out.s(1, path);
+            out.pt(10, f64::from(*w), f64::from(*h));
+            out.pt(11, 1.0, 1.0);
+            out.i(280, 1);
+            out.i(281, 0);
+        }
+    }
     dictionary(
         &mut out,
         &layout_dict,
@@ -1417,6 +1552,8 @@ fn paper_entity(b: &mut Builder, out: &mut Out, at: Place, e: &Entity) {
                 ("type", Some("hatch".to_string())),
                 ("pattern", Some(pattern.clone())),
                 ("angle", Some(angle_text(*a))),
+                // 8.6.7: a plate is not coloured by its layer
+                ("print_colour", e.paint.print_colour.clone()),
             ];
             write_hatch(
                 b,
@@ -1504,5 +1641,6 @@ fn paper_entity(b: &mut Builder, out: &mut Out, at: Place, e: &Entity) {
                 &tags("arc"),
             );
         }
+        Shape::Image { .. } => {} // images are in model space (15.4.12)
     }
 }

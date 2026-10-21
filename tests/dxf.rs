@@ -20,6 +20,9 @@ impl Files for DirFiles {
     fn read(&self, relative_path: &str) -> Option<String> {
         fs::read_to_string(self.0.join(relative_path)).ok()
     }
+    fn read_bytes(&self, relative_path: &str) -> Option<Vec<u8>> {
+        fs::read(self.0.join(relative_path)).ok()
+    }
 }
 
 fn suite() -> PathBuf {

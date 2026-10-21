@@ -1,6 +1,9 @@
 //! PDF from normalised content (clause 15.3).
 //!
-//! One page, the size of the trimmed sheet, drawn in black. The font of clause 11.6 is embedded whole
+//! One page, the size of the trimmed sheet, drawn in black, or under the colour profile with the colour
+//! members of each entity (clause 8.6.6): a colour, a fill opacity and a halo. Images are image
+//! XObjects that hold the JPEG bytes as they are, drawn first (clauses 9.10.7 and 15.3). A monochrome
+//! sheet gives the same bytes as before version 1.1. The font of clause 11.6 is embedded whole
 //! (clause 11.6.4) as a CID-keyed TrueType font with the glyph ids as codes, so the text can be
 //! selected and searched. Nothing reads a clock: two builds of one document give the same bytes.
 
@@ -8,6 +11,7 @@ use super::{fmt, on_circle};
 use crate::Normalised;
 use crate::data;
 use crate::entities::{Entity, Shape};
+use crate::image::jpeg_info;
 use crate::numbers::cos_sin;
 use crate::rules;
 use pdf_writer::types::{CidFontType, FontFlags, SystemInfo, UnicodeCmap};
@@ -133,7 +137,54 @@ fn stroke_ops(width: f64, line_type: &str) -> Vec<String> {
     ]
 }
 
-fn content(norm: &Normalised, face: &Face) -> Vec<u8> {
+/// `#RRGGBB` as three PDF numbers from 0 to 1.
+fn rgb(hex: &str) -> String {
+    (0..3)
+        .map(|i| {
+            let v =
+                u8::from_str_radix(hex.get(1 + 2 * i..3 + 2 * i).unwrap_or("00"), 16).unwrap_or(0);
+            n((f64::from(v) / 255.0 * 10000.0).round() / 10000.0)
+        })
+        .collect::<Vec<_>>()
+        .join(" ")
+}
+
+/// The images and the fill opacities that a page uses, in the order of first use.
+#[derive(Default)]
+struct Resources {
+    /// SHA-256 of each image, in order: `/Im0`, `/Im1`, ...
+    xobjects: Vec<String>,
+    /// Each opacity, in order: `/GS0`, `/GS1`, ...
+    alphas: Vec<f64>,
+}
+
+impl Resources {
+    fn image(&mut self, sha: &str) -> String {
+        let i = self
+            .xobjects
+            .iter()
+            .position(|x| x == sha)
+            .unwrap_or_else(|| {
+                self.xobjects.push(sha.to_string());
+                self.xobjects.len() - 1
+            });
+        format!("/Im{i}")
+    }
+
+    fn alpha(&mut self, value: f64) -> String {
+        let i = self
+            .alphas
+            .iter()
+            .position(|a| *a == value)
+            .unwrap_or_else(|| {
+                self.alphas.push(value);
+                self.alphas.len() - 1
+            });
+        format!("/GS{i}")
+    }
+}
+
+fn content(norm: &Normalised, face: &Face, res: &mut Resources) -> Vec<u8> {
     let mut out = vec![
         format!(
             "{} 0 0 {} 0 {} cm",
@@ -144,14 +195,55 @@ fn content(norm: &Normalised, face: &Face) -> Vec<u8> {
         "0 G 0 g".to_string(),
         "0 J 0 j 10 M".to_string(),
     ];
-    for e in &norm.entities {
-        out.extend(entity_ops(e, face));
+    // 9.10.7: the images first, then everything else, each in the order of the list
+    let (images, rest): (Vec<&Entity>, Vec<&Entity>) = norm
+        .entities
+        .iter()
+        .partition(|e| matches!(e.shape, Shape::Image { .. }));
+    let mut colour: Option<&str> = None; // None is the black of clause 8.6.1, set above
+    for e in images.into_iter().chain(rest) {
+        let draws = match &e.shape {
+            Shape::Image { .. } => false,
+            Shape::Hatch { pattern, .. } => pattern == "solid",
+            _ => true,
+        };
+        let c = e.paint.print_colour.as_deref();
+        if draws && c != colour {
+            out.push(c.map_or("0 G 0 g".to_string(), |c| {
+                format!("{} RG {} rg", rgb(c), rgb(c))
+            }));
+            colour = c;
+        }
+        out.extend(entity_ops(e, face, res, norm));
     }
     out.join("\n").into_bytes()
 }
 
-fn entity_ops(e: &Entity, face: &Face) -> Vec<String> {
+fn entity_ops(e: &Entity, face: &Face, res: &mut Resources, norm: &Normalised) -> Vec<String> {
     match &e.shape {
+        Shape::Image {
+            box_mm: [x0, y0, x1, y1],
+            sha256,
+            opacity,
+            ..
+        } => {
+            if !norm.images.contains_key(sha256) {
+                return vec![]; // a normalised content made by this crate always holds the bytes (9.10)
+            }
+            let gs = if *opacity == 1.0 {
+                String::new()
+            } else {
+                format!("{} gs ", res.alpha(*opacity))
+            };
+            vec![format!(
+                "q {gs}{} 0 0 {} {} {} cm {} Do Q",
+                n(x1 - x0),
+                n(y0 - y1),
+                n(*x0),
+                n(*y1),
+                res.image(sha256)
+            )]
+        }
         Shape::Text {
             anchor,
             text,
@@ -169,8 +261,8 @@ fn entity_ops(e: &Entity, face: &Face) -> Vec<String> {
             let [x0, y0] = corners[0];
             let size = height * 1000.0 / data::font_widths().cap_height_units;
             // The page is y down, so the text matrix turns the glyphs back upright.
-            vec![format!(
-                "BT /F1 {} Tf {} {} {} {} {} {} Tm <{}> Tj ET",
+            let place = format!(
+                "/F1 {} Tf {} {} {} {} {} {} Tm <{}> Tj ET",
                 n(size),
                 n(c),
                 n(-s),
@@ -179,7 +271,18 @@ fn entity_ops(e: &Entity, face: &Face) -> Vec<String> {
                 n(x0),
                 n(y0),
                 hex_codes(face, text)
-            )]
+            );
+            let mut ops = Vec::new();
+            if let Some(halo) = &e.paint.halo_colour {
+                // 8.6.6: a stroke of 0.2 h under the fill
+                ops.push(format!(
+                    "q {} RG {} w 1 j BT 1 Tr {place} Q",
+                    rgb(halo),
+                    n(0.2 * height)
+                ));
+            }
+            ops.push(format!("BT {place}"));
+            ops
         }
         Shape::Hatch {
             boundary,
@@ -196,6 +299,10 @@ fn entity_ops(e: &Entity, face: &Face) -> Vec<String> {
                 .flat_map(|l| loop_ops(l, true))
                 .collect();
             ops.push("f*".to_string());
+            if let Some(o) = e.paint.fill_opacity {
+                ops.insert(0, format!("q {} gs", res.alpha(o)));
+                ops.push("Q".to_string());
+            }
             ops
         }
         Shape::Line {
@@ -255,6 +362,8 @@ pub fn to_pdf(norm: &Normalised) -> Vec<u8> {
     let face = Face::parse(data::FONT_FILE, 0).expect("the vendored font file is a valid font");
     let units = f64::from(face.units_per_em());
     let scale = 1000.0 / units;
+    let mut res = Resources::default();
+    let page_bytes = deflate(&content(norm, &face, &mut res));
     let (catalog, pages, page, contents) = (Ref::new(1), Ref::new(2), Ref::new(3), Ref::new(4));
     let (type0, cid, descriptor, font_file, to_unicode) = (
         Ref::new(5),
@@ -275,10 +384,40 @@ pub fn to_pdf(norm: &Normalised) -> Vec<u8> {
         p.media_box(Rect::new(0.0, 0.0, wpt as f32, hpt as f32))
             .parent(pages)
             .contents(contents);
-        p.resources().fonts().pair(Name(b"F1"), type0);
+        let mut r = p.resources();
+        r.fonts().pair(Name(b"F1"), type0);
+        if !res.xobjects.is_empty() {
+            let mut x = r.x_objects();
+            for i in 0..res.xobjects.len() {
+                x.pair(Name(format!("Im{i}").as_bytes()), Ref::new(10 + i as i32));
+            }
+        }
+        if !res.alphas.is_empty() {
+            let mut g = r.ext_g_states();
+            for (i, a) in res.alphas.iter().enumerate() {
+                g.insert(Name(format!("GS{i}").as_bytes()))
+                    .start::<pdf_writer::writers::ExtGraphicsState>()
+                    .non_stroking_alpha(*a as f32)
+                    .stroking_alpha(*a as f32);
+            }
+        }
+        r.finish();
         p.finish();
     }
-    let page_bytes = deflate(&content(norm, &face));
+    for (i, sha) in res.xobjects.iter().enumerate() {
+        let data = &norm.images[sha];
+        let info = jpeg_info(data).expect("an image that passed clause 9.10.1");
+        let mut x = pdf.image_xobject(Ref::new(10 + i as i32), data);
+        x.filter(Filter::DctDecode);
+        x.width(info.width_px as i32)
+            .height(info.height_px as i32)
+            .bits_per_component(8);
+        if info.components == 1 {
+            x.color_space().device_gray();
+        } else {
+            x.color_space().device_rgb();
+        }
+    }
     pdf.stream(contents, &page_bytes)
         .filter(Filter::FlateDecode);
 

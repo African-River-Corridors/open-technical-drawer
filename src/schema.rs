@@ -15,7 +15,7 @@ pub const DEFAULT_CLAUSE: &str = "4.2";
 /// One schema document.
 pub struct Schema<'a> {
     root: &'a Value,
-    regexes: RefCell<HashMap<String, Option<regex_lite::Regex>>>,
+    regexes: RefCell<HashMap<String, Option<Pattern>>>,
 }
 
 impl<'a> Schema<'a> {
@@ -56,7 +56,7 @@ impl<'a> Schema<'a> {
         let mut cache = self.regexes.borrow_mut();
         let compiled = cache
             .entry(pattern.to_string())
-            .or_insert_with(|| regex_lite::Regex::new(pattern).ok());
+            .or_insert_with(|| Pattern::new(pattern));
         // A pattern that cannot be compiled never matches: a loud failure, not a silent pass.
         compiled.as_ref().is_some_and(|re| re.is_match(text))
     }
@@ -279,5 +279,84 @@ pub fn equal(a: &Value, b: &Value) -> bool {
             x.len() == y.len() && x.iter().all(|(k, v)| y.get(k).is_some_and(|w| equal(v, w)))
         }
         _ => a == b,
+    }
+}
+
+/// A schema pattern. `regex-lite` has no look-around, so a pattern of the form `^(?!A)(?!B)REST`
+/// is read as: neither `^A` nor `^B` matches, and `^REST` does. The path of an image (clause 9.10)
+/// is the one pattern of this form. Any other look-around does not compile.
+#[derive(Debug)]
+struct Pattern {
+    refused: Vec<regex_lite::Regex>,
+    rest: regex_lite::Regex,
+}
+
+impl Pattern {
+    fn new(pattern: &str) -> Option<Pattern> {
+        let mut tail = pattern.strip_prefix('^');
+        let mut refused = Vec::new();
+        while let Some(t) = tail.and_then(|t| t.strip_prefix("(?!")) {
+            let end = group_end(t)?;
+            refused.push(regex_lite::Regex::new(&format!("^(?:{})", &t[..end])).ok()?);
+            tail = Some(&t[end + 1..]);
+        }
+        let rest = match tail {
+            Some(t) if !refused.is_empty() => format!("^{t}"),
+            _ => pattern.to_string(),
+        };
+        Some(Pattern {
+            refused,
+            rest: regex_lite::Regex::new(&rest).ok()?,
+        })
+    }
+
+    fn is_match(&self, text: &str) -> bool {
+        !self.refused.iter().any(|r| r.is_match(text)) && self.rest.is_match(text)
+    }
+}
+
+/// The index of the `)` that closes a group whose `(` came just before `text`.
+fn group_end(text: &str) -> Option<usize> {
+    let mut depth = 0usize;
+    let mut escaped = false;
+    for (i, c) in text.char_indices() {
+        match c {
+            _ if escaped => escaped = false,
+            '\\' => escaped = true,
+            '(' => depth += 1,
+            ')' if depth == 0 => return Some(i),
+            ')' => depth -= 1,
+            _ => {}
+        }
+    }
+    None
+}
+
+#[cfg(test)]
+mod pattern_tests {
+    use super::Pattern;
+
+    #[test]
+    fn leading_negative_look_aheads() {
+        let p = Pattern::new(r"^(?!/)(?!.*(^|/)\.\.(/|$))[A-Za-z0-9_./-]+$").expect("compiles");
+        for ok in ["backdrop.jpg", "img/a.b.jpg", "a..b.jpg", "..a/x.jpg"] {
+            assert!(p.is_match(ok), "{ok}");
+        }
+        for bad in [
+            "/abs.jpg",
+            "../up.jpg",
+            "a/../b.jpg",
+            "a/..",
+            "..",
+            "sp ace.jpg",
+        ] {
+            assert!(!p.is_match(bad), "{bad}");
+        }
+    }
+
+    #[test]
+    fn other_look_around_does_not_compile() {
+        assert!(Pattern::new("^a(?!b)c$").is_none());
+        assert!(Pattern::new("^[a-z]+$").is_some_and(|p| p.is_match("abc")));
     }
 }

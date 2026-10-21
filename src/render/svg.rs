@@ -1,13 +1,16 @@
 //! SVG from normalised content (clause 15.2). One SVG unit is one millimetre of paper.
 //!
-//! Everything is drawn in black (clause 8.6.1). A text is placed by the width table, so where it sits
-//! does not depend on the machine: it gets the font size `h / 0.7` and the width of clause 11.7.1.
+//! Everything is drawn in black (clause 8.6.1), or under the colour profile with the colour members of
+//! an entity (clause 8.6.6). Images are drawn first, embedded as JPEG data (clause 9.10.7). A text is
+//! placed by the width table, so where it sits does not depend on the machine: it gets the font size
+//! `h / 0.7` and the width of clause 11.7.1.
 
 use super::{dash_array, fmt, on_circle};
 use crate::Normalised;
 use crate::data;
 use crate::entities::{Entity, Shape};
 use crate::rules;
+use std::collections::BTreeMap;
 
 /// The font family named in the SVG.
 pub const FONT_FAMILY: &str = "Barlow Semi Condensed";
@@ -37,7 +40,12 @@ fn escape(text: &str) -> String {
         .replace('"', "&quot;")
 }
 
-fn stroke(line_type: &str, width: f64) -> String {
+/// The colour of an entity: its print colour, or the black of clause 8.6.1.
+fn colour(e: &Entity) -> &str {
+    e.paint.print_colour.as_deref().unwrap_or("#000")
+}
+
+fn stroke(line_type: &str, width: f64, colour: &str) -> String {
     let dash = dash_array(line_type, width);
     let dash = if dash.is_empty() {
         String::new()
@@ -48,7 +56,7 @@ fn stroke(line_type: &str, width: f64) -> String {
         )
     };
     format!(
-        "fill=\"none\" stroke=\"#000\" stroke-width=\"{}\"{dash}",
+        "fill=\"none\" stroke=\"{colour}\" stroke-width=\"{}\"{dash}",
         n(width)
     )
 }
@@ -79,7 +87,7 @@ fn arc_path(centre: [f64; 2], r: f64, start: f64, sweep: f64) -> String {
     )
 }
 
-fn one(e: &Entity) -> Option<String> {
+fn one(e: &Entity, images: &BTreeMap<String, Vec<u8>>) -> Option<String> {
     let attrs = format!(
         "data-origin=\"{}\" data-layer=\"{}\"",
         escape(&e.origin),
@@ -98,7 +106,7 @@ fn one(e: &Entity) -> Option<String> {
                 n(from[1]),
                 n(to[0]),
                 n(to[1]),
-                stroke(line_type, *width)
+                stroke(line_type, *width, colour(e))
             )
         }
         Shape::Polyline {
@@ -119,7 +127,10 @@ fn one(e: &Entity) -> Option<String> {
                         .join(" L")
                 )
             };
-            format!("<path {attrs} d=\"{d}\" {}/>", stroke(line_type, *width))
+            format!(
+                "<path {attrs} d=\"{d}\" {}/>",
+                stroke(line_type, *width, colour(e))
+            )
         }
         Shape::Circle {
             centre,
@@ -132,7 +143,7 @@ fn one(e: &Entity) -> Option<String> {
                 n(centre[0]),
                 n(centre[1]),
                 n(*radius),
-                stroke(line_type, *width)
+                stroke(line_type, *width, colour(e))
             )
         }
         Shape::Arc {
@@ -146,7 +157,7 @@ fn one(e: &Entity) -> Option<String> {
             format!(
                 "<path {attrs} d=\"{}\" {}/>",
                 arc_path(*centre, *radius, *start, *sweep),
-                stroke(line_type, *width)
+                stroke(line_type, *width, colour(e))
             )
         }
         Shape::Hatch {
@@ -164,7 +175,14 @@ fn one(e: &Entity) -> Option<String> {
                 .map(|l| loop_path(l))
                 .collect::<Vec<_>>()
                 .join(" ");
-            format!("<path {attrs} d=\"{d}\" fill=\"#000\" fill-rule=\"evenodd\" stroke=\"none\"/>")
+            let opacity = e
+                .paint
+                .fill_opacity
+                .map_or(String::new(), |o| format!(" fill-opacity=\"{}\"", n(o)));
+            format!(
+                "<path {attrs} d=\"{d}\" fill=\"{}\"{opacity} fill-rule=\"evenodd\" stroke=\"none\"/>",
+                colour(e)
+            )
         }
         Shape::Text {
             anchor,
@@ -187,13 +205,45 @@ fn one(e: &Entity) -> Option<String> {
                     n(y0)
                 )
             };
+            // 8.6.6: a halo is a stroke of 0.2 h, under the fill
+            let halo = e.paint.halo_colour.as_ref().map_or(String::new(), |c| {
+                format!(
+                    " stroke=\"{c}\" stroke-width=\"{}\" stroke-linejoin=\"round\" paint-order=\"stroke\"",
+                    n(0.2 * height)
+                )
+            });
             format!(
-                "<text {attrs} x=\"{}\" y=\"{}\" font-size=\"{}\" textLength=\"{}\" lengthAdjust=\"spacing\" fill=\"#000\"{transform}>{}</text>",
+                "<text {attrs} x=\"{}\" y=\"{}\" font-size=\"{}\" textLength=\"{}\" lengthAdjust=\"spacing\" fill=\"{}\"{halo}{transform}>{}</text>",
                 n(x0),
                 n(y0),
                 n(height * 1000.0 / data::font_widths().cap_height_units),
                 n(width),
+                colour(e),
                 escape(text)
+            )
+        }
+        Shape::Image {
+            box_mm: [x0, y0, x1, y1],
+            sha256,
+            opacity,
+            ..
+        } => {
+            let Some(data) = images.get(sha256) else {
+                // A normalised content made by this crate always holds the bytes (clause 9.10).
+                return Some(format!("<!-- 9.10: no bytes for the image {sha256} -->"));
+            };
+            let opacity = if *opacity == 1.0 {
+                String::new()
+            } else {
+                format!(" opacity=\"{}\"", n(*opacity))
+            };
+            format!(
+                "<image {attrs} x=\"{}\" y=\"{}\" width=\"{}\" height=\"{}\" preserveAspectRatio=\"none\"{opacity} href=\"data:image/jpeg;base64,{}\"/>",
+                n(*x0),
+                n(*y0),
+                n(x1 - x0),
+                n(y1 - y0),
+                base64(data)
             )
         }
     })
@@ -220,7 +270,17 @@ pub fn to_svg(norm: &Normalised, options: &SvgOptions) -> String {
         );
     }
     parts.push(format!("<style>{style}</style>"));
-    parts.extend(norm.entities.iter().filter_map(one));
+    // 9.10.7: the images first, then everything else, each in the order of the list
+    let (images, rest): (Vec<&Entity>, Vec<&Entity>) = norm
+        .entities
+        .iter()
+        .partition(|e| matches!(e.shape, Shape::Image { .. }));
+    parts.extend(
+        images
+            .into_iter()
+            .chain(rest)
+            .filter_map(|e| one(e, &norm.images)),
+    );
     parts.push("</svg>".to_string());
     parts.join("\n") + "\n"
 }
