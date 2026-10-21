@@ -6,6 +6,19 @@ All notable changes are recorded here. The format follows
 
 ## [Unreleased]
 
+### Added
+- `otd-imagery`, a crate apart from the core (a workspace member in `imagery/`): the network lives
+  there, not in `otd`. It fetches EOxCloudless 2016 tiles (CC BY 4.0, Web Mercator layer
+  `s2cloudless_3857`) for a box in model coordinates, given the caller's map to longitude and
+  latitude. It samples them by nearest pixel into an `otd::raster::Grid`, for
+  `otd::raster::Backdrop::colour`.
+  - 2016 only: `Source::parse` refuses every other name and year, as the mosaics from 2018 on are
+    CC BY-NC-SA 4.0. `ATTRIBUTION` is the line every sheet that shows the imagery prints.
+  - `Cached` keeps tiles on disk in a folder the caller names. No tile is shipped.
+  - A failed, slow or bad tile, or a box of more than 400 tiles, is a `FetchError` value to fall
+    back on, never a panic. The tests use a synthetic tile and no network.
+- CI runs clippy and the tests over the workspace.
+
 ## [0.2.0]
 
 ### Added

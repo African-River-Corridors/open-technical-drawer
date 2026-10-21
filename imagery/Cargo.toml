@@ -1,0 +1,18 @@
+[package]
+name = "otd-imagery"
+description = "Fetched imagery for otd: EOxCloudless 2016 tiles, cached on disk, sampled into a raster grid."
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.99"
+license = "Apache-2.0"
+repository = "https://github.com/African-River-Corridors/open-technical-drawer"
+publish = false
+
+# The network lives here, not in `otd`: the core opens no file and uses no network.
+[dependencies]
+otd = { path = ".." }
+# Blocking HTTPS with rustls: no system TLS library.
+ureq = "3"
+# The tiles are JPEG; they are decoded to sample them.
+jpeg-decoder = { version = "0.3", default-features = false }
+libm = "0.2"
