@@ -1,0 +1,55 @@
+{
+  "standard_version": "1.1",
+  "sheet": {
+    "size": "A3",
+    "orientation": "landscape"
+  },
+  "layers": [
+    {
+      "name": "IMAGERY",
+      "role": "thin",
+      "line_type": "continuous",
+      "aci": 30
+    },
+    {
+      "name": "ROUTE",
+      "role": "thick",
+      "line_type": "continuous",
+      "aci": 31
+    },
+    {
+      "name": "LABELS",
+      "role": "thin",
+      "line_type": "continuous",
+      "aci": 32
+    },
+    {
+      "name": "CUT",
+      "role": "thin",
+      "line_type": "continuous",
+      "aci": 33
+    },
+    {
+      "name": "OUTLINE"
+    }
+  ],
+  "viewports": [
+    {
+      "id": "main",
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 277
+      },
+      "window": {
+        "xmin_m": 0,
+        "ymin_m": 0,
+        "xmax_m": 80000,
+        "ymax_m": 50000
+      },
+      "scale": "fit",
+      "entities": []
+    }
+  ]
+}

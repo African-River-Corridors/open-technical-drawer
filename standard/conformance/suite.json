@@ -1959,6 +1959,172 @@
         "9.5.2"
       ],
       "description": "Unit checks of arc_sweep."
+    },
+    {
+      "id": "img-colour-basic",
+      "kind": "document",
+      "dir": "documents/img-colour-basic",
+      "clauses": [
+        "8.6.4",
+        "8.6.5",
+        "8.6.6",
+        "9.10",
+        "16.4.1",
+        "16.6.2",
+        "16.8"
+      ],
+      "description": "An image under the colour profile, with a coloured line, a solid hatch with a fill opacity, a text with a halo and a black line."
+    },
+    {
+      "id": "img-sheet-colour",
+      "kind": "document",
+      "dir": "documents/img-sheet-colour",
+      "clauses": [
+        "8.6.4",
+        "16.2"
+      ],
+      "description": "The normalised sheet of a colour sheet names the profile."
+    },
+    {
+      "id": "err-img-hash",
+      "kind": "document",
+      "dir": "documents/err-img-hash",
+      "clauses": [
+        "9.10.2"
+      ],
+      "description": "The SHA-256 of the file is not the one named."
+    },
+    {
+      "id": "err-img-not-jpeg",
+      "kind": "document",
+      "dir": "documents/err-img-not-jpeg",
+      "clauses": [
+        "9.10.1"
+      ],
+      "description": "The file is not a JPEG."
+    },
+    {
+      "id": "err-img-missing",
+      "kind": "document",
+      "dir": "documents/err-img-missing",
+      "clauses": [
+        "9.10.1"
+      ],
+      "description": "The file does not exist."
+    },
+    {
+      "id": "err-img-box",
+      "kind": "document",
+      "dir": "documents/err-img-box",
+      "clauses": [
+        "9.10.3"
+      ],
+      "description": "xmax is less than xmin."
+    },
+    {
+      "id": "err-img-rotated",
+      "kind": "document",
+      "dir": "documents/err-img-rotated",
+      "clauses": [
+        "9.10.4"
+      ],
+      "description": "An image in a turned viewport."
+    },
+    {
+      "id": "err-img-monochrome",
+      "kind": "document",
+      "dir": "documents/err-img-monochrome",
+      "clauses": [
+        "9.10.5"
+      ],
+      "description": "An image on a monochrome sheet."
+    },
+    {
+      "id": "err-img-outside-frame",
+      "kind": "document",
+      "dir": "documents/err-img-outside-frame",
+      "clauses": [
+        "7.7.1",
+        "9.10.6"
+      ],
+      "description": "The image box runs past the frame."
+    },
+    {
+      "id": "err-colour-monochrome",
+      "kind": "document",
+      "dir": "documents/err-colour-monochrome",
+      "clauses": [
+        "8.6.5"
+      ],
+      "description": "Colour members on a monochrome sheet."
+    },
+    {
+      "id": "err-version-1-0-colour",
+      "kind": "document",
+      "dir": "documents/err-version-1-0-colour",
+      "clauses": [
+        "18.2.1"
+      ],
+      "description": "A 1.0 document names a print profile and colour members."
+    },
+    {
+      "id": "err-version-1-0-image",
+      "kind": "document",
+      "dir": "documents/err-version-1-0-image",
+      "clauses": [
+        "18.2.1"
+      ],
+      "description": "A 1.0 document holds an image."
+    },
+    {
+      "id": "err-version-1-0-map-scale",
+      "kind": "document",
+      "dir": "documents/err-version-1-0-map-scale",
+      "clauses": [
+        "7.3.5",
+        "18.2.1"
+      ],
+      "description": "A 1.0 document uses the map ratio 1:200000."
+    },
+    {
+      "id": "map-scale-fit",
+      "kind": "document",
+      "dir": "documents/map-scale-fit",
+      "clauses": [
+        "7.3.5",
+        "7.5.2"
+      ],
+      "description": "fit tries the map ratios: 1:500000 is the first that fits."
+    },
+    {
+      "id": "map-scale-explicit",
+      "kind": "document",
+      "dir": "documents/map-scale-explicit",
+      "clauses": [
+        "7.3.5"
+      ],
+      "description": "1:200000 in a 1.1 document: 70 km is 350 mm."
+    },
+    {
+      "id": "err-fit-1-0-large",
+      "kind": "document",
+      "dir": "documents/err-fit-1-0-large",
+      "clauses": [
+        "7.3.5",
+        "7.5.2"
+      ],
+      "description": "In a 1.0 document fit does not try the map ratios, so nothing fits."
+    },
+    {
+      "id": "img-plates",
+      "kind": "document",
+      "dir": "documents/img-plates",
+      "clauses": [
+        "8.6.7",
+        "16.5",
+        "16.8"
+      ],
+      "description": "White plates under the scale bar and the north arrow of a viewport with an image."
     }
   ]
 }

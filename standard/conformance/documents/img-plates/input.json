@@ -1,0 +1,77 @@
+{
+  "standard_version": "1.1",
+  "sheet": {
+    "size": "A3",
+    "orientation": "landscape",
+    "print_profile": "colour"
+  },
+  "layers": [
+    {
+      "name": "IMAGERY",
+      "role": "thin",
+      "line_type": "continuous",
+      "aci": 30
+    },
+    {
+      "name": "ROUTE",
+      "role": "thick",
+      "line_type": "continuous",
+      "aci": 31,
+      "print_colour": "#FF0000"
+    },
+    {
+      "name": "LABELS",
+      "role": "thin",
+      "line_type": "continuous",
+      "aci": 32,
+      "print_colour": "#FFFFFF",
+      "halo_colour": "#000000"
+    },
+    {
+      "name": "CUT",
+      "role": "thin",
+      "line_type": "continuous",
+      "aci": 33,
+      "print_colour": "#FF5252",
+      "fill_opacity": 0.4
+    },
+    {
+      "name": "OUTLINE"
+    }
+  ],
+  "viewports": [
+    {
+      "id": "main",
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 277
+      },
+      "window": {
+        "xmin_m": 0,
+        "ymin_m": 0,
+        "xmax_m": 10,
+        "ymax_m": 8
+      },
+      "scale": 100,
+      "entities": [
+        {
+          "type": "image",
+          "layer": "IMAGERY",
+          "path": "backdrop.jpg",
+          "sha256": "2395efc890236dadf74089ec4efc8b3a6eb88b3a45fffa73b777faa9f654e955",
+          "bbox_m": [
+            0,
+            0,
+            10,
+            8
+          ],
+          "opacity": 0.8
+        }
+      ],
+      "scale_bar": {},
+      "north": {}
+    }
+  ]
+}

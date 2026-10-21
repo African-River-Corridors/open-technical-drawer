@@ -1,0 +1,114 @@
+{
+  "result": "ok",
+  "origin_prefixes": [
+    "viewport."
+  ],
+  "viewports": [
+    {
+      "id": "main",
+      "scale": 100,
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 277
+      }
+    }
+  ],
+  "entities": [
+    {
+      "type": "hatch",
+      "origin": "viewport.main",
+      "layer": "CUT",
+      "boundary_mm": [
+        [
+          185,
+          168.5
+        ],
+        [
+          205,
+          168.5
+        ],
+        [
+          205,
+          148.5
+        ],
+        [
+          185,
+          148.5
+        ]
+      ],
+      "holes_mm": [],
+      "pattern": "solid",
+      "angle_deg": 0,
+      "width_mm": 0.18,
+      "print_colour": "#FF5252",
+      "fill_opacity": 0.4
+    },
+    {
+      "type": "image",
+      "origin": "viewport.main",
+      "layer": "IMAGERY",
+      "box_mm": [
+        165,
+        108.5,
+        265,
+        188.5
+      ],
+      "sha256": "2395efc890236dadf74089ec4efc8b3a6eb88b3a45fffa73b777faa9f654e955",
+      "size_px": [
+        4,
+        2
+      ],
+      "components": 3,
+      "opacity": 0.8
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main",
+      "layer": "OUTLINE",
+      "from_mm": [
+        175,
+        118.5
+      ],
+      "to_mm": [
+        255,
+        118.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main",
+      "layer": "ROUTE",
+      "from_mm": [
+        175,
+        178.5
+      ],
+      "to_mm": [
+        255,
+        178.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35,
+      "print_colour": "#FF0000"
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main",
+      "layer": "LABELS",
+      "anchor_mm": [
+        215,
+        138.5
+      ],
+      "text": "A",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline",
+      "print_colour": "#FFFFFF",
+      "halo_colour": "#000000"
+    }
+  ]
+}

@@ -13,8 +13,11 @@ use std::collections::BTreeSet;
 use std::fs;
 use std::path::{Path, PathBuf};
 
-/// Cases not yet passing. Ticket #97 empties this list.
-const EXPECTED_TO_FAIL: &[&str] = &[];
+mod support {
+    pub mod pending;
+}
+
+use support::pending::EXPECTED_TO_FAIL;
 
 struct DirFiles(PathBuf);
 
@@ -68,7 +71,7 @@ fn whole_suite() {
     let suite = suite_dir();
     let list = read_json(&suite.join("suite.json"));
     let cases = list["cases"].as_array().expect("cases");
-    assert_eq!(cases.len(), 200, "the pinned suite has 200 cases");
+    assert_eq!(cases.len(), 217, "the pinned suite has 217 cases");
     let expected: BTreeSet<&str> = EXPECTED_TO_FAIL.iter().copied().collect();
     let mut failing = BTreeSet::new();
     let mut report = Vec::new();
