@@ -26,6 +26,7 @@ pub mod image;
 pub mod json;
 pub mod numbers;
 pub mod pipeline;
+pub mod raster;
 pub(crate) mod read;
 pub mod render;
 pub mod rules;

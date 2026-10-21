@@ -37,6 +37,7 @@ fn the_crate_depends_on_no_tool_crate() {
     assert_eq!(
         runtime,
         [
+            "jpeg-encoder",
             "libm",
             "lopdf",
             "miniz_oxide",
