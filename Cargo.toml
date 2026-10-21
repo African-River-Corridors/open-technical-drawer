@@ -1,7 +1,7 @@
 [package]
 name = "otd"
 description = "The Drawing Format Standard in Rust: drawing document to normalised content, then SVG, PDF and DXF."
-version = "0.1.0"
+version = "0.2.0"
 edition = "2024"
 rust-version = "1.99"
 license = "Apache-2.0"

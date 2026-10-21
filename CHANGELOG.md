@@ -6,6 +6,8 @@ All notable changes are recorded here. The format follows
 
 ## [Unreleased]
 
+## [0.2.0]
+
 ### Added
 - The raster module, `otd::raster`, for an image behind a drawing (clause 9.10). The caller reads the
   file; the module opens none.
