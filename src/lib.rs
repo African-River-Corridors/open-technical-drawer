@@ -29,6 +29,7 @@ pub mod pipeline;
 pub mod raster;
 pub(crate) mod read;
 pub mod render;
+pub mod review;
 pub mod rules;
 pub mod schema;
 pub mod symbols;

@@ -18,6 +18,15 @@ All notable changes are recorded here. The format follows
   - A failed, slow or bad tile, or a box of more than 400 tiles, is a `FetchError` value to fall
     back on, never a panic. The tests use a synthetic tile and no network.
 - CI runs clippy and the tests over the workspace.
+- `otd::review`: a layout review of normalised content, `review(&norm, &ReviewOptions) -> Vec<Finding>`.
+  Each finding has a severity (error or warning), a rule name, the viewport (or none for the sheet),
+  and the entities by place and by `id`. The rules:
+  - `text-overlap` (error): two text boxes overlap by more than 0.1 mm;
+  - `text-print-size` (error): a text below 1.8 mm high at the print scale (1 by default);
+  - `text-on-hatch` (warning): a text box lies partly on a hatch area, leaving out the standard's own
+    furniture and the white plates;
+  - `outside-frame` (error): a point of a viewport entity lies outside its frame.
+  Every sheet of the conformance suite passes with no finding.
 
 ## [0.2.0]
 
