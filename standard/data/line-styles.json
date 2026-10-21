@@ -1,0 +1,37 @@
+{
+  "standard_version": "1.0-draft",
+  "note": "Machine-readable form of clause 8 of the Drawing Format Standard. The standard text and this file must agree; a test checks it. All widths and lengths are paper millimetres. Every ISO value here is pending ISO check (see iso-checklist.md).",
+  "roles": ["extra_thick", "thick", "thin"],
+  "line_groups": {
+    "0.35": {"sizes": ["A4", "A3"], "thin": 0.18, "thick": 0.35, "extra_thick": 0.7},
+    "0.5": {"sizes": ["A2", "A1"], "thin": 0.25, "thick": 0.5, "extra_thick": 1.0},
+    "0.7": {"sizes": ["A0"], "thin": 0.35, "thick": 0.7, "extra_thick": 1.4}
+  },
+  "cad_line_widths_um": [50, 90, 130, 150, 180, 200, 250, 300, 350, 400, 500, 530, 600, 700, 800, 900, 1000, 1060, 1200, 1400, 1580, 2000, 2110],
+  "line_types": {
+    "continuous": {"iso_type": "01.1", "pattern_d": []},
+    "dashed": {"iso_type": "02.1", "pattern_d": [12, -3]},
+    "chain": {"iso_type": "04.1", "pattern_d": [24, -3, 0.5, -3]},
+    "chain_double_dashed": {"iso_type": "05.1", "pattern_d": [24, -3, 0.5, -3, 0.5, -3]}
+  },
+  "layers": [
+    {"name": "OUTLINE", "role": "thick", "line_type": "continuous", "aci": 7, "description": "Primary section or plan outline"},
+    {"name": "OBJECT", "role": "thin", "line_type": "continuous", "aci": 8, "description": "Secondary object lines"},
+    {"name": "HIDDEN", "role": "thin", "line_type": "dashed", "aci": 244, "description": "Edges hidden in this view"},
+    {"name": "CENTRE", "role": "thin", "line_type": "chain", "aci": 6, "description": "Centre lines and axes of symmetry"},
+    {"name": "DIMENSIONS", "role": "thin", "line_type": "continuous", "aci": 3, "description": "Dimension, extension and projection lines"},
+    {"name": "ANNO", "role": "thin", "line_type": "continuous", "aci": 174, "description": "Leaders, tags and callouts (not text)"},
+    {"name": "TEXT", "role": "thin", "line_type": "continuous", "aci": 30, "description": "Annotation text"},
+    {"name": "HATCH", "role": "thin", "line_type": "continuous", "aci": 9, "description": "Hatch and fill line work"},
+    {"name": "GRID", "role": "thin", "line_type": "chain", "aci": 194, "description": "Setting-out grid"},
+    {"name": "TITLEBLOCK", "role": "thick", "line_type": "continuous", "aci": 54, "description": "Border, title block, revision register and other sheet furniture"},
+    {"name": "FDN", "role": "thick", "line_type": "continuous", "aci": 34, "description": "Foundations, slabs and plinths"},
+    {"name": "EQUIP", "role": "thick", "line_type": "continuous", "aci": 5, "description": "Equipment outlines"},
+    {"name": "NOZZLE", "role": "thin", "line_type": "continuous", "aci": 4, "description": "Nozzles and connection points"},
+    {"name": "PIPE", "role": "extra_thick", "line_type": "continuous", "aci": 150, "description": "Pipework"},
+    {"name": "ELEC", "role": "thin", "line_type": "continuous", "aci": 214, "description": "Electrical equipment and cable routes"},
+    {"name": "WATER", "role": "thin", "line_type": "continuous", "aci": 134, "description": "Water bodies, ponds and channels"},
+    {"name": "ZONE", "role": "thin", "line_type": "dashed", "aci": 70, "description": "Keep-clear and access zones (not physical)"},
+    {"name": "ACCESS", "role": "thin", "line_type": "dashed", "aci": 94, "description": "Access routes and hardstanding edges"}
+  ]
+}

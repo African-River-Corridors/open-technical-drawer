@@ -1,0 +1,639 @@
+{
+  "result": "ok",
+  "sheet": {
+    "size": "A4",
+    "orientation": "portrait",
+    "line_group": "0.35",
+    "width_mm": 210,
+    "height_mm": 297,
+    "drawing_space": {
+      "x_mm": 20,
+      "y_mm": 10,
+      "width_mm": 180,
+      "height_mm": 277
+    }
+  },
+  "viewports": [
+    {
+      "id": "main",
+      "scale": 100,
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 180,
+        "height_mm": 277
+      }
+    }
+  ],
+  "entities": [
+    {
+      "type": "polyline",
+      "origin": "sheet.border",
+      "layer": "TITLEBLOCK",
+      "points_mm": [
+        [
+          20,
+          10
+        ],
+        [
+          200,
+          10
+        ],
+        [
+          200,
+          287
+        ],
+        [
+          20,
+          287
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.7
+    },
+    {
+      "type": "line",
+      "origin": "sheet.centring_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        0,
+        148.5
+      ],
+      "to_mm": [
+        25,
+        148.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.5
+    },
+    {
+      "type": "line",
+      "origin": "sheet.centring_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        105,
+        0
+      ],
+      "to_mm": [
+        105,
+        15
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.5
+    },
+    {
+      "type": "line",
+      "origin": "sheet.centring_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        105,
+        297
+      ],
+      "to_mm": [
+        105,
+        282
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.5
+    },
+    {
+      "type": "line",
+      "origin": "sheet.centring_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        210,
+        148.5
+      ],
+      "to_mm": [
+        195,
+        148.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.5
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        10,
+        33.083
+      ],
+      "text": "A",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        10,
+        79.25
+      ],
+      "text": "B",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        10,
+        125.417
+      ],
+      "text": "C",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        10,
+        171.583
+      ],
+      "text": "D",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        10,
+        217.75
+      ],
+      "text": "E",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        10,
+        263.917
+      ],
+      "text": "F",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        42.5,
+        5
+      ],
+      "text": "1",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        42.5,
+        292
+      ],
+      "text": "1",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        87.5,
+        5
+      ],
+      "text": "2",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        87.5,
+        292
+      ],
+      "text": "2",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        132.5,
+        5
+      ],
+      "text": "3",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        132.5,
+        292
+      ],
+      "text": "3",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        177.5,
+        5
+      ],
+      "text": "4",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        177.5,
+        292
+      ],
+      "text": "4",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        205,
+        33.083
+      ],
+      "text": "A",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        205,
+        79.25
+      ],
+      "text": "B",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        205,
+        125.417
+      ],
+      "text": "C",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        205,
+        171.583
+      ],
+      "text": "D",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        205,
+        217.75
+      ],
+      "text": "E",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        205,
+        263.917
+      ],
+      "text": "F",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        0,
+        56.167
+      ],
+      "to_mm": [
+        20,
+        56.167
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        0,
+        102.333
+      ],
+      "to_mm": [
+        20,
+        102.333
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        0,
+        148.5
+      ],
+      "to_mm": [
+        20,
+        148.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        0,
+        194.667
+      ],
+      "to_mm": [
+        20,
+        194.667
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        0,
+        240.833
+      ],
+      "to_mm": [
+        20,
+        240.833
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        65,
+        0
+      ],
+      "to_mm": [
+        65,
+        10
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        65,
+        297
+      ],
+      "to_mm": [
+        65,
+        287
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        110,
+        0
+      ],
+      "to_mm": [
+        110,
+        10
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        110,
+        297
+      ],
+      "to_mm": [
+        110,
+        287
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        155,
+        0
+      ],
+      "to_mm": [
+        155,
+        10
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        155,
+        297
+      ],
+      "to_mm": [
+        155,
+        287
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        210,
+        56.167
+      ],
+      "to_mm": [
+        200,
+        56.167
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        210,
+        102.333
+      ],
+      "to_mm": [
+        200,
+        102.333
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        210,
+        148.5
+      ],
+      "to_mm": [
+        200,
+        148.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        210,
+        194.667
+      ],
+      "to_mm": [
+        200,
+        194.667
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        210,
+        240.833
+      ],
+      "to_mm": [
+        200,
+        240.833
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    }
+  ],
+  "origin_prefixes": [
+    "sheet."
+  ]
+}

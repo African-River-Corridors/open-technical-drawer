@@ -1,0 +1,82 @@
+{
+  "standard_version": "1.0",
+  "sheet": {
+    "size": "A3",
+    "orientation": "landscape"
+  },
+  "layers": [
+    {
+      "name": "OUTLINE"
+    }
+  ],
+  "viewports": [
+    {
+      "id": "main",
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 300,
+        "height_mm": 170
+      },
+      "window": {
+        "xmin_m": 0,
+        "ymin_m": 0,
+        "xmax_m": 10,
+        "ymax_m": 8
+      },
+      "scale": 100,
+      "entities": []
+    }
+  ],
+  "title_block": {
+    "template_path": "template.json",
+    "fields": {
+      "title": "PRIVATE LAYOUT",
+      "owner": "PRIVATE OWNER",
+      "document_number": "P-1"
+    }
+  },
+  "revisions": {
+    "entries": [
+      {
+        "rev": "A",
+        "date": "2026-01-01",
+        "description": "CHANGE A",
+        "by": "AB",
+        "chk": "CD",
+        "seal": "sha256:088ccd7bc1ff42da1076d2ea722d886ed3602521953be9f00e64cafd744f9f19"
+      },
+      {
+        "rev": "B",
+        "date": "2026-01-02",
+        "description": "CHANGE B",
+        "by": "AB",
+        "seal": "sha256:8da77a4ded79a6220af550cf6b37aba599276bdebf85070d8fa8f1c151865ed4"
+      },
+      {
+        "rev": "C",
+        "date": "2026-01-03",
+        "description": "CHANGE C",
+        "by": "AB",
+        "chk": "CD",
+        "seal": "sha256:b89e60e953270ada9b7f95c4cccbb850085006391fb333f66515e7f5f96d649f"
+      },
+      {
+        "rev": "D",
+        "date": "2026-01-04",
+        "description": "CHANGE D",
+        "by": "AB",
+        "seal": "sha256:c67cb6827e97f78c6015f068cdc152817a5e7ea033d449dccc89b7d771a0cd91"
+      },
+      {
+        "rev": "E",
+        "date": "2026-01-05",
+        "description": "CHANGE E",
+        "by": "AB",
+        "chk": "CD",
+        "app": "EF",
+        "seal": "sha256:1c89b451551959c84ed67922ea5f8efb5ba2fded28e37624cbdee1bb1fb7d5aa"
+      }
+    ]
+  }
+}

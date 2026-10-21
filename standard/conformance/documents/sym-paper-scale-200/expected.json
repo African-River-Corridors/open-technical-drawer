@@ -1,0 +1,75 @@
+{
+  "result": "ok",
+  "viewports": [
+    {
+      "id": "main",
+      "scale": 200,
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 277
+      }
+    }
+  ],
+  "entities": [
+    {
+      "type": "line",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "from_mm": [
+        205,
+        146.5
+      ],
+      "to_mm": [
+        205,
+        144.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "points_mm": [
+        [
+          202,
+          150.5
+        ],
+        [
+          208,
+          146.5
+        ],
+        [
+          208,
+          150.5
+        ],
+        [
+          202,
+          146.5
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "anchor_mm": [
+        205,
+        152.5
+      ],
+      "text": "V-101",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "top"
+    }
+  ],
+  "origin_prefixes": [
+    "viewport.main.symbol"
+  ]
+}

@@ -1,0 +1,440 @@
+{
+  "result": "ok",
+  "viewports": [
+    {
+      "id": "main",
+      "scale": 100,
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 277
+      }
+    }
+  ],
+  "entities": [
+    {
+      "type": "hatch",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "boundary_mm": [
+        [
+          175,
+          188.5
+        ],
+        [
+          178.6,
+          188.95
+        ],
+        [
+          178.6,
+          188.05
+        ]
+      ],
+      "holes_mm": [],
+      "pattern": "solid",
+      "angle_deg": 0,
+      "width_mm": 0.18
+    },
+    {
+      "type": "hatch",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "boundary_mm": [
+        [
+          175,
+          198.5
+        ],
+        [
+          178.6,
+          198.95
+        ],
+        [
+          178.6,
+          198.05
+        ]
+      ],
+      "holes_mm": [],
+      "pattern": "solid",
+      "angle_deg": 0,
+      "width_mm": 0.18
+    },
+    {
+      "type": "hatch",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "boundary_mm": [
+        [
+          200,
+          188.5
+        ],
+        [
+          196.4,
+          188.05
+        ],
+        [
+          196.4,
+          188.95
+        ]
+      ],
+      "holes_mm": [],
+      "pattern": "solid",
+      "angle_deg": 0,
+      "width_mm": 0.18
+    },
+    {
+      "type": "hatch",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "boundary_mm": [
+        [
+          200,
+          188.5
+        ],
+        [
+          203.6,
+          188.95
+        ],
+        [
+          203.6,
+          188.05
+        ]
+      ],
+      "holes_mm": [],
+      "pattern": "solid",
+      "angle_deg": 0,
+      "width_mm": 0.18
+    },
+    {
+      "type": "hatch",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "boundary_mm": [
+        [
+          225,
+          188.5
+        ],
+        [
+          221.4,
+          188.05
+        ],
+        [
+          221.4,
+          188.95
+        ]
+      ],
+      "holes_mm": [],
+      "pattern": "solid",
+      "angle_deg": 0,
+      "width_mm": 0.18
+    },
+    {
+      "type": "hatch",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "boundary_mm": [
+        [
+          225,
+          188.5
+        ],
+        [
+          228.6,
+          188.95
+        ],
+        [
+          228.6,
+          188.05
+        ]
+      ],
+      "holes_mm": [],
+      "pattern": "solid",
+      "angle_deg": 0,
+      "width_mm": 0.18
+    },
+    {
+      "type": "hatch",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "boundary_mm": [
+        [
+          250,
+          188.5
+        ],
+        [
+          246.4,
+          188.05
+        ],
+        [
+          246.4,
+          188.95
+        ]
+      ],
+      "holes_mm": [],
+      "pattern": "solid",
+      "angle_deg": 0,
+      "width_mm": 0.18
+    },
+    {
+      "type": "hatch",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "boundary_mm": [
+        [
+          250,
+          198.5
+        ],
+        [
+          246.4,
+          198.05
+        ],
+        [
+          246.4,
+          198.95
+        ]
+      ],
+      "holes_mm": [],
+      "pattern": "solid",
+      "angle_deg": 0,
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "from_mm": [
+        175,
+        179.4
+      ],
+      "to_mm": [
+        175,
+        190.3
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "from_mm": [
+        175,
+        179.4
+      ],
+      "to_mm": [
+        175,
+        200.3
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "from_mm": [
+        175,
+        188.5
+      ],
+      "to_mm": [
+        200,
+        188.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "from_mm": [
+        175,
+        198.5
+      ],
+      "to_mm": [
+        250,
+        198.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "from_mm": [
+        200,
+        179.4
+      ],
+      "to_mm": [
+        200,
+        190.3
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "from_mm": [
+        200,
+        179.4
+      ],
+      "to_mm": [
+        200,
+        190.3
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "from_mm": [
+        200,
+        188.5
+      ],
+      "to_mm": [
+        225,
+        188.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "from_mm": [
+        225,
+        179.4
+      ],
+      "to_mm": [
+        225,
+        190.3
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "from_mm": [
+        225,
+        179.4
+      ],
+      "to_mm": [
+        225,
+        190.3
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "from_mm": [
+        225,
+        188.5
+      ],
+      "to_mm": [
+        250,
+        188.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "from_mm": [
+        250,
+        179.4
+      ],
+      "to_mm": [
+        250,
+        190.3
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "from_mm": [
+        250,
+        179.4
+      ],
+      "to_mm": [
+        250,
+        200.3
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "anchor_mm": [
+        187.5,
+        187.6
+      ],
+      "text": "2.50",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "anchor_mm": [
+        212.5,
+        187.6
+      ],
+      "text": "2.50",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "anchor_mm": [
+        212.5,
+        197.6
+      ],
+      "text": "7.50",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "anchor_mm": [
+        237.5,
+        187.6
+      ],
+      "text": "2.50",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "baseline"
+    }
+  ],
+  "origin_prefixes": [
+    "viewport.main.dimension"
+  ]
+}

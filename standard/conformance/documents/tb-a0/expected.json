@@ -1,0 +1,896 @@
+{
+  "result": "ok",
+  "viewports": [
+    {
+      "id": "main",
+      "scale": 20,
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 20,
+        "width_mm": 800,
+        "height_mm": 500
+      }
+    }
+  ],
+  "entities": [
+    {
+      "type": "line",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        989,
+        760
+      ],
+      "to_mm": [
+        1169,
+        760
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1001,
+        755
+      ],
+      "to_mm": [
+        1001,
+        765
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1025,
+        755
+      ],
+      "to_mm": [
+        1025,
+        765
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1125,
+        755
+      ],
+      "to_mm": [
+        1125,
+        765
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1139,
+        755
+      ],
+      "to_mm": [
+        1139,
+        765
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1153,
+        755
+      ],
+      "to_mm": [
+        1153,
+        765
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "polyline",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "points_mm": [
+        [
+          989,
+          755
+        ],
+        [
+          1169,
+          755
+        ],
+        [
+          1169,
+          765
+        ],
+        [
+          989,
+          765
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.7
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        990,
+        759
+      ],
+      "text": "REV",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        990,
+        764
+      ],
+      "text": "A",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1002,
+        759
+      ],
+      "text": "DATE",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1002,
+        764
+      ],
+      "text": "2026-01-01",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1026,
+        759
+      ],
+      "text": "DESCRIPTION",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1026,
+        764
+      ],
+      "text": "CHANGE 1 TO THE EXAMPLE DRAWING",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1126,
+        759
+      ],
+      "text": "BY",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1126,
+        764
+      ],
+      "text": "AB",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1140,
+        759
+      ],
+      "text": "CHK",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1140,
+        764
+      ],
+      "text": "CD",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1154,
+        759
+      ],
+      "text": "APP",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1154,
+        764
+      ],
+      "text": "EF",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        989,
+        785
+      ],
+      "to_mm": [
+        1099,
+        785
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        989,
+        797
+      ],
+      "to_mm": [
+        1099,
+        797
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        989,
+        809
+      ],
+      "to_mm": [
+        1099,
+        809
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1025,
+        809
+      ],
+      "to_mm": [
+        1025,
+        821
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1062,
+        809
+      ],
+      "to_mm": [
+        1062,
+        821
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1099,
+        779
+      ],
+      "to_mm": [
+        1169,
+        779
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1099,
+        793
+      ],
+      "to_mm": [
+        1169,
+        793
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1099,
+        807
+      ],
+      "to_mm": [
+        1169,
+        807
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1119,
+        779
+      ],
+      "to_mm": [
+        1119,
+        793
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1124,
+        807
+      ],
+      "to_mm": [
+        1124,
+        821
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1134,
+        793
+      ],
+      "to_mm": [
+        1134,
+        807
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1144,
+        807
+      ],
+      "to_mm": [
+        1144,
+        821
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        989,
+        765
+      ],
+      "to_mm": [
+        1169,
+        765
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.7
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        989,
+        821
+      ],
+      "to_mm": [
+        989,
+        765
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.7
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1099,
+        765
+      ],
+      "to_mm": [
+        1099,
+        821
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.7
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1169,
+        765
+      ],
+      "to_mm": [
+        1169,
+        821
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.7
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1169,
+        821
+      ],
+      "to_mm": [
+        989,
+        821
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.7
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        990,
+        768.5
+      ],
+      "text": "TITLE",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        990,
+        784
+      ],
+      "text": "SECTION THROUGH EXAMPLE WORK",
+      "height_mm": 5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        990,
+        788.5
+      ],
+      "text": "SUPPLEMENTARY TITLE",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        990,
+        800.5
+      ],
+      "text": "OWNER",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        990,
+        808
+      ],
+      "text": "EXAMPLE OWNER LTD",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        990,
+        812.5
+      ],
+      "text": "CREATED BY",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        990,
+        820
+      ],
+      "text": "AB",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1026,
+        812.5
+      ],
+      "text": "CHECKED BY",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1026,
+        820
+      ],
+      "text": "CD",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1063,
+        812.5
+      ],
+      "text": "APPROVED BY",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1063,
+        820
+      ],
+      "text": "EF",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1100,
+        768.5
+      ],
+      "text": "DOCUMENT NUMBER",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1100,
+        778
+      ],
+      "text": "EXA-CIV-001",
+      "height_mm": 5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1100,
+        782.5
+      ],
+      "text": "REV",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1100,
+        792
+      ],
+      "text": "A",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1100,
+        796.5
+      ],
+      "text": "STATUS",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1100,
+        810.5
+      ],
+      "text": "SHEET",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1120,
+        782.5
+      ],
+      "text": "DATE OF ISSUE",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1120,
+        792
+      ],
+      "text": "2026-01-01",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1125,
+        810.5
+      ],
+      "text": "SIZE",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1125,
+        820
+      ],
+      "text": "A0",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1135,
+        796.5
+      ],
+      "text": "SCALE",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1135,
+        806
+      ],
+      "text": "1:20",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1145,
+        810.5
+      ],
+      "text": "TYPE",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    }
+  ],
+  "origin_prefixes": [
+    "sheet.title_block",
+    "sheet.revision_register"
+  ]
+}

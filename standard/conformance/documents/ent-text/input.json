@@ -1,0 +1,67 @@
+{
+  "standard_version": "1.0",
+  "sheet": {
+    "size": "A3",
+    "orientation": "landscape"
+  },
+  "layers": [
+    {
+      "name": "TEXT"
+    }
+  ],
+  "viewports": [
+    {
+      "id": "main",
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 277
+      },
+      "window": {
+        "xmin_m": 0,
+        "ymin_m": 0,
+        "xmax_m": 10,
+        "ymax_m": 8
+      },
+      "scale": 100,
+      "entities": [
+        {
+          "type": "text",
+          "layer": "TEXT",
+          "anchor_m": [
+            1,
+            1
+          ],
+          "text": "LEFT BASELINE",
+          "height_mm": 3.5
+        },
+        {
+          "type": "text",
+          "layer": "TEXT",
+          "anchor_m": [
+            5,
+            4
+          ],
+          "text": "CENTRE MIDDLE",
+          "height_mm": 5,
+          "align_h": "centre",
+          "align_v": "middle"
+        },
+        {
+          "type": "text",
+          "layer": "TEXT",
+          "anchor_m": [
+            9,
+            7
+          ],
+          "text": "RIGHT TOP",
+          "height_mm": 2.5,
+          "align_h": "right",
+          "align_v": "top",
+          "rotation_deg": 90
+        }
+      ]
+    }
+  ]
+}

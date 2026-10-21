@@ -1,0 +1,104 @@
+{
+  "standard_version": "1.0",
+  "sheet": {
+    "size": "A3",
+    "orientation": "landscape"
+  },
+  "layers": [
+    {
+      "name": "OUTLINE"
+    }
+  ],
+  "viewports": [
+    {
+      "id": "main",
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 300,
+        "height_mm": 170
+      },
+      "window": {
+        "xmin_m": 0,
+        "ymin_m": 0,
+        "xmax_m": 10,
+        "ymax_m": 8
+      },
+      "scale": 100,
+      "entities": []
+    }
+  ],
+  "title_block": {
+    "template": "iso7200",
+    "fields": {
+      "owner": "EXAMPLE OWNER LTD",
+      "title": "SECTION THROUGH EXAMPLE WORK",
+      "document_number": "EXA-CIV-001"
+    }
+  },
+  "revisions": {
+    "entries": [
+      {
+        "rev": "A",
+        "date": "2026-01-01",
+        "description": "CHANGE 1 TO THE EXAMPLE DRAWING",
+        "by": "AB",
+        "chk": "CD",
+        "seal": "sha256:f3d43d552c28d0b245d76466684c4647c1d82de0ee7f9f7477e9ec6e9836d3d0"
+      },
+      {
+        "rev": "B",
+        "date": "2026-01-02",
+        "description": "CHANGE 2 TO THE EXAMPLE DRAWING",
+        "by": "AB",
+        "seal": "sha256:0a11b9315030c83e4b62f319483e5d11d4fa78f2703dd36b7faee866ae33a2bf"
+      },
+      {
+        "rev": "C",
+        "date": "2026-01-03",
+        "description": "CHANGE 3 TO THE EXAMPLE DRAWING",
+        "by": "AB",
+        "chk": "CD",
+        "seal": "sha256:ed8823e8f6cb053e2c8daa2f6429147c28148059594e767e257b8c06c0682c6b"
+      },
+      {
+        "rev": "D",
+        "date": "2026-01-04",
+        "description": "CHANGE 4 TO THE EXAMPLE DRAWING",
+        "by": "AB",
+        "seal": "sha256:c3c15d0ffce8fca2ac96b8bb471573b7a9e4b731db87b4f48e6a8b0f91e02c5f"
+      },
+      {
+        "rev": "E",
+        "date": "2026-01-05",
+        "description": "CHANGE 5 TO THE EXAMPLE DRAWING",
+        "by": "AB",
+        "chk": "CD",
+        "seal": "sha256:04e837334bea030e2b055cd6bcd8092a3ebd2e7237e28f989829d4d54bdf72c2"
+      },
+      {
+        "rev": "F",
+        "date": "2026-01-06",
+        "description": "CHANGE 6 TO THE EXAMPLE DRAWING",
+        "by": "AB",
+        "seal": "sha256:02e98b33cc0d87396e2f1e16f36aa5554b88b35dd99859d9b8fc75c380776f46"
+      },
+      {
+        "rev": "G",
+        "date": "2026-01-07",
+        "description": "CHANGE 7 TO THE EXAMPLE DRAWING",
+        "by": "AB",
+        "chk": "CD",
+        "seal": "sha256:faa80eaaac8a6aad48ee1e2d43d8105cba3a1dbb26f8bf75274512c24fc34cde"
+      },
+      {
+        "rev": "H",
+        "date": "2026-01-08",
+        "description": "CHANGE 8 TO THE EXAMPLE DRAWING",
+        "by": "AB",
+        "app": "EF",
+        "seal": "sha256:7e20b983cc9cf20cea4a175d1ac98e5a7cdf0a3cd9ec304207f468db4b4743f7"
+      }
+    ]
+  }
+}

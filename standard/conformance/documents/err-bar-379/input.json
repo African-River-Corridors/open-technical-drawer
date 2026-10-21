@@ -1,0 +1,34 @@
+{
+  "standard_version": "1.0",
+  "sheet": {
+    "size": "A3",
+    "orientation": "landscape"
+  },
+  "layers": [
+    {
+      "name": "OUTLINE"
+    }
+  ],
+  "viewports": [
+    {
+      "id": "main",
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 277
+      },
+      "window": {
+        "xmin_m": 0,
+        "ymin_m": 0,
+        "xmax_m": 100,
+        "ymax_m": 50
+      },
+      "scale": 1000,
+      "entities": [],
+      "scale_bar": {
+        "length_m": 379
+      }
+    }
+  ]
+}

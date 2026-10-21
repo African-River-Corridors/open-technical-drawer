@@ -1,0 +1,37 @@
+{
+  "standard_version": "1.0",
+  "sheet": {
+    "size": "A4",
+    "orientation": "portrait"
+  },
+  "layers": [
+    {
+      "name": "OUTLINE"
+    }
+  ],
+  "viewports": [
+    {
+      "id": "main",
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 180,
+        "height_mm": 100
+      },
+      "window": {
+        "xmin_m": 0,
+        "ymin_m": 0,
+        "xmax_m": 10,
+        "ymax_m": 8
+      },
+      "scale": 100,
+      "entities": []
+    }
+  ],
+  "title_block": {
+    "template_path": "template.json",
+    "fields": {
+      "title": "T"
+    }
+  }
+}

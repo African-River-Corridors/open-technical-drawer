@@ -1,0 +1,61 @@
+{
+  "result": "ok",
+  "viewports": [
+    {
+      "id": "main",
+      "scale": 100,
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 277
+      }
+    }
+  ],
+  "entities": [
+    {
+      "type": "line",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "from_mm": [
+        194,
+        146.768
+      ],
+      "to_mm": [
+        193,
+        145.036
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "points_mm": [
+        [
+          193.402,
+          151.732
+        ],
+        [
+          196.598,
+          145.268
+        ],
+        [
+          198.598,
+          148.732
+        ],
+        [
+          191.402,
+          148.268
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.35
+    }
+  ],
+  "origin_prefixes": [
+    "viewport.main.symbol"
+  ]
+}

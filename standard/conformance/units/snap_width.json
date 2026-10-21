@@ -1,0 +1,97 @@
+{
+  "function": "snap_width",
+  "checks": [
+    {
+      "id": "0.36",
+      "clause": "8.3.3",
+      "input": {
+        "width_mm": 0.36
+      },
+      "expected": 0.35
+    },
+    {
+      "id": "0.12",
+      "clause": "8.3.3",
+      "input": {
+        "width_mm": 0.12
+      },
+      "expected": 0.13
+    },
+    {
+      "id": "0.175",
+      "clause": "8.3.3",
+      "input": {
+        "width_mm": 0.175
+      },
+      "expected": 0.18
+    },
+    {
+      "id": "0.55",
+      "clause": "8.3.3",
+      "input": {
+        "width_mm": 0.55
+      },
+      "expected": 0.53
+    },
+    {
+      "id": "tie-0.165",
+      "clause": "8.3.3",
+      "input": {
+        "width_mm": 0.165
+      },
+      "expected": 0.15
+    },
+    {
+      "id": "tie-0.275",
+      "clause": "8.3.3",
+      "input": {
+        "width_mm": 0.275
+      },
+      "expected": 0.25
+    },
+    {
+      "id": "tie-0.45",
+      "clause": "8.3.3",
+      "input": {
+        "width_mm": 0.45
+      },
+      "expected": 0.4
+    },
+    {
+      "id": "in-set",
+      "clause": "8.3.3",
+      "input": {
+        "width_mm": 0.7
+      },
+      "expected": 0.7
+    },
+    {
+      "id": "thin",
+      "clause": "8.3.3",
+      "input": {
+        "width_mm": 0.02
+      },
+      "expected": 0.05
+    },
+    {
+      "id": "too-wide",
+      "clause": "8.3.3",
+      "input": {
+        "width_mm": 2.2
+      },
+      "expected": {
+        "error": "8.3.2"
+      }
+    },
+    {
+      "id": "zero",
+      "clause": "8.3.2",
+      "input": {
+        "width_mm": 0.0004
+      },
+      "expected": {
+        "error": "8.3.2"
+      }
+    }
+  ]
+}

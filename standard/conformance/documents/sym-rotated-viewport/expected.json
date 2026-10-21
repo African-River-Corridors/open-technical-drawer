@@ -1,0 +1,150 @@
+{
+  "result": "ok",
+  "viewports": [
+    {
+      "id": "main",
+      "scale": 100,
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 277
+      }
+    }
+  ],
+  "entities": [
+    {
+      "type": "arc",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "centre_mm": [
+        215,
+        138.5
+      ],
+      "radius_mm": 10,
+      "start_deg": 90,
+      "sweep_deg": 180,
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "centre_mm": [
+        225,
+        138.5
+      ],
+      "radius_mm": 5,
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "hatch",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "boundary_mm": [
+        [
+          233,
+          140.5
+        ],
+        [
+          233,
+          136.5
+        ],
+        [
+          229,
+          138.5
+        ]
+      ],
+      "holes_mm": [],
+      "pattern": "solid",
+      "angle_deg": 0,
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "from_mm": [
+        213,
+        168.5
+      ],
+      "to_mm": [
+        211,
+        168.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "points_mm": [
+        [
+          217,
+          171.5
+        ],
+        [
+          213,
+          165.5
+        ],
+        [
+          217,
+          165.5
+        ],
+        [
+          213,
+          171.5
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "points_mm": [
+        [
+          235,
+          148.5
+        ],
+        [
+          235,
+          128.5
+        ],
+        [
+          215,
+          128.5
+        ],
+        [
+          215,
+          148.5
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "anchor_mm": [
+        219,
+        168.5
+      ],
+      "text": "V-101",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "top"
+    }
+  ],
+  "origin_prefixes": [
+    "viewport.main.symbol"
+  ]
+}

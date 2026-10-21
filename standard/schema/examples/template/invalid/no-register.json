@@ -1,0 +1,328 @@
+{
+  "standard_version": "1.0",
+  "id": "iso7200",
+  "description": "Title block of the Drawing Format Standard (house layout of the ISO 7200 data fields; see iso-checklist.md, P-17 and H-48).",
+  "width_mm": 180,
+  "height_mm": 56,
+  "pad_mm": 1,
+  "lines": [
+    {
+      "from_mm": [
+        0,
+        0
+      ],
+      "to_mm": [
+        180,
+        0
+      ],
+      "role": "thick"
+    },
+    {
+      "from_mm": [
+        180,
+        0
+      ],
+      "to_mm": [
+        180,
+        56
+      ],
+      "role": "thick"
+    },
+    {
+      "from_mm": [
+        180,
+        56
+      ],
+      "to_mm": [
+        0,
+        56
+      ],
+      "role": "thick"
+    },
+    {
+      "from_mm": [
+        0,
+        56
+      ],
+      "to_mm": [
+        0,
+        0
+      ],
+      "role": "thick"
+    },
+    {
+      "from_mm": [
+        110,
+        0
+      ],
+      "to_mm": [
+        110,
+        56
+      ],
+      "role": "thick"
+    },
+    {
+      "from_mm": [
+        0,
+        20
+      ],
+      "to_mm": [
+        110,
+        20
+      ],
+      "role": "thin"
+    },
+    {
+      "from_mm": [
+        0,
+        32
+      ],
+      "to_mm": [
+        110,
+        32
+      ],
+      "role": "thin"
+    },
+    {
+      "from_mm": [
+        0,
+        44
+      ],
+      "to_mm": [
+        110,
+        44
+      ],
+      "role": "thin"
+    },
+    {
+      "from_mm": [
+        36,
+        44
+      ],
+      "to_mm": [
+        36,
+        56
+      ],
+      "role": "thin"
+    },
+    {
+      "from_mm": [
+        73,
+        44
+      ],
+      "to_mm": [
+        73,
+        56
+      ],
+      "role": "thin"
+    },
+    {
+      "from_mm": [
+        110,
+        14
+      ],
+      "to_mm": [
+        180,
+        14
+      ],
+      "role": "thin"
+    },
+    {
+      "from_mm": [
+        110,
+        28
+      ],
+      "to_mm": [
+        180,
+        28
+      ],
+      "role": "thin"
+    },
+    {
+      "from_mm": [
+        110,
+        42
+      ],
+      "to_mm": [
+        180,
+        42
+      ],
+      "role": "thin"
+    },
+    {
+      "from_mm": [
+        130,
+        14
+      ],
+      "to_mm": [
+        130,
+        28
+      ],
+      "role": "thin"
+    },
+    {
+      "from_mm": [
+        145,
+        28
+      ],
+      "to_mm": [
+        145,
+        42
+      ],
+      "role": "thin"
+    },
+    {
+      "from_mm": [
+        135,
+        42
+      ],
+      "to_mm": [
+        135,
+        56
+      ],
+      "role": "thin"
+    },
+    {
+      "from_mm": [
+        155,
+        42
+      ],
+      "to_mm": [
+        155,
+        56
+      ],
+      "role": "thin"
+    }
+  ],
+  "cells": [
+    {
+      "field": "title",
+      "label": "TITLE",
+      "x_mm": 0,
+      "y_mm": 0,
+      "width_mm": 110,
+      "height_mm": 20,
+      "text_height_mm": 5,
+      "required": true
+    },
+    {
+      "field": "supplementary_title",
+      "label": "SUPPLEMENTARY TITLE",
+      "x_mm": 0,
+      "y_mm": 20,
+      "width_mm": 110,
+      "height_mm": 12,
+      "text_height_mm": 3.5
+    },
+    {
+      "field": "owner",
+      "label": "OWNER",
+      "x_mm": 0,
+      "y_mm": 32,
+      "width_mm": 110,
+      "height_mm": 12,
+      "text_height_mm": 3.5,
+      "required": true
+    },
+    {
+      "field": "created_by",
+      "label": "CREATED BY",
+      "x_mm": 0,
+      "y_mm": 44,
+      "width_mm": 36,
+      "height_mm": 12,
+      "text_height_mm": 3.5
+    },
+    {
+      "field": "checked_by",
+      "label": "CHECKED BY",
+      "x_mm": 36,
+      "y_mm": 44,
+      "width_mm": 37,
+      "height_mm": 12,
+      "text_height_mm": 3.5
+    },
+    {
+      "field": "approved_by",
+      "label": "APPROVED BY",
+      "x_mm": 73,
+      "y_mm": 44,
+      "width_mm": 37,
+      "height_mm": 12,
+      "text_height_mm": 3.5
+    },
+    {
+      "field": "document_number",
+      "label": "DOCUMENT NUMBER",
+      "x_mm": 110,
+      "y_mm": 0,
+      "width_mm": 70,
+      "height_mm": 14,
+      "text_height_mm": 5,
+      "required": true
+    },
+    {
+      "field": "revision",
+      "label": "REV",
+      "x_mm": 110,
+      "y_mm": 14,
+      "width_mm": 20,
+      "height_mm": 14,
+      "text_height_mm": 3.5
+    },
+    {
+      "field": "date_of_issue",
+      "label": "DATE OF ISSUE",
+      "x_mm": 130,
+      "y_mm": 14,
+      "width_mm": 50,
+      "height_mm": 14,
+      "text_height_mm": 3.5
+    },
+    {
+      "field": "status",
+      "label": "STATUS",
+      "x_mm": 110,
+      "y_mm": 28,
+      "width_mm": 35,
+      "height_mm": 14,
+      "text_height_mm": 3.5
+    },
+    {
+      "field": "scale",
+      "label": "SCALE",
+      "x_mm": 145,
+      "y_mm": 28,
+      "width_mm": 35,
+      "height_mm": 14,
+      "text_height_mm": 3.5
+    },
+    {
+      "field": "sheet",
+      "label": "SHEET",
+      "x_mm": 110,
+      "y_mm": 42,
+      "width_mm": 25,
+      "height_mm": 14,
+      "text_height_mm": 3.5
+    },
+    {
+      "field": "sheet_size",
+      "label": "SIZE",
+      "x_mm": 135,
+      "y_mm": 42,
+      "width_mm": 20,
+      "height_mm": 14,
+      "text_height_mm": 3.5
+    },
+    {
+      "field": "document_type",
+      "label": "TYPE",
+      "x_mm": 155,
+      "y_mm": 42,
+      "width_mm": 25,
+      "height_mm": 14,
+      "text_height_mm": 3.5
+    }
+  ]
+}

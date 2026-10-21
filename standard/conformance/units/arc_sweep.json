@@ -1,0 +1,43 @@
+{
+  "function": "arc_sweep",
+  "checks": [
+    {
+      "id": "0-90",
+      "clause": "9.5.2",
+      "input": {
+        "start_deg": 0,
+        "end_deg": 90
+      },
+      "expected": 90
+    },
+    {
+      "id": "270-90",
+      "clause": "9.5.2",
+      "input": {
+        "start_deg": 270,
+        "end_deg": 90
+      },
+      "expected": 180
+    },
+    {
+      "id": "90-0",
+      "clause": "9.5.2",
+      "input": {
+        "start_deg": 90,
+        "end_deg": 0
+      },
+      "expected": 270
+    },
+    {
+      "id": "45-405",
+      "clause": "9.5.2",
+      "input": {
+        "start_deg": 45,
+        "end_deg": 405
+      },
+      "expected": {
+        "error": "9.5.1"
+      }
+    }
+  ]
+}

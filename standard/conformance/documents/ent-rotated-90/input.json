@@ -1,0 +1,101 @@
+{
+  "standard_version": "1.0",
+  "sheet": {
+    "size": "A3",
+    "orientation": "landscape"
+  },
+  "layers": [
+    {
+      "name": "OUTLINE"
+    },
+    {
+      "name": "HATCH"
+    },
+    {
+      "name": "TEXT"
+    }
+  ],
+  "viewports": [
+    {
+      "id": "main",
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 277
+      },
+      "window": {
+        "xmin_m": 0,
+        "ymin_m": 0,
+        "xmax_m": 10,
+        "ymax_m": 8
+      },
+      "scale": 100,
+      "entities": [
+        {
+          "type": "line",
+          "layer": "OUTLINE",
+          "from_m": [
+            0,
+            0
+          ],
+          "to_m": [
+            10,
+            0
+          ]
+        },
+        {
+          "type": "circle",
+          "layer": "OUTLINE",
+          "centre_m": [
+            5,
+            4
+          ],
+          "radius_m": 1
+        },
+        {
+          "type": "arc",
+          "layer": "OUTLINE",
+          "centre_m": [
+            5,
+            4
+          ],
+          "radius_m": 3,
+          "start_deg": 0,
+          "end_deg": 90
+        },
+        {
+          "type": "hatch",
+          "layer": "HATCH",
+          "boundary_m": [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              4,
+              2
+            ]
+          ],
+          "pattern": "lines",
+          "angle_deg": 45
+        },
+        {
+          "type": "text",
+          "layer": "TEXT",
+          "anchor_m": [
+            8,
+            6
+          ],
+          "text": "STAYS UPRIGHT",
+          "height_mm": 3.5
+        }
+      ],
+      "rotation_deg": 90
+    }
+  ]
+}

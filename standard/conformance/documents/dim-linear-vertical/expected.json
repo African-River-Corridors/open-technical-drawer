@@ -1,0 +1,125 @@
+{
+  "result": "ok",
+  "viewports": [
+    {
+      "id": "main",
+      "scale": 100,
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 277
+      }
+    }
+  ],
+  "entities": [
+    {
+      "type": "hatch",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "boundary_mm": [
+        [
+          265,
+          118.5
+        ],
+        [
+          264.55,
+          122.1
+        ],
+        [
+          265.45,
+          122.1
+        ]
+      ],
+      "holes_mm": [],
+      "pattern": "solid",
+      "angle_deg": 0,
+      "width_mm": 0.18
+    },
+    {
+      "type": "hatch",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "boundary_mm": [
+        [
+          265,
+          178.5
+        ],
+        [
+          265.45,
+          174.9
+        ],
+        [
+          264.55,
+          174.9
+        ]
+      ],
+      "holes_mm": [],
+      "pattern": "solid",
+      "angle_deg": 0,
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "from_mm": [
+        255.9,
+        118.5
+      ],
+      "to_mm": [
+        266.8,
+        118.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "from_mm": [
+        255.9,
+        178.5
+      ],
+      "to_mm": [
+        266.8,
+        178.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "from_mm": [
+        265,
+        178.5
+      ],
+      "to_mm": [
+        265,
+        118.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "anchor_mm": [
+        264.1,
+        148.5
+      ],
+      "text": "6.00",
+      "height_mm": 3.5,
+      "rotation_deg": 90,
+      "align_h": "centre",
+      "align_v": "baseline"
+    }
+  ],
+  "origin_prefixes": [
+    "viewport.main.dimension"
+  ]
+}

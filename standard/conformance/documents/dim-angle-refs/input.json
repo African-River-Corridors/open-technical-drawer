@@ -1,0 +1,80 @@
+{
+  "standard_version": "1.0",
+  "sheet": {
+    "size": "A3",
+    "orientation": "landscape"
+  },
+  "layers": [
+    {
+      "name": "OUTLINE"
+    },
+    {
+      "name": "DIMENSIONS"
+    }
+  ],
+  "viewports": [
+    {
+      "id": "main",
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 277
+      },
+      "window": {
+        "xmin_m": 0,
+        "ymin_m": 0,
+        "xmax_m": 10,
+        "ymax_m": 8
+      },
+      "scale": 100,
+      "entities": [
+        {
+          "type": "line",
+          "layer": "OUTLINE",
+          "id": "l1",
+          "from_m": [
+            2,
+            2
+          ],
+          "to_m": [
+            6,
+            2
+          ]
+        },
+        {
+          "type": "line",
+          "layer": "OUTLINE",
+          "id": "l2",
+          "from_m": [
+            2,
+            2
+          ],
+          "to_m": [
+            4,
+            6
+          ]
+        },
+        {
+          "type": "dimension",
+          "layer": "DIMENSIONS",
+          "kind": "angle",
+          "vertex": {
+            "ref": "l1",
+            "at": "start"
+          },
+          "from": {
+            "ref": "l1",
+            "at": "end"
+          },
+          "to": {
+            "ref": "l2",
+            "at": "end"
+          },
+          "arc_radius_mm": 18,
+          "decimals": 2
+        }
+      ]
+    }
+  ]
+}

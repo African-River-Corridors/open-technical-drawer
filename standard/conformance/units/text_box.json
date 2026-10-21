@@ -1,0 +1,236 @@
+{
+  "function": "text_box",
+  "checks": [
+    {
+      "id": "left-baseline",
+      "clause": "11.7.4",
+      "input": {
+        "anchor_mm": [
+          100,
+          50
+        ],
+        "text": "AB",
+        "height_mm": 7,
+        "rotation_deg": 0,
+        "align_h": "left",
+        "align_v": "baseline"
+      },
+      "expected": [
+        [
+          100,
+          50
+        ],
+        [
+          110.46,
+          50
+        ],
+        [
+          110.46,
+          43
+        ],
+        [
+          100,
+          43
+        ]
+      ]
+    },
+    {
+      "id": "centre-baseline",
+      "clause": "11.7.4",
+      "input": {
+        "anchor_mm": [
+          100,
+          50
+        ],
+        "text": "AB",
+        "height_mm": 7,
+        "rotation_deg": 0,
+        "align_h": "centre",
+        "align_v": "baseline"
+      },
+      "expected": [
+        [
+          94.77,
+          50
+        ],
+        [
+          105.23,
+          50
+        ],
+        [
+          105.23,
+          43
+        ],
+        [
+          94.77,
+          43
+        ]
+      ]
+    },
+    {
+      "id": "right-baseline",
+      "clause": "11.7.4",
+      "input": {
+        "anchor_mm": [
+          100,
+          50
+        ],
+        "text": "AB",
+        "height_mm": 7,
+        "rotation_deg": 0,
+        "align_h": "right",
+        "align_v": "baseline"
+      },
+      "expected": [
+        [
+          89.54,
+          50
+        ],
+        [
+          100,
+          50
+        ],
+        [
+          100,
+          43
+        ],
+        [
+          89.54,
+          43
+        ]
+      ]
+    },
+    {
+      "id": "left-top",
+      "clause": "11.7.4",
+      "input": {
+        "anchor_mm": [
+          100,
+          50
+        ],
+        "text": "AB",
+        "height_mm": 7,
+        "rotation_deg": 0,
+        "align_h": "left",
+        "align_v": "top"
+      },
+      "expected": [
+        [
+          100,
+          57
+        ],
+        [
+          110.46,
+          57
+        ],
+        [
+          110.46,
+          50
+        ],
+        [
+          100,
+          50
+        ]
+      ]
+    },
+    {
+      "id": "left-middle",
+      "clause": "11.7.4",
+      "input": {
+        "anchor_mm": [
+          100,
+          50
+        ],
+        "text": "AB",
+        "height_mm": 7,
+        "rotation_deg": 0,
+        "align_h": "left",
+        "align_v": "middle"
+      },
+      "expected": [
+        [
+          100,
+          53.5
+        ],
+        [
+          110.46,
+          53.5
+        ],
+        [
+          110.46,
+          46.5
+        ],
+        [
+          100,
+          46.5
+        ]
+      ]
+    },
+    {
+      "id": "rotated-90",
+      "clause": "11.7.4",
+      "input": {
+        "anchor_mm": [
+          100,
+          50
+        ],
+        "text": "AB",
+        "height_mm": 7,
+        "rotation_deg": 90,
+        "align_h": "left",
+        "align_v": "baseline"
+      },
+      "expected": [
+        [
+          100,
+          50
+        ],
+        [
+          100,
+          39.54
+        ],
+        [
+          93,
+          39.54
+        ],
+        [
+          93,
+          50
+        ]
+      ]
+    },
+    {
+      "id": "rotated-180",
+      "clause": "11.7.4",
+      "input": {
+        "anchor_mm": [
+          100,
+          50
+        ],
+        "text": "AB",
+        "height_mm": 7,
+        "rotation_deg": 180,
+        "align_h": "left",
+        "align_v": "baseline"
+      },
+      "expected": [
+        [
+          100,
+          50
+        ],
+        [
+          89.54,
+          50
+        ],
+        [
+          89.54,
+          57
+        ],
+        [
+          100,
+          57
+        ]
+      ]
+    }
+  ]
+}

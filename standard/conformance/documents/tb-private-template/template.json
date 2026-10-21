@@ -1,0 +1,153 @@
+{
+  "standard_version": "1.0",
+  "id": "private-small",
+  "width_mm": 100,
+  "height_mm": 30,
+  "pad_mm": 1,
+  "lines": [
+    {
+      "from_mm": [
+        0,
+        0
+      ],
+      "to_mm": [
+        100,
+        0
+      ],
+      "role": "thick"
+    },
+    {
+      "from_mm": [
+        100,
+        0
+      ],
+      "to_mm": [
+        100,
+        30
+      ],
+      "role": "thick"
+    },
+    {
+      "from_mm": [
+        100,
+        30
+      ],
+      "to_mm": [
+        0,
+        30
+      ],
+      "role": "thick"
+    },
+    {
+      "from_mm": [
+        0,
+        30
+      ],
+      "to_mm": [
+        0,
+        0
+      ],
+      "role": "thick"
+    },
+    {
+      "from_mm": [
+        60,
+        0
+      ],
+      "to_mm": [
+        60,
+        30
+      ],
+      "role": "thin"
+    },
+    {
+      "from_mm": [
+        0,
+        15
+      ],
+      "to_mm": [
+        60,
+        15
+      ],
+      "role": "thin"
+    }
+  ],
+  "cells": [
+    {
+      "field": "title",
+      "label": "TITLE",
+      "x_mm": 0,
+      "y_mm": 0,
+      "width_mm": 60,
+      "height_mm": 15,
+      "text_height_mm": 3.5,
+      "required": true
+    },
+    {
+      "field": "owner",
+      "label": "OWNER",
+      "x_mm": 0,
+      "y_mm": 15,
+      "width_mm": 60,
+      "height_mm": 15,
+      "text_height_mm": 3.5
+    },
+    {
+      "field": "document_number",
+      "label": "NO",
+      "x_mm": 60,
+      "y_mm": 0,
+      "width_mm": 40,
+      "height_mm": 15,
+      "text_height_mm": 3.5,
+      "align_h": "right"
+    },
+    {
+      "field": "revision",
+      "label": "REV",
+      "x_mm": 60,
+      "y_mm": 15,
+      "width_mm": 40,
+      "height_mm": 15,
+      "text_height_mm": 3.5,
+      "align_h": "centre"
+    }
+  ],
+  "register": {
+    "row_height_mm": 6,
+    "max_rows": 3,
+    "text_height_mm": 2.5,
+    "columns": [
+      {
+        "field": "rev",
+        "label": "R",
+        "width_mm": 8
+      },
+      {
+        "field": "date",
+        "label": "DATE",
+        "width_mm": 19
+      },
+      {
+        "field": "description",
+        "label": "WHAT",
+        "width_mm": 50
+      },
+      {
+        "field": "by",
+        "label": "BY",
+        "width_mm": 9
+      },
+      {
+        "field": "chk",
+        "label": "CK",
+        "width_mm": 7
+      },
+      {
+        "field": "app",
+        "label": "AP",
+        "width_mm": 7
+      }
+    ]
+  }
+}

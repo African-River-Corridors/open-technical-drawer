@@ -1,0 +1,105 @@
+{
+  "function": "fit_scale",
+  "checks": [
+    {
+      "id": "200x100",
+      "clause": "7.5.3",
+      "input": {
+        "frame": {
+          "x_mm": 20,
+          "y_mm": 10,
+          "width_mm": 390,
+          "height_mm": 277
+        },
+        "window": {
+          "xmin_m": 0,
+          "ymin_m": 0,
+          "xmax_m": 200,
+          "ymax_m": 100
+        },
+        "rotation_deg": 0
+      },
+      "expected": 1000
+    },
+    {
+      "id": "rotated",
+      "clause": "7.5.3",
+      "input": {
+        "frame": {
+          "x_mm": 20,
+          "y_mm": 10,
+          "width_mm": 390,
+          "height_mm": 277
+        },
+        "window": {
+          "xmin_m": 0,
+          "ymin_m": 0,
+          "xmax_m": 100,
+          "ymax_m": 300
+        },
+        "rotation_deg": 90
+      },
+      "expected": 1000
+    },
+    {
+      "id": "barge-80x20",
+      "clause": "7.5.3",
+      "input": {
+        "frame": {
+          "x_mm": 20,
+          "y_mm": 10,
+          "width_mm": 390,
+          "height_mm": 277
+        },
+        "window": {
+          "xmin_m": 0,
+          "ymin_m": 0,
+          "xmax_m": 80,
+          "ymax_m": 20
+        },
+        "rotation_deg": 0
+      },
+      "expected": 250
+    },
+    {
+      "id": "small",
+      "clause": "7.5.2",
+      "input": {
+        "frame": {
+          "x_mm": 20,
+          "y_mm": 10,
+          "width_mm": 390,
+          "height_mm": 277
+        },
+        "window": {
+          "xmin_m": 0,
+          "ymin_m": 0,
+          "xmax_m": 1,
+          "ymax_m": 1
+        },
+        "rotation_deg": 0
+      },
+      "expected": 5
+    },
+    {
+      "id": "none",
+      "clause": "7.5.2",
+      "input": {
+        "frame": {
+          "x_mm": 20,
+          "y_mm": 10,
+          "width_mm": 390,
+          "height_mm": 277
+        },
+        "window": {
+          "xmin_m": 0,
+          "ymin_m": 0,
+          "xmax_m": 1000000,
+          "ymax_m": 1000000
+        },
+        "rotation_deg": 0
+      },
+      "expected": null
+    }
+  ]
+}

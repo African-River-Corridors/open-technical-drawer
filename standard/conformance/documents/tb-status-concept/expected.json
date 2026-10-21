@@ -1,0 +1,34 @@
+{
+  "result": "ok",
+  "viewports": [
+    {
+      "id": "main",
+      "scale": 100,
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 300,
+        "height_mm": 170
+      }
+    }
+  ],
+  "entities": [
+    {
+      "type": "text",
+      "origin": "sheet.status_line",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        22,
+        285
+      ],
+      "text": "CONCEPT – NOT FOR CONSTRUCTION",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    }
+  ],
+  "origin_prefixes": [
+    "sheet.status_line"
+  ]
+}

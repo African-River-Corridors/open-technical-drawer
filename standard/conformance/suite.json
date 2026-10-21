@@ -1,0 +1,1964 @@
+{
+  "standard_version": "1.0",
+  "note": "The cases of the Drawing Format Standard conformance suite. See clause 17.",
+  "cases": [
+    {
+      "id": "ent-line",
+      "kind": "document",
+      "dir": "documents/ent-line",
+      "clauses": [
+        "7.4",
+        "8.7",
+        "9.3",
+        "16.6.2",
+        "16.8"
+      ],
+      "description": "Lines: model to paper, widths from layer roles, role and line type override, a duplicate kept, unsorted input."
+    },
+    {
+      "id": "ent-polyline",
+      "kind": "document",
+      "dir": "documents/ent-polyline",
+      "clauses": [
+        "9.4",
+        "16.6.2"
+      ],
+      "description": "A closed and an open polyline."
+    },
+    {
+      "id": "ent-arc",
+      "kind": "document",
+      "dir": "documents/ent-arc",
+      "clauses": [
+        "9.5",
+        "16.6.2"
+      ],
+      "description": "Arcs with sweeps 90, 180 and 270 (worked numbers of clause 9.5.2)."
+    },
+    {
+      "id": "ent-circle",
+      "kind": "document",
+      "dir": "documents/ent-circle",
+      "clauses": [
+        "9.6",
+        "16.6.2"
+      ],
+      "description": "Circles: the radius is scaled, the line type comes from the layer."
+    },
+    {
+      "id": "ent-centre-line",
+      "kind": "document",
+      "dir": "documents/ent-centre-line",
+      "clauses": [
+        "9.7",
+        "16.6.2"
+      ],
+      "description": "A centre line is a line: default thin and chain, and an override."
+    },
+    {
+      "id": "ent-hatch",
+      "kind": "document",
+      "dir": "documents/ent-hatch",
+      "clauses": [
+        "10",
+        "16.6.2"
+      ],
+      "description": "Hatches: a solid hatch with a hole (no marks) and a lines hatch (marks are entities)."
+    },
+    {
+      "id": "hatch-lines-0",
+      "kind": "document",
+      "dir": "documents/hatch-lines-0",
+      "clauses": [
+        "10.5.4",
+        "10.5.9"
+      ],
+      "description": "Pattern lines at angle 0: horizontal lines every 1.8 mm, split by a hole (clause 10.5.9)."
+    },
+    {
+      "id": "hatch-lines-45",
+      "kind": "document",
+      "dir": "documents/hatch-lines-45",
+      "clauses": [
+        "10.5.2",
+        "10.5.4"
+      ],
+      "description": "Pattern lines at angle 45: the frame is turned; line ends are not exact in binary."
+    },
+    {
+      "id": "hatch-soil",
+      "kind": "document",
+      "dir": "documents/hatch-soil",
+      "clauses": [
+        "10.5.4",
+        "10.5.7"
+      ],
+      "description": "Pattern soil: lines of line type dashed."
+    },
+    {
+      "id": "hatch-water",
+      "kind": "document",
+      "dir": "documents/hatch-water",
+      "clauses": [
+        "10.5.4",
+        "10.5.9"
+      ],
+      "description": "Pattern water: lines every 3.6 mm (clause 10.5.9)."
+    },
+    {
+      "id": "hatch-concrete",
+      "kind": "document",
+      "dir": "documents/hatch-concrete",
+      "clauses": [
+        "10.5.5",
+        "10.5.6",
+        "10.5.7"
+      ],
+      "description": "Pattern concrete: dots on even rows, triangles on odd rows, none within the clearance of an edge."
+    },
+    {
+      "id": "hatch-rockfill",
+      "kind": "document",
+      "dir": "documents/hatch-rockfill",
+      "clauses": [
+        "10.5.5",
+        "10.5.6",
+        "10.5.7"
+      ],
+      "description": "Pattern rockfill: pentagons on a staggered lattice."
+    },
+    {
+      "id": "hatch-concrete-30",
+      "kind": "document",
+      "dir": "documents/hatch-concrete-30",
+      "clauses": [
+        "10.5.2",
+        "10.5.5"
+      ],
+      "description": "Pattern concrete at angle 30: marks turn with the frame."
+    },
+    {
+      "id": "hatch-lines-rotated-viewport",
+      "kind": "document",
+      "dir": "documents/hatch-lines-rotated-viewport",
+      "clauses": [
+        "10.5.2",
+        "16.6.2"
+      ],
+      "description": "Pattern lines in a viewport turned by 90: the hatch angle becomes 90, so the lines are vertical."
+    },
+    {
+      "id": "hatch-solid",
+      "kind": "document",
+      "dir": "documents/hatch-solid",
+      "clauses": [
+        "10.5.7",
+        "10.5.8"
+      ],
+      "description": "Pattern solid draws no marks."
+    },
+    {
+      "id": "hatch-a0-unit",
+      "kind": "document",
+      "dir": "documents/hatch-a0-unit",
+      "clauses": [
+        "10.5.1"
+      ],
+      "description": "On A0 the hatch unit is 3.5 mm."
+    },
+    {
+      "id": "ent-text",
+      "kind": "document",
+      "dir": "documents/ent-text",
+      "clauses": [
+        "11.3",
+        "16.6.2"
+      ],
+      "description": "Text: height, alignment and paper rotation are copied; the anchor is mapped."
+    },
+    {
+      "id": "ent-rotated-90",
+      "kind": "document",
+      "dir": "documents/ent-rotated-90",
+      "clauses": [
+        "7.4",
+        "7.4.4",
+        "16.6.2"
+      ],
+      "description": "Rotation 90: points turn, arc start and hatch angle add 90, text rotation is unchanged."
+    },
+    {
+      "id": "ent-rotated-40-25",
+      "kind": "document",
+      "dir": "documents/ent-rotated-40-25",
+      "clauses": [
+        "7.4",
+        "16.6.2"
+      ],
+      "description": "Rotation 40.25: values that are not exact in binary, away from rounding ties."
+    },
+    {
+      "id": "ent-a0-widths",
+      "kind": "document",
+      "dir": "documents/ent-a0-widths",
+      "clauses": [
+        "8.2",
+        "8.7.1"
+      ],
+      "description": "Line group 0.7 on A0: OUTLINE 0.7, HIDDEN 0.35 dashed, PIPE 1.4."
+    },
+    {
+      "id": "ent-a3-widths",
+      "kind": "document",
+      "dir": "documents/ent-a3-widths",
+      "clauses": [
+        "8.2",
+        "8.7.1"
+      ],
+      "description": "Line group 0.35 on A3: OUTLINE 0.35, HIDDEN 0.18 dashed, PIPE 0.7 (clause 8.7.1)."
+    },
+    {
+      "id": "ent-custom-layer",
+      "kind": "document",
+      "dir": "documents/ent-custom-layer",
+      "clauses": [
+        "8.5.4",
+        "8.7"
+      ],
+      "description": "A custom layer gives its role and line type."
+    },
+    {
+      "id": "ent-text-right-edge",
+      "kind": "document",
+      "dir": "documents/ent-text-right-edge",
+      "clauses": [
+        "7.7.2",
+        "11.7.2"
+      ],
+      "description": "Right-aligned text whose anchor is 5 mm from the frame edge: the box ends at the anchor and fits."
+    },
+    {
+      "id": "dim-linear-horizontal",
+      "kind": "document",
+      "dir": "documents/dim-linear-horizontal",
+      "clauses": [
+        "12.4",
+        "12.3"
+      ],
+      "description": "A horizontal linear dimension of an 8 m line, 10 mm below it (worked by hand in the standard)."
+    },
+    {
+      "id": "dim-linear-vertical",
+      "kind": "document",
+      "dir": "documents/dim-linear-vertical",
+      "clauses": [
+        "12.4.2",
+        "12.3.3"
+      ],
+      "description": "A vertical linear dimension: the text turns to read upwards."
+    },
+    {
+      "id": "dim-linear-mm",
+      "kind": "document",
+      "dir": "documents/dim-linear-mm",
+      "clauses": [
+        "12.1.1"
+      ],
+      "description": "The unit mm gives the text 8000 with 0 decimals."
+    },
+    {
+      "id": "dim-linear-decimals-3",
+      "kind": "document",
+      "dir": "documents/dim-linear-decimals-3",
+      "clauses": [
+        "12.1.1",
+        "12.1.2"
+      ],
+      "description": "Three decimals and text height 2.5."
+    },
+    {
+      "id": "dim-linear-points",
+      "kind": "document",
+      "dir": "documents/dim-linear-points",
+      "clauses": [
+        "12.2",
+        "12.4.2"
+      ],
+      "description": "Point specs with literal points; a positive offset puts the line on the left of D."
+    },
+    {
+      "id": "dim-aligned",
+      "kind": "document",
+      "dir": "documents/dim-aligned",
+      "clauses": [
+        "12.4.2"
+      ],
+      "description": "An aligned dimension of the 3-4-5 triangle: value 5.00, direction (0.6, -0.8)."
+    },
+    {
+      "id": "dim-radius",
+      "kind": "document",
+      "dir": "documents/dim-radius",
+      "clauses": [
+        "12.5.2"
+      ],
+      "description": "Radius of a circle in the default direction 45 degrees: R1.50."
+    },
+    {
+      "id": "dim-diameter-90",
+      "kind": "document",
+      "dir": "documents/dim-diameter-90",
+      "clauses": [
+        "12.5.3"
+      ],
+      "description": "Diameter of a circle with the line vertical: the text reads upwards."
+    },
+    {
+      "id": "dim-radius-arc",
+      "kind": "document",
+      "dir": "documents/dim-radius-arc",
+      "clauses": [
+        "12.5.1",
+        "12.5.2"
+      ],
+      "description": "Radius of an arc, with a direction inside the sweep."
+    },
+    {
+      "id": "dim-angle",
+      "kind": "document",
+      "dir": "documents/dim-angle",
+      "clauses": [
+        "12.5.4"
+      ],
+      "description": "A right angle: 90.0 degrees with a dimension arc of 15 mm."
+    },
+    {
+      "id": "dim-angle-refs",
+      "kind": "document",
+      "dir": "documents/dim-angle-refs",
+      "clauses": [
+        "12.5.4",
+        "12.2"
+      ],
+      "description": "An angle between two lines by reference: atan2(4, 2) = 63.43 degrees."
+    },
+    {
+      "id": "dim-leader",
+      "kind": "document",
+      "dir": "documents/dim-leader",
+      "clauses": [
+        "12.6"
+      ],
+      "description": "A leader to the right: the label is left-aligned."
+    },
+    {
+      "id": "dim-leader-left",
+      "kind": "document",
+      "dir": "documents/dim-leader-left",
+      "clauses": [
+        "12.6"
+      ],
+      "description": "A leader to the left: the label is right-aligned."
+    },
+    {
+      "id": "dim-rotated-viewport",
+      "kind": "document",
+      "dir": "documents/dim-rotated-viewport",
+      "clauses": [
+        "12.4.2"
+      ],
+      "description": "A horizontal dimension in a viewport turned by 90 degrees: the model x axis goes up the sheet."
+    },
+    {
+      "id": "dim-chain-ok",
+      "kind": "document",
+      "dir": "documents/dim-chain-ok",
+      "clauses": [
+        "12.8",
+        "12.8.1"
+      ],
+      "description": "A chain: parts 2.50, 2.50, 2.50 and overall 7.50."
+    },
+    {
+      "id": "err-dim-chain-sum",
+      "kind": "document",
+      "dir": "documents/err-dim-chain-sum",
+      "clauses": [
+        "12.8",
+        "12.8.1"
+      ],
+      "description": "Parts print 1.25 three times (3.75) but the overall prints 3.76 (clause 12.8.1)."
+    },
+    {
+      "id": "err-dim-chain-no-overall",
+      "kind": "document",
+      "dir": "documents/err-dim-chain-no-overall",
+      "clauses": [
+        "12.8"
+      ],
+      "description": "A chain with no overall."
+    },
+    {
+      "id": "err-dim-ref-unknown",
+      "kind": "document",
+      "dir": "documents/err-dim-ref-unknown",
+      "clauses": [
+        "12.2"
+      ],
+      "description": "A reference to an id that does not exist."
+    },
+    {
+      "id": "err-dim-ref-place",
+      "kind": "document",
+      "dir": "documents/err-dim-ref-place",
+      "clauses": [
+        "12.2"
+      ],
+      "description": "A line has no centre place."
+    },
+    {
+      "id": "err-dim-radius-of-line",
+      "kind": "document",
+      "dir": "documents/err-dim-radius-of-line",
+      "clauses": [
+        "12.2",
+        "12.5.1"
+      ],
+      "description": "A radius dimension must point at a circle or an arc."
+    },
+    {
+      "id": "err-dim-zero-value",
+      "kind": "document",
+      "dir": "documents/err-dim-zero-value",
+      "clauses": [
+        "12.4.1"
+      ],
+      "description": "Two points with the same x give the horizontal value 0."
+    },
+    {
+      "id": "err-dim-too-short",
+      "kind": "document",
+      "dir": "documents/err-dim-too-short",
+      "clauses": [
+        "12.4.3"
+      ],
+      "description": "3 mm between the arrowheads is less than 2a = 7.2 mm."
+    },
+    {
+      "id": "err-dim-extension-gap",
+      "kind": "document",
+      "dir": "documents/err-dim-extension-gap",
+      "clauses": [
+        "12.4.3"
+      ],
+      "description": "A dimension line 0.5 mm from the point leaves no extension line (gap u/2 = 0.9 mm)."
+    },
+    {
+      "id": "err-dim-outside-frame",
+      "kind": "document",
+      "dir": "documents/err-dim-outside-frame",
+      "clauses": [
+        "7.7.1",
+        "12.7"
+      ],
+      "description": "The dimension line is 120 mm below the points, below the frame."
+    },
+    {
+      "id": "err-dim-arc-direction",
+      "kind": "document",
+      "dir": "documents/err-dim-arc-direction",
+      "clauses": [
+        "12.5.1"
+      ],
+      "description": "The direction 180 is outside the sweep 0 to 90 of the arc."
+    },
+    {
+      "id": "err-dim-radius-small",
+      "kind": "document",
+      "dir": "documents/err-dim-radius-small",
+      "clauses": [
+        "12.4.3"
+      ],
+      "description": "R is 5 mm, less than 2a = 7.2 mm."
+    },
+    {
+      "id": "err-dim-angle-zero-ray",
+      "kind": "document",
+      "dir": "documents/err-dim-angle-zero-ray",
+      "clauses": [
+        "12.5.4"
+      ],
+      "description": "A ray of length 0."
+    },
+    {
+      "id": "err-leader-same-point",
+      "kind": "document",
+      "dir": "documents/err-leader-same-point",
+      "clauses": [
+        "12.6.1"
+      ],
+      "description": "The leader and its label are at one point."
+    },
+    {
+      "id": "sym-paper-valve",
+      "kind": "document",
+      "dir": "documents/sym-paper-valve",
+      "clauses": [
+        "13.2",
+        "13.4",
+        "13.4.1",
+        "13.5"
+      ],
+      "description": "A paper_mm symbol with a label: 0.1 m per mm of symbol at 1:100 (worked in clause 13.4.1)."
+    },
+    {
+      "id": "sym-paper-scale-200",
+      "kind": "document",
+      "dir": "documents/sym-paper-scale-200",
+      "clauses": [
+        "13.4.1"
+      ],
+      "description": "The same symbol at 1:200: the same size on the paper."
+    },
+    {
+      "id": "sym-paper-twice",
+      "kind": "document",
+      "dir": "documents/sym-paper-twice",
+      "clauses": [
+        "13.3.2",
+        "13.4"
+      ],
+      "description": "Insert scale 2 doubles a paper_mm symbol on the paper."
+    },
+    {
+      "id": "sym-model-tank",
+      "kind": "document",
+      "dir": "documents/sym-model-tank",
+      "clauses": [
+        "13.2.1",
+        "13.4",
+        "13.4.1"
+      ],
+      "description": "A model_m symbol is a real size: 2 m wide, 20 mm on the paper at 1:100. Circle, arc, solid hatch and a default label slot."
+    },
+    {
+      "id": "sym-model-tank-200",
+      "kind": "document",
+      "dir": "documents/sym-model-tank-200",
+      "clauses": [
+        "13.4.1"
+      ],
+      "description": "The same model_m symbol at 1:200: half the size on the paper."
+    },
+    {
+      "id": "sym-rotate-90",
+      "kind": "document",
+      "dir": "documents/sym-rotate-90",
+      "clauses": [
+        "13.4"
+      ],
+      "description": "Rotation 90 about the insertion point; the label stays upright on the paper."
+    },
+    {
+      "id": "sym-rotate-30",
+      "kind": "document",
+      "dir": "documents/sym-rotate-30",
+      "clauses": [
+        "13.4"
+      ],
+      "description": "Rotation 30: values that are not exact in binary."
+    },
+    {
+      "id": "sym-rotated-viewport",
+      "kind": "document",
+      "dir": "documents/sym-rotated-viewport",
+      "clauses": [
+        "13.4",
+        "16.6.2"
+      ],
+      "description": "A viewport turned by 90: the symbols turn with the model; arc angles add 90."
+    },
+    {
+      "id": "sym-line-types-and-roles",
+      "kind": "document",
+      "dir": "documents/sym-line-types-and-roles",
+      "clauses": [
+        "13.2.2",
+        "13.3.2",
+        "8.7"
+      ],
+      "description": "A part takes the role and line type of the layer, or the role of the insert, unless it has its own."
+    },
+    {
+      "id": "sym-file-library",
+      "kind": "document",
+      "dir": "documents/sym-file-library",
+      "clauses": [
+        "13.1",
+        "13.3.1"
+      ],
+      "description": "The library is a file next to the document."
+    },
+    {
+      "id": "sym-ports",
+      "kind": "document",
+      "dir": "documents/sym-ports",
+      "clauses": [
+        "13.6",
+        "12.2"
+      ],
+      "description": "Dimensions and leaders point at ports: the gap between two valves is 4.00 - 0.6 m."
+    },
+    {
+      "id": "err-sym-unknown-symbol",
+      "kind": "document",
+      "dir": "documents/err-sym-unknown-symbol",
+      "clauses": [
+        "13.3.2"
+      ],
+      "description": "The library has no symbol of that name."
+    },
+    {
+      "id": "err-sym-unknown-library",
+      "kind": "document",
+      "dir": "documents/err-sym-unknown-library",
+      "clauses": [
+        "13.3.2"
+      ],
+      "description": "The document has no library of that id."
+    },
+    {
+      "id": "err-sym-lib-missing-file",
+      "kind": "document",
+      "dir": "documents/err-sym-lib-missing-file",
+      "clauses": [
+        "13.1"
+      ],
+      "description": "The library file cannot be read."
+    },
+    {
+      "id": "err-sym-lib-invalid-file",
+      "kind": "document",
+      "dir": "documents/err-sym-lib-invalid-file",
+      "clauses": [
+        "13.1"
+      ],
+      "description": "The library file has a member that the schema does not know."
+    },
+    {
+      "id": "err-sym-lib-bad-geometry",
+      "kind": "document",
+      "dir": "documents/err-sym-lib-bad-geometry",
+      "clauses": [
+        "13.1"
+      ],
+      "description": "A line of length 0 in a symbol."
+    },
+    {
+      "id": "err-sym-lib-duplicate-id",
+      "kind": "document",
+      "dir": "documents/err-sym-lib-duplicate-id",
+      "clauses": [
+        "13.3.1"
+      ],
+      "description": "Two libraries with one id."
+    },
+    {
+      "id": "err-sym-lib-path-and-symbols",
+      "kind": "document",
+      "dir": "documents/err-sym-lib-path-and-symbols",
+      "clauses": [
+        "13.3.1",
+        "18.6"
+      ],
+      "description": "A library with both path and symbols (schema error)."
+    },
+    {
+      "id": "err-sym-scale-zero",
+      "kind": "document",
+      "dir": "documents/err-sym-scale-zero",
+      "clauses": [
+        "13.3.2",
+        "18.6"
+      ],
+      "description": "Insert scale 0 (schema error)."
+    },
+    {
+      "id": "err-sym-label-no-slot",
+      "kind": "document",
+      "dir": "documents/err-sym-label-no-slot",
+      "clauses": [
+        "13.5.1"
+      ],
+      "description": "A label on a symbol with no label slot."
+    },
+    {
+      "id": "err-sym-outside-frame",
+      "kind": "document",
+      "dir": "documents/err-sym-outside-frame",
+      "clauses": [
+        "7.7.1",
+        "13.7"
+      ],
+      "description": "The symbol lands beyond the right edge of the frame."
+    },
+    {
+      "id": "err-sym-port-unknown",
+      "kind": "document",
+      "dir": "documents/err-sym-port-unknown",
+      "clauses": [
+        "12.2",
+        "13.6"
+      ],
+      "description": "The symbol has no port of that name."
+    },
+    {
+      "id": "tb-minimal",
+      "kind": "document",
+      "dir": "documents/tb-minimal",
+      "clauses": [
+        "14.3",
+        "14.4",
+        "14.11"
+      ],
+      "description": "The ISO 7200 template with the three required fields; scale and size are derived."
+    },
+    {
+      "id": "tb-fields-all",
+      "kind": "document",
+      "dir": "documents/tb-fields-all",
+      "clauses": [
+        "14.4.1",
+        "14.4.2"
+      ],
+      "description": "Every given field, and the derived sheet number 2/5."
+    },
+    {
+      "id": "tb-register-two",
+      "kind": "document",
+      "dir": "documents/tb-register-two",
+      "clauses": [
+        "14.7",
+        "14.9",
+        "14.11"
+      ],
+      "description": "Two sealed revisions: the approver, checker and revision come only from the latest entry (clause 14.4.2)."
+    },
+    {
+      "id": "tb-register-full",
+      "kind": "document",
+      "dir": "documents/tb-register-full",
+      "clauses": [
+        "14.7.2",
+        "14.7.3"
+      ],
+      "description": "Eight entries fill the register: no overflow row."
+    },
+    {
+      "id": "tb-register-overflow",
+      "kind": "document",
+      "dir": "documents/tb-register-overflow",
+      "clauses": [
+        "14.7.2"
+      ],
+      "description": "Eleven entries: the overflow row stands first and says 4 EARLIER REVISIONS NOT SHOWN."
+    },
+    {
+      "id": "tb-register-overflow-9",
+      "kind": "document",
+      "dir": "documents/tb-register-overflow-9",
+      "clauses": [
+        "14.7.2"
+      ],
+      "description": "Nine entries: the overflow row says 2 EARLIER REVISIONS NOT SHOWN."
+    },
+    {
+      "id": "tb-register-numeric",
+      "kind": "document",
+      "dir": "documents/tb-register-numeric",
+      "clauses": [
+        "14.7.4"
+      ],
+      "description": "The numeric scheme: 1, 2, 10 rise. Equal dates are allowed."
+    },
+    {
+      "id": "tb-register-unsealed",
+      "kind": "document",
+      "dir": "documents/tb-register-unsealed",
+      "clauses": [
+        "14.7.6"
+      ],
+      "description": "An entry without a seal is allowed (only a seal that does not match is an error)."
+    },
+    {
+      "id": "tb-register-alpha-aa",
+      "kind": "document",
+      "dir": "documents/tb-register-alpha-aa",
+      "clauses": [
+        "14.7.4"
+      ],
+      "description": "Alpha tokens rise Z, AA."
+    },
+    {
+      "id": "tb-status-draft",
+      "kind": "document",
+      "dir": "documents/tb-status-draft",
+      "clauses": [
+        "14.9"
+      ],
+      "description": "The DRAFT status line: height 2.5 at the bottom-left of the drawing space, with its reserved region."
+    },
+    {
+      "id": "tb-status-concept",
+      "kind": "document",
+      "dir": "documents/tb-status-concept",
+      "clauses": [
+        "14.9"
+      ],
+      "description": "The CONCEPT status line."
+    },
+    {
+      "id": "tb-status-issued",
+      "kind": "document",
+      "dir": "documents/tb-status-issued",
+      "clauses": [
+        "14.9.1",
+        "14.8"
+      ],
+      "description": "Issued: the latest entry has an approver and a valid seal; no status line."
+    },
+    {
+      "id": "status-draft-notes-strip",
+      "kind": "document",
+      "dir": "documents/status-draft-notes-strip",
+      "clauses": [
+        "14.9",
+        "14.10.1"
+      ],
+      "description": "The DRAFT line stands on the last line of the notes strip; no title block."
+    },
+    {
+      "id": "status-concept-notes-strip-title-block",
+      "kind": "document",
+      "dir": "documents/status-concept-notes-strip-title-block",
+      "clauses": [
+        "14.9",
+        "14.10.1"
+      ],
+      "description": "The CONCEPT line stands on the last line of the notes strip, above the title block."
+    },
+    {
+      "id": "status-issued-notes-strip-title-block",
+      "kind": "document",
+      "dir": "documents/status-issued-notes-strip-title-block",
+      "clauses": [
+        "14.9",
+        "14.10.1"
+      ],
+      "description": "Issued shows no status line; the strip keeps the whole of its height for the notes."
+    },
+    {
+      "id": "status-concept-title-block",
+      "kind": "document",
+      "dir": "documents/status-concept-title-block",
+      "clauses": [
+        "14.9"
+      ],
+      "description": "The CONCEPT line at the bottom-left; the title block stands at the bottom-right."
+    },
+    {
+      "id": "err-status-notes-strip-no-room",
+      "kind": "document",
+      "dir": "documents/err-status-notes-strip-no-room",
+      "clauses": [
+        "14.9",
+        "14.10.1"
+      ],
+      "description": "A notes strip too low for its heading and the status line."
+    },
+    {
+      "id": "err-status-frame-over-line",
+      "kind": "document",
+      "dir": "documents/err-status-frame-over-line",
+      "clauses": [
+        "14.9",
+        "7.2.4"
+      ],
+      "description": "A frame over the region of the status line."
+    },
+    {
+      "id": "tb-scale-as-shown",
+      "kind": "document",
+      "dir": "documents/tb-scale-as-shown",
+      "clauses": [
+        "14.4.2"
+      ],
+      "description": "Two viewports with different scales: the scale cell says AS SHOWN."
+    },
+    {
+      "id": "tb-a4-portrait",
+      "kind": "document",
+      "dir": "documents/tb-a4-portrait",
+      "clauses": [
+        "14.5"
+      ],
+      "description": "On A4 portrait the drawing space is 180 mm wide, the same as the block."
+    },
+    {
+      "id": "tb-a0",
+      "kind": "document",
+      "dir": "documents/tb-a0",
+      "clauses": [
+        "8.2",
+        "14.11"
+      ],
+      "description": "On A0 (line group 0.7) the lines of the block are 0.7 and 0.35 mm wide."
+    },
+    {
+      "id": "tb-private-template",
+      "kind": "document",
+      "dir": "documents/tb-private-template",
+      "clauses": [
+        "14.2",
+        "14.2.3"
+      ],
+      "description": "A template passed by path: 100 x 30 mm, a register of 3 rows (so 5 entries show an overflow row), and right and centre alignment."
+    },
+    {
+      "id": "strips-notes-references",
+      "kind": "document",
+      "dir": "documents/strips-notes-references",
+      "clauses": [
+        "14.10",
+        "14.10.1"
+      ],
+      "description": "A notes strip on the right and a references strip at the bottom of the strip area (above the title block)."
+    },
+    {
+      "id": "strips-no-title-block",
+      "kind": "document",
+      "dir": "documents/strips-no-title-block",
+      "clauses": [
+        "14.10"
+      ],
+      "description": "With no title block the strip area is the whole drawing space."
+    },
+    {
+      "id": "err-tb-unknown-template",
+      "kind": "document",
+      "dir": "documents/err-tb-unknown-template",
+      "clauses": [
+        "14.2"
+      ],
+      "description": "A template id that the standard does not ship."
+    },
+    {
+      "id": "err-tb-template-missing-file",
+      "kind": "document",
+      "dir": "documents/err-tb-template-missing-file",
+      "clauses": [
+        "14.2"
+      ],
+      "description": "The template file cannot be read."
+    },
+    {
+      "id": "err-tb-template-invalid-file",
+      "kind": "document",
+      "dir": "documents/err-tb-template-invalid-file",
+      "clauses": [
+        "14.2"
+      ],
+      "description": "The template file has a member that the schema does not know."
+    },
+    {
+      "id": "err-tb-template-geometry",
+      "kind": "document",
+      "dir": "documents/err-tb-template-geometry",
+      "clauses": [
+        "14.2.1"
+      ],
+      "description": "Two cells overlap."
+    },
+    {
+      "id": "err-tb-missing-required",
+      "kind": "document",
+      "dir": "documents/err-tb-missing-required",
+      "clauses": [
+        "14.4.3"
+      ],
+      "description": "The required field owner is missing."
+    },
+    {
+      "id": "err-tb-field-no-cell",
+      "kind": "document",
+      "dir": "documents/err-tb-field-no-cell",
+      "clauses": [
+        "14.4.3"
+      ],
+      "description": "The private template has no cell for document_type."
+    },
+    {
+      "id": "err-tb-text-too-long",
+      "kind": "document",
+      "dir": "documents/err-tb-text-too-long",
+      "clauses": [
+        "14.6"
+      ],
+      "description": "The title is 5 mm high and does not fit 108 mm: it is an error, never cut."
+    },
+    {
+      "id": "err-reg-text-too-long",
+      "kind": "document",
+      "dir": "documents/err-reg-text-too-long",
+      "clauses": [
+        "14.6"
+      ],
+      "description": "The description is wider than its 98 mm cell."
+    },
+    {
+      "id": "err-reg-token-duplicate",
+      "kind": "document",
+      "dir": "documents/err-reg-token-duplicate",
+      "clauses": [
+        "14.7.4"
+      ],
+      "description": "Two entries with the rev A."
+    },
+    {
+      "id": "err-reg-token-order",
+      "kind": "document",
+      "dir": "documents/err-reg-token-order",
+      "clauses": [
+        "14.7.4"
+      ],
+      "description": "The tokens A, B, B do not rise."
+    },
+    {
+      "id": "err-reg-date-order",
+      "kind": "document",
+      "dir": "documents/err-reg-date-order",
+      "clauses": [
+        "14.7.5"
+      ],
+      "description": "The second date is before the first."
+    },
+    {
+      "id": "err-reg-date-invalid",
+      "kind": "document",
+      "dir": "documents/err-reg-date-invalid",
+      "clauses": [
+        "14.7.5"
+      ],
+      "description": "30 February does not exist."
+    },
+    {
+      "id": "err-reg-seal-edited",
+      "kind": "document",
+      "dir": "documents/err-reg-seal-edited",
+      "clauses": [
+        "14.7.6"
+      ],
+      "description": "A sealed entry was edited. The edited entry and the one after it no longer match their seals."
+    },
+    {
+      "id": "err-reg-seal-inserted",
+      "kind": "document",
+      "dir": "documents/err-reg-seal-inserted",
+      "clauses": [
+        "14.7.6"
+      ],
+      "description": "An entry inserted between sealed entries: the seal of the one after it fails."
+    },
+    {
+      "id": "err-status-issued-no-approver",
+      "kind": "document",
+      "dir": "documents/err-status-issued-no-approver",
+      "clauses": [
+        "14.9"
+      ],
+      "description": "Issued, but the latest entry has no approver. An approver on an earlier entry does not count."
+    },
+    {
+      "id": "err-status-issued-no-seal",
+      "kind": "document",
+      "dir": "documents/err-status-issued-no-seal",
+      "clauses": [
+        "14.9"
+      ],
+      "description": "Issued, but the latest entry has no seal."
+    },
+    {
+      "id": "err-status-issued-no-register",
+      "kind": "document",
+      "dir": "documents/err-status-issued-no-register",
+      "clauses": [
+        "14.9"
+      ],
+      "description": "Issued, but there is no revision register."
+    },
+    {
+      "id": "err-status-issued-no-title-block",
+      "kind": "document",
+      "dir": "documents/err-status-issued-no-title-block",
+      "clauses": [
+        "14.9"
+      ],
+      "description": "Issued, but there is no title block."
+    },
+    {
+      "id": "err-strip-no-room",
+      "kind": "document",
+      "dir": "documents/err-strip-no-room",
+      "clauses": [
+        "14.10"
+      ],
+      "description": "The strip is wider than the strip area."
+    },
+    {
+      "id": "err-strip-duplicate-content",
+      "kind": "document",
+      "dir": "documents/err-strip-duplicate-content",
+      "clauses": [
+        "14.10"
+      ],
+      "description": "Two strips for the notes."
+    },
+    {
+      "id": "err-notes-without-strip",
+      "kind": "document",
+      "dir": "documents/err-notes-without-strip",
+      "clauses": [
+        "14.10"
+      ],
+      "description": "Notes, and no strip to put them in."
+    },
+    {
+      "id": "err-note-too-long",
+      "kind": "document",
+      "dir": "documents/err-note-too-long",
+      "clauses": [
+        "14.6"
+      ],
+      "description": "A note wider than the strip."
+    },
+    {
+      "id": "err-too-many-notes",
+      "kind": "document",
+      "dir": "documents/err-too-many-notes",
+      "clauses": [
+        "14.6"
+      ],
+      "description": "Sixty notes do not fit the height of the strip."
+    },
+    {
+      "id": "err-region-outside",
+      "kind": "document",
+      "dir": "documents/err-region-outside",
+      "clauses": [
+        "14.5"
+      ],
+      "description": "A block 200 mm wide in a drawing space 180 mm wide."
+    },
+    {
+      "id": "err-viewport-over-title-block",
+      "kind": "document",
+      "dir": "documents/err-viewport-over-title-block",
+      "clauses": [
+        "7.2.4",
+        "14.5"
+      ],
+      "description": "The frame of the viewport covers the corner of the title block."
+    },
+    {
+      "id": "err-tb-both-sources",
+      "kind": "document",
+      "dir": "documents/err-tb-both-sources",
+      "clauses": [
+        "14.2",
+        "18.6"
+      ],
+      "description": "A template and a template path (schema error)."
+    },
+    {
+      "id": "err-status-unknown",
+      "kind": "document",
+      "dir": "documents/err-status-unknown",
+      "clauses": [
+        "14.9",
+        "18.6"
+      ],
+      "description": "The status final does not exist (schema error)."
+    },
+    {
+      "id": "err-reg-seal-form",
+      "kind": "document",
+      "dir": "documents/err-reg-seal-form",
+      "clauses": [
+        "14.7.6",
+        "18.6"
+      ],
+      "description": "A seal that is not sha256:<64 hex> (schema error)."
+    },
+    {
+      "id": "sheet-a0-landscape",
+      "kind": "document",
+      "dir": "documents/sheet-a0-landscape",
+      "clauses": [
+        "6.1",
+        "6.3",
+        "6.4",
+        "6.5",
+        "8.2",
+        "16.6.1"
+      ],
+      "description": "A0 landscape: border, centring marks, zone marks and labels, line group."
+    },
+    {
+      "id": "sheet-a1-landscape",
+      "kind": "document",
+      "dir": "documents/sheet-a1-landscape",
+      "clauses": [
+        "6.1",
+        "6.3",
+        "6.4",
+        "6.5",
+        "8.2",
+        "16.6.1"
+      ],
+      "description": "A1 landscape: border, centring marks, zone marks and labels, line group."
+    },
+    {
+      "id": "sheet-a2-landscape",
+      "kind": "document",
+      "dir": "documents/sheet-a2-landscape",
+      "clauses": [
+        "6.1",
+        "6.3",
+        "6.4",
+        "6.5",
+        "8.2",
+        "16.6.1"
+      ],
+      "description": "A2 landscape: border, centring marks, zone marks and labels, line group."
+    },
+    {
+      "id": "sheet-a3-landscape",
+      "kind": "document",
+      "dir": "documents/sheet-a3-landscape",
+      "clauses": [
+        "6.1",
+        "6.3",
+        "6.4",
+        "6.5",
+        "8.2",
+        "16.6.1"
+      ],
+      "description": "A3 landscape: border, centring marks, zone marks and labels, line group."
+    },
+    {
+      "id": "sheet-a3-portrait",
+      "kind": "document",
+      "dir": "documents/sheet-a3-portrait",
+      "clauses": [
+        "6.1",
+        "6.3",
+        "6.4",
+        "6.5",
+        "8.2",
+        "16.6.1"
+      ],
+      "description": "A3 portrait: border, centring marks, zone marks and labels, line group."
+    },
+    {
+      "id": "sheet-a4-landscape",
+      "kind": "document",
+      "dir": "documents/sheet-a4-landscape",
+      "clauses": [
+        "6.1",
+        "6.3",
+        "6.4",
+        "6.5",
+        "8.2",
+        "16.6.1"
+      ],
+      "description": "A4 landscape: border, centring marks, zone marks and labels, line group."
+    },
+    {
+      "id": "sheet-a4-portrait",
+      "kind": "document",
+      "dir": "documents/sheet-a4-portrait",
+      "clauses": [
+        "6.1",
+        "6.3",
+        "6.4",
+        "6.5",
+        "8.2",
+        "16.6.1"
+      ],
+      "description": "A4 portrait: border, centring marks, zone marks and labels, line group."
+    },
+    {
+      "id": "fit-200x100",
+      "kind": "document",
+      "dir": "documents/fit-200x100",
+      "clauses": [
+        "7.5.2",
+        "7.5.3"
+      ],
+      "description": "Declared fit: 200 x 100 m picks 1:1000."
+    },
+    {
+      "id": "fit-rotated-100x300",
+      "kind": "document",
+      "dir": "documents/fit-rotated-100x300",
+      "clauses": [
+        "7.5.2",
+        "7.5.3"
+      ],
+      "description": "Declared fit with rotation 90: 1:1000."
+    },
+    {
+      "id": "fit-exact",
+      "kind": "document",
+      "dir": "documents/fit-exact",
+      "clauses": [
+        "7.5",
+        "5.7"
+      ],
+      "description": "A window that fills the frame exactly fits."
+    },
+    {
+      "id": "fit-barge-250",
+      "kind": "document",
+      "dir": "documents/fit-barge-250",
+      "clauses": [
+        "7.3.4",
+        "7.5.2",
+        "7.5.3"
+      ],
+      "description": "An 80 m barge on A3: declared fit picks the house ratio 1:250."
+    },
+    {
+      "id": "scale-house-1250",
+      "kind": "document",
+      "dir": "documents/scale-house-1250",
+      "clauses": [
+        "7.3.4"
+      ],
+      "description": "A house ratio set directly: 400 x 200 m at 1:1250 is 320 x 160 mm."
+    },
+    {
+      "id": "err-window-too-big",
+      "kind": "document",
+      "dir": "documents/err-window-too-big",
+      "clauses": [
+        "7.5.1",
+        "7.5.3"
+      ],
+      "description": "200 x 100 m at 1:500 needs 400 x 200 mm: error."
+    },
+    {
+      "id": "bar-derived-1-100",
+      "kind": "document",
+      "dir": "documents/bar-derived-1-100",
+      "clauses": [
+        "7.9",
+        "16.6.3",
+        "7.9.9"
+      ],
+      "description": "Derived scale bar at 1:100 in a 390 mm frame (clause 7.9.9)."
+    },
+    {
+      "id": "bar-derived-1-200",
+      "kind": "document",
+      "dir": "documents/bar-derived-1-200",
+      "clauses": [
+        "7.9",
+        "16.6.3",
+        "7.9.9"
+      ],
+      "description": "Derived scale bar at 1:200 in a 390 mm frame (clause 7.9.9)."
+    },
+    {
+      "id": "bar-derived-1-500",
+      "kind": "document",
+      "dir": "documents/bar-derived-1-500",
+      "clauses": [
+        "7.9",
+        "16.6.3",
+        "7.9.9"
+      ],
+      "description": "Derived scale bar at 1:500 in a 390 mm frame (clause 7.9.9)."
+    },
+    {
+      "id": "bar-derived-1-1000",
+      "kind": "document",
+      "dir": "documents/bar-derived-1-1000",
+      "clauses": [
+        "7.9",
+        "16.6.3",
+        "7.9.9"
+      ],
+      "description": "Derived scale bar at 1:1000 in a 390 mm frame (clause 7.9.9)."
+    },
+    {
+      "id": "bar-derived-1-2000",
+      "kind": "document",
+      "dir": "documents/bar-derived-1-2000",
+      "clauses": [
+        "7.9",
+        "16.6.3",
+        "7.9.9"
+      ],
+      "description": "Derived scale bar at 1:2000 in a 390 mm frame (clause 7.9.9)."
+    },
+    {
+      "id": "bar-one-division",
+      "kind": "document",
+      "dir": "documents/bar-one-division",
+      "clauses": [
+        "7.9",
+        "16.6.3"
+      ],
+      "description": "One division: one solid segment, two ticks."
+    },
+    {
+      "id": "bar-explicit-378",
+      "kind": "document",
+      "dir": "documents/bar-explicit-378",
+      "clauses": [
+        "7.9",
+        "16.6.3",
+        "7.9.3",
+        "7.9.9"
+      ],
+      "description": "378 m at 1:1000 fills the available 378 mm exactly."
+    },
+    {
+      "id": "bar-km",
+      "kind": "document",
+      "dir": "documents/bar-km",
+      "clauses": [
+        "7.9",
+        "16.6.3",
+        "7.9.7",
+        "7.9.9"
+      ],
+      "description": "A 2000 m bar in km with 4 divisions: 0, 0.5, 1, 1.5, 2 km."
+    },
+    {
+      "id": "err-bar-379",
+      "kind": "document",
+      "dir": "documents/err-bar-379",
+      "clauses": [
+        "7.9.3",
+        "7.9.9"
+      ],
+      "description": "379 m at 1:1000 needs 379 mm, only 378 mm is available."
+    },
+    {
+      "id": "err-bar-390",
+      "kind": "document",
+      "dir": "documents/err-bar-390",
+      "clauses": [
+        "7.9.3",
+        "7.9.9"
+      ],
+      "description": "390 m at 1:1000 touches the border: error."
+    },
+    {
+      "id": "north-0-0",
+      "kind": "document",
+      "dir": "documents/north-0-0",
+      "clauses": [
+        "7.10",
+        "7.10.4",
+        "16.6.4"
+      ],
+      "description": "North arrow with rotation 0 and bearing 0 (clause 7.10.4)."
+    },
+    {
+      "id": "north-90-0",
+      "kind": "document",
+      "dir": "documents/north-90-0",
+      "clauses": [
+        "7.10",
+        "7.10.4",
+        "16.6.4"
+      ],
+      "description": "North arrow with rotation 90 and bearing 0 (clause 7.10.4)."
+    },
+    {
+      "id": "north-90-90",
+      "kind": "document",
+      "dir": "documents/north-90-90",
+      "clauses": [
+        "7.10",
+        "7.10.4",
+        "16.6.4"
+      ],
+      "description": "North arrow with rotation 90 and bearing 90 (clause 7.10.4)."
+    },
+    {
+      "id": "north-40-25-0",
+      "kind": "document",
+      "dir": "documents/north-40-25-0",
+      "clauses": [
+        "7.10",
+        "7.10.4",
+        "16.6.4"
+      ],
+      "description": "North arrow with rotation 40.25 and bearing 0 (clause 7.10.4)."
+    },
+    {
+      "id": "north-0-12-5",
+      "kind": "document",
+      "dir": "documents/north-0-12-5",
+      "clauses": [
+        "7.10",
+        "7.10.4",
+        "16.6.4"
+      ],
+      "description": "North arrow with rotation 0 and bearing 12.5 (clause 7.10.4)."
+    },
+    {
+      "id": "north-m10-0",
+      "kind": "document",
+      "dir": "documents/north-m10-0",
+      "clauses": [
+        "7.10",
+        "7.10.4",
+        "16.6.4"
+      ],
+      "description": "North arrow with rotation -10 and bearing 0 (clause 7.10.4)."
+    },
+    {
+      "id": "north-label",
+      "kind": "document",
+      "dir": "documents/north-label",
+      "clauses": [
+        "7.10.5",
+        "16.6.4"
+      ],
+      "description": "A north arrow with another label."
+    },
+    {
+      "id": "bar-and-north",
+      "kind": "document",
+      "dir": "documents/bar-and-north",
+      "clauses": [
+        "7.9",
+        "7.10",
+        "16.6.3",
+        "16.6.4"
+      ],
+      "description": "Both furniture items: the full viewport, with all origins and the order of clause 16.8."
+    },
+    {
+      "id": "two-viewports",
+      "kind": "document",
+      "dir": "documents/two-viewports",
+      "clauses": [
+        "7.2",
+        "7.8",
+        "16.6.2",
+        "16.8"
+      ],
+      "description": "Two viewports side by side at different scales; frames touch and do not overlap."
+    },
+    {
+      "id": "err-frame-outside",
+      "kind": "document",
+      "dir": "documents/err-frame-outside",
+      "clauses": [
+        "7.2.2"
+      ],
+      "description": "The frame reaches 420 mm; the drawing space ends at 410 mm."
+    },
+    {
+      "id": "err-frames-overlap",
+      "kind": "document",
+      "dir": "documents/err-frames-overlap",
+      "clauses": [
+        "7.2.3"
+      ],
+      "description": "Two frames overlap by 20 mm."
+    },
+    {
+      "id": "err-undeclared-layer",
+      "kind": "document",
+      "dir": "documents/err-undeclared-layer",
+      "clauses": [
+        "8.5.1"
+      ],
+      "description": "An entity on a layer that the document does not declare."
+    },
+    {
+      "id": "err-line-group-mismatch",
+      "kind": "document",
+      "dir": "documents/err-line-group-mismatch",
+      "clauses": [
+        "8.2.2"
+      ],
+      "description": "A3 must use line group 0.35."
+    },
+    {
+      "id": "err-arc-zero-sweep",
+      "kind": "document",
+      "dir": "documents/err-arc-zero-sweep",
+      "clauses": [
+        "9.5.1",
+        "9.5.2"
+      ],
+      "description": "Start 45 and end 405 give a sweep of 0."
+    },
+    {
+      "id": "err-entity-outside-frame",
+      "kind": "document",
+      "dir": "documents/err-entity-outside-frame",
+      "clauses": [
+        "7.7.1"
+      ],
+      "description": "A line end that lands 500 mm to the right of the centre, outside the frame."
+    },
+    {
+      "id": "err-text-outside-frame",
+      "kind": "document",
+      "dir": "documents/err-text-outside-frame",
+      "clauses": [
+        "7.7.1",
+        "11.7.2"
+      ],
+      "description": "Left-aligned text: the anchor is inside the frame, but the box (21.79 mm wide) ends at 426.79 mm, beyond 410 mm."
+    },
+    {
+      "id": "err-text-character",
+      "kind": "document",
+      "dir": "documents/err-text-character",
+      "clauses": [
+        "11.3.3",
+        "18.6"
+      ],
+      "description": "A character outside the set of clause 11.6.2 (schema error)."
+    },
+    {
+      "id": "err-duplicate-id",
+      "kind": "document",
+      "dir": "documents/err-duplicate-id",
+      "clauses": [
+        "9.8"
+      ],
+      "description": "Two entities with the same id."
+    },
+    {
+      "id": "err-window-zero-width",
+      "kind": "document",
+      "dir": "documents/err-window-zero-width",
+      "clauses": [
+        "7.6.1"
+      ],
+      "description": "xmax equals xmin."
+    },
+    {
+      "id": "err-frame-too-short-for-bar",
+      "kind": "document",
+      "dir": "documents/err-frame-too-short-for-bar",
+      "clauses": [
+        "7.9.10"
+      ],
+      "description": "A frame 40 mm high is less than the 46 mm that a scale bar needs."
+    },
+    {
+      "id": "err-frame-too-small-for-north",
+      "kind": "document",
+      "dir": "documents/err-frame-too-small-for-north",
+      "clauses": [
+        "7.10.7"
+      ],
+      "description": "A frame 30 mm wide is less than the 38 mm that a north arrow needs."
+    },
+    {
+      "id": "err-line-zero-length",
+      "kind": "document",
+      "dir": "documents/err-line-zero-length",
+      "clauses": [
+        "9.3"
+      ],
+      "description": "A line whose two points are equal."
+    },
+    {
+      "id": "err-polyline-repeated-point",
+      "kind": "document",
+      "dir": "documents/err-polyline-repeated-point",
+      "clauses": [
+        "9.4.1"
+      ],
+      "description": "Two points in a row that are equal."
+    },
+    {
+      "id": "err-hatch-zero-area",
+      "kind": "document",
+      "dir": "documents/err-hatch-zero-area",
+      "clauses": [
+        "10.3"
+      ],
+      "description": "A boundary on one straight line has no area."
+    },
+    {
+      "id": "err-duplicate-layer",
+      "kind": "document",
+      "dir": "documents/err-duplicate-layer",
+      "clauses": [
+        "8.5.5"
+      ],
+      "description": "One layer declared twice."
+    },
+    {
+      "id": "err-standard-layer-redeclared",
+      "kind": "document",
+      "dir": "documents/err-standard-layer-redeclared",
+      "clauses": [
+        "8.5.3"
+      ],
+      "description": "OUTLINE declared with the role thin; the table says thick."
+    },
+    {
+      "id": "err-colour-clash",
+      "kind": "document",
+      "dir": "documents/err-colour-clash",
+      "clauses": [
+        "8.6.3"
+      ],
+      "description": "A custom layer takes the colour number 7 of OUTLINE."
+    },
+    {
+      "id": "err-scale-300",
+      "kind": "document",
+      "dir": "documents/err-scale-300",
+      "clauses": [
+        "7.3.2",
+        "18.6"
+      ],
+      "description": "1:300 is in neither list of ratios (schema error, reported by its x-clause)."
+    },
+    {
+      "id": "err-no-viewports",
+      "kind": "document",
+      "dir": "documents/err-no-viewports",
+      "clauses": [
+        "7.1.1",
+        "18.6"
+      ],
+      "description": "A sheet with no viewport (schema error)."
+    },
+    {
+      "id": "err-version-major",
+      "kind": "document",
+      "dir": "documents/err-version-major",
+      "clauses": [
+        "18.2"
+      ],
+      "description": "Version 2.0 is not readable by a reader of 1.0."
+    },
+    {
+      "id": "err-version-minor",
+      "kind": "document",
+      "dir": "documents/err-version-minor",
+      "clauses": [
+        "18.2"
+      ],
+      "description": "Version 1.1 is newer than 1.0."
+    },
+    {
+      "id": "err-version-not-formed",
+      "kind": "document",
+      "dir": "documents/err-version-not-formed",
+      "clauses": [
+        "18.1",
+        "18.6"
+      ],
+      "description": "The version is not MAJOR.MINOR (schema error)."
+    },
+    {
+      "id": "err-sheet-size",
+      "kind": "document",
+      "dir": "documents/err-sheet-size",
+      "clauses": [
+        "6.1.3",
+        "18.6"
+      ],
+      "description": "A5 is not a supported size (schema error)."
+    },
+    {
+      "id": "unit-round_half_even",
+      "kind": "unit",
+      "file": "units/round_half_even.json",
+      "clauses": [
+        "5.5.1"
+      ],
+      "description": "Unit checks of round_half_even."
+    },
+    {
+      "id": "unit-snap_width",
+      "kind": "unit",
+      "file": "units/snap_width.json",
+      "clauses": [
+        "8.3.3"
+      ],
+      "description": "Unit checks of snap_width."
+    },
+    {
+      "id": "unit-drawing_space",
+      "kind": "unit",
+      "file": "units/drawing_space.json",
+      "clauses": [
+        "6.3.2"
+      ],
+      "description": "Unit checks of drawing_space."
+    },
+    {
+      "id": "unit-map_point",
+      "kind": "unit",
+      "file": "units/map_point.json",
+      "clauses": [
+        "7.4.3"
+      ],
+      "description": "Unit checks of map_point."
+    },
+    {
+      "id": "unit-window_fits",
+      "kind": "unit",
+      "file": "units/window_fits.json",
+      "clauses": [
+        "7.5.3"
+      ],
+      "description": "Unit checks of window_fits."
+    },
+    {
+      "id": "unit-fit_scale",
+      "kind": "unit",
+      "file": "units/fit_scale.json",
+      "clauses": [
+        "7.5.3"
+      ],
+      "description": "Unit checks of fit_scale."
+    },
+    {
+      "id": "unit-bar_length",
+      "kind": "unit",
+      "file": "units/bar_length.json",
+      "clauses": [
+        "7.9.9"
+      ],
+      "description": "Unit checks of bar_length."
+    },
+    {
+      "id": "unit-bar_labels",
+      "kind": "unit",
+      "file": "units/bar_labels.json",
+      "clauses": [
+        "7.9.7"
+      ],
+      "description": "Unit checks of bar_labels."
+    },
+    {
+      "id": "unit-north_deg",
+      "kind": "unit",
+      "file": "units/north_deg.json",
+      "clauses": [
+        "7.10.4"
+      ],
+      "description": "Unit checks of north_deg."
+    },
+    {
+      "id": "unit-text_width",
+      "kind": "unit",
+      "file": "units/text_width.json",
+      "clauses": [
+        "11.7.4"
+      ],
+      "description": "Unit checks of text_width."
+    },
+    {
+      "id": "unit-text_box",
+      "kind": "unit",
+      "file": "units/text_box.json",
+      "clauses": [
+        "11.7.4"
+      ],
+      "description": "Unit checks of text_box."
+    },
+    {
+      "id": "unit-symbol_point",
+      "kind": "unit",
+      "file": "units/symbol_point.json",
+      "clauses": [
+        "13.4"
+      ],
+      "description": "Unit checks of symbol_point."
+    },
+    {
+      "id": "unit-revision_seals",
+      "kind": "unit",
+      "file": "units/revision_seals.json",
+      "clauses": [
+        "14.8.1"
+      ],
+      "description": "Unit checks of revision_seals."
+    },
+    {
+      "id": "unit-register_layout",
+      "kind": "unit",
+      "file": "units/register_layout.json",
+      "clauses": [
+        "14.7.2"
+      ],
+      "description": "Unit checks of register_layout."
+    },
+    {
+      "id": "unit-dimension_text",
+      "kind": "unit",
+      "file": "units/dimension_text.json",
+      "clauses": [
+        "12.1.1"
+      ],
+      "description": "Unit checks of dimension_text."
+    },
+    {
+      "id": "unit-reading_rotation",
+      "kind": "unit",
+      "file": "units/reading_rotation.json",
+      "clauses": [
+        "12.3.3"
+      ],
+      "description": "Unit checks of reading_rotation."
+    },
+    {
+      "id": "unit-chain_ok",
+      "kind": "unit",
+      "file": "units/chain_ok.json",
+      "clauses": [
+        "12.8"
+      ],
+      "description": "Unit checks of chain_ok."
+    },
+    {
+      "id": "unit-line_pattern",
+      "kind": "unit",
+      "file": "units/line_pattern.json",
+      "clauses": [
+        "8.4.4"
+      ],
+      "description": "Unit checks of line_pattern."
+    },
+    {
+      "id": "unit-arc_sweep",
+      "kind": "unit",
+      "file": "units/arc_sweep.json",
+      "clauses": [
+        "9.5.2"
+      ],
+      "description": "Unit checks of arc_sweep."
+    }
+  ]
+}

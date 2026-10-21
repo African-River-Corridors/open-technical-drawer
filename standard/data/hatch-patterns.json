@@ -1,0 +1,113 @@
+{
+  "note": "Machine-readable form of clause 10.5 of the Drawing Format Standard. Lengths are multiples of the hatch unit u = unit_factor x the thin width of the line group, in paper millimetres. The standard text and this file must agree; a test checks it.",
+  "unit_factor": 10,
+  "patterns": {
+    "solid": {
+      "kind": "solid"
+    },
+    "lines": {
+      "kind": "lines",
+      "step_u": 1,
+      "line_type": "continuous"
+    },
+    "soil": {
+      "kind": "lines",
+      "step_u": 1,
+      "line_type": "dashed"
+    },
+    "water": {
+      "kind": "lines",
+      "step_u": 2,
+      "line_type": "continuous"
+    },
+    "concrete": {
+      "kind": "lattice",
+      "column_u": 2,
+      "row_u": 2,
+      "marks": {
+        "even": {
+          "shape": "dot",
+          "radius_u": 0.1,
+          "clearance_u": 0.1
+        },
+        "odd": {
+          "shape": "polygon",
+          "points_u": [
+            [
+              -0.4,
+              -0.3
+            ],
+            [
+              0.4,
+              -0.3
+            ],
+            [
+              0,
+              0.4
+            ]
+          ],
+          "clearance_u": 0.5
+        }
+      }
+    },
+    "rockfill": {
+      "kind": "lattice",
+      "column_u": 3,
+      "row_u": 2,
+      "marks": {
+        "even": {
+          "shape": "polygon",
+          "points_u": [
+            [
+              -1,
+              -0.5
+            ],
+            [
+              0,
+              -0.8
+            ],
+            [
+              1,
+              -0.4
+            ],
+            [
+              0.8,
+              0.6
+            ],
+            [
+              -0.6,
+              0.7
+            ]
+          ],
+          "clearance_u": 1.2
+        },
+        "odd": {
+          "shape": "polygon",
+          "points_u": [
+            [
+              -1,
+              -0.5
+            ],
+            [
+              0,
+              -0.8
+            ],
+            [
+              1,
+              -0.4
+            ],
+            [
+              0.8,
+              0.6
+            ],
+            [
+              -0.6,
+              0.7
+            ]
+          ],
+          "clearance_u": 1.2
+        }
+      }
+    }
+  }
+}

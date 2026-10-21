@@ -1,0 +1,65 @@
+{
+  "standard_version": "1.0",
+  "sheet": {
+    "size": "A3",
+    "orientation": "landscape"
+  },
+  "layers": [
+    {
+      "name": "OUTLINE"
+    },
+    {
+      "name": "DIMENSIONS"
+    }
+  ],
+  "viewports": [
+    {
+      "id": "main",
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 277
+      },
+      "window": {
+        "xmin_m": 0,
+        "ymin_m": 0,
+        "xmax_m": 10,
+        "ymax_m": 8
+      },
+      "scale": 100,
+      "entities": [
+        {
+          "type": "line",
+          "layer": "OUTLINE",
+          "id": "base",
+          "from_m": [
+            1,
+            1
+          ],
+          "to_m": [
+            9,
+            1
+          ]
+        },
+        {
+          "type": "dimension",
+          "layer": "DIMENSIONS",
+          "kind": "linear",
+          "orientation": "horizontal",
+          "from": {
+            "ref": "base",
+            "at": "start"
+          },
+          "to": {
+            "ref": "base",
+            "at": "end"
+          },
+          "offset_mm": -10,
+          "decimals": 3,
+          "text_height_mm": 2.5
+        }
+      ]
+    }
+  ]
+}

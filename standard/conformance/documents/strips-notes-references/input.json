@@ -1,0 +1,68 @@
+{
+  "standard_version": "1.0",
+  "sheet": {
+    "size": "A3",
+    "orientation": "landscape"
+  },
+  "layers": [
+    {
+      "name": "OUTLINE"
+    }
+  ],
+  "viewports": [
+    {
+      "id": "main",
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 300,
+        "height_mm": 170
+      },
+      "window": {
+        "xmin_m": 0,
+        "ymin_m": 0,
+        "xmax_m": 10,
+        "ymax_m": 8
+      },
+      "scale": 100,
+      "entities": []
+    }
+  ],
+  "title_block": {
+    "template": "iso7200",
+    "fields": {
+      "owner": "EXAMPLE OWNER LTD",
+      "title": "SECTION THROUGH EXAMPLE WORK",
+      "document_number": "EXA-CIV-001"
+    }
+  },
+  "strips": [
+    {
+      "id": "n",
+      "edge": "right",
+      "size_mm": 70,
+      "content": "notes"
+    },
+    {
+      "id": "r",
+      "edge": "bottom",
+      "size_mm": 25,
+      "content": "references"
+    }
+  ],
+  "notes": [
+    "ALL DIMENSIONS IN METRES.",
+    "THIS IS A SYNTHETIC EXAMPLE."
+  ],
+  "references": [
+    {
+      "document_number": "EXA-GEN-002",
+      "revision": "C",
+      "title": "GENERAL NOTES"
+    },
+    {
+      "document_number": "EXA-ARR-003",
+      "title": "ARRANGEMENT"
+    }
+  ]
+}

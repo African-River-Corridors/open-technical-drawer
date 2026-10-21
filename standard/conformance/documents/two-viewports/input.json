@@ -1,0 +1,71 @@
+{
+  "standard_version": "1.0",
+  "sheet": {
+    "size": "A3",
+    "orientation": "landscape"
+  },
+  "layers": [
+    {
+      "name": "OUTLINE"
+    }
+  ],
+  "viewports": [
+    {
+      "id": "left",
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 190,
+        "height_mm": 277
+      },
+      "window": {
+        "xmin_m": 0,
+        "ymin_m": 0,
+        "xmax_m": 20,
+        "ymax_m": 20
+      },
+      "scale": 200,
+      "entities": [
+        {
+          "type": "circle",
+          "layer": "OUTLINE",
+          "centre_m": [
+            10,
+            10
+          ],
+          "radius_m": 4
+        }
+      ]
+    },
+    {
+      "id": "right",
+      "frame": {
+        "x_mm": 210,
+        "y_mm": 10,
+        "width_mm": 200,
+        "height_mm": 277
+      },
+      "window": {
+        "xmin_m": 0,
+        "ymin_m": 0,
+        "xmax_m": 10,
+        "ymax_m": 10
+      },
+      "scale": 100,
+      "entities": [
+        {
+          "type": "circle",
+          "layer": "OUTLINE",
+          "centre_m": [
+            5,
+            5
+          ],
+          "radius_m": 2
+        }
+      ],
+      "scale_bar": {
+        "length_m": 5
+      }
+    }
+  ]
+}

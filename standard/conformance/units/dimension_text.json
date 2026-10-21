@@ -1,0 +1,95 @@
+{
+  "function": "dimension_text",
+  "checks": [
+    {
+      "id": "8-m",
+      "clause": "12.1.1",
+      "input": {
+        "value_m": 8,
+        "unit": "m",
+        "decimals": 2
+      },
+      "expected": "8.00"
+    },
+    {
+      "id": "tie-down",
+      "clause": "12.1.1",
+      "input": {
+        "value_m": 0.125,
+        "unit": "m",
+        "decimals": 2
+      },
+      "expected": "0.12"
+    },
+    {
+      "id": "tie-up",
+      "clause": "12.1.1",
+      "input": {
+        "value_m": 0.375,
+        "unit": "m",
+        "decimals": 2
+      },
+      "expected": "0.38"
+    },
+    {
+      "id": "mm-tie",
+      "clause": "12.1.1",
+      "input": {
+        "value_m": 0.0625,
+        "unit": "mm",
+        "decimals": 0
+      },
+      "expected": "62"
+    },
+    {
+      "id": "mm",
+      "clause": "12.1.1",
+      "input": {
+        "value_m": 8,
+        "unit": "mm",
+        "decimals": 0
+      },
+      "expected": "8000"
+    },
+    {
+      "id": "1.254",
+      "clause": "12.8.1",
+      "input": {
+        "value_m": 1.254,
+        "unit": "m",
+        "decimals": 2
+      },
+      "expected": "1.25"
+    },
+    {
+      "id": "3.762",
+      "clause": "12.8.1",
+      "input": {
+        "value_m": 3.762,
+        "unit": "m",
+        "decimals": 2
+      },
+      "expected": "3.76"
+    },
+    {
+      "id": "3-places",
+      "clause": "12.1.1",
+      "input": {
+        "value_m": 0.5,
+        "unit": "m",
+        "decimals": 3
+      },
+      "expected": "0.500"
+    },
+    {
+      "id": "small",
+      "clause": "12.1.1",
+      "input": {
+        "value_m": 0.0004,
+        "unit": "m",
+        "decimals": 2
+      },
+      "expected": "0.00"
+    }
+  ]
+}

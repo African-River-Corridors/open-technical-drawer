@@ -1,0 +1,72 @@
+{
+  "result": "ok",
+  "viewports": [
+    {
+      "id": "main",
+      "scale": 100,
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 277
+      }
+    }
+  ],
+  "entities": [
+    {
+      "type": "hatch",
+      "origin": "viewport.main.leader",
+      "layer": "DIMENSIONS",
+      "boundary_mm": [
+        [
+          215,
+          148.5
+        ],
+        [
+          218.245,
+          146.878
+        ],
+        [
+          217.746,
+          146.129
+        ]
+      ],
+      "holes_mm": [],
+      "pattern": "solid",
+      "angle_deg": 0,
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.leader",
+      "layer": "DIMENSIONS",
+      "from_mm": [
+        245,
+        128.5
+      ],
+      "to_mm": [
+        215,
+        148.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main.leader",
+      "layer": "DIMENSIONS",
+      "anchor_mm": [
+        245.9,
+        128.5
+      ],
+      "text": "PUMP",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "middle"
+    }
+  ],
+  "origin_prefixes": [
+    "viewport.main.leader"
+  ]
+}

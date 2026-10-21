@@ -1,0 +1,63 @@
+{
+  "standard_version": "1.0",
+  "sheet": {
+    "size": "A3",
+    "orientation": "landscape"
+  },
+  "layers": [
+    {
+      "name": "EQUIP"
+    }
+  ],
+  "viewports": [
+    {
+      "id": "main",
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 277
+      },
+      "window": {
+        "xmin_m": 0,
+        "ymin_m": 0,
+        "xmax_m": 10,
+        "ymax_m": 8
+      },
+      "scale": 100,
+      "entities": [
+        {
+          "type": "symbol",
+          "layer": "EQUIP",
+          "id": "v1",
+          "library": "std",
+          "symbol": "valve",
+          "position_m": [
+            3,
+            4
+          ],
+          "label": "V-101"
+        },
+        {
+          "type": "symbol",
+          "layer": "EQUIP",
+          "library": "std",
+          "symbol": "tank",
+          "position_m": [
+            6,
+            1
+          ],
+          "rotation_deg": 0,
+          "scale": 1.5,
+          "label": "T-1"
+        }
+      ]
+    }
+  ],
+  "symbol_libraries": [
+    {
+      "id": "std",
+      "path": "../library/valves.json"
+    }
+  ]
+}

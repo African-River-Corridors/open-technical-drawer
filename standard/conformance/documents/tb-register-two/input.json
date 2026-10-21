@@ -1,0 +1,60 @@
+{
+  "standard_version": "1.0",
+  "sheet": {
+    "size": "A3",
+    "orientation": "landscape"
+  },
+  "layers": [
+    {
+      "name": "OUTLINE"
+    }
+  ],
+  "viewports": [
+    {
+      "id": "main",
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 300,
+        "height_mm": 170
+      },
+      "window": {
+        "xmin_m": 0,
+        "ymin_m": 0,
+        "xmax_m": 10,
+        "ymax_m": 8
+      },
+      "scale": 100,
+      "entities": []
+    }
+  ],
+  "title_block": {
+    "template": "iso7200",
+    "fields": {
+      "owner": "EXAMPLE OWNER LTD",
+      "title": "SECTION THROUGH EXAMPLE WORK",
+      "document_number": "EXA-CIV-001"
+    }
+  },
+  "revisions": {
+    "entries": [
+      {
+        "rev": "A",
+        "date": "2026-01-01",
+        "description": "CHANGE 1 TO THE EXAMPLE DRAWING",
+        "by": "AB",
+        "chk": "CD",
+        "seal": "sha256:f3d43d552c28d0b245d76466684c4647c1d82de0ee7f9f7477e9ec6e9836d3d0"
+      },
+      {
+        "rev": "B",
+        "date": "2026-01-02",
+        "description": "CHANGE 2 TO THE EXAMPLE DRAWING",
+        "by": "AB",
+        "app": "EF",
+        "seal": "sha256:d7273a585a10a87e369f948686c7b0272277b4aa36e8b1a0e0893f99fc3a9c13"
+      }
+    ]
+  },
+  "status": "draft"
+}

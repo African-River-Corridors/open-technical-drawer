@@ -1,0 +1,65 @@
+{
+  "result": "ok",
+  "viewports": [
+    {
+      "id": "main",
+      "scale": 100,
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 277
+      }
+    }
+  ],
+  "entities": [
+    {
+      "type": "arc",
+      "origin": "viewport.main",
+      "layer": "OUTLINE",
+      "centre_mm": [
+        215,
+        148.5
+      ],
+      "radius_mm": 20,
+      "start_deg": 270,
+      "sweep_deg": 180,
+      "line_type": "continuous",
+      "width_mm": 0.35,
+      "id": "a180"
+    },
+    {
+      "type": "arc",
+      "origin": "viewport.main",
+      "layer": "OUTLINE",
+      "centre_mm": [
+        215,
+        148.5
+      ],
+      "radius_mm": 20,
+      "start_deg": 90,
+      "sweep_deg": 270,
+      "line_type": "continuous",
+      "width_mm": 0.35,
+      "id": "a270"
+    },
+    {
+      "type": "arc",
+      "origin": "viewport.main",
+      "layer": "OUTLINE",
+      "centre_mm": [
+        215,
+        148.5
+      ],
+      "radius_mm": 20,
+      "start_deg": 0,
+      "sweep_deg": 90,
+      "line_type": "continuous",
+      "width_mm": 0.35,
+      "id": "a90"
+    }
+  ],
+  "origin_prefixes": [
+    "viewport.main"
+  ]
+}

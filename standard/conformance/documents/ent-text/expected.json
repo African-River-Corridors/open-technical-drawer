@@ -1,0 +1,62 @@
+{
+  "result": "ok",
+  "viewports": [
+    {
+      "id": "main",
+      "scale": 100,
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 277
+      }
+    }
+  ],
+  "entities": [
+    {
+      "type": "text",
+      "origin": "viewport.main",
+      "layer": "TEXT",
+      "anchor_mm": [
+        175,
+        178.5
+      ],
+      "text": "LEFT BASELINE",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main",
+      "layer": "TEXT",
+      "anchor_mm": [
+        215,
+        148.5
+      ],
+      "text": "CENTRE MIDDLE",
+      "height_mm": 5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main",
+      "layer": "TEXT",
+      "anchor_mm": [
+        255,
+        118.5
+      ],
+      "text": "RIGHT TOP",
+      "height_mm": 2.5,
+      "rotation_deg": 90,
+      "align_h": "right",
+      "align_v": "top"
+    }
+  ],
+  "origin_prefixes": [
+    "viewport.main"
+  ]
+}

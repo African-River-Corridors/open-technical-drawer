@@ -1,0 +1,69 @@
+{
+  "result": "ok",
+  "viewports": [
+    {
+      "id": "main",
+      "scale": 100,
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 277
+      }
+    }
+  ],
+  "entities": [
+    {
+      "type": "polyline",
+      "origin": "viewport.main",
+      "layer": "OUTLINE",
+      "points_mm": [
+        [
+          165,
+          188.5
+        ],
+        [
+          265,
+          188.5
+        ],
+        [
+          265,
+          108.5
+        ],
+        [
+          165,
+          108.5
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main",
+      "layer": "OUTLINE",
+      "points_mm": [
+        [
+          175,
+          178.5
+        ],
+        [
+          215,
+          158.5
+        ],
+        [
+          255,
+          178.5
+        ]
+      ],
+      "closed": false,
+      "line_type": "continuous",
+      "width_mm": 0.35,
+      "id": "open"
+    }
+  ],
+  "origin_prefixes": [
+    "viewport.main"
+  ]
+}

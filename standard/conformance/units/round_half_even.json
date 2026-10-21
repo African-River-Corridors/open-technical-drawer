@@ -1,0 +1,95 @@
+{
+  "function": "round_half_even",
+  "checks": [
+    {
+      "id": "tie-down",
+      "clause": "5.5.1",
+      "input": {
+        "value": 0.0625,
+        "places": 3
+      },
+      "expected": 0.062
+    },
+    {
+      "id": "tie-up",
+      "clause": "5.5.1",
+      "input": {
+        "value": 0.1875,
+        "places": 3
+      },
+      "expected": 0.188
+    },
+    {
+      "id": "tie-negative",
+      "clause": "5.5.1",
+      "input": {
+        "value": -0.0625,
+        "places": 3
+      },
+      "expected": -0.062
+    },
+    {
+      "id": "tie-two-places-down",
+      "clause": "5.5.1",
+      "input": {
+        "value": 0.125,
+        "places": 2
+      },
+      "expected": 0.12
+    },
+    {
+      "id": "tie-two-places-up",
+      "clause": "5.5.1",
+      "input": {
+        "value": 0.375,
+        "places": 2
+      },
+      "expected": 0.38
+    },
+    {
+      "id": "zero-places-down",
+      "clause": "5.5.1",
+      "input": {
+        "value": 2.5,
+        "places": 0
+      },
+      "expected": 2
+    },
+    {
+      "id": "zero-places-up",
+      "clause": "5.5.1",
+      "input": {
+        "value": 3.5,
+        "places": 0
+      },
+      "expected": 4
+    },
+    {
+      "id": "negative-zero",
+      "clause": "5.5.1",
+      "input": {
+        "value": -0.0004,
+        "places": 3
+      },
+      "expected": 0
+    },
+    {
+      "id": "binary-below-tie",
+      "clause": "5.5.1",
+      "input": {
+        "value": 1.0005,
+        "places": 3
+      },
+      "expected": 1
+    },
+    {
+      "id": "binary-above-tie",
+      "clause": "5.5.1",
+      "input": {
+        "value": 0.0005,
+        "places": 3
+      },
+      "expected": 0.001
+    }
+  ]
+}

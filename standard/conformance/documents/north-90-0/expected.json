@@ -1,0 +1,76 @@
+{
+  "result": "ok",
+  "viewports": [
+    {
+      "id": "main",
+      "scale": 100,
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 277
+      }
+    }
+  ],
+  "entities": [
+    {
+      "type": "hatch",
+      "origin": "viewport.main.north_arrow",
+      "layer": "TITLEBLOCK",
+      "boundary_mm": [
+        [
+          30,
+          29
+        ],
+        [
+          44.76,
+          33.14
+        ],
+        [
+          39.9,
+          29
+        ],
+        [
+          44.76,
+          24.86
+        ]
+      ],
+      "holes_mm": [],
+      "pattern": "solid",
+      "angle_deg": 0,
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.north_arrow",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        39.9,
+        29
+      ],
+      "to_mm": [
+        48,
+        29
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main.north_arrow",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        27.5,
+        29
+      ],
+      "text": "N",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "baseline"
+    }
+  ],
+  "origin_prefixes": [
+    "viewport.main.north_arrow"
+  ]
+}

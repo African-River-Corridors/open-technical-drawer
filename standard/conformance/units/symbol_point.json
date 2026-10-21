@@ -1,0 +1,239 @@
+{
+  "function": "symbol_point",
+  "checks": [
+    {
+      "id": "paper-1-100",
+      "clause": "13.4.1",
+      "input": {
+        "units": "paper_mm",
+        "insertion": [
+          0,
+          0
+        ],
+        "position_m": [
+          3,
+          4
+        ],
+        "rotation_deg": 0,
+        "scale": 1,
+        "denominator": 100,
+        "q": [
+          -3,
+          -2
+        ]
+      },
+      "expected": [
+        2.7,
+        3.8
+      ]
+    },
+    {
+      "id": "paper-1-200",
+      "clause": "13.4.1",
+      "input": {
+        "units": "paper_mm",
+        "insertion": [
+          0,
+          0
+        ],
+        "position_m": [
+          3,
+          4
+        ],
+        "rotation_deg": 0,
+        "scale": 1,
+        "denominator": 200,
+        "q": [
+          -3,
+          -2
+        ]
+      },
+      "expected": [
+        2.4,
+        3.6
+      ]
+    },
+    {
+      "id": "paper-scale-2",
+      "clause": "13.4",
+      "input": {
+        "units": "paper_mm",
+        "insertion": [
+          0,
+          0
+        ],
+        "position_m": [
+          3,
+          4
+        ],
+        "rotation_deg": 0,
+        "scale": 2,
+        "denominator": 100,
+        "q": [
+          -3,
+          -2
+        ]
+      },
+      "expected": [
+        2.4,
+        3.6
+      ]
+    },
+    {
+      "id": "model",
+      "clause": "13.4.1",
+      "input": {
+        "units": "model_m",
+        "insertion": [
+          0,
+          0
+        ],
+        "position_m": [
+          5,
+          1
+        ],
+        "rotation_deg": 0,
+        "scale": 1,
+        "denominator": 100,
+        "q": [
+          1,
+          2
+        ]
+      },
+      "expected": [
+        6,
+        3
+      ]
+    },
+    {
+      "id": "model-1-200",
+      "clause": "13.4.1",
+      "input": {
+        "units": "model_m",
+        "insertion": [
+          0,
+          0
+        ],
+        "position_m": [
+          5,
+          1
+        ],
+        "rotation_deg": 0,
+        "scale": 1,
+        "denominator": 200,
+        "q": [
+          1,
+          2
+        ]
+      },
+      "expected": [
+        6,
+        3
+      ]
+    },
+    {
+      "id": "model-rotated-90",
+      "clause": "13.4",
+      "input": {
+        "units": "model_m",
+        "insertion": [
+          0,
+          0
+        ],
+        "position_m": [
+          5,
+          1
+        ],
+        "rotation_deg": 90,
+        "scale": 1,
+        "denominator": 100,
+        "q": [
+          1,
+          2
+        ]
+      },
+      "expected": [
+        3,
+        2
+      ]
+    },
+    {
+      "id": "insertion-offset",
+      "clause": "13.4",
+      "input": {
+        "units": "model_m",
+        "insertion": [
+          1,
+          1
+        ],
+        "position_m": [
+          0,
+          0
+        ],
+        "rotation_deg": 0,
+        "scale": 1,
+        "denominator": 100,
+        "q": [
+          2,
+          3
+        ]
+      },
+      "expected": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "model-scale-3",
+      "clause": "13.4",
+      "input": {
+        "units": "model_m",
+        "insertion": [
+          0,
+          0
+        ],
+        "position_m": [
+          0,
+          0
+        ],
+        "rotation_deg": 0,
+        "scale": 3,
+        "denominator": 100,
+        "q": [
+          1,
+          1
+        ]
+      },
+      "expected": [
+        3,
+        3
+      ]
+    },
+    {
+      "id": "paper-rotated-180",
+      "clause": "13.4",
+      "input": {
+        "units": "paper_mm",
+        "insertion": [
+          0,
+          0
+        ],
+        "position_m": [
+          3,
+          4
+        ],
+        "rotation_deg": 180,
+        "scale": 1,
+        "denominator": 100,
+        "q": [
+          -3,
+          -2
+        ]
+      },
+      "expected": [
+        3.3,
+        4.2
+      ]
+    }
+  ]
+}

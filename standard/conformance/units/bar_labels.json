@@ -1,0 +1,90 @@
+{
+  "function": "bar_labels",
+  "checks": [
+    {
+      "id": "50-m",
+      "clause": "7.9.9",
+      "input": {
+        "length_m": 50,
+        "divisions": 5,
+        "unit": "m"
+      },
+      "expected": [
+        "0",
+        "10",
+        "20",
+        "30",
+        "40",
+        "50 m"
+      ]
+    },
+    {
+      "id": "5-m",
+      "clause": "7.9.9",
+      "input": {
+        "length_m": 5,
+        "divisions": 5,
+        "unit": "m"
+      },
+      "expected": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5 m"
+      ]
+    },
+    {
+      "id": "2-m",
+      "clause": "7.9.9",
+      "input": {
+        "length_m": 2,
+        "divisions": 5,
+        "unit": "m"
+      },
+      "expected": [
+        "0",
+        "0.4",
+        "0.8",
+        "1.2",
+        "1.6",
+        "2 m"
+      ]
+    },
+    {
+      "id": "2000-km",
+      "clause": "7.9.9",
+      "input": {
+        "length_m": 2000,
+        "divisions": 4,
+        "unit": "km"
+      },
+      "expected": [
+        "0",
+        "0.5",
+        "1",
+        "1.5",
+        "2 km"
+      ]
+    },
+    {
+      "id": "378-m",
+      "clause": "7.9.9",
+      "input": {
+        "length_m": 378,
+        "divisions": 6,
+        "unit": "m"
+      },
+      "expected": [
+        "0",
+        "63",
+        "126",
+        "189",
+        "252",
+        "315",
+        "378 m"
+      ]
+    }
+  ]
+}

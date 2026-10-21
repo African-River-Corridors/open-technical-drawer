@@ -1,0 +1,102 @@
+{
+  "result": "ok",
+  "viewports": [
+    {
+      "id": "main",
+      "scale": 100,
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 277
+      }
+    }
+  ],
+  "entities": [
+    {
+      "type": "line",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "from_mm": [
+        225,
+        146.5
+      ],
+      "to_mm": [
+        225,
+        144.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.symbol",
+      "layer": "HIDDEN",
+      "from_mm": [
+        195,
+        146.5
+      ],
+      "to_mm": [
+        195,
+        144.5
+      ],
+      "line_type": "dashed",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "points_mm": [
+        [
+          222,
+          150.5
+        ],
+        [
+          228,
+          146.5
+        ],
+        [
+          228,
+          150.5
+        ],
+        [
+          222,
+          146.5
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.7
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.symbol",
+      "layer": "HIDDEN",
+      "points_mm": [
+        [
+          192,
+          150.5
+        ],
+        [
+          198,
+          146.5
+        ],
+        [
+          198,
+          150.5
+        ],
+        [
+          192,
+          146.5
+        ]
+      ],
+      "closed": true,
+      "line_type": "dashed",
+      "width_mm": 0.18
+    }
+  ],
+  "origin_prefixes": [
+    "viewport.main.symbol"
+  ]
+}

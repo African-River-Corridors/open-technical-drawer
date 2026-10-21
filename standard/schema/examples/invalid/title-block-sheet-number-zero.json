@@ -1,0 +1,88 @@
+{
+  "standard_version": "1.0",
+  "sheet": {
+    "size": "A3"
+  },
+  "layers": [
+    {
+      "name": "OUTLINE"
+    }
+  ],
+  "viewports": [
+    {
+      "id": "main",
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 300,
+        "height_mm": 170
+      },
+      "window": {
+        "xmin_m": 0,
+        "ymin_m": 0,
+        "xmax_m": 10,
+        "ymax_m": 8
+      },
+      "scale": 100,
+      "entities": [
+        {
+          "type": "line",
+          "layer": "OUTLINE",
+          "from_m": [
+            1,
+            1
+          ],
+          "to_m": [
+            9,
+            7
+          ]
+        }
+      ]
+    }
+  ],
+  "title_block": {
+    "template": "iso7200",
+    "fields": {
+      "owner": "EXAMPLE OWNER LTD",
+      "title": "SECTION THROUGH EXAMPLE WORK",
+      "supplementary_title": "SYNTHETIC SAMPLE",
+      "document_number": "EXA-CIV-001",
+      "document_type": "GA",
+      "sheet_number": 0,
+      "sheet_count": 3
+    }
+  },
+  "status": "draft",
+  "strips": [
+    {
+      "id": "n",
+      "edge": "right",
+      "size_mm": 70,
+      "content": "notes"
+    }
+  ],
+  "notes": [
+    "ALL DIMENSIONS IN METRES.",
+    "THIS IS A SYNTHETIC EXAMPLE."
+  ],
+  "revisions": {
+    "entries": [
+      {
+        "rev": "A",
+        "date": "2026-01-05",
+        "description": "FIRST ISSUE",
+        "by": "AB",
+        "chk": "CD",
+        "app": "EF",
+        "seal": "sha256:ed87df239aebbf895b82d3885cb6a6fb465995a105d8ad83e24060ab8b341419"
+      },
+      {
+        "rev": "B",
+        "date": "2026-02-10",
+        "description": "ADDED SECTION B",
+        "by": "AB",
+        "seal": "sha256:dd6b07daf26ab286d3503ade472fd7f73b2e57cb3ed48a9021cc85faaf1c33bc"
+      }
+    ]
+  }
+}

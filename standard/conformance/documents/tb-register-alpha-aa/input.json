@@ -1,0 +1,57 @@
+{
+  "standard_version": "1.0",
+  "sheet": {
+    "size": "A3",
+    "orientation": "landscape"
+  },
+  "layers": [
+    {
+      "name": "OUTLINE"
+    }
+  ],
+  "viewports": [
+    {
+      "id": "main",
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 300,
+        "height_mm": 170
+      },
+      "window": {
+        "xmin_m": 0,
+        "ymin_m": 0,
+        "xmax_m": 10,
+        "ymax_m": 8
+      },
+      "scale": 100,
+      "entities": []
+    }
+  ],
+  "title_block": {
+    "template": "iso7200",
+    "fields": {
+      "owner": "EXAMPLE OWNER LTD",
+      "title": "SECTION THROUGH EXAMPLE WORK",
+      "document_number": "EXA-CIV-001"
+    }
+  },
+  "revisions": {
+    "entries": [
+      {
+        "rev": "Z",
+        "date": "2026-01-05",
+        "description": "Z",
+        "by": "AB",
+        "seal": "sha256:a34f1ac39b694f33731bcaad8686b1029cce22c499c33950ab12b43aaf051c33"
+      },
+      {
+        "rev": "AA",
+        "date": "2026-01-06",
+        "description": "AA FOLLOWS Z",
+        "by": "AB",
+        "seal": "sha256:f9ef22ee4c0b99af619a31fc892016b82cdc231916b1931e68e7958781a90389"
+      }
+    ]
+  }
+}

@@ -1,0 +1,484 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/African-River-Corridors/technical_drawings_for_agents/docs/standard/schema/symbol-library-1.0.schema.json",
+  "title": "Symbol library file, Drawing Format Standard 1.0",
+  "description": "A library of symbols (clause 13). In a symbol, lengths have the unit named by units and no unit ending (clause 13.2.1).",
+  "type": "object",
+  "x-clause": "13.1",
+  "required": [
+    "standard_version",
+    "symbols"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "standard_version": {
+      "description": "The version of the standard that the document follows, as MAJOR.MINOR. A reader checks that it can read this version (clause 18.2).",
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+$",
+      "x-clause": "18.1"
+    },
+    "symbols": {
+      "$ref": "#/$defs/symbol_set"
+    }
+  },
+  "$defs": {
+    "entity_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,63}$",
+      "x-clause": "9.8"
+    },
+    "role": {
+      "enum": [
+        "extra_thick",
+        "thick",
+        "thin"
+      ],
+      "x-clause": "8.1"
+    },
+    "line_type": {
+      "enum": [
+        "continuous",
+        "dashed",
+        "chain",
+        "chain_double_dashed"
+      ],
+      "x-clause": "8.4"
+    },
+    "symbol_part_line": {
+      "type": "object",
+      "x-clause": "13.2.2",
+      "required": [
+        "type",
+        "from",
+        "to"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "line",
+          "x-clause": "13.2.2"
+        },
+        "from": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "number",
+            "x-clause": "13.2.1"
+          },
+          "x-clause": "13.2.1"
+        },
+        "to": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "number",
+            "x-clause": "13.2.1"
+          },
+          "x-clause": "13.2.1"
+        },
+        "role": {
+          "$ref": "#/$defs/role"
+        },
+        "line_type": {
+          "$ref": "#/$defs/line_type"
+        }
+      }
+    },
+    "symbol_part_polyline": {
+      "type": "object",
+      "x-clause": "13.2.2",
+      "required": [
+        "type",
+        "points"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "polyline",
+          "x-clause": "13.2.2"
+        },
+        "points": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "type": "number",
+              "x-clause": "13.2.1"
+            },
+            "x-clause": "13.2.1"
+          },
+          "x-clause": "13.2.2"
+        },
+        "closed": {
+          "type": "boolean",
+          "default": false,
+          "x-clause": "13.2.2"
+        },
+        "role": {
+          "$ref": "#/$defs/role"
+        },
+        "line_type": {
+          "$ref": "#/$defs/line_type"
+        }
+      }
+    },
+    "symbol_part_arc": {
+      "type": "object",
+      "x-clause": "13.2.2",
+      "required": [
+        "type",
+        "centre",
+        "radius",
+        "start_deg",
+        "end_deg"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "arc",
+          "x-clause": "13.2.2"
+        },
+        "centre": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "number",
+            "x-clause": "13.2.1"
+          },
+          "x-clause": "13.2.1"
+        },
+        "radius": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "x-clause": "13.2.2"
+        },
+        "start_deg": {
+          "type": "number",
+          "x-clause": "13.2.2"
+        },
+        "end_deg": {
+          "type": "number",
+          "x-clause": "13.2.2"
+        },
+        "role": {
+          "$ref": "#/$defs/role"
+        },
+        "line_type": {
+          "$ref": "#/$defs/line_type"
+        }
+      }
+    },
+    "symbol_part_circle": {
+      "type": "object",
+      "x-clause": "13.2.2",
+      "required": [
+        "type",
+        "centre",
+        "radius"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "circle",
+          "x-clause": "13.2.2"
+        },
+        "centre": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "number",
+            "x-clause": "13.2.1"
+          },
+          "x-clause": "13.2.1"
+        },
+        "radius": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "x-clause": "13.2.2"
+        },
+        "role": {
+          "$ref": "#/$defs/role"
+        },
+        "line_type": {
+          "$ref": "#/$defs/line_type"
+        }
+      }
+    },
+    "symbol_part_hatch": {
+      "type": "object",
+      "x-clause": "13.2.2",
+      "required": [
+        "type",
+        "boundary",
+        "pattern"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "hatch",
+          "x-clause": "13.2.2"
+        },
+        "boundary": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "type": "number",
+              "x-clause": "13.2.1"
+            },
+            "x-clause": "13.2.1"
+          },
+          "x-clause": "13.2.2"
+        },
+        "pattern": {
+          "const": "solid",
+          "x-clause": "13.2.2"
+        },
+        "role": {
+          "$ref": "#/$defs/role"
+        }
+      }
+    },
+    "symbol_part": {
+      "type": "object",
+      "x-clause": "13.2.2",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "line",
+            "polyline",
+            "arc",
+            "circle",
+            "hatch"
+          ],
+          "x-clause": "13.2.2"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "const": "line"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/symbol_part_line"
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "const": "polyline"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/symbol_part_polyline"
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "const": "arc"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/symbol_part_arc"
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "const": "circle"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/symbol_part_circle"
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "const": "hatch"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/symbol_part_hatch"
+          }
+        }
+      ]
+    },
+    "symbol": {
+      "description": "A symbol of a library (clause 13.2). Lengths have the unit named by units, and no unit ending (clause 13.2.1).",
+      "type": "object",
+      "x-clause": "13.2",
+      "required": [
+        "units",
+        "geometry"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "units": {
+          "enum": [
+            "paper_mm",
+            "model_m"
+          ],
+          "x-clause": "13.2.1"
+        },
+        "insertion": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "number",
+            "x-clause": "13.2.1"
+          },
+          "x-clause": "13.2.1"
+        },
+        "geometry": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/symbol_part"
+          },
+          "x-clause": "13.2.2"
+        },
+        "ports": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "x-clause": "13.2.3",
+            "required": [
+              "id",
+              "at"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "$ref": "#/$defs/entity_id"
+              },
+              "at": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                  "type": "number",
+                  "x-clause": "13.2.1"
+                },
+                "x-clause": "13.2.1"
+              },
+              "direction_deg": {
+                "type": "number",
+                "x-clause": "13.2.3"
+              }
+            }
+          },
+          "x-clause": "13.2.3"
+        },
+        "label_slot": {
+          "type": "object",
+          "x-clause": "13.5",
+          "required": [
+            "at"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "at": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": {
+                "type": "number",
+                "x-clause": "13.2.1"
+              },
+              "x-clause": "13.2.1"
+            },
+            "align_h": {
+              "enum": [
+                "left",
+                "centre",
+                "right"
+              ],
+              "default": "centre",
+              "x-clause": "13.5"
+            },
+            "align_v": {
+              "enum": [
+                "baseline",
+                "middle",
+                "top"
+              ],
+              "default": "middle",
+              "x-clause": "13.5"
+            },
+            "height_mm": {
+              "enum": [
+                2.5,
+                3.5,
+                5,
+                7,
+                10,
+                14,
+                20
+              ],
+              "default": 3.5,
+              "x-clause": "13.5"
+            }
+          }
+        }
+      }
+    },
+    "symbol_set": {
+      "type": "object",
+      "x-clause": "13.1",
+      "minProperties": 1,
+      "propertyNames": {
+        "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,63}$",
+        "x-clause": "13.1"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/symbol"
+      }
+    }
+  }
+}

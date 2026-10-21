@@ -1,0 +1,2379 @@
+{
+  "result": "ok",
+  "sheet": {
+    "size": "A0",
+    "orientation": "landscape",
+    "line_group": "0.7",
+    "width_mm": 1189,
+    "height_mm": 841,
+    "drawing_space": {
+      "x_mm": 20,
+      "y_mm": 20,
+      "width_mm": 1149,
+      "height_mm": 801
+    }
+  },
+  "viewports": [
+    {
+      "id": "main",
+      "scale": 100,
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 20,
+        "width_mm": 1149,
+        "height_mm": 801
+      }
+    }
+  ],
+  "entities": [
+    {
+      "type": "polyline",
+      "origin": "sheet.border",
+      "layer": "TITLEBLOCK",
+      "points_mm": [
+        [
+          20,
+          20
+        ],
+        [
+          1169,
+          20
+        ],
+        [
+          1169,
+          821
+        ],
+        [
+          20,
+          821
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 1.4
+    },
+    {
+      "type": "line",
+      "origin": "sheet.centring_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        0,
+        420.5
+      ],
+      "to_mm": [
+        25,
+        420.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.5
+    },
+    {
+      "type": "line",
+      "origin": "sheet.centring_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        594.5,
+        0
+      ],
+      "to_mm": [
+        594.5,
+        25
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.5
+    },
+    {
+      "type": "line",
+      "origin": "sheet.centring_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        594.5,
+        841
+      ],
+      "to_mm": [
+        594.5,
+        816
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.5
+    },
+    {
+      "type": "line",
+      "origin": "sheet.centring_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1189,
+        420.5
+      ],
+      "to_mm": [
+        1164,
+        420.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.5
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        10,
+        45.031
+      ],
+      "text": "A",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        10,
+        95.094
+      ],
+      "text": "B",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        10,
+        145.156
+      ],
+      "text": "C",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        10,
+        195.219
+      ],
+      "text": "D",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        10,
+        245.281
+      ],
+      "text": "E",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        10,
+        295.344
+      ],
+      "text": "F",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        10,
+        345.406
+      ],
+      "text": "G",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        10,
+        395.469
+      ],
+      "text": "H",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        10,
+        445.531
+      ],
+      "text": "J",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        10,
+        495.594
+      ],
+      "text": "K",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        10,
+        545.656
+      ],
+      "text": "L",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        10,
+        595.719
+      ],
+      "text": "M",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        10,
+        645.781
+      ],
+      "text": "N",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        10,
+        695.844
+      ],
+      "text": "P",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        10,
+        745.906
+      ],
+      "text": "Q",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        10,
+        795.969
+      ],
+      "text": "R",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        43.938,
+        10
+      ],
+      "text": "1",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        43.938,
+        831
+      ],
+      "text": "1",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        91.812,
+        10
+      ],
+      "text": "2",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        91.812,
+        831
+      ],
+      "text": "2",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        139.688,
+        10
+      ],
+      "text": "3",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        139.688,
+        831
+      ],
+      "text": "3",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        187.562,
+        10
+      ],
+      "text": "4",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        187.562,
+        831
+      ],
+      "text": "4",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        235.438,
+        10
+      ],
+      "text": "5",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        235.438,
+        831
+      ],
+      "text": "5",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        283.312,
+        10
+      ],
+      "text": "6",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        283.312,
+        831
+      ],
+      "text": "6",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        331.188,
+        10
+      ],
+      "text": "7",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        331.188,
+        831
+      ],
+      "text": "7",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        379.062,
+        10
+      ],
+      "text": "8",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        379.062,
+        831
+      ],
+      "text": "8",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        426.938,
+        10
+      ],
+      "text": "9",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        426.938,
+        831
+      ],
+      "text": "9",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        474.812,
+        10
+      ],
+      "text": "10",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        474.812,
+        831
+      ],
+      "text": "10",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        522.688,
+        10
+      ],
+      "text": "11",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        522.688,
+        831
+      ],
+      "text": "11",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        570.562,
+        10
+      ],
+      "text": "12",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        570.562,
+        831
+      ],
+      "text": "12",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        618.438,
+        10
+      ],
+      "text": "13",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        618.438,
+        831
+      ],
+      "text": "13",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        666.312,
+        10
+      ],
+      "text": "14",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        666.312,
+        831
+      ],
+      "text": "14",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        714.188,
+        10
+      ],
+      "text": "15",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        714.188,
+        831
+      ],
+      "text": "15",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        762.062,
+        10
+      ],
+      "text": "16",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        762.062,
+        831
+      ],
+      "text": "16",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        809.938,
+        10
+      ],
+      "text": "17",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        809.938,
+        831
+      ],
+      "text": "17",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        857.812,
+        10
+      ],
+      "text": "18",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        857.812,
+        831
+      ],
+      "text": "18",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        905.688,
+        10
+      ],
+      "text": "19",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        905.688,
+        831
+      ],
+      "text": "19",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        953.562,
+        10
+      ],
+      "text": "20",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        953.562,
+        831
+      ],
+      "text": "20",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1001.438,
+        10
+      ],
+      "text": "21",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1001.438,
+        831
+      ],
+      "text": "21",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1049.312,
+        10
+      ],
+      "text": "22",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1049.312,
+        831
+      ],
+      "text": "22",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1097.188,
+        10
+      ],
+      "text": "23",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1097.188,
+        831
+      ],
+      "text": "23",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1145.062,
+        10
+      ],
+      "text": "24",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1145.062,
+        831
+      ],
+      "text": "24",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1179,
+        45.031
+      ],
+      "text": "A",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1179,
+        95.094
+      ],
+      "text": "B",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1179,
+        145.156
+      ],
+      "text": "C",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1179,
+        195.219
+      ],
+      "text": "D",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1179,
+        245.281
+      ],
+      "text": "E",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1179,
+        295.344
+      ],
+      "text": "F",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1179,
+        345.406
+      ],
+      "text": "G",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1179,
+        395.469
+      ],
+      "text": "H",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1179,
+        445.531
+      ],
+      "text": "J",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1179,
+        495.594
+      ],
+      "text": "K",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1179,
+        545.656
+      ],
+      "text": "L",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1179,
+        595.719
+      ],
+      "text": "M",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1179,
+        645.781
+      ],
+      "text": "N",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1179,
+        695.844
+      ],
+      "text": "P",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1179,
+        745.906
+      ],
+      "text": "Q",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        1179,
+        795.969
+      ],
+      "text": "R",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        0,
+        70.062
+      ],
+      "to_mm": [
+        20,
+        70.062
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        0,
+        120.125
+      ],
+      "to_mm": [
+        20,
+        120.125
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        0,
+        170.188
+      ],
+      "to_mm": [
+        20,
+        170.188
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        0,
+        220.25
+      ],
+      "to_mm": [
+        20,
+        220.25
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        0,
+        270.312
+      ],
+      "to_mm": [
+        20,
+        270.312
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        0,
+        320.375
+      ],
+      "to_mm": [
+        20,
+        320.375
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        0,
+        370.438
+      ],
+      "to_mm": [
+        20,
+        370.438
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        0,
+        420.5
+      ],
+      "to_mm": [
+        20,
+        420.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        0,
+        470.562
+      ],
+      "to_mm": [
+        20,
+        470.562
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        0,
+        520.625
+      ],
+      "to_mm": [
+        20,
+        520.625
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        0,
+        570.688
+      ],
+      "to_mm": [
+        20,
+        570.688
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        0,
+        620.75
+      ],
+      "to_mm": [
+        20,
+        620.75
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        0,
+        670.812
+      ],
+      "to_mm": [
+        20,
+        670.812
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        0,
+        720.875
+      ],
+      "to_mm": [
+        20,
+        720.875
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        0,
+        770.938
+      ],
+      "to_mm": [
+        20,
+        770.938
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        67.875,
+        0
+      ],
+      "to_mm": [
+        67.875,
+        20
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        67.875,
+        841
+      ],
+      "to_mm": [
+        67.875,
+        821
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        115.75,
+        0
+      ],
+      "to_mm": [
+        115.75,
+        20
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        115.75,
+        841
+      ],
+      "to_mm": [
+        115.75,
+        821
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        163.625,
+        0
+      ],
+      "to_mm": [
+        163.625,
+        20
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        163.625,
+        841
+      ],
+      "to_mm": [
+        163.625,
+        821
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        211.5,
+        0
+      ],
+      "to_mm": [
+        211.5,
+        20
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        211.5,
+        841
+      ],
+      "to_mm": [
+        211.5,
+        821
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        259.375,
+        0
+      ],
+      "to_mm": [
+        259.375,
+        20
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        259.375,
+        841
+      ],
+      "to_mm": [
+        259.375,
+        821
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        307.25,
+        0
+      ],
+      "to_mm": [
+        307.25,
+        20
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        307.25,
+        841
+      ],
+      "to_mm": [
+        307.25,
+        821
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        355.125,
+        0
+      ],
+      "to_mm": [
+        355.125,
+        20
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        355.125,
+        841
+      ],
+      "to_mm": [
+        355.125,
+        821
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        403,
+        0
+      ],
+      "to_mm": [
+        403,
+        20
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        403,
+        841
+      ],
+      "to_mm": [
+        403,
+        821
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        450.875,
+        0
+      ],
+      "to_mm": [
+        450.875,
+        20
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        450.875,
+        841
+      ],
+      "to_mm": [
+        450.875,
+        821
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        498.75,
+        0
+      ],
+      "to_mm": [
+        498.75,
+        20
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        498.75,
+        841
+      ],
+      "to_mm": [
+        498.75,
+        821
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        546.625,
+        0
+      ],
+      "to_mm": [
+        546.625,
+        20
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        546.625,
+        841
+      ],
+      "to_mm": [
+        546.625,
+        821
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        594.5,
+        0
+      ],
+      "to_mm": [
+        594.5,
+        20
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        594.5,
+        841
+      ],
+      "to_mm": [
+        594.5,
+        821
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        642.375,
+        0
+      ],
+      "to_mm": [
+        642.375,
+        20
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        642.375,
+        841
+      ],
+      "to_mm": [
+        642.375,
+        821
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        690.25,
+        0
+      ],
+      "to_mm": [
+        690.25,
+        20
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        690.25,
+        841
+      ],
+      "to_mm": [
+        690.25,
+        821
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        738.125,
+        0
+      ],
+      "to_mm": [
+        738.125,
+        20
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        738.125,
+        841
+      ],
+      "to_mm": [
+        738.125,
+        821
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        786,
+        0
+      ],
+      "to_mm": [
+        786,
+        20
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        786,
+        841
+      ],
+      "to_mm": [
+        786,
+        821
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        833.875,
+        0
+      ],
+      "to_mm": [
+        833.875,
+        20
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        833.875,
+        841
+      ],
+      "to_mm": [
+        833.875,
+        821
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        881.75,
+        0
+      ],
+      "to_mm": [
+        881.75,
+        20
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        881.75,
+        841
+      ],
+      "to_mm": [
+        881.75,
+        821
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        929.625,
+        0
+      ],
+      "to_mm": [
+        929.625,
+        20
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        929.625,
+        841
+      ],
+      "to_mm": [
+        929.625,
+        821
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        977.5,
+        0
+      ],
+      "to_mm": [
+        977.5,
+        20
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        977.5,
+        841
+      ],
+      "to_mm": [
+        977.5,
+        821
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1025.375,
+        0
+      ],
+      "to_mm": [
+        1025.375,
+        20
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1025.375,
+        841
+      ],
+      "to_mm": [
+        1025.375,
+        821
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1073.25,
+        0
+      ],
+      "to_mm": [
+        1073.25,
+        20
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1073.25,
+        841
+      ],
+      "to_mm": [
+        1073.25,
+        821
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1121.125,
+        0
+      ],
+      "to_mm": [
+        1121.125,
+        20
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1121.125,
+        841
+      ],
+      "to_mm": [
+        1121.125,
+        821
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1189,
+        70.062
+      ],
+      "to_mm": [
+        1169,
+        70.062
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1189,
+        120.125
+      ],
+      "to_mm": [
+        1169,
+        120.125
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1189,
+        170.188
+      ],
+      "to_mm": [
+        1169,
+        170.188
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1189,
+        220.25
+      ],
+      "to_mm": [
+        1169,
+        220.25
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1189,
+        270.312
+      ],
+      "to_mm": [
+        1169,
+        270.312
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1189,
+        320.375
+      ],
+      "to_mm": [
+        1169,
+        320.375
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1189,
+        370.438
+      ],
+      "to_mm": [
+        1169,
+        370.438
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1189,
+        420.5
+      ],
+      "to_mm": [
+        1169,
+        420.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1189,
+        470.562
+      ],
+      "to_mm": [
+        1169,
+        470.562
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1189,
+        520.625
+      ],
+      "to_mm": [
+        1169,
+        520.625
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1189,
+        570.688
+      ],
+      "to_mm": [
+        1169,
+        570.688
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1189,
+        620.75
+      ],
+      "to_mm": [
+        1169,
+        620.75
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1189,
+        670.812
+      ],
+      "to_mm": [
+        1169,
+        670.812
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1189,
+        720.875
+      ],
+      "to_mm": [
+        1169,
+        720.875
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        1189,
+        770.938
+      ],
+      "to_mm": [
+        1169,
+        770.938
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    }
+  ],
+  "origin_prefixes": [
+    "sheet."
+  ]
+}

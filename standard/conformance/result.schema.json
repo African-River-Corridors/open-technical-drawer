@@ -1,0 +1,723 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/African-River-Corridors/technical_drawings_for_agents/docs/standard/conformance/result.schema.json",
+  "title": "Runner result, normalised content and expected file (Drawing Format Standard, clauses 16 and 17)",
+  "anyOf": [
+    {
+      "$ref": "#/$defs/result"
+    },
+    {
+      "$ref": "#/$defs/expected"
+    }
+  ],
+  "$defs": {
+    "frame": {
+      "type": "object",
+      "required": [
+        "x_mm",
+        "y_mm",
+        "width_mm",
+        "height_mm"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "x_mm": {
+          "type": "number"
+        },
+        "y_mm": {
+          "type": "number"
+        },
+        "width_mm": {
+          "type": "number"
+        },
+        "height_mm": {
+          "type": "number"
+        }
+      }
+    },
+    "sheet": {
+      "type": "object",
+      "required": [
+        "size",
+        "orientation",
+        "line_group",
+        "width_mm",
+        "height_mm",
+        "drawing_space"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "size": {
+          "enum": [
+            "A0",
+            "A1",
+            "A2",
+            "A3",
+            "A4"
+          ]
+        },
+        "orientation": {
+          "enum": [
+            "landscape",
+            "portrait"
+          ]
+        },
+        "line_group": {
+          "enum": [
+            "0.35",
+            "0.5",
+            "0.7"
+          ]
+        },
+        "width_mm": {
+          "type": "number"
+        },
+        "height_mm": {
+          "type": "number"
+        },
+        "drawing_space": {
+          "$ref": "#/$defs/frame"
+        }
+      }
+    },
+    "viewports": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "scale",
+          "frame"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "scale": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "frame": {
+            "$ref": "#/$defs/frame"
+          }
+        }
+      }
+    },
+    "entity": {
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "line",
+            "polyline",
+            "arc",
+            "circle",
+            "hatch",
+            "text"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "const": "line"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/entity_line"
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "const": "polyline"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/entity_polyline"
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "const": "arc"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/entity_arc"
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "const": "circle"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/entity_circle"
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "const": "hatch"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/entity_hatch"
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "const": "text"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/entity_text"
+          }
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "entity_line": {
+      "type": "object",
+      "required": [
+        "type",
+        "origin",
+        "layer",
+        "from_mm",
+        "to_mm",
+        "line_type",
+        "width_mm"
+      ],
+      "properties": {
+        "type": {
+          "const": "line"
+        },
+        "origin": {
+          "type": "string",
+          "pattern": "^(sheet\\.(border|centring_mark|zone_mark|zone_label|title_block|revision_register|notes|references|status_line)|viewport\\.[A-Za-z][A-Za-z0-9_.-]{0,63})$"
+        },
+        "layer": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "from_mm": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "number"
+          }
+        },
+        "to_mm": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "number"
+          }
+        },
+        "line_type": {
+          "enum": [
+            "continuous",
+            "dashed",
+            "chain",
+            "chain_double_dashed"
+          ]
+        },
+        "width_mm": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "entity_polyline": {
+      "type": "object",
+      "required": [
+        "type",
+        "origin",
+        "layer",
+        "points_mm",
+        "closed",
+        "line_type",
+        "width_mm"
+      ],
+      "properties": {
+        "type": {
+          "const": "polyline"
+        },
+        "origin": {
+          "type": "string",
+          "pattern": "^(sheet\\.(border|centring_mark|zone_mark|zone_label|title_block|revision_register|notes|references|status_line)|viewport\\.[A-Za-z][A-Za-z0-9_.-]{0,63})$"
+        },
+        "layer": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "points_mm": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "closed": {
+          "type": "boolean"
+        },
+        "line_type": {
+          "enum": [
+            "continuous",
+            "dashed",
+            "chain",
+            "chain_double_dashed"
+          ]
+        },
+        "width_mm": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "entity_arc": {
+      "type": "object",
+      "required": [
+        "type",
+        "origin",
+        "layer",
+        "centre_mm",
+        "radius_mm",
+        "start_deg",
+        "sweep_deg",
+        "line_type",
+        "width_mm"
+      ],
+      "properties": {
+        "type": {
+          "const": "arc"
+        },
+        "origin": {
+          "type": "string",
+          "pattern": "^(sheet\\.(border|centring_mark|zone_mark|zone_label|title_block|revision_register|notes|references|status_line)|viewport\\.[A-Za-z][A-Za-z0-9_.-]{0,63})$"
+        },
+        "layer": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "centre_mm": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "number"
+          }
+        },
+        "radius_mm": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "start_deg": {
+          "type": "number",
+          "minimum": 0,
+          "exclusiveMaximum": 360
+        },
+        "sweep_deg": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "exclusiveMaximum": 360
+        },
+        "line_type": {
+          "enum": [
+            "continuous",
+            "dashed",
+            "chain",
+            "chain_double_dashed"
+          ]
+        },
+        "width_mm": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "entity_circle": {
+      "type": "object",
+      "required": [
+        "type",
+        "origin",
+        "layer",
+        "centre_mm",
+        "radius_mm",
+        "line_type",
+        "width_mm"
+      ],
+      "properties": {
+        "type": {
+          "const": "circle"
+        },
+        "origin": {
+          "type": "string",
+          "pattern": "^(sheet\\.(border|centring_mark|zone_mark|zone_label|title_block|revision_register|notes|references|status_line)|viewport\\.[A-Za-z][A-Za-z0-9_.-]{0,63})$"
+        },
+        "layer": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "centre_mm": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "number"
+          }
+        },
+        "radius_mm": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "line_type": {
+          "enum": [
+            "continuous",
+            "dashed",
+            "chain",
+            "chain_double_dashed"
+          ]
+        },
+        "width_mm": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "entity_hatch": {
+      "type": "object",
+      "required": [
+        "type",
+        "origin",
+        "layer",
+        "boundary_mm",
+        "holes_mm",
+        "pattern",
+        "angle_deg",
+        "width_mm"
+      ],
+      "properties": {
+        "type": {
+          "const": "hatch"
+        },
+        "origin": {
+          "type": "string",
+          "pattern": "^(sheet\\.(border|centring_mark|zone_mark|zone_label|title_block|revision_register|notes|references|status_line)|viewport\\.[A-Za-z][A-Za-z0-9_.-]{0,63})$"
+        },
+        "layer": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "boundary_mm": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "holes_mm": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "pattern": {
+          "enum": [
+            "solid",
+            "lines",
+            "concrete",
+            "rockfill",
+            "soil",
+            "water"
+          ]
+        },
+        "angle_deg": {
+          "type": "number",
+          "minimum": 0,
+          "exclusiveMaximum": 360
+        },
+        "width_mm": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "entity_text": {
+      "type": "object",
+      "required": [
+        "type",
+        "origin",
+        "layer",
+        "anchor_mm",
+        "text",
+        "height_mm",
+        "rotation_deg",
+        "align_h",
+        "align_v"
+      ],
+      "properties": {
+        "type": {
+          "const": "text"
+        },
+        "origin": {
+          "type": "string",
+          "pattern": "^(sheet\\.(border|centring_mark|zone_mark|zone_label|title_block|revision_register|notes|references|status_line)|viewport\\.[A-Za-z][A-Za-z0-9_.-]{0,63})$"
+        },
+        "layer": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "anchor_mm": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "number"
+          }
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "height_mm": {
+          "enum": [
+            2.5,
+            3.5,
+            5,
+            7,
+            10,
+            14,
+            20
+          ]
+        },
+        "rotation_deg": {
+          "type": "number",
+          "minimum": 0,
+          "exclusiveMaximum": 360
+        },
+        "align_h": {
+          "enum": [
+            "left",
+            "centre",
+            "right"
+          ]
+        },
+        "align_v": {
+          "enum": [
+            "baseline",
+            "middle",
+            "top"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "normalised": {
+      "type": "object",
+      "required": [
+        "standard_version",
+        "sheet",
+        "viewports",
+        "entities"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "standard_version": {
+          "type": "string"
+        },
+        "sheet": {
+          "$ref": "#/$defs/sheet"
+        },
+        "viewports": {
+          "$ref": "#/$defs/viewports"
+        },
+        "entities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/entity"
+          }
+        }
+      }
+    },
+    "error_list": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "clause"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "clause": {
+            "type": "string",
+            "pattern": "^[0-9]+(\\.[0-9]+)*$"
+          }
+        }
+      }
+    },
+    "result": {
+      "description": "What a runner writes to standard output (clause 17.3).",
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "result",
+            "normalised"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "result": {
+              "const": "ok"
+            },
+            "normalised": {
+              "$ref": "#/$defs/normalised"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": [
+            "result",
+            "errors"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "result": {
+              "const": "error"
+            },
+            "errors": {
+              "$ref": "#/$defs/error_list",
+              "minItems": 1
+            }
+          }
+        }
+      ]
+    },
+    "expected": {
+      "description": "An expected file (clause 17.4).",
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "result"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "result": {
+              "const": "ok"
+            },
+            "sheet": {
+              "$ref": "#/$defs/sheet"
+            },
+            "viewports": {
+              "$ref": "#/$defs/viewports"
+            },
+            "entities": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/entity"
+              }
+            },
+            "origin_prefixes": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": [
+            "result",
+            "errors"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "result": {
+              "const": "error"
+            },
+            "errors": {
+              "$ref": "#/$defs/error_list"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

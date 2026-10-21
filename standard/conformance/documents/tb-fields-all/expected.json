@@ -1,0 +1,583 @@
+{
+  "result": "ok",
+  "viewports": [
+    {
+      "id": "main",
+      "scale": 100,
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 300,
+        "height_mm": 170
+      }
+    }
+  ],
+  "entities": [
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        230,
+        251
+      ],
+      "to_mm": [
+        340,
+        251
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        230,
+        263
+      ],
+      "to_mm": [
+        340,
+        263
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        230,
+        275
+      ],
+      "to_mm": [
+        340,
+        275
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        266,
+        275
+      ],
+      "to_mm": [
+        266,
+        287
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        303,
+        275
+      ],
+      "to_mm": [
+        303,
+        287
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        340,
+        245
+      ],
+      "to_mm": [
+        410,
+        245
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        340,
+        259
+      ],
+      "to_mm": [
+        410,
+        259
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        340,
+        273
+      ],
+      "to_mm": [
+        410,
+        273
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        360,
+        245
+      ],
+      "to_mm": [
+        360,
+        259
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        365,
+        273
+      ],
+      "to_mm": [
+        365,
+        287
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        375,
+        259
+      ],
+      "to_mm": [
+        375,
+        273
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        385,
+        273
+      ],
+      "to_mm": [
+        385,
+        287
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        230,
+        231
+      ],
+      "to_mm": [
+        410,
+        231
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        230,
+        287
+      ],
+      "to_mm": [
+        230,
+        231
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        340,
+        231
+      ],
+      "to_mm": [
+        340,
+        287
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        410,
+        231
+      ],
+      "to_mm": [
+        410,
+        287
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        410,
+        287
+      ],
+      "to_mm": [
+        230,
+        287
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        231,
+        234.5
+      ],
+      "text": "TITLE",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        231,
+        250
+      ],
+      "text": "SECTION THROUGH EXAMPLE WORK",
+      "height_mm": 5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        231,
+        254.5
+      ],
+      "text": "SUPPLEMENTARY TITLE",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        231,
+        262
+      ],
+      "text": "SYNTHETIC SAMPLE",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        231,
+        266.5
+      ],
+      "text": "OWNER",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        231,
+        274
+      ],
+      "text": "EXAMPLE OWNER LTD",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        231,
+        278.5
+      ],
+      "text": "CREATED BY",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        267,
+        278.5
+      ],
+      "text": "CHECKED BY",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        304,
+        278.5
+      ],
+      "text": "APPROVED BY",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        341,
+        234.5
+      ],
+      "text": "DOCUMENT NUMBER",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        341,
+        244
+      ],
+      "text": "EXA-CIV-001",
+      "height_mm": 5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        341,
+        248.5
+      ],
+      "text": "REV",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        341,
+        262.5
+      ],
+      "text": "STATUS",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        341,
+        276.5
+      ],
+      "text": "SHEET",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        341,
+        286
+      ],
+      "text": "2/5",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        361,
+        248.5
+      ],
+      "text": "DATE OF ISSUE",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        366,
+        276.5
+      ],
+      "text": "SIZE",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        366,
+        286
+      ],
+      "text": "A3",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        376,
+        262.5
+      ],
+      "text": "SCALE",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        376,
+        272
+      ],
+      "text": "1:100",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        386,
+        276.5
+      ],
+      "text": "TYPE",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        386,
+        286
+      ],
+      "text": "GA",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    }
+  ],
+  "origin_prefixes": [
+    "sheet.title_block"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "result": "ok",
+  "viewports": [
+    {
+      "id": "main",
+      "scale": 100,
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 277
+      }
+    }
+  ],
+  "entities": [
+    {
+      "type": "line",
+      "origin": "viewport.main",
+      "layer": "MOORING",
+      "from_mm": [
+        165,
+        188.5
+      ],
+      "to_mm": [
+        215,
+        138.5
+      ],
+      "line_type": "chain_double_dashed",
+      "width_mm": 0.35
+    }
+  ],
+  "origin_prefixes": [
+    "viewport.main"
+  ]
+}

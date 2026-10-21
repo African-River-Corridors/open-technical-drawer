@@ -1,0 +1,50 @@
+{
+  "function": "bar_length",
+  "checks": [
+    {
+      "id": "1-100",
+      "clause": "7.9.9",
+      "input": {
+        "frame_width_mm": 390,
+        "scale": 100
+      },
+      "expected": 5
+    },
+    {
+      "id": "1-200",
+      "clause": "7.9.9",
+      "input": {
+        "frame_width_mm": 390,
+        "scale": 200
+      },
+      "expected": 10
+    },
+    {
+      "id": "1-500",
+      "clause": "7.9.9",
+      "input": {
+        "frame_width_mm": 390,
+        "scale": 500
+      },
+      "expected": 20
+    },
+    {
+      "id": "1-1000",
+      "clause": "7.9.9",
+      "input": {
+        "frame_width_mm": 390,
+        "scale": 1000
+      },
+      "expected": 50
+    },
+    {
+      "id": "1-2000",
+      "clause": "7.9.9",
+      "input": {
+        "frame_width_mm": 390,
+        "scale": 2000
+      },
+      "expected": 100
+    }
+  ]
+}

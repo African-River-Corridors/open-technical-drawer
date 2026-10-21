@@ -1,0 +1,76 @@
+{
+  "standard_version": "1.0",
+  "sheet": {
+    "size": "A3",
+    "orientation": "landscape"
+  },
+  "layers": [
+    {
+      "name": "HATCH"
+    }
+  ],
+  "viewports": [
+    {
+      "id": "main",
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 277
+      },
+      "window": {
+        "xmin_m": 0,
+        "ymin_m": 0,
+        "xmax_m": 10,
+        "ymax_m": 8
+      },
+      "scale": 100,
+      "entities": [
+        {
+          "type": "hatch",
+          "layer": "HATCH",
+          "boundary_m": [
+            [
+              0.3,
+              0.5
+            ],
+            [
+              9.7,
+              0.5
+            ],
+            [
+              9.7,
+              3.4
+            ],
+            [
+              0.3,
+              3.4
+            ]
+          ],
+          "holes_m": [
+            [
+              [
+                3,
+                1.2
+              ],
+              [
+                5,
+                1.2
+              ],
+              [
+                5,
+                2.4
+              ],
+              [
+                3,
+                2.4
+              ]
+            ]
+          ],
+          "pattern": "water",
+          "angle_deg": 0
+        }
+      ]
+    }
+  ]
+}

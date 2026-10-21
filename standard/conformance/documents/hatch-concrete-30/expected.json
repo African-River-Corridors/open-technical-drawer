@@ -1,0 +1,704 @@
+{
+  "result": "ok",
+  "viewports": [
+    {
+      "id": "main",
+      "scale": 100,
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 277
+      }
+    }
+  ],
+  "entities": [
+    {
+      "type": "hatch",
+      "origin": "viewport.main",
+      "layer": "HATCH",
+      "boundary_mm": [
+        [
+          175,
+          178.5
+        ],
+        [
+          205,
+          178.5
+        ],
+        [
+          205,
+          158.5
+        ],
+        [
+          175,
+          158.5
+        ]
+      ],
+      "holes_mm": [
+        [
+          [
+            185,
+            173.5
+          ],
+          [
+            190,
+            173.5
+          ],
+          [
+            190,
+            166.5
+          ],
+          [
+            185,
+            166.5
+          ]
+        ]
+      ],
+      "pattern": "concrete",
+      "angle_deg": 30,
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        177.554,
+        163.532
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        178.036,
+        171.568
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        180.672,
+        161.732
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        181.154,
+        169.768
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        181.636,
+        177.803
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        183.789,
+        159.932
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        184.272,
+        167.968
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        184.754,
+        176.003
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        187.389,
+        166.168
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        187.872,
+        174.203
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        190.507,
+        164.368
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        190.989,
+        172.403
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        193.625,
+        162.568
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        194.107,
+        170.603
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        196.742,
+        160.768
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        197.225,
+        168.803
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        197.707,
+        176.838
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        199.86,
+        158.968
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        200.342,
+        167.003
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        200.825,
+        175.038
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        203.46,
+        165.203
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        203.942,
+        173.238
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          176.419,
+          159.407
+        ],
+        [
+          177.666,
+          158.687
+        ],
+        [
+          177.673,
+          160.138
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          176.901,
+          167.442
+        ],
+        [
+          178.149,
+          166.722
+        ],
+        [
+          178.155,
+          168.173
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          177.384,
+          175.478
+        ],
+        [
+          178.631,
+          174.758
+        ],
+        [
+          178.637,
+          176.209
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          180.019,
+          165.642
+        ],
+        [
+          181.266,
+          164.922
+        ],
+        [
+          181.273,
+          166.373
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          180.501,
+          173.678
+        ],
+        [
+          181.749,
+          172.958
+        ],
+        [
+          181.755,
+          174.409
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          183.137,
+          163.842
+        ],
+        [
+          184.384,
+          163.122
+        ],
+        [
+          184.39,
+          164.573
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          186.255,
+          162.042
+        ],
+        [
+          187.502,
+          161.322
+        ],
+        [
+          187.508,
+          162.773
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          189.372,
+          160.242
+        ],
+        [
+          190.619,
+          159.522
+        ],
+        [
+          190.626,
+          160.973
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          190.337,
+          176.313
+        ],
+        [
+          191.584,
+          175.593
+        ],
+        [
+          191.59,
+          177.044
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          192.972,
+          166.478
+        ],
+        [
+          194.219,
+          165.758
+        ],
+        [
+          194.226,
+          167.209
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          193.455,
+          174.513
+        ],
+        [
+          194.702,
+          173.793
+        ],
+        [
+          194.708,
+          175.244
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          196.09,
+          164.678
+        ],
+        [
+          197.337,
+          163.958
+        ],
+        [
+          197.343,
+          165.409
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          196.572,
+          172.713
+        ],
+        [
+          197.819,
+          171.993
+        ],
+        [
+          197.826,
+          173.444
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          199.208,
+          162.878
+        ],
+        [
+          200.455,
+          162.158
+        ],
+        [
+          200.461,
+          163.609
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          199.69,
+          170.913
+        ],
+        [
+          200.937,
+          170.193
+        ],
+        [
+          200.943,
+          171.644
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          202.325,
+          161.078
+        ],
+        [
+          203.572,
+          160.358
+        ],
+        [
+          203.579,
+          161.809
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          202.808,
+          169.113
+        ],
+        [
+          204.055,
+          168.393
+        ],
+        [
+          204.061,
+          169.844
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    }
+  ],
+  "origin_prefixes": [
+    "viewport.main"
+  ]
+}

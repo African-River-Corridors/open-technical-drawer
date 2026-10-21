@@ -1,0 +1,86 @@
+{
+  "standard_version": "1.0",
+  "sheet": {
+    "size": "A3",
+    "orientation": "landscape"
+  },
+  "layers": [
+    {
+      "name": "OUTLINE"
+    },
+    {
+      "name": "HIDDEN"
+    }
+  ],
+  "viewports": [
+    {
+      "id": "main",
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 277
+      },
+      "window": {
+        "xmin_m": 0,
+        "ymin_m": 0,
+        "xmax_m": 10,
+        "ymax_m": 8
+      },
+      "scale": 100,
+      "entities": [
+        {
+          "type": "line",
+          "layer": "OUTLINE",
+          "from_m": [
+            10,
+            0
+          ],
+          "to_m": [
+            0,
+            0
+          ]
+        },
+        {
+          "type": "line",
+          "layer": "HIDDEN",
+          "from_m": [
+            0,
+            0
+          ],
+          "to_m": [
+            0,
+            8
+          ]
+        },
+        {
+          "type": "line",
+          "layer": "OUTLINE",
+          "id": "axis",
+          "role": "thin",
+          "line_type": "chain",
+          "from_m": [
+            0,
+            4
+          ],
+          "to_m": [
+            10,
+            4
+          ]
+        },
+        {
+          "type": "line",
+          "layer": "OUTLINE",
+          "from_m": [
+            10,
+            0
+          ],
+          "to_m": [
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  ]
+}

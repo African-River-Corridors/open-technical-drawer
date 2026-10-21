@@ -1,0 +1,61 @@
+{
+  "function": "drawing_space",
+  "checks": [
+    {
+      "id": "a3-landscape",
+      "clause": "6.3.2",
+      "input": {
+        "size": "A3",
+        "orientation": "landscape"
+      },
+      "expected": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 277
+      }
+    },
+    {
+      "id": "a3-portrait",
+      "clause": "6.3.2",
+      "input": {
+        "size": "A3",
+        "orientation": "portrait"
+      },
+      "expected": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 267,
+        "height_mm": 400
+      }
+    },
+    {
+      "id": "a4-portrait",
+      "clause": "6.3.2",
+      "input": {
+        "size": "A4",
+        "orientation": "portrait"
+      },
+      "expected": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 180,
+        "height_mm": 277
+      }
+    },
+    {
+      "id": "a0-landscape",
+      "clause": "6.3.2",
+      "input": {
+        "size": "A0",
+        "orientation": "landscape"
+      },
+      "expected": {
+        "x_mm": 20,
+        "y_mm": 20,
+        "width_mm": 1149,
+        "height_mm": 801
+      }
+    }
+  ]
+}

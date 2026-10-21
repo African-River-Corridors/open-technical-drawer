@@ -1,0 +1,81 @@
+{
+  "result": "ok",
+  "viewports": [
+    {
+      "id": "main",
+      "scale": 100,
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 277
+      }
+    }
+  ],
+  "entities": [
+    {
+      "type": "line",
+      "origin": "viewport.main",
+      "layer": "HIDDEN",
+      "from_mm": [
+        165,
+        188.5
+      ],
+      "to_mm": [
+        165,
+        108.5
+      ],
+      "line_type": "dashed",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main",
+      "layer": "OUTLINE",
+      "from_mm": [
+        265,
+        188.5
+      ],
+      "to_mm": [
+        165,
+        188.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main",
+      "layer": "OUTLINE",
+      "from_mm": [
+        265,
+        188.5
+      ],
+      "to_mm": [
+        165,
+        188.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main",
+      "layer": "OUTLINE",
+      "from_mm": [
+        165,
+        148.5
+      ],
+      "to_mm": [
+        265,
+        148.5
+      ],
+      "line_type": "chain",
+      "width_mm": 0.18,
+      "id": "axis"
+    }
+  ],
+  "origin_prefixes": [
+    "viewport.main"
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "result": "ok",
+  "viewports": [
+    {
+      "id": "main",
+      "scale": 100,
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 277
+      }
+    }
+  ],
+  "entities": [
+    {
+      "type": "hatch",
+      "origin": "viewport.main",
+      "layer": "HATCH",
+      "boundary_mm": [
+        [
+          168,
+          183.5
+        ],
+        [
+          262,
+          183.5
+        ],
+        [
+          262,
+          154.5
+        ],
+        [
+          168,
+          154.5
+        ]
+      ],
+      "holes_mm": [
+        [
+          [
+            195,
+            176.5
+          ],
+          [
+            215,
+            176.5
+          ],
+          [
+            215,
+            164.5
+          ],
+          [
+            195,
+            164.5
+          ]
+        ]
+      ],
+      "pattern": "solid",
+      "angle_deg": 0,
+      "width_mm": 0.18
+    }
+  ],
+  "origin_prefixes": [
+    "viewport.main"
+  ]
+}

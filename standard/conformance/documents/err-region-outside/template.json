@@ -1,0 +1,68 @@
+{
+  "standard_version": "1.0",
+  "id": "private-small",
+  "width_mm": 200,
+  "height_mm": 30,
+  "pad_mm": 1,
+  "lines": [
+    {
+      "from_mm": [
+        0,
+        0
+      ],
+      "to_mm": [
+        200,
+        0
+      ],
+      "role": "thick"
+    }
+  ],
+  "cells": [
+    {
+      "field": "title",
+      "label": "T",
+      "x_mm": 0,
+      "y_mm": 0,
+      "width_mm": 200,
+      "height_mm": 30,
+      "text_height_mm": 3.5
+    }
+  ],
+  "register": {
+    "row_height_mm": 6,
+    "max_rows": 3,
+    "text_height_mm": 2.5,
+    "columns": [
+      {
+        "field": "rev",
+        "label": "RE",
+        "width_mm": 20
+      },
+      {
+        "field": "date",
+        "label": "DA",
+        "width_mm": 30
+      },
+      {
+        "field": "description",
+        "label": "DE",
+        "width_mm": 100
+      },
+      {
+        "field": "by",
+        "label": "BY",
+        "width_mm": 20
+      },
+      {
+        "field": "chk",
+        "label": "CH",
+        "width_mm": 15
+      },
+      {
+        "field": "app",
+        "label": "AP",
+        "width_mm": 15
+      }
+    ]
+  }
+}

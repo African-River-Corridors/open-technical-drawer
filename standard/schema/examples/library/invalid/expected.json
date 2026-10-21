@@ -1,0 +1,68 @@
+{
+  "bad-label-height": {
+    "path": "/symbols/valve/label_slot/height_mm",
+    "keyword": "enum",
+    "message_contains": "",
+    "clause": "13.5"
+  },
+  "bad-symbol-name": {
+    "path": "/symbols",
+    "keyword": "pattern",
+    "message_contains": "",
+    "clause": "13.1"
+  },
+  "empty-geometry": {
+    "path": "/symbols/valve/geometry",
+    "keyword": "minItems",
+    "message_contains": "",
+    "clause": "13.2.2"
+  },
+  "hatch-not-solid": {
+    "path": "/symbols/tank/geometry/3/pattern",
+    "keyword": "const",
+    "message_contains": "",
+    "clause": "13.2.2"
+  },
+  "no-geometry": {
+    "path": "/symbols/valve",
+    "keyword": "required",
+    "message_contains": "geometry",
+    "clause": "13.2"
+  },
+  "no-symbols": {
+    "path": "/symbols",
+    "keyword": "minProperties",
+    "message_contains": "",
+    "clause": "13.1"
+  },
+  "part-with-layer": {
+    "path": "/symbols/valve/geometry/1",
+    "keyword": "additionalProperties",
+    "message_contains": "layer",
+    "clause": "13.2.2"
+  },
+  "port-without-id": {
+    "path": "/symbols/valve/ports/0",
+    "keyword": "required",
+    "message_contains": "id",
+    "clause": "13.2.3"
+  },
+  "radius-zero": {
+    "path": "/symbols/tank/geometry/1/radius",
+    "keyword": "exclusiveMinimum",
+    "message_contains": "",
+    "clause": "13.2.2"
+  },
+  "unknown-part-type": {
+    "path": "/symbols/valve/geometry/0/type",
+    "keyword": "enum",
+    "message_contains": "",
+    "clause": "13.2.2"
+  },
+  "unknown-units": {
+    "path": "/symbols/valve/units",
+    "keyword": "enum",
+    "message_contains": "",
+    "clause": "13.2.1"
+  }
+}

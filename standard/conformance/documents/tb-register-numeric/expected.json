@@ -1,0 +1,418 @@
+{
+  "result": "ok",
+  "viewports": [
+    {
+      "id": "main",
+      "scale": 100,
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 300,
+        "height_mm": 170
+      }
+    }
+  ],
+  "entities": [
+    {
+      "type": "line",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        230,
+        216
+      ],
+      "to_mm": [
+        410,
+        216
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        230,
+        221
+      ],
+      "to_mm": [
+        410,
+        221
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        230,
+        226
+      ],
+      "to_mm": [
+        410,
+        226
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        242,
+        211
+      ],
+      "to_mm": [
+        242,
+        231
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        266,
+        211
+      ],
+      "to_mm": [
+        266,
+        231
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        366,
+        211
+      ],
+      "to_mm": [
+        366,
+        231
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        380,
+        211
+      ],
+      "to_mm": [
+        380,
+        231
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        394,
+        211
+      ],
+      "to_mm": [
+        394,
+        231
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "points_mm": [
+        [
+          230,
+          211
+        ],
+        [
+          410,
+          211
+        ],
+        [
+          410,
+          231
+        ],
+        [
+          230,
+          231
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        231,
+        215
+      ],
+      "text": "REV",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        231,
+        220
+      ],
+      "text": "1",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        231,
+        225
+      ],
+      "text": "2",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        231,
+        230
+      ],
+      "text": "10",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        243,
+        215
+      ],
+      "text": "DATE",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        243,
+        220
+      ],
+      "text": "2026-01-05",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        243,
+        225
+      ],
+      "text": "2026-01-05",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        243,
+        230
+      ],
+      "text": "2026-03-01",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        267,
+        215
+      ],
+      "text": "DESCRIPTION",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        267,
+        220
+      ],
+      "text": "FIRST ISSUE",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        267,
+        225
+      ],
+      "text": "SECOND ISSUE, SAME DAY",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        267,
+        230
+      ],
+      "text": "TENTH",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        367,
+        215
+      ],
+      "text": "BY",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        367,
+        220
+      ],
+      "text": "AB",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        367,
+        225
+      ],
+      "text": "AB",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        367,
+        230
+      ],
+      "text": "AB",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        381,
+        215
+      ],
+      "text": "CHK",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        395,
+        215
+      ],
+      "text": "APP",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    }
+  ],
+  "origin_prefixes": [
+    "sheet.revision_register"
+  ]
+}

@@ -1,0 +1,152 @@
+{
+  "function": "window_fits",
+  "checks": [
+    {
+      "id": "400x200-at-500",
+      "clause": "7.5.3",
+      "input": {
+        "frame": {
+          "x_mm": 20,
+          "y_mm": 10,
+          "width_mm": 390,
+          "height_mm": 277
+        },
+        "window": {
+          "xmin_m": 0,
+          "ymin_m": 0,
+          "xmax_m": 200,
+          "ymax_m": 100
+        },
+        "scale": 500,
+        "rotation_deg": 0
+      },
+      "expected": false
+    },
+    {
+      "id": "200x100-at-1000",
+      "clause": "7.5.3",
+      "input": {
+        "frame": {
+          "x_mm": 20,
+          "y_mm": 10,
+          "width_mm": 390,
+          "height_mm": 277
+        },
+        "window": {
+          "xmin_m": 0,
+          "ymin_m": 0,
+          "xmax_m": 200,
+          "ymax_m": 100
+        },
+        "scale": 1000,
+        "rotation_deg": 0
+      },
+      "expected": true
+    },
+    {
+      "id": "rotated-at-500",
+      "clause": "7.5.3",
+      "input": {
+        "frame": {
+          "x_mm": 20,
+          "y_mm": 10,
+          "width_mm": 390,
+          "height_mm": 277
+        },
+        "window": {
+          "xmin_m": 0,
+          "ymin_m": 0,
+          "xmax_m": 100,
+          "ymax_m": 300
+        },
+        "scale": 500,
+        "rotation_deg": 90
+      },
+      "expected": false
+    },
+    {
+      "id": "rotated-at-1000",
+      "clause": "7.5.3",
+      "input": {
+        "frame": {
+          "x_mm": 20,
+          "y_mm": 10,
+          "width_mm": 390,
+          "height_mm": 277
+        },
+        "window": {
+          "xmin_m": 0,
+          "ymin_m": 0,
+          "xmax_m": 100,
+          "ymax_m": 300
+        },
+        "scale": 1000,
+        "rotation_deg": 90
+      },
+      "expected": true
+    },
+    {
+      "id": "barge-at-200",
+      "clause": "7.5.3",
+      "input": {
+        "frame": {
+          "x_mm": 20,
+          "y_mm": 10,
+          "width_mm": 390,
+          "height_mm": 277
+        },
+        "window": {
+          "xmin_m": 0,
+          "ymin_m": 0,
+          "xmax_m": 80,
+          "ymax_m": 20
+        },
+        "scale": 200,
+        "rotation_deg": 0
+      },
+      "expected": false
+    },
+    {
+      "id": "barge-at-250",
+      "clause": "7.5.3",
+      "input": {
+        "frame": {
+          "x_mm": 20,
+          "y_mm": 10,
+          "width_mm": 390,
+          "height_mm": 277
+        },
+        "window": {
+          "xmin_m": 0,
+          "ymin_m": 0,
+          "xmax_m": 80,
+          "ymax_m": 20
+        },
+        "scale": 250,
+        "rotation_deg": 0
+      },
+      "expected": true
+    },
+    {
+      "id": "exact",
+      "clause": "7.5.3",
+      "input": {
+        "frame": {
+          "x_mm": 20,
+          "y_mm": 10,
+          "width_mm": 390,
+          "height_mm": 277
+        },
+        "window": {
+          "xmin_m": 0,
+          "ymin_m": 0,
+          "xmax_m": 390,
+          "ymax_m": 277
+        },
+        "scale": 1000,
+        "rotation_deg": 0
+      },
+      "expected": true
+    }
+  ]
+}

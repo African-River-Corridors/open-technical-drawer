@@ -1,0 +1,71 @@
+{
+  "standard_version": "1.0",
+  "sheet": {
+    "size": "A3"
+  },
+  "layers": [
+    {
+      "name": "OUTLINE"
+    }
+  ],
+  "viewports": [
+    {
+      "id": "main",
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 300,
+        "height_mm": 170
+      },
+      "window": {
+        "xmin_m": 0,
+        "ymin_m": 0,
+        "xmax_m": 10,
+        "ymax_m": 8
+      },
+      "scale": 100,
+      "entities": [
+        {
+          "type": "line",
+          "layer": "OUTLINE",
+          "from_m": [
+            1,
+            1
+          ],
+          "to_m": [
+            9,
+            7
+          ]
+        }
+      ]
+    }
+  ],
+  "title_block": {
+    "template": "iso7200",
+    "fields": {
+      "owner": "EXAMPLE OWNER LTD",
+      "title": "SECTION THROUGH EXAMPLE WORK",
+      "supplementary_title": "SYNTHETIC SAMPLE",
+      "document_number": "EXA-CIV-001",
+      "document_type": "GA",
+      "sheet_number": 1,
+      "sheet_count": 3
+    }
+  },
+  "status": "draft",
+  "strips": [
+    {
+      "id": "n",
+      "edge": "right",
+      "size_mm": 70,
+      "content": "notes"
+    }
+  ],
+  "notes": [
+    "ALL DIMENSIONS IN METRES.",
+    "THIS IS A SYNTHETIC EXAMPLE."
+  ],
+  "revisions": {
+    "entries": []
+  }
+}

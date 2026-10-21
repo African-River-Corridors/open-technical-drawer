@@ -1,0 +1,5 @@
+# Release-guard allowlist. Format: <path-glob>  <term-id>  # reason
+# Term ids are what the guard prints (see tools/embargo.py). Every entry needs a reason. Keep this short.
+
+CODE_OF_CONDUCT.md  f6018825e847  # the maintainer's contact address is intentional
+(commit)  f6018825e847  # history mode: the maintainer's commit author/committer identity

@@ -1,0 +1,398 @@
+{
+  "aci-zero": {
+    "path": "/layers/0/aci",
+    "keyword": "minimum",
+    "message_contains": "",
+    "clause": "8.6.2"
+  },
+  "angle-radius-zero": {
+    "path": "/viewports/0/entities/6/arc_radius_mm",
+    "keyword": "exclusiveMinimum",
+    "message_contains": "",
+    "clause": "12.5.4"
+  },
+  "bad-entity-type": {
+    "path": "/viewports/0/entities/0/type",
+    "keyword": "enum",
+    "message_contains": "",
+    "clause": "9.1"
+  },
+  "bad-line-group": {
+    "path": "/sheet/line_group",
+    "keyword": "enum",
+    "message_contains": "",
+    "clause": "8.2.1"
+  },
+  "bad-orientation": {
+    "path": "/sheet/orientation",
+    "keyword": "enum",
+    "message_contains": "",
+    "clause": "6.2.1"
+  },
+  "bad-sheet-size": {
+    "path": "/sheet/size",
+    "keyword": "enum",
+    "message_contains": "",
+    "clause": "6.1.3"
+  },
+  "circle-zero-radius": {
+    "path": "/viewports/0/entities/0/radius_m",
+    "keyword": "exclusiveMinimum",
+    "message_contains": "",
+    "clause": "9.6"
+  },
+  "coordinate-as-text": {
+    "path": "/viewports/0/entities/0/to_m/0",
+    "keyword": "type",
+    "message_contains": "",
+    "clause": "9.2"
+  },
+  "custom-layer-missing-role": {
+    "path": "/layers/0",
+    "keyword": "required",
+    "message_contains": "role",
+    "clause": "8.5.4"
+  },
+  "dimension-bad-place": {
+    "path": "/viewports/0/entities/2/from/at",
+    "keyword": "pattern",
+    "message_contains": "",
+    "clause": "12.2"
+  },
+  "dimension-chain-without-role": {
+    "path": "/viewports/0/entities/8",
+    "keyword": "dependentRequired",
+    "message_contains": "chain_role",
+    "clause": "12.1"
+  },
+  "dimension-decimals-4": {
+    "path": "/viewports/0/entities/2/decimals",
+    "keyword": "maximum",
+    "message_contains": "",
+    "clause": "12.1.1"
+  },
+  "dimension-missing-offset": {
+    "path": "/viewports/0/entities/2",
+    "keyword": "required",
+    "message_contains": "offset_mm",
+    "clause": "12.1"
+  },
+  "dimension-point-spec-both": {
+    "path": "/viewports/0/entities/2/from",
+    "keyword": "not",
+    "message_contains": "",
+    "clause": "12.2"
+  },
+  "dimension-point-spec-empty": {
+    "path": "/viewports/0/entities/2/from",
+    "keyword": "required",
+    "message_contains": "point_m",
+    "clause": "12.2"
+  },
+  "dimension-radius-with-offset": {
+    "path": "/viewports/0/entities/4",
+    "keyword": "additionalProperties",
+    "message_contains": "offset_mm",
+    "clause": "12.1"
+  },
+  "dimension-text-height": {
+    "path": "/viewports/0/entities/2/text_height_mm",
+    "keyword": "enum",
+    "message_contains": "",
+    "clause": "12.1.2"
+  },
+  "dimension-unknown-kind": {
+    "path": "/viewports/0/entities/2/kind",
+    "keyword": "enum",
+    "message_contains": "",
+    "clause": "12.1"
+  },
+  "entity-missing-layer": {
+    "path": "/viewports/0/entities/0",
+    "keyword": "required",
+    "message_contains": "layer",
+    "clause": "9.1.1"
+  },
+  "frame-missing-height": {
+    "path": "/viewports/0/frame",
+    "keyword": "required",
+    "message_contains": "height_mm",
+    "clause": "7.2.1"
+  },
+  "frame-zero-width": {
+    "path": "/viewports/0/frame/width_mm",
+    "keyword": "exclusiveMinimum",
+    "message_contains": "",
+    "clause": "7.2.1"
+  },
+  "hatch-two-point-boundary": {
+    "path": "/viewports/0/entities/0/boundary_m",
+    "keyword": "minItems",
+    "message_contains": "",
+    "clause": "10.1"
+  },
+  "hatch-unknown-pattern": {
+    "path": "/viewports/0/entities/0/pattern",
+    "keyword": "enum",
+    "message_contains": "",
+    "clause": "10.2"
+  },
+  "later-root-member": {
+    "path": "",
+    "keyword": "additionalProperties",
+    "message_contains": "bill_of_materials",
+    "clause": "4.2"
+  },
+  "leader-missing-text": {
+    "path": "/viewports/0/entities/7",
+    "keyword": "required",
+    "message_contains": "text",
+    "clause": "12.6"
+  },
+  "leader-with-line-type": {
+    "path": "/viewports/0/entities/7",
+    "keyword": "additionalProperties",
+    "message_contains": "line_type",
+    "clause": "12.6"
+  },
+  "library-ref-absolute-path": {
+    "path": "/symbol_libraries/0/path",
+    "keyword": "pattern",
+    "message_contains": "",
+    "clause": "13.3.1"
+  },
+  "library-ref-both": {
+    "path": "/symbol_libraries/0",
+    "keyword": "not",
+    "message_contains": "",
+    "clause": "13.3.1"
+  },
+  "library-ref-no-source": {
+    "path": "/symbol_libraries/0",
+    "keyword": "required",
+    "message_contains": "symbols",
+    "clause": "13.3.1"
+  },
+  "lowercase-layer-name": {
+    "path": "/viewports/0/entities/0/layer",
+    "keyword": "pattern",
+    "message_contains": "",
+    "clause": "8.5.4"
+  },
+  "missing-standard-version": {
+    "path": "",
+    "keyword": "required",
+    "message_contains": "standard_version",
+    "clause": "4.2"
+  },
+  "no-viewports": {
+    "path": "/viewports",
+    "keyword": "minItems",
+    "message_contains": "",
+    "clause": "7.1.1"
+  },
+  "non-preferred-scale": {
+    "path": "/viewports/0/scale",
+    "keyword": "enum",
+    "message_contains": "",
+    "clause": "7.3.2"
+  },
+  "north-empty-label": {
+    "path": "/viewports/0/north/label",
+    "keyword": "minLength",
+    "message_contains": "",
+    "clause": "7.10"
+  },
+  "notes-empty": {
+    "path": "/notes",
+    "keyword": "minItems",
+    "message_contains": "",
+    "clause": "14.10"
+  },
+  "point-with-three-numbers": {
+    "path": "/viewports/0/entities/0/to_m",
+    "keyword": "maxItems",
+    "message_contains": "",
+    "clause": "9.2"
+  },
+  "reference-no-title": {
+    "path": "/references/0",
+    "keyword": "required",
+    "message_contains": "title",
+    "clause": "14.10"
+  },
+  "revision-approver-too-long": {
+    "path": "/revisions/entries/0/app",
+    "keyword": "maxLength",
+    "message_contains": "",
+    "clause": "14.7"
+  },
+  "revision-bad-date-form": {
+    "path": "/revisions/entries/0/date",
+    "keyword": "pattern",
+    "message_contains": "",
+    "clause": "14.7.5"
+  },
+  "revision-bad-token": {
+    "path": "/revisions/entries/0/rev",
+    "keyword": "pattern",
+    "message_contains": "",
+    "clause": "14.7.4"
+  },
+  "revision-empty": {
+    "path": "/revisions/entries",
+    "keyword": "minItems",
+    "message_contains": "",
+    "clause": "14.7"
+  },
+  "revision-no-description": {
+    "path": "/revisions/entries/0",
+    "keyword": "required",
+    "message_contains": "description",
+    "clause": "14.7"
+  },
+  "revision-unknown-scheme": {
+    "path": "/revisions/scheme",
+    "keyword": "enum",
+    "message_contains": "",
+    "clause": "14.7.4"
+  },
+  "rotation-as-text": {
+    "path": "/viewports/0/rotation_deg",
+    "keyword": "type",
+    "message_contains": "",
+    "clause": "7.4.2"
+  },
+  "scale-as-text": {
+    "path": "/viewports/0/scale",
+    "keyword": "enum",
+    "message_contains": "",
+    "clause": "7.3.2"
+  },
+  "scale-bar-bad-unit": {
+    "path": "/viewports/0/scale_bar/unit",
+    "keyword": "enum",
+    "message_contains": "",
+    "clause": "7.9.7"
+  },
+  "scale-bar-zero-divisions": {
+    "path": "/viewports/0/scale_bar/divisions",
+    "keyword": "minimum",
+    "message_contains": "",
+    "clause": "7.9.5"
+  },
+  "strip-bad-content": {
+    "path": "/strips/0/content",
+    "keyword": "enum",
+    "message_contains": "",
+    "clause": "14.10"
+  },
+  "strip-bad-edge": {
+    "path": "/strips/0/edge",
+    "keyword": "enum",
+    "message_contains": "",
+    "clause": "14.10"
+  },
+  "strip-size-zero": {
+    "path": "/strips/0/size_mm",
+    "keyword": "exclusiveMinimum",
+    "message_contains": "",
+    "clause": "14.10"
+  },
+  "symbol-insert-line-type": {
+    "path": "/viewports/0/entities/0",
+    "keyword": "additionalProperties",
+    "message_contains": "line_type",
+    "clause": "13.3.2"
+  },
+  "symbol-insert-missing-position": {
+    "path": "/viewports/0/entities/0",
+    "keyword": "required",
+    "message_contains": "position_m",
+    "clause": "13.3.2"
+  },
+  "symbol-insert-scale-zero": {
+    "path": "/viewports/0/entities/0/scale",
+    "keyword": "exclusiveMinimum",
+    "message_contains": "",
+    "clause": "13.3.2"
+  },
+  "text-empty": {
+    "path": "/viewports/0/entities/0/text",
+    "keyword": "minLength",
+    "message_contains": "",
+    "clause": "11.3.3"
+  },
+  "text-height-not-in-series": {
+    "path": "/viewports/0/entities/0/height_mm",
+    "keyword": "enum",
+    "message_contains": "",
+    "clause": "11.2"
+  },
+  "text-outside-character-set": {
+    "path": "/viewports/0/entities/0/text",
+    "keyword": "pattern",
+    "message_contains": "",
+    "clause": "11.3.3"
+  },
+  "text-with-line-break": {
+    "path": "/viewports/0/entities/0/text",
+    "keyword": "pattern",
+    "message_contains": "",
+    "clause": "11.3.3"
+  },
+  "text-with-role": {
+    "path": "/viewports/0/entities/0",
+    "keyword": "additionalProperties",
+    "message_contains": "role",
+    "clause": "9.1.1"
+  },
+  "title-block-no-fields": {
+    "path": "/title_block",
+    "keyword": "required",
+    "message_contains": "fields",
+    "clause": "14.1"
+  },
+  "title-block-no-template": {
+    "path": "/title_block",
+    "keyword": "required",
+    "message_contains": "template_path",
+    "clause": "14.2"
+  },
+  "title-block-sheet-number-zero": {
+    "path": "/title_block/fields/sheet_number",
+    "keyword": "minimum",
+    "message_contains": "",
+    "clause": "14.4.1"
+  },
+  "title-block-text-character": {
+    "path": "/title_block/fields/title",
+    "keyword": "pattern",
+    "message_contains": "",
+    "clause": "14.4.1"
+  },
+  "title-block-unknown-field": {
+    "path": "/title_block/fields",
+    "keyword": "additionalProperties",
+    "message_contains": "approved_by",
+    "clause": "14.4.1"
+  },
+  "unknown-root-key": {
+    "path": "",
+    "keyword": "additionalProperties",
+    "message_contains": "title",
+    "clause": "4.2"
+  },
+  "unknown-viewport-key": {
+    "path": "/viewports/0",
+    "keyword": "additionalProperties",
+    "message_contains": "units",
+    "clause": "7.1.1"
+  },
+  "version-not-formed": {
+    "path": "/standard_version",
+    "keyword": "pattern",
+    "message_contains": "",
+    "clause": "18.1"
+  }
+}

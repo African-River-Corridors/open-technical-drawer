@@ -1,0 +1,54 @@
+{
+  "function": "chain_ok",
+  "checks": [
+    {
+      "id": "valid",
+      "clause": "12.8.1",
+      "input": {
+        "parts": [
+          "2.50",
+          "2.50",
+          "2.50"
+        ],
+        "overall": "7.50"
+      },
+      "expected": true
+    },
+    {
+      "id": "rounded-sum-differs",
+      "clause": "12.8.1",
+      "input": {
+        "parts": [
+          "1.25",
+          "1.25",
+          "1.25"
+        ],
+        "overall": "3.76"
+      },
+      "expected": false
+    },
+    {
+      "id": "one-part",
+      "clause": "12.8",
+      "input": {
+        "parts": [
+          "1.00"
+        ],
+        "overall": "1.00"
+      },
+      "expected": false
+    },
+    {
+      "id": "exact-decimals",
+      "clause": "12.8",
+      "input": {
+        "parts": [
+          "0.10",
+          "0.20"
+        ],
+        "overall": "0.30"
+      },
+      "expected": true
+    }
+  ]
+}

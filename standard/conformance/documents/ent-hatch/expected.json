@@ -1,0 +1,270 @@
+{
+  "result": "ok",
+  "viewports": [
+    {
+      "id": "main",
+      "scale": 100,
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 277
+      }
+    }
+  ],
+  "entities": [
+    {
+      "type": "hatch",
+      "origin": "viewport.main",
+      "layer": "HATCH",
+      "boundary_mm": [
+        [
+          165,
+          188.5
+        ],
+        [
+          265,
+          188.5
+        ],
+        [
+          265,
+          168.5
+        ],
+        [
+          165,
+          168.5
+        ]
+      ],
+      "holes_mm": [
+        [
+          [
+            185,
+            183.5
+          ],
+          [
+            195,
+            183.5
+          ],
+          [
+            195,
+            173.5
+          ],
+          [
+            185,
+            173.5
+          ]
+        ]
+      ],
+      "pattern": "solid",
+      "angle_deg": 30,
+      "width_mm": 0.18
+    },
+    {
+      "type": "hatch",
+      "origin": "viewport.main",
+      "layer": "HATCH",
+      "boundary_mm": [
+        [
+          165,
+          158.5
+        ],
+        [
+          265,
+          158.5
+        ],
+        [
+          265,
+          138.5
+        ]
+      ],
+      "holes_mm": [],
+      "pattern": "lines",
+      "angle_deg": 0,
+      "width_mm": 0.18,
+      "id": "lines"
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "from_mm": [
+        165.5,
+        158.4
+      ],
+      "to_mm": [
+        265,
+        158.4
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "from_mm": [
+        174.5,
+        156.6
+      ],
+      "to_mm": [
+        265,
+        156.6
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "from_mm": [
+        183.5,
+        154.8
+      ],
+      "to_mm": [
+        265,
+        154.8
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "from_mm": [
+        192.5,
+        153
+      ],
+      "to_mm": [
+        265,
+        153
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "from_mm": [
+        201.5,
+        151.2
+      ],
+      "to_mm": [
+        265,
+        151.2
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "from_mm": [
+        210.5,
+        149.4
+      ],
+      "to_mm": [
+        265,
+        149.4
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "from_mm": [
+        219.5,
+        147.6
+      ],
+      "to_mm": [
+        265,
+        147.6
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "from_mm": [
+        228.5,
+        145.8
+      ],
+      "to_mm": [
+        265,
+        145.8
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "from_mm": [
+        237.5,
+        144
+      ],
+      "to_mm": [
+        265,
+        144
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "from_mm": [
+        246.5,
+        142.2
+      ],
+      "to_mm": [
+        265,
+        142.2
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "from_mm": [
+        255.5,
+        140.4
+      ],
+      "to_mm": [
+        265,
+        140.4
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "from_mm": [
+        264.5,
+        138.6
+      ],
+      "to_mm": [
+        265,
+        138.6
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    }
+  ],
+  "origin_prefixes": [
+    "viewport.main"
+  ]
+}

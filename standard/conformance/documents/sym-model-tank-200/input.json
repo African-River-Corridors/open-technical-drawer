@@ -1,0 +1,209 @@
+{
+  "standard_version": "1.0",
+  "sheet": {
+    "size": "A3",
+    "orientation": "landscape"
+  },
+  "layers": [
+    {
+      "name": "EQUIP"
+    },
+    {
+      "name": "HIDDEN"
+    },
+    {
+      "name": "DIMENSIONS"
+    }
+  ],
+  "viewports": [
+    {
+      "id": "main",
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 277
+      },
+      "window": {
+        "xmin_m": 0,
+        "ymin_m": 0,
+        "xmax_m": 10,
+        "ymax_m": 8
+      },
+      "scale": 200,
+      "entities": [
+        {
+          "type": "symbol",
+          "layer": "EQUIP",
+          "library": "std",
+          "symbol": "tank",
+          "position_m": [
+            5,
+            1
+          ]
+        }
+      ]
+    }
+  ],
+  "symbol_libraries": [
+    {
+      "id": "std",
+      "symbols": {
+        "valve": {
+          "units": "paper_mm",
+          "insertion": [
+            0,
+            0
+          ],
+          "geometry": [
+            {
+              "type": "polyline",
+              "points": [
+                [
+                  -3,
+                  -2
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  3,
+                  -2
+                ],
+                [
+                  -3,
+                  2
+                ]
+              ],
+              "closed": true
+            },
+            {
+              "type": "line",
+              "from": [
+                0,
+                2
+              ],
+              "to": [
+                0,
+                4
+              ],
+              "role": "thin"
+            }
+          ],
+          "ports": [
+            {
+              "id": "in",
+              "at": [
+                -3,
+                0
+              ],
+              "direction_deg": 180
+            },
+            {
+              "id": "out",
+              "at": [
+                3,
+                0
+              ],
+              "direction_deg": 0
+            }
+          ],
+          "label_slot": {
+            "at": [
+              0,
+              -4
+            ],
+            "align_h": "centre",
+            "align_v": "top",
+            "height_mm": 2.5
+          }
+        },
+        "tank": {
+          "units": "model_m",
+          "insertion": [
+            0,
+            0
+          ],
+          "geometry": [
+            {
+              "type": "polyline",
+              "points": [
+                [
+                  -1,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  2
+                ],
+                [
+                  -1,
+                  2
+                ]
+              ],
+              "closed": true
+            },
+            {
+              "type": "circle",
+              "centre": [
+                0,
+                1
+              ],
+              "radius": 0.5
+            },
+            {
+              "type": "arc",
+              "centre": [
+                0,
+                2
+              ],
+              "radius": 1,
+              "start_deg": 0,
+              "end_deg": 180
+            },
+            {
+              "type": "hatch",
+              "boundary": [
+                [
+                  -0.2,
+                  0.2
+                ],
+                [
+                  0.2,
+                  0.2
+                ],
+                [
+                  0,
+                  0.6
+                ]
+              ],
+              "pattern": "solid",
+              "role": "thick"
+            }
+          ],
+          "ports": [
+            {
+              "id": "inlet",
+              "at": [
+                -1,
+                1
+              ],
+              "direction_deg": 180
+            }
+          ],
+          "label_slot": {
+            "at": [
+              0,
+              3.2
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

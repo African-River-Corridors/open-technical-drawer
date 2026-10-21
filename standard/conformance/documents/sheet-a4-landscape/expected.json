@@ -1,0 +1,639 @@
+{
+  "result": "ok",
+  "sheet": {
+    "size": "A4",
+    "orientation": "landscape",
+    "line_group": "0.35",
+    "width_mm": 297,
+    "height_mm": 210,
+    "drawing_space": {
+      "x_mm": 20,
+      "y_mm": 10,
+      "width_mm": 267,
+      "height_mm": 190
+    }
+  },
+  "viewports": [
+    {
+      "id": "main",
+      "scale": 100,
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 267,
+        "height_mm": 190
+      }
+    }
+  ],
+  "entities": [
+    {
+      "type": "polyline",
+      "origin": "sheet.border",
+      "layer": "TITLEBLOCK",
+      "points_mm": [
+        [
+          20,
+          10
+        ],
+        [
+          287,
+          10
+        ],
+        [
+          287,
+          200
+        ],
+        [
+          20,
+          200
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.7
+    },
+    {
+      "type": "line",
+      "origin": "sheet.centring_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        0,
+        105
+      ],
+      "to_mm": [
+        25,
+        105
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.5
+    },
+    {
+      "type": "line",
+      "origin": "sheet.centring_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        148.5,
+        0
+      ],
+      "to_mm": [
+        148.5,
+        15
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.5
+    },
+    {
+      "type": "line",
+      "origin": "sheet.centring_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        148.5,
+        210
+      ],
+      "to_mm": [
+        148.5,
+        195
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.5
+    },
+    {
+      "type": "line",
+      "origin": "sheet.centring_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        297,
+        105
+      ],
+      "to_mm": [
+        282,
+        105
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.5
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        10,
+        33.75
+      ],
+      "text": "A",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        10,
+        81.25
+      ],
+      "text": "B",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        10,
+        128.75
+      ],
+      "text": "C",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        10,
+        176.25
+      ],
+      "text": "D",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        42.25,
+        5
+      ],
+      "text": "1",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        42.25,
+        205
+      ],
+      "text": "1",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        86.75,
+        5
+      ],
+      "text": "2",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        86.75,
+        205
+      ],
+      "text": "2",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        131.25,
+        5
+      ],
+      "text": "3",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        131.25,
+        205
+      ],
+      "text": "3",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        175.75,
+        5
+      ],
+      "text": "4",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        175.75,
+        205
+      ],
+      "text": "4",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        220.25,
+        5
+      ],
+      "text": "5",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        220.25,
+        205
+      ],
+      "text": "5",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        264.75,
+        5
+      ],
+      "text": "6",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        264.75,
+        205
+      ],
+      "text": "6",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        292,
+        33.75
+      ],
+      "text": "A",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        292,
+        81.25
+      ],
+      "text": "B",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        292,
+        128.75
+      ],
+      "text": "C",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        292,
+        176.25
+      ],
+      "text": "D",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        0,
+        57.5
+      ],
+      "to_mm": [
+        20,
+        57.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        0,
+        105
+      ],
+      "to_mm": [
+        20,
+        105
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        0,
+        152.5
+      ],
+      "to_mm": [
+        20,
+        152.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        64.5,
+        0
+      ],
+      "to_mm": [
+        64.5,
+        10
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        64.5,
+        210
+      ],
+      "to_mm": [
+        64.5,
+        200
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        109,
+        0
+      ],
+      "to_mm": [
+        109,
+        10
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        109,
+        210
+      ],
+      "to_mm": [
+        109,
+        200
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        153.5,
+        0
+      ],
+      "to_mm": [
+        153.5,
+        10
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        153.5,
+        210
+      ],
+      "to_mm": [
+        153.5,
+        200
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        198,
+        0
+      ],
+      "to_mm": [
+        198,
+        10
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        198,
+        210
+      ],
+      "to_mm": [
+        198,
+        200
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        242.5,
+        0
+      ],
+      "to_mm": [
+        242.5,
+        10
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        242.5,
+        210
+      ],
+      "to_mm": [
+        242.5,
+        200
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        297,
+        57.5
+      ],
+      "to_mm": [
+        287,
+        57.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        297,
+        105
+      ],
+      "to_mm": [
+        287,
+        105
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        297,
+        152.5
+      ],
+      "to_mm": [
+        287,
+        152.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    }
+  ],
+  "origin_prefixes": [
+    "sheet."
+  ]
+}

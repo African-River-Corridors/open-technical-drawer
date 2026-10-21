@@ -1,0 +1,56 @@
+{
+  "function": "revision_seals",
+  "checks": [
+    {
+      "id": "one-entry",
+      "clause": "14.8.1",
+      "input": {
+        "entries": [
+          {
+            "rev": "A",
+            "date": "2026-01-05",
+            "description": "FIRST ISSUE",
+            "by": "AB"
+          }
+        ]
+      },
+      "expected": [
+        "sha256:ed44c9a928dd581e3690279a741e60bb1f6e24bebd2cccc91e74350f6b4b08e2"
+      ]
+    },
+    {
+      "id": "two-entries",
+      "clause": "14.8.1",
+      "input": {
+        "entries": [
+          {
+            "rev": "A",
+            "date": "2026-01-05",
+            "description": "FIRST ISSUE",
+            "by": "AB"
+          },
+          {
+            "rev": "B",
+            "date": "2026-02-10",
+            "description": "ADDED SECTION B",
+            "by": "AB",
+            "chk": "CD",
+            "app": "EF"
+          }
+        ]
+      },
+      "expected": [
+        "sha256:ed44c9a928dd581e3690279a741e60bb1f6e24bebd2cccc91e74350f6b4b08e2",
+        "sha256:9c7d9dbafc4b64d2a751dd8dbdc019805c4c0bea682349f5d1bb0ff3cb788404"
+      ]
+    },
+    {
+      "id": "empty",
+      "clause": "14.8",
+      "input": {
+        "entries": []
+      },
+      "expected": []
+    }
+  ]
+}

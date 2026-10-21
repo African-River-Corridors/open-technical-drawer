@@ -1,0 +1,246 @@
+{
+  "result": "ok",
+  "viewports": [
+    {
+      "id": "main",
+      "scale": 100,
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 277
+      }
+    }
+  ],
+  "entities": [
+    {
+      "type": "hatch",
+      "origin": "viewport.main",
+      "layer": "HATCH",
+      "boundary_mm": [
+        [
+          168,
+          183.5
+        ],
+        [
+          262,
+          183.5
+        ],
+        [
+          262,
+          154.5
+        ],
+        [
+          168,
+          154.5
+        ]
+      ],
+      "holes_mm": [
+        [
+          [
+            195,
+            176.5
+          ],
+          [
+            215,
+            176.5
+          ],
+          [
+            215,
+            164.5
+          ],
+          [
+            195,
+            164.5
+          ]
+        ]
+      ],
+      "pattern": "water",
+      "angle_deg": 0,
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "from_mm": [
+        168,
+        154.8
+      ],
+      "to_mm": [
+        262,
+        154.8
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "from_mm": [
+        168,
+        158.4
+      ],
+      "to_mm": [
+        262,
+        158.4
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "from_mm": [
+        168,
+        162
+      ],
+      "to_mm": [
+        262,
+        162
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "from_mm": [
+        168,
+        165.6
+      ],
+      "to_mm": [
+        195,
+        165.6
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "from_mm": [
+        168,
+        169.2
+      ],
+      "to_mm": [
+        195,
+        169.2
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "from_mm": [
+        168,
+        172.8
+      ],
+      "to_mm": [
+        195,
+        172.8
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "from_mm": [
+        168,
+        176.4
+      ],
+      "to_mm": [
+        195,
+        176.4
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "from_mm": [
+        168,
+        180
+      ],
+      "to_mm": [
+        262,
+        180
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "from_mm": [
+        215,
+        165.6
+      ],
+      "to_mm": [
+        262,
+        165.6
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "from_mm": [
+        215,
+        169.2
+      ],
+      "to_mm": [
+        262,
+        169.2
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "from_mm": [
+        215,
+        172.8
+      ],
+      "to_mm": [
+        262,
+        172.8
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "from_mm": [
+        215,
+        176.4
+      ],
+      "to_mm": [
+        262,
+        176.4
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    }
+  ],
+  "origin_prefixes": [
+    "viewport.main"
+  ]
+}

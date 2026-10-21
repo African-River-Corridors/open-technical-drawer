@@ -1,0 +1,65 @@
+{
+  "standard_version": "1.0",
+  "sheet": {
+    "size": "A3",
+    "orientation": "landscape"
+  },
+  "layers": [
+    {
+      "name": "OUTLINE"
+    }
+  ],
+  "viewports": [
+    {
+      "id": "main",
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 300,
+        "height_mm": 170
+      },
+      "window": {
+        "xmin_m": 0,
+        "ymin_m": 0,
+        "xmax_m": 10,
+        "ymax_m": 8
+      },
+      "scale": 100,
+      "entities": []
+    }
+  ],
+  "title_block": {
+    "template": "iso7200",
+    "fields": {
+      "owner": "EXAMPLE OWNER LTD",
+      "title": "SECTION THROUGH EXAMPLE WORK",
+      "document_number": "EXA-CIV-001"
+    }
+  },
+  "revisions": {
+    "scheme": "numeric",
+    "entries": [
+      {
+        "rev": "1",
+        "date": "2026-01-05",
+        "description": "FIRST ISSUE",
+        "by": "AB",
+        "seal": "sha256:0211a4351f03e3bb1192c3774cb2486b73642a86234a5053f1455490b823d81c"
+      },
+      {
+        "rev": "2",
+        "date": "2026-01-05",
+        "description": "SECOND ISSUE, SAME DAY",
+        "by": "AB",
+        "seal": "sha256:2129466ddb837622e75916f9e3eaecfb27066659c8d129ee853f46e7d8c7dd9a"
+      },
+      {
+        "rev": "10",
+        "date": "2026-03-01",
+        "description": "TENTH",
+        "by": "AB",
+        "seal": "sha256:26f2e8a6bf06f175545dce62685e8b39283c15bc22d2af70e57843ffa250f5b5"
+      }
+    ]
+  }
+}

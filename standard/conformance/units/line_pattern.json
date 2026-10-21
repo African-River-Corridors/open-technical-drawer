@@ -1,0 +1,140 @@
+{
+  "function": "line_pattern",
+  "checks": [
+    {
+      "id": "dashed-0.18",
+      "clause": "8.4.4",
+      "input": {
+        "line_type": "dashed",
+        "width_mm": 0.18
+      },
+      "expected": [
+        2.16,
+        -0.54
+      ]
+    },
+    {
+      "id": "dashed-0.35",
+      "clause": "8.4.4",
+      "input": {
+        "line_type": "dashed",
+        "width_mm": 0.35
+      },
+      "expected": [
+        4.2,
+        -1.05
+      ]
+    },
+    {
+      "id": "dashed-0.5",
+      "clause": "8.4.4",
+      "input": {
+        "line_type": "dashed",
+        "width_mm": 0.5
+      },
+      "expected": [
+        6,
+        -1.5
+      ]
+    },
+    {
+      "id": "chain-0.18",
+      "clause": "8.4.4",
+      "input": {
+        "line_type": "chain",
+        "width_mm": 0.18
+      },
+      "expected": [
+        4.32,
+        -0.54,
+        0.09,
+        -0.54
+      ]
+    },
+    {
+      "id": "chain-0.35",
+      "clause": "8.4.4",
+      "input": {
+        "line_type": "chain",
+        "width_mm": 0.35
+      },
+      "expected": [
+        8.4,
+        -1.05,
+        0.175,
+        -1.05
+      ]
+    },
+    {
+      "id": "chain-0.5",
+      "clause": "8.4.4",
+      "input": {
+        "line_type": "chain",
+        "width_mm": 0.5
+      },
+      "expected": [
+        12,
+        -1.5,
+        0.25,
+        -1.5
+      ]
+    },
+    {
+      "id": "chain_double_dashed-0.18",
+      "clause": "8.4.4",
+      "input": {
+        "line_type": "chain_double_dashed",
+        "width_mm": 0.18
+      },
+      "expected": [
+        4.32,
+        -0.54,
+        0.09,
+        -0.54,
+        0.09,
+        -0.54
+      ]
+    },
+    {
+      "id": "chain_double_dashed-0.35",
+      "clause": "8.4.4",
+      "input": {
+        "line_type": "chain_double_dashed",
+        "width_mm": 0.35
+      },
+      "expected": [
+        8.4,
+        -1.05,
+        0.175,
+        -1.05,
+        0.175,
+        -1.05
+      ]
+    },
+    {
+      "id": "chain_double_dashed-0.5",
+      "clause": "8.4.4",
+      "input": {
+        "line_type": "chain_double_dashed",
+        "width_mm": 0.5
+      },
+      "expected": [
+        12,
+        -1.5,
+        0.25,
+        -1.5,
+        0.25,
+        -1.5
+      ]
+    },
+    {
+      "id": "continuous",
+      "clause": "8.4",
+      "input": {
+        "line_type": "continuous",
+        "width_mm": 0.35
+      },
+      "expected": []
+    }
+  ]
+}

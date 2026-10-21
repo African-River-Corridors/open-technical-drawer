@@ -1,0 +1,50 @@
+{
+  "line-without-role": {
+    "path": "/lines/0",
+    "keyword": "required",
+    "message_contains": "role",
+    "clause": "14.2"
+  },
+  "max-rows-one": {
+    "path": "/register/max_rows",
+    "keyword": "minimum",
+    "message_contains": "",
+    "clause": "14.7.2"
+  },
+  "no-cells": {
+    "path": "/cells",
+    "keyword": "minItems",
+    "message_contains": "",
+    "clause": "14.2.2"
+  },
+  "no-register": {
+    "path": "",
+    "keyword": "required",
+    "message_contains": "register",
+    "clause": "14.2"
+  },
+  "register-five-columns": {
+    "path": "/register/columns",
+    "keyword": "minItems",
+    "message_contains": "",
+    "clause": "14.7.1"
+  },
+  "text-height-4": {
+    "path": "/cells/0/text_height_mm",
+    "keyword": "enum",
+    "message_contains": "",
+    "clause": "11.2"
+  },
+  "unknown-field": {
+    "path": "/cells/0/field",
+    "keyword": "enum",
+    "message_contains": "",
+    "clause": "14.2.2"
+  },
+  "unknown-key": {
+    "path": "",
+    "keyword": "additionalProperties",
+    "message_contains": "colour",
+    "clause": "14.2"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "standard_version": "1.0",
+  "sheet": {
+    "size": "A3",
+    "orientation": "landscape"
+  },
+  "layers": [
+    {
+      "name": "CENTRE"
+    }
+  ],
+  "viewports": [
+    {
+      "id": "main",
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 277
+      },
+      "window": {
+        "xmin_m": 0,
+        "ymin_m": 0,
+        "xmax_m": 10,
+        "ymax_m": 8
+      },
+      "scale": 100,
+      "entities": [
+        {
+          "type": "centre_line",
+          "layer": "CENTRE",
+          "from_m": [
+            5,
+            -1
+          ],
+          "to_m": [
+            5,
+            9
+          ]
+        },
+        {
+          "type": "centre_line",
+          "layer": "CENTRE",
+          "id": "plain",
+          "role": "thick",
+          "line_type": "continuous",
+          "from_m": [
+            0,
+            4
+          ],
+          "to_m": [
+            10,
+            4
+          ]
+        }
+      ]
+    }
+  ]
+}

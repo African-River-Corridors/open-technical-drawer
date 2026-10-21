@@ -1,0 +1,77 @@
+{
+  "function": "register_layout",
+  "checks": [
+    {
+      "id": "three-of-eight",
+      "clause": "14.7.2",
+      "input": {
+        "entries": 3,
+        "max_rows": 8
+      },
+      "expected": {
+        "rows": 3,
+        "omitted": 0
+      }
+    },
+    {
+      "id": "full",
+      "clause": "14.7.2",
+      "input": {
+        "entries": 8,
+        "max_rows": 8
+      },
+      "expected": {
+        "rows": 8,
+        "omitted": 0
+      }
+    },
+    {
+      "id": "nine",
+      "clause": "14.7.2",
+      "input": {
+        "entries": 9,
+        "max_rows": 8
+      },
+      "expected": {
+        "rows": 8,
+        "omitted": 2
+      }
+    },
+    {
+      "id": "eleven",
+      "clause": "14.7.2",
+      "input": {
+        "entries": 11,
+        "max_rows": 8
+      },
+      "expected": {
+        "rows": 8,
+        "omitted": 4
+      }
+    },
+    {
+      "id": "one-of-three",
+      "clause": "14.7.2",
+      "input": {
+        "entries": 1,
+        "max_rows": 3
+      },
+      "expected": {
+        "rows": 1,
+        "omitted": 0
+      }
+    },
+    {
+      "id": "five-of-three",
+      "clause": "14.7.2",
+      "input": {
+        "entries": 5,
+        "max_rows": 3
+      },
+      "expected": {
+        "rows": 3,
+        "omitted": 3
+      }
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "result": "ok",
+  "viewports": [
+    {
+      "id": "main",
+      "scale": 100,
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 277
+      }
+    }
+  ],
+  "entities": [
+    {
+      "type": "circle",
+      "origin": "viewport.main",
+      "layer": "HIDDEN",
+      "centre_mm": [
+        185,
+        168.5
+      ],
+      "radius_mm": 2.5,
+      "line_type": "dashed",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main",
+      "layer": "OUTLINE",
+      "centre_mm": [
+        215,
+        148.5
+      ],
+      "radius_mm": 15,
+      "line_type": "continuous",
+      "width_mm": 0.35
+    }
+  ],
+  "origin_prefixes": [
+    "viewport.main"
+  ]
+}

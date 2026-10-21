@@ -1,0 +1,48 @@
+{
+  "standard_version": "1.0",
+  "sheet": {
+    "size": "A3",
+    "orientation": "landscape"
+  },
+  "layers": [
+    {
+      "name": "OUTLINE"
+    }
+  ],
+  "viewports": [
+    {
+      "id": "main",
+      "frame": {
+        "x_mm": 80,
+        "y_mm": 10,
+        "width_mm": 270,
+        "height_mm": 170
+      },
+      "window": {
+        "xmin_m": 0,
+        "ymin_m": 0,
+        "xmax_m": 10,
+        "ymax_m": 8
+      },
+      "scale": 100,
+      "entities": []
+    }
+  ],
+  "strips": [
+    {
+      "id": "a",
+      "edge": "right",
+      "size_mm": 50,
+      "content": "notes"
+    },
+    {
+      "id": "b",
+      "edge": "left",
+      "size_mm": 50,
+      "content": "notes"
+    }
+  ],
+  "notes": [
+    "NOTE ONE."
+  ]
+}

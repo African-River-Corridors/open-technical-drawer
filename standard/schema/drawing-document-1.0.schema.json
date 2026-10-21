@@ -1,0 +1,2303 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/African-River-Corridors/technical_drawings_for_agents/docs/standard/schema/drawing-document-1.0.schema.json",
+  "title": "Drawing document, Drawing Format Standard 1.0",
+  "description": "Structure of a drawing document. Model coordinates are metres (+y up). Paper values are millimetres. The unit of every number is the end of its member name: _m, _mm or _deg. See docs/standard/drawing-format-standard.md. Rules that a schema cannot state are listed in clause 18.5.",
+  "type": "object",
+  "x-clause": "4.2",
+  "required": [
+    "standard_version",
+    "sheet",
+    "layers",
+    "viewports"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "standard_version": {
+      "description": "The version of the standard that the document follows, as MAJOR.MINOR. A reader checks that it can read this version (clause 18.2).",
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+$",
+      "x-clause": "18.1"
+    },
+    "sheet": {
+      "description": "Size, orientation and line group of the sheet.",
+      "type": "object",
+      "x-clause": "6.1",
+      "required": [
+        "size"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "size": {
+          "enum": [
+            "A0",
+            "A1",
+            "A2",
+            "A3",
+            "A4"
+          ],
+          "x-clause": "6.1.3"
+        },
+        "orientation": {
+          "enum": [
+            "landscape",
+            "portrait"
+          ],
+          "default": "landscape",
+          "x-clause": "6.2.1"
+        },
+        "line_group": {
+          "description": "Must equal the group of the sheet size (clause 8.2.2).",
+          "enum": [
+            "0.35",
+            "0.5",
+            "0.7"
+          ],
+          "x-clause": "8.2.1"
+        }
+      }
+    },
+    "layers": {
+      "description": "The layers in use. A standard layer is declared by name. A custom layer also gives role, line type and CAD colour.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/layer_declaration"
+      },
+      "x-clause": "8.5"
+    },
+    "viewports": {
+      "description": "One or more viewports.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/viewport"
+      },
+      "x-clause": "7.1.1"
+    },
+    "symbol_libraries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/symbol_library_ref"
+      },
+      "x-clause": "13.3.1"
+    },
+    "title_block": {
+      "type": "object",
+      "x-clause": "14.1",
+      "required": [
+        "fields"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "template": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,63}$",
+          "x-clause": "14.2"
+        },
+        "template_path": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[^/\\\\:][^\\\\:]*$",
+          "x-clause": "14.2"
+        },
+        "fields": {
+          "type": "object",
+          "x-clause": "14.4.1",
+          "additionalProperties": false,
+          "properties": {
+            "owner": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120,
+              "pattern": "^[ -~°±×µ²³·–Ø]+$",
+              "x-clause": "14.4.1"
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120,
+              "pattern": "^[ -~°±×µ²³·–Ø]+$",
+              "x-clause": "14.4.1"
+            },
+            "supplementary_title": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120,
+              "pattern": "^[ -~°±×µ²³·–Ø]+$",
+              "x-clause": "14.4.1"
+            },
+            "document_number": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120,
+              "pattern": "^[ -~°±×µ²³·–Ø]+$",
+              "x-clause": "14.4.1"
+            },
+            "document_type": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120,
+              "pattern": "^[ -~°±×µ²³·–Ø]+$",
+              "x-clause": "14.4.1"
+            },
+            "language": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120,
+              "pattern": "^[ -~°±×µ²³·–Ø]+$",
+              "x-clause": "14.4.1"
+            },
+            "department": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120,
+              "pattern": "^[ -~°±×µ²³·–Ø]+$",
+              "x-clause": "14.4.1"
+            },
+            "sheet_number": {
+              "type": "integer",
+              "minimum": 1,
+              "x-clause": "14.4.1"
+            },
+            "sheet_count": {
+              "type": "integer",
+              "minimum": 1,
+              "x-clause": "14.4.1"
+            }
+          }
+        }
+      },
+      "if": {
+        "required": [
+          "template"
+        ]
+      },
+      "then": {
+        "not": {
+          "required": [
+            "template_path"
+          ]
+        },
+        "x-clause": "14.2"
+      },
+      "else": {
+        "required": [
+          "template_path"
+        ],
+        "x-clause": "14.2"
+      }
+    },
+    "revisions": {
+      "type": "object",
+      "x-clause": "14.7",
+      "required": [
+        "entries"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "scheme": {
+          "enum": [
+            "alpha",
+            "numeric"
+          ],
+          "default": "alpha",
+          "x-clause": "14.7.4"
+        },
+        "entries": {
+          "type": "array",
+          "minItems": 1,
+          "x-clause": "14.7",
+          "items": {
+            "type": "object",
+            "x-clause": "14.7",
+            "required": [
+              "rev",
+              "date",
+              "description",
+              "by"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "rev": {
+                "type": "string",
+                "pattern": "^([A-Z]+|[0-9]+)$",
+                "x-clause": "14.7.4"
+              },
+              "date": {
+                "type": "string",
+                "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+                "x-clause": "14.7.5"
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200,
+                "pattern": "^[ -~°±×µ²³·–Ø]+$",
+                "x-clause": "14.7"
+              },
+              "by": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 12,
+                "pattern": "^[ -~°±×µ²³·–Ø]+$",
+                "x-clause": "14.7"
+              },
+              "chk": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 12,
+                "pattern": "^[ -~°±×µ²³·–Ø]+$",
+                "x-clause": "14.7"
+              },
+              "app": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 12,
+                "pattern": "^[ -~°±×µ²³·–Ø]+$",
+                "x-clause": "14.7"
+              },
+              "seal": {
+                "type": "string",
+                "pattern": "^sha256:[0-9a-f]{64}$",
+                "x-clause": "14.7.6"
+              }
+            }
+          }
+        }
+      }
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "concept",
+        "issued"
+      ],
+      "x-clause": "14.9"
+    },
+    "strips": {
+      "type": "array",
+      "x-clause": "14.10",
+      "items": {
+        "type": "object",
+        "x-clause": "14.10",
+        "required": [
+          "id",
+          "edge",
+          "size_mm",
+          "content"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "$ref": "#/$defs/entity_id"
+          },
+          "edge": {
+            "enum": [
+              "left",
+              "right",
+              "top",
+              "bottom"
+            ],
+            "x-clause": "14.10"
+          },
+          "size_mm": {
+            "type": "number",
+            "exclusiveMinimum": 0,
+            "x-clause": "14.10"
+          },
+          "content": {
+            "enum": [
+              "notes",
+              "references"
+            ],
+            "x-clause": "14.10"
+          }
+        }
+      }
+    },
+    "notes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 120,
+        "pattern": "^[ -~°±×µ²³·–Ø]+$",
+        "x-clause": "14.10.1"
+      },
+      "x-clause": "14.10"
+    },
+    "references": {
+      "type": "array",
+      "minItems": 1,
+      "x-clause": "14.10",
+      "items": {
+        "type": "object",
+        "x-clause": "14.10",
+        "required": [
+          "document_number",
+          "title"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "document_number": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120,
+            "pattern": "^[ -~°±×µ²³·–Ø]+$",
+            "x-clause": "14.10.1"
+          },
+          "revision": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 12,
+            "pattern": "^[ -~°±×µ²³·–Ø]+$",
+            "x-clause": "14.10.1"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120,
+            "pattern": "^[ -~°±×µ²³·–Ø]+$",
+            "x-clause": "14.10.1"
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "point_m": {
+      "description": "A point in model space: x then y, in metres.",
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "number",
+        "x-clause": "9.2"
+      },
+      "x-clause": "9.2"
+    },
+    "layer_name": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9_]{0,30}$",
+      "x-clause": "8.5.4"
+    },
+    "role": {
+      "enum": [
+        "extra_thick",
+        "thick",
+        "thin"
+      ],
+      "x-clause": "8.1"
+    },
+    "line_type": {
+      "enum": [
+        "continuous",
+        "dashed",
+        "chain",
+        "chain_double_dashed"
+      ],
+      "x-clause": "8.4"
+    },
+    "entity_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,63}$",
+      "x-clause": "9.8"
+    },
+    "layer_declaration": {
+      "type": "object",
+      "x-clause": "8.5",
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/layer_name"
+        },
+        "role": {
+          "$ref": "#/$defs/role"
+        },
+        "line_type": {
+          "$ref": "#/$defs/line_type"
+        },
+        "aci": {
+          "description": "CAD colour number, 1 to 255.",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 255,
+          "x-clause": "8.6.2"
+        }
+      },
+      "if": {
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "not": {
+              "enum": [
+                "OUTLINE",
+                "OBJECT",
+                "HIDDEN",
+                "CENTRE",
+                "DIMENSIONS",
+                "ANNO",
+                "TEXT",
+                "HATCH",
+                "GRID",
+                "TITLEBLOCK",
+                "FDN",
+                "EQUIP",
+                "NOZZLE",
+                "PIPE",
+                "ELEC",
+                "WATER",
+                "ZONE",
+                "ACCESS"
+              ]
+            }
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "role",
+          "line_type",
+          "aci"
+        ],
+        "x-clause": "8.5.4"
+      }
+    },
+    "viewport": {
+      "type": "object",
+      "x-clause": "7.1.1",
+      "required": [
+        "id",
+        "frame",
+        "window",
+        "scale",
+        "entities"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "frame": {
+          "description": "The frame on paper, in millimetres. x_mm and y_mm are the top-left corner.",
+          "type": "object",
+          "x-clause": "7.2.1",
+          "required": [
+            "x_mm",
+            "y_mm",
+            "width_mm",
+            "height_mm"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "x_mm": {
+              "type": "number"
+            },
+            "y_mm": {
+              "type": "number"
+            },
+            "width_mm": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "x-clause": "7.2.1"
+            },
+            "height_mm": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "x-clause": "7.2.1"
+            }
+          }
+        },
+        "window": {
+          "description": "The model window, in metres.",
+          "type": "object",
+          "x-clause": "7.6.1",
+          "required": [
+            "xmin_m",
+            "ymin_m",
+            "xmax_m",
+            "ymax_m"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "xmin_m": {
+              "type": "number"
+            },
+            "ymin_m": {
+              "type": "number"
+            },
+            "xmax_m": {
+              "type": "number"
+            },
+            "ymax_m": {
+              "type": "number"
+            }
+          }
+        },
+        "scale": {
+          "description": "The denominator N of the ratio 1:N (an ISO preferred ratio or a house ratio), or the word fit.",
+          "enum": [
+            1,
+            2,
+            5,
+            10,
+            20,
+            25,
+            50,
+            100,
+            200,
+            250,
+            500,
+            1000,
+            1250,
+            2000,
+            2500,
+            5000,
+            10000,
+            20000,
+            50000,
+            100000,
+            "fit"
+          ],
+          "x-clause": "7.3.2"
+        },
+        "rotation_deg": {
+          "type": "number",
+          "default": 0,
+          "x-clause": "7.4.2"
+        },
+        "scale_bar": {
+          "description": "An optional derived scale bar. An empty object asks for the derived length.",
+          "type": "object",
+          "x-clause": "7.9",
+          "additionalProperties": false,
+          "properties": {
+            "length_m": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "x-clause": "7.9.4"
+            },
+            "divisions": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 5,
+              "x-clause": "7.9.5"
+            },
+            "unit": {
+              "enum": [
+                "m",
+                "km"
+              ],
+              "default": "m",
+              "x-clause": "7.9.7"
+            }
+          }
+        },
+        "north": {
+          "description": "An optional north arrow.",
+          "type": "object",
+          "x-clause": "7.10",
+          "additionalProperties": false,
+          "properties": {
+            "model_bearing_deg": {
+              "type": "number",
+              "default": 0,
+              "x-clause": "7.10.1"
+            },
+            "label": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 8,
+              "default": "N",
+              "x-clause": "7.10"
+            }
+          }
+        },
+        "entities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/entity"
+          },
+          "x-clause": "9.1"
+        }
+      }
+    },
+    "entity": {
+      "type": "object",
+      "x-clause": "9.1",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "line",
+            "polyline",
+            "arc",
+            "circle",
+            "centre_line",
+            "hatch",
+            "text",
+            "dimension",
+            "leader",
+            "symbol"
+          ],
+          "x-clause": "9.1"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "const": "line"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/entity_line"
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "const": "polyline"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/entity_polyline"
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "const": "arc"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/entity_arc"
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "const": "circle"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/entity_circle"
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "const": "centre_line"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/entity_centre_line"
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "const": "hatch"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/entity_hatch"
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "const": "text"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/entity_text"
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "const": "dimension"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/entity_dimension"
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "const": "leader"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/entity_leader"
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "const": "symbol"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/entity_symbol"
+          }
+        }
+      ]
+    },
+    "entity_line": {
+      "required": [
+        "type",
+        "layer",
+        "from_m",
+        "to_m"
+      ],
+      "properties": {
+        "type": {
+          "const": "line",
+          "x-clause": "9.1"
+        },
+        "layer": {
+          "$ref": "#/$defs/layer_name"
+        },
+        "id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "role": {
+          "$ref": "#/$defs/role"
+        },
+        "line_type": {
+          "$ref": "#/$defs/line_type"
+        },
+        "from_m": {
+          "$ref": "#/$defs/point_m"
+        },
+        "to_m": {
+          "$ref": "#/$defs/point_m"
+        }
+      },
+      "x-clause": "9.1.1",
+      "type": "object",
+      "additionalProperties": false
+    },
+    "entity_centre_line": {
+      "required": [
+        "type",
+        "layer",
+        "from_m",
+        "to_m"
+      ],
+      "properties": {
+        "type": {
+          "const": "centre_line",
+          "x-clause": "9.1"
+        },
+        "layer": {
+          "$ref": "#/$defs/layer_name"
+        },
+        "id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "role": {
+          "$ref": "#/$defs/role"
+        },
+        "line_type": {
+          "$ref": "#/$defs/line_type"
+        },
+        "from_m": {
+          "$ref": "#/$defs/point_m"
+        },
+        "to_m": {
+          "$ref": "#/$defs/point_m"
+        }
+      },
+      "x-clause": "9.1.1",
+      "type": "object",
+      "additionalProperties": false
+    },
+    "entity_polyline": {
+      "required": [
+        "type",
+        "layer",
+        "points_m"
+      ],
+      "properties": {
+        "type": {
+          "const": "polyline",
+          "x-clause": "9.1"
+        },
+        "layer": {
+          "$ref": "#/$defs/layer_name"
+        },
+        "id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "role": {
+          "$ref": "#/$defs/role"
+        },
+        "line_type": {
+          "$ref": "#/$defs/line_type"
+        },
+        "points_m": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "$ref": "#/$defs/point_m"
+          },
+          "x-clause": "9.4"
+        },
+        "closed": {
+          "type": "boolean",
+          "default": false,
+          "x-clause": "9.4"
+        }
+      },
+      "x-clause": "9.1.1",
+      "type": "object",
+      "additionalProperties": false
+    },
+    "entity_arc": {
+      "required": [
+        "type",
+        "layer",
+        "centre_m",
+        "radius_m",
+        "start_deg",
+        "end_deg"
+      ],
+      "properties": {
+        "type": {
+          "const": "arc",
+          "x-clause": "9.1"
+        },
+        "layer": {
+          "$ref": "#/$defs/layer_name"
+        },
+        "id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "role": {
+          "$ref": "#/$defs/role"
+        },
+        "line_type": {
+          "$ref": "#/$defs/line_type"
+        },
+        "centre_m": {
+          "$ref": "#/$defs/point_m"
+        },
+        "radius_m": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "x-clause": "9.5"
+        },
+        "start_deg": {
+          "type": "number",
+          "x-clause": "9.5"
+        },
+        "end_deg": {
+          "type": "number",
+          "x-clause": "9.5"
+        }
+      },
+      "x-clause": "9.1.1",
+      "type": "object",
+      "additionalProperties": false
+    },
+    "entity_circle": {
+      "required": [
+        "type",
+        "layer",
+        "centre_m",
+        "radius_m"
+      ],
+      "properties": {
+        "type": {
+          "const": "circle",
+          "x-clause": "9.1"
+        },
+        "layer": {
+          "$ref": "#/$defs/layer_name"
+        },
+        "id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "role": {
+          "$ref": "#/$defs/role"
+        },
+        "line_type": {
+          "$ref": "#/$defs/line_type"
+        },
+        "centre_m": {
+          "$ref": "#/$defs/point_m"
+        },
+        "radius_m": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "x-clause": "9.6"
+        }
+      },
+      "x-clause": "9.1.1",
+      "type": "object",
+      "additionalProperties": false
+    },
+    "entity_hatch": {
+      "required": [
+        "type",
+        "layer",
+        "boundary_m",
+        "pattern"
+      ],
+      "properties": {
+        "type": {
+          "const": "hatch",
+          "x-clause": "9.1"
+        },
+        "layer": {
+          "$ref": "#/$defs/layer_name"
+        },
+        "id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "role": {
+          "$ref": "#/$defs/role"
+        },
+        "boundary_m": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "$ref": "#/$defs/point_m"
+          },
+          "x-clause": "10.1"
+        },
+        "holes_m": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "minItems": 3,
+            "items": {
+              "$ref": "#/$defs/point_m"
+            },
+            "x-clause": "10.1"
+          },
+          "x-clause": "10.1"
+        },
+        "pattern": {
+          "enum": [
+            "solid",
+            "lines",
+            "concrete",
+            "rockfill",
+            "soil",
+            "water"
+          ],
+          "x-clause": "10.2"
+        },
+        "angle_deg": {
+          "type": "number",
+          "default": 0,
+          "x-clause": "10.1"
+        }
+      },
+      "x-clause": "9.1.1",
+      "type": "object",
+      "additionalProperties": false
+    },
+    "entity_text": {
+      "required": [
+        "type",
+        "layer",
+        "anchor_m",
+        "text",
+        "height_mm"
+      ],
+      "properties": {
+        "type": {
+          "const": "text",
+          "x-clause": "9.1"
+        },
+        "layer": {
+          "$ref": "#/$defs/layer_name"
+        },
+        "id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "anchor_m": {
+          "$ref": "#/$defs/point_m"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200,
+          "pattern": "^[ -~°±×µ²³·–Ø]+$",
+          "x-clause": "11.3.3",
+          "description": "One line, in the character set of clause 11.6.2."
+        },
+        "height_mm": {
+          "enum": [
+            2.5,
+            3.5,
+            5,
+            7,
+            10,
+            14,
+            20
+          ],
+          "x-clause": "11.2"
+        },
+        "rotation_deg": {
+          "type": "number",
+          "default": 0,
+          "x-clause": "11.3.2"
+        },
+        "align_h": {
+          "enum": [
+            "left",
+            "centre",
+            "right"
+          ],
+          "default": "left",
+          "x-clause": "11.3.1"
+        },
+        "align_v": {
+          "enum": [
+            "baseline",
+            "middle",
+            "top"
+          ],
+          "default": "baseline",
+          "x-clause": "11.3.1"
+        }
+      },
+      "x-clause": "9.1.1",
+      "type": "object",
+      "additionalProperties": false
+    },
+    "point_spec": {
+      "description": "A model point: either a reference to a place of an entity of the same viewport, or a point in metres.",
+      "type": "object",
+      "x-clause": "12.2",
+      "additionalProperties": false,
+      "properties": {
+        "ref": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "at": {
+          "type": "string",
+          "pattern": "^(start|end|centre|vertex:(0|[1-9][0-9]*)|port:[A-Za-z][A-Za-z0-9_.-]{0,63})$",
+          "x-clause": "12.2"
+        },
+        "point_m": {
+          "$ref": "#/$defs/point_m"
+        }
+      },
+      "if": {
+        "required": [
+          "ref"
+        ]
+      },
+      "then": {
+        "required": [
+          "at"
+        ],
+        "not": {
+          "required": [
+            "point_m"
+          ]
+        },
+        "x-clause": "12.2"
+      },
+      "else": {
+        "required": [
+          "point_m"
+        ],
+        "not": {
+          "required": [
+            "at"
+          ]
+        },
+        "x-clause": "12.2"
+      }
+    },
+    "dimension_linear": {
+      "type": "object",
+      "x-clause": "12.1",
+      "required": [
+        "type",
+        "layer",
+        "kind",
+        "orientation",
+        "from",
+        "to",
+        "offset_mm"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "dimension",
+          "x-clause": "9.1"
+        },
+        "layer": {
+          "$ref": "#/$defs/layer_name"
+        },
+        "id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "role": {
+          "$ref": "#/$defs/role"
+        },
+        "kind": {
+          "const": "linear",
+          "x-clause": "12.1"
+        },
+        "unit": {
+          "enum": [
+            "m",
+            "mm"
+          ],
+          "default": "m",
+          "x-clause": "12.1.1"
+        },
+        "decimals": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3,
+          "x-clause": "12.1.1"
+        },
+        "text_height_mm": {
+          "enum": [
+            2.5,
+            3.5,
+            5,
+            7,
+            10,
+            14,
+            20
+          ],
+          "default": 3.5,
+          "x-clause": "12.1.2"
+        },
+        "chain": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "chain_role": {
+          "enum": [
+            "part",
+            "overall"
+          ],
+          "x-clause": "12.8"
+        },
+        "orientation": {
+          "enum": [
+            "horizontal",
+            "vertical"
+          ],
+          "x-clause": "12.4"
+        },
+        "from": {
+          "$ref": "#/$defs/point_spec"
+        },
+        "to": {
+          "$ref": "#/$defs/point_spec"
+        },
+        "offset_mm": {
+          "type": "number",
+          "x-clause": "12.4.2"
+        }
+      },
+      "dependentRequired": {
+        "chain": [
+          "chain_role"
+        ],
+        "chain_role": [
+          "chain"
+        ]
+      }
+    },
+    "dimension_aligned": {
+      "type": "object",
+      "x-clause": "12.1",
+      "required": [
+        "type",
+        "layer",
+        "kind",
+        "from",
+        "to",
+        "offset_mm"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "dimension",
+          "x-clause": "9.1"
+        },
+        "layer": {
+          "$ref": "#/$defs/layer_name"
+        },
+        "id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "role": {
+          "$ref": "#/$defs/role"
+        },
+        "kind": {
+          "const": "aligned",
+          "x-clause": "12.1"
+        },
+        "unit": {
+          "enum": [
+            "m",
+            "mm"
+          ],
+          "default": "m",
+          "x-clause": "12.1.1"
+        },
+        "decimals": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3,
+          "x-clause": "12.1.1"
+        },
+        "text_height_mm": {
+          "enum": [
+            2.5,
+            3.5,
+            5,
+            7,
+            10,
+            14,
+            20
+          ],
+          "default": 3.5,
+          "x-clause": "12.1.2"
+        },
+        "chain": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "chain_role": {
+          "enum": [
+            "part",
+            "overall"
+          ],
+          "x-clause": "12.8"
+        },
+        "from": {
+          "$ref": "#/$defs/point_spec"
+        },
+        "to": {
+          "$ref": "#/$defs/point_spec"
+        },
+        "offset_mm": {
+          "type": "number",
+          "x-clause": "12.4.2"
+        }
+      },
+      "dependentRequired": {
+        "chain": [
+          "chain_role"
+        ],
+        "chain_role": [
+          "chain"
+        ]
+      }
+    },
+    "dimension_radius": {
+      "type": "object",
+      "x-clause": "12.1",
+      "required": [
+        "type",
+        "layer",
+        "kind",
+        "of"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "dimension",
+          "x-clause": "9.1"
+        },
+        "layer": {
+          "$ref": "#/$defs/layer_name"
+        },
+        "id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "role": {
+          "$ref": "#/$defs/role"
+        },
+        "kind": {
+          "const": "radius",
+          "x-clause": "12.1"
+        },
+        "unit": {
+          "enum": [
+            "m",
+            "mm"
+          ],
+          "default": "m",
+          "x-clause": "12.1.1"
+        },
+        "decimals": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3,
+          "x-clause": "12.1.1"
+        },
+        "text_height_mm": {
+          "enum": [
+            2.5,
+            3.5,
+            5,
+            7,
+            10,
+            14,
+            20
+          ],
+          "default": 3.5,
+          "x-clause": "12.1.2"
+        },
+        "chain": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "chain_role": {
+          "enum": [
+            "part",
+            "overall"
+          ],
+          "x-clause": "12.8"
+        },
+        "of": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "direction_deg": {
+          "type": "number",
+          "default": 45,
+          "x-clause": "12.5.1"
+        }
+      },
+      "dependentRequired": {
+        "chain": [
+          "chain_role"
+        ],
+        "chain_role": [
+          "chain"
+        ]
+      }
+    },
+    "dimension_diameter": {
+      "type": "object",
+      "x-clause": "12.1",
+      "required": [
+        "type",
+        "layer",
+        "kind",
+        "of"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "dimension",
+          "x-clause": "9.1"
+        },
+        "layer": {
+          "$ref": "#/$defs/layer_name"
+        },
+        "id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "role": {
+          "$ref": "#/$defs/role"
+        },
+        "kind": {
+          "const": "diameter",
+          "x-clause": "12.1"
+        },
+        "unit": {
+          "enum": [
+            "m",
+            "mm"
+          ],
+          "default": "m",
+          "x-clause": "12.1.1"
+        },
+        "decimals": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3,
+          "x-clause": "12.1.1"
+        },
+        "text_height_mm": {
+          "enum": [
+            2.5,
+            3.5,
+            5,
+            7,
+            10,
+            14,
+            20
+          ],
+          "default": 3.5,
+          "x-clause": "12.1.2"
+        },
+        "chain": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "chain_role": {
+          "enum": [
+            "part",
+            "overall"
+          ],
+          "x-clause": "12.8"
+        },
+        "of": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "direction_deg": {
+          "type": "number",
+          "default": 45,
+          "x-clause": "12.5.1"
+        }
+      },
+      "dependentRequired": {
+        "chain": [
+          "chain_role"
+        ],
+        "chain_role": [
+          "chain"
+        ]
+      }
+    },
+    "dimension_angle": {
+      "type": "object",
+      "x-clause": "12.1",
+      "required": [
+        "type",
+        "layer",
+        "kind",
+        "vertex",
+        "from",
+        "to",
+        "arc_radius_mm"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "dimension",
+          "x-clause": "9.1"
+        },
+        "layer": {
+          "$ref": "#/$defs/layer_name"
+        },
+        "id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "role": {
+          "$ref": "#/$defs/role"
+        },
+        "kind": {
+          "const": "angle",
+          "x-clause": "12.1"
+        },
+        "unit": {
+          "enum": [
+            "m",
+            "mm"
+          ],
+          "default": "m",
+          "x-clause": "12.1.1"
+        },
+        "decimals": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3,
+          "x-clause": "12.1.1"
+        },
+        "text_height_mm": {
+          "enum": [
+            2.5,
+            3.5,
+            5,
+            7,
+            10,
+            14,
+            20
+          ],
+          "default": 3.5,
+          "x-clause": "12.1.2"
+        },
+        "chain": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "chain_role": {
+          "enum": [
+            "part",
+            "overall"
+          ],
+          "x-clause": "12.8"
+        },
+        "vertex": {
+          "$ref": "#/$defs/point_spec"
+        },
+        "from": {
+          "$ref": "#/$defs/point_spec"
+        },
+        "to": {
+          "$ref": "#/$defs/point_spec"
+        },
+        "arc_radius_mm": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "x-clause": "12.5.4"
+        }
+      },
+      "dependentRequired": {
+        "chain": [
+          "chain_role"
+        ],
+        "chain_role": [
+          "chain"
+        ]
+      }
+    },
+    "entity_dimension": {
+      "type": "object",
+      "x-clause": "12.1",
+      "required": [
+        "kind"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "linear",
+            "aligned",
+            "radius",
+            "diameter",
+            "angle"
+          ],
+          "x-clause": "12.1"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": [
+              "kind"
+            ],
+            "properties": {
+              "kind": {
+                "const": "linear"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/dimension_linear"
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "kind"
+            ],
+            "properties": {
+              "kind": {
+                "const": "aligned"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/dimension_aligned"
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "kind"
+            ],
+            "properties": {
+              "kind": {
+                "const": "radius"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/dimension_radius"
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "kind"
+            ],
+            "properties": {
+              "kind": {
+                "const": "diameter"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/dimension_diameter"
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "kind"
+            ],
+            "properties": {
+              "kind": {
+                "const": "angle"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/dimension_angle"
+          }
+        }
+      ]
+    },
+    "entity_leader": {
+      "type": "object",
+      "x-clause": "12.6",
+      "required": [
+        "type",
+        "layer",
+        "from",
+        "label_at_m",
+        "text"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "leader",
+          "x-clause": "9.1"
+        },
+        "layer": {
+          "$ref": "#/$defs/layer_name"
+        },
+        "id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "role": {
+          "$ref": "#/$defs/role"
+        },
+        "from": {
+          "$ref": "#/$defs/point_spec"
+        },
+        "label_at_m": {
+          "$ref": "#/$defs/point_m"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200,
+          "pattern": "^[ -~°±×µ²³·–Ø]+$",
+          "x-clause": "11.3.3",
+          "description": "One line, in the character set of clause 11.6.2."
+        },
+        "text_height_mm": {
+          "enum": [
+            2.5,
+            3.5,
+            5,
+            7,
+            10,
+            14,
+            20
+          ],
+          "default": 3.5,
+          "x-clause": "12.6"
+        }
+      }
+    },
+    "symbol_part_line": {
+      "type": "object",
+      "x-clause": "13.2.2",
+      "required": [
+        "type",
+        "from",
+        "to"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "line",
+          "x-clause": "13.2.2"
+        },
+        "from": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "number",
+            "x-clause": "13.2.1"
+          },
+          "x-clause": "13.2.1"
+        },
+        "to": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "number",
+            "x-clause": "13.2.1"
+          },
+          "x-clause": "13.2.1"
+        },
+        "role": {
+          "$ref": "#/$defs/role"
+        },
+        "line_type": {
+          "$ref": "#/$defs/line_type"
+        }
+      }
+    },
+    "symbol_part_polyline": {
+      "type": "object",
+      "x-clause": "13.2.2",
+      "required": [
+        "type",
+        "points"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "polyline",
+          "x-clause": "13.2.2"
+        },
+        "points": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "type": "number",
+              "x-clause": "13.2.1"
+            },
+            "x-clause": "13.2.1"
+          },
+          "x-clause": "13.2.2"
+        },
+        "closed": {
+          "type": "boolean",
+          "default": false,
+          "x-clause": "13.2.2"
+        },
+        "role": {
+          "$ref": "#/$defs/role"
+        },
+        "line_type": {
+          "$ref": "#/$defs/line_type"
+        }
+      }
+    },
+    "symbol_part_arc": {
+      "type": "object",
+      "x-clause": "13.2.2",
+      "required": [
+        "type",
+        "centre",
+        "radius",
+        "start_deg",
+        "end_deg"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "arc",
+          "x-clause": "13.2.2"
+        },
+        "centre": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "number",
+            "x-clause": "13.2.1"
+          },
+          "x-clause": "13.2.1"
+        },
+        "radius": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "x-clause": "13.2.2"
+        },
+        "start_deg": {
+          "type": "number",
+          "x-clause": "13.2.2"
+        },
+        "end_deg": {
+          "type": "number",
+          "x-clause": "13.2.2"
+        },
+        "role": {
+          "$ref": "#/$defs/role"
+        },
+        "line_type": {
+          "$ref": "#/$defs/line_type"
+        }
+      }
+    },
+    "symbol_part_circle": {
+      "type": "object",
+      "x-clause": "13.2.2",
+      "required": [
+        "type",
+        "centre",
+        "radius"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "circle",
+          "x-clause": "13.2.2"
+        },
+        "centre": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "number",
+            "x-clause": "13.2.1"
+          },
+          "x-clause": "13.2.1"
+        },
+        "radius": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "x-clause": "13.2.2"
+        },
+        "role": {
+          "$ref": "#/$defs/role"
+        },
+        "line_type": {
+          "$ref": "#/$defs/line_type"
+        }
+      }
+    },
+    "symbol_part_hatch": {
+      "type": "object",
+      "x-clause": "13.2.2",
+      "required": [
+        "type",
+        "boundary",
+        "pattern"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "hatch",
+          "x-clause": "13.2.2"
+        },
+        "boundary": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "type": "number",
+              "x-clause": "13.2.1"
+            },
+            "x-clause": "13.2.1"
+          },
+          "x-clause": "13.2.2"
+        },
+        "pattern": {
+          "const": "solid",
+          "x-clause": "13.2.2"
+        },
+        "role": {
+          "$ref": "#/$defs/role"
+        }
+      }
+    },
+    "symbol_part": {
+      "type": "object",
+      "x-clause": "13.2.2",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "line",
+            "polyline",
+            "arc",
+            "circle",
+            "hatch"
+          ],
+          "x-clause": "13.2.2"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "const": "line"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/symbol_part_line"
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "const": "polyline"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/symbol_part_polyline"
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "const": "arc"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/symbol_part_arc"
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "const": "circle"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/symbol_part_circle"
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "const": "hatch"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/symbol_part_hatch"
+          }
+        }
+      ]
+    },
+    "symbol": {
+      "description": "A symbol of a library (clause 13.2). Lengths have the unit named by units, and no unit ending (clause 13.2.1).",
+      "type": "object",
+      "x-clause": "13.2",
+      "required": [
+        "units",
+        "geometry"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "units": {
+          "enum": [
+            "paper_mm",
+            "model_m"
+          ],
+          "x-clause": "13.2.1"
+        },
+        "insertion": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "number",
+            "x-clause": "13.2.1"
+          },
+          "x-clause": "13.2.1"
+        },
+        "geometry": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/symbol_part"
+          },
+          "x-clause": "13.2.2"
+        },
+        "ports": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "x-clause": "13.2.3",
+            "required": [
+              "id",
+              "at"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "$ref": "#/$defs/entity_id"
+              },
+              "at": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                  "type": "number",
+                  "x-clause": "13.2.1"
+                },
+                "x-clause": "13.2.1"
+              },
+              "direction_deg": {
+                "type": "number",
+                "x-clause": "13.2.3"
+              }
+            }
+          },
+          "x-clause": "13.2.3"
+        },
+        "label_slot": {
+          "type": "object",
+          "x-clause": "13.5",
+          "required": [
+            "at"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "at": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": {
+                "type": "number",
+                "x-clause": "13.2.1"
+              },
+              "x-clause": "13.2.1"
+            },
+            "align_h": {
+              "enum": [
+                "left",
+                "centre",
+                "right"
+              ],
+              "default": "centre",
+              "x-clause": "13.5"
+            },
+            "align_v": {
+              "enum": [
+                "baseline",
+                "middle",
+                "top"
+              ],
+              "default": "middle",
+              "x-clause": "13.5"
+            },
+            "height_mm": {
+              "enum": [
+                2.5,
+                3.5,
+                5,
+                7,
+                10,
+                14,
+                20
+              ],
+              "default": 3.5,
+              "x-clause": "13.5"
+            }
+          }
+        }
+      }
+    },
+    "symbol_set": {
+      "type": "object",
+      "x-clause": "13.1",
+      "minProperties": 1,
+      "propertyNames": {
+        "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,63}$",
+        "x-clause": "13.1"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/symbol"
+      }
+    },
+    "symbol_library_ref": {
+      "type": "object",
+      "x-clause": "13.3.1",
+      "required": [
+        "id"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[^/\\\\:][^\\\\:]*$",
+          "x-clause": "13.3.1"
+        },
+        "symbols": {
+          "$ref": "#/$defs/symbol_set"
+        }
+      },
+      "if": {
+        "required": [
+          "path"
+        ]
+      },
+      "then": {
+        "not": {
+          "required": [
+            "symbols"
+          ]
+        },
+        "x-clause": "13.3.1"
+      },
+      "else": {
+        "required": [
+          "symbols"
+        ],
+        "x-clause": "13.3.1"
+      }
+    },
+    "entity_symbol": {
+      "type": "object",
+      "x-clause": "13.3.2",
+      "required": [
+        "type",
+        "layer",
+        "library",
+        "symbol",
+        "position_m"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "symbol",
+          "x-clause": "9.1"
+        },
+        "layer": {
+          "$ref": "#/$defs/layer_name"
+        },
+        "id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "role": {
+          "$ref": "#/$defs/role"
+        },
+        "library": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "symbol": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "position_m": {
+          "$ref": "#/$defs/point_m"
+        },
+        "rotation_deg": {
+          "type": "number",
+          "default": 0,
+          "x-clause": "13.3.2"
+        },
+        "scale": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "default": 1,
+          "x-clause": "13.3.2"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200,
+          "pattern": "^[ -~°±×µ²³·–Ø]+$",
+          "x-clause": "11.3.3",
+          "description": "One line, in the character set of clause 11.6.2."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+Barlow Semi Condensed Regular, version 1.408.
+Designer: Jeremy Tribby. Upstream: https://github.com/jpt/barlow
+File taken unchanged from the Google Fonts repository:
+https://github.com/google/fonts/tree/main/ofl/barlowsemicondensed
+Licence: SIL Open Font License 1.1, in OFL.txt in this directory. The text of OFL.txt was compared
+with the official text at https://openfontlicense.org/documents/OFL.txt and is the same, apart from
+the copyright header.
+SHA-256 of BarlowSemiCondensed-Regular.ttf: e8c7242f612b13d026e18a94b63b0fd079e91a3faf009d1b6981dbb5f16d1153

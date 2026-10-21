@@ -1,0 +1,59 @@
+{
+  "standard_version": "1.0",
+  "sheet": {
+    "size": "A3",
+    "orientation": "landscape"
+  },
+  "layers": [
+    {
+      "name": "OUTLINE"
+    }
+  ],
+  "viewports": [
+    {
+      "id": "main",
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 300,
+        "height_mm": 170
+      },
+      "window": {
+        "xmin_m": 0,
+        "ymin_m": 0,
+        "xmax_m": 10,
+        "ymax_m": 8
+      },
+      "scale": 100,
+      "entities": []
+    }
+  ],
+  "title_block": {
+    "template": "iso7200",
+    "fields": {
+      "owner": "EXAMPLE OWNER LTD",
+      "title": "SECTION THROUGH EXAMPLE WORK",
+      "document_number": "EXA-CIV-001"
+    }
+  },
+  "revisions": {
+    "entries": [
+      {
+        "rev": "A",
+        "date": "2026-01-01",
+        "description": "CHANGE 1 TO THE EXAMPLE DRAWING",
+        "by": "AB",
+        "chk": "CD",
+        "seal": "sha256:f3d43d552c28d0b245d76466684c4647c1d82de0ee7f9f7477e9ec6e9836d3d0"
+      },
+      {
+        "rev": "B",
+        "date": "2026-01-02",
+        "description": "A DESCRIPTION THAT IS FAR TOO LONG FOR THE DESCRIPTION CELL OF THE REGISTER AT ALL",
+        "by": "AB",
+        "app": "EF",
+        "seal": "sha256:9f210cca6e0cb0e20beae594d999325f08e7415c37f9e57c2374cd6387fef6fb"
+      }
+    ]
+  }
+}

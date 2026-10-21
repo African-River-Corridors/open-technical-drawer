@@ -1,0 +1,103 @@
+{
+  "result": "ok",
+  "viewports": [
+    {
+      "id": "main",
+      "scale": 100,
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 300,
+        "height_mm": 170
+      }
+    }
+  ],
+  "entities": [
+    {
+      "type": "polyline",
+      "origin": "sheet.notes",
+      "layer": "TITLEBLOCK",
+      "points_mm": [
+        [
+          340,
+          10
+        ],
+        [
+          410,
+          10
+        ],
+        [
+          410,
+          231
+        ],
+        [
+          340,
+          231
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "text",
+      "origin": "sheet.notes",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        342,
+        15.5
+      ],
+      "text": "NOTES",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.notes",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        342,
+        20.0
+      ],
+      "text": "1. ALL DIMENSIONS IN METRES.",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.notes",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        342,
+        24.5
+      ],
+      "text": "2. THIS IS A SYNTHETIC EXAMPLE.",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.status_line",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        342,
+        229
+      ],
+      "text": "CONCEPT – NOT FOR CONSTRUCTION",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
+    }
+  ],
+  "origin_prefixes": [
+    "sheet.notes",
+    "sheet.status_line"
+  ]
+}

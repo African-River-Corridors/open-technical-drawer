@@ -1,0 +1,68 @@
+{
+  "function": "text_width",
+  "checks": [
+    {
+      "id": "ab-7",
+      "clause": "11.7.4",
+      "input": {
+        "text": "AB",
+        "height_mm": 7
+      },
+      "expected": 10.46
+    },
+    {
+      "id": "h-3.5",
+      "clause": "11.7.1",
+      "input": {
+        "text": "H",
+        "height_mm": 3.5
+      },
+      "expected": 2.815
+    },
+    {
+      "id": "section",
+      "clause": "11.7.1",
+      "input": {
+        "text": "SECTION A-A",
+        "height_mm": 3.5
+      },
+      "expected": 24.85
+    },
+    {
+      "id": "section-7",
+      "clause": "11.7.1",
+      "input": {
+        "text": "SECTION A-A",
+        "height_mm": 7
+      },
+      "expected": 49.7
+    },
+    {
+      "id": "digits-2.5",
+      "clause": "11.7.1",
+      "input": {
+        "text": "0123456789",
+        "height_mm": 2.5
+      },
+      "expected": 16.057
+    },
+    {
+      "id": "space-5",
+      "clause": "11.7.1",
+      "input": {
+        "text": " ",
+        "height_mm": 5
+      },
+      "expected": 1.429
+    },
+    {
+      "id": "diameter",
+      "clause": "11.7.1",
+      "input": {
+        "text": "\u00d8250 \u00b15",
+        "height_mm": 5
+      },
+      "expected": 22.421
+    }
+  ]
+}

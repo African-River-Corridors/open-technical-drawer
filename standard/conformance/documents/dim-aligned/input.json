@@ -1,0 +1,53 @@
+{
+  "standard_version": "1.0",
+  "sheet": {
+    "size": "A3",
+    "orientation": "landscape"
+  },
+  "layers": [
+    {
+      "name": "OUTLINE"
+    },
+    {
+      "name": "DIMENSIONS"
+    }
+  ],
+  "viewports": [
+    {
+      "id": "main",
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 277
+      },
+      "window": {
+        "xmin_m": 0,
+        "ymin_m": 0,
+        "xmax_m": 10,
+        "ymax_m": 8
+      },
+      "scale": 100,
+      "entities": [
+        {
+          "type": "dimension",
+          "layer": "DIMENSIONS",
+          "kind": "aligned",
+          "from": {
+            "point_m": [
+              1,
+              1
+            ]
+          },
+          "to": {
+            "point_m": [
+              4,
+              5
+            ]
+          },
+          "offset_mm": 10
+        }
+      ]
+    }
+  ]
+}

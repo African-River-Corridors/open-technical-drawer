@@ -1,0 +1,259 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/African-River-Corridors/technical_drawings_for_agents/docs/standard/schema/title-block-template-1.0.schema.json",
+  "title": "Title block template, Drawing Format Standard 1.0",
+  "description": "A title block in paper millimetres, origin at its top-left corner, +y down (clause 14.2).",
+  "type": "object",
+  "x-clause": "14.2",
+  "required": [
+    "standard_version",
+    "id",
+    "width_mm",
+    "height_mm",
+    "lines",
+    "cells",
+    "register"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "standard_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+$",
+      "x-clause": "14.2"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,63}$",
+      "x-clause": "14.2"
+    },
+    "description": {
+      "type": "string"
+    },
+    "width_mm": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "x-clause": "14.2"
+    },
+    "height_mm": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "x-clause": "14.2"
+    },
+    "pad_mm": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "default": 1,
+      "x-clause": "14.2"
+    },
+    "lines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "from_mm",
+          "to_mm",
+          "role"
+        ],
+        "additionalProperties": false,
+        "x-clause": "14.2",
+        "properties": {
+          "from_mm": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "type": "number"
+            },
+            "x-clause": "14.2"
+          },
+          "to_mm": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "type": "number"
+            },
+            "x-clause": "14.2"
+          },
+          "role": {
+            "enum": [
+              "extra_thick",
+              "thick",
+              "thin"
+            ],
+            "x-clause": "8.1"
+          }
+        }
+      },
+      "x-clause": "14.2"
+    },
+    "cells": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "x-clause": "14.2.2",
+        "required": [
+          "field",
+          "label",
+          "x_mm",
+          "y_mm",
+          "width_mm",
+          "height_mm",
+          "text_height_mm"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "field": {
+            "enum": [
+              "owner",
+              "title",
+              "supplementary_title",
+              "document_number",
+              "document_type",
+              "language",
+              "department",
+              "revision",
+              "date_of_issue",
+              "created_by",
+              "checked_by",
+              "approved_by",
+              "status",
+              "scale",
+              "sheet",
+              "sheet_size"
+            ],
+            "x-clause": "14.2.2"
+          },
+          "label": {
+            "type": "string",
+            "maxLength": 60,
+            "pattern": "^[ -~°±×µ²³·–Ø]*$",
+            "x-clause": "14.2.2"
+          },
+          "x_mm": {
+            "type": "number"
+          },
+          "y_mm": {
+            "type": "number"
+          },
+          "width_mm": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "height_mm": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "text_height_mm": {
+            "enum": [
+              2.5,
+              3.5,
+              5,
+              7,
+              10,
+              14,
+              20
+            ],
+            "x-clause": "11.2"
+          },
+          "label_height_mm": {
+            "enum": [
+              2.5,
+              3.5,
+              5
+            ],
+            "default": 2.5,
+            "x-clause": "14.2.2"
+          },
+          "align_h": {
+            "enum": [
+              "left",
+              "centre",
+              "right"
+            ],
+            "default": "left",
+            "x-clause": "14.2.2"
+          },
+          "required": {
+            "type": "boolean",
+            "default": false,
+            "x-clause": "14.2.2"
+          }
+        }
+      },
+      "x-clause": "14.2.2"
+    },
+    "register": {
+      "type": "object",
+      "x-clause": "14.7.1",
+      "required": [
+        "row_height_mm",
+        "max_rows",
+        "text_height_mm",
+        "columns"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "row_height_mm": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "max_rows": {
+          "type": "integer",
+          "minimum": 2,
+          "x-clause": "14.7.2"
+        },
+        "text_height_mm": {
+          "enum": [
+            2.5,
+            3.5,
+            5
+          ],
+          "x-clause": "11.2"
+        },
+        "columns": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "x-clause": "14.7.1",
+          "items": {
+            "type": "object",
+            "required": [
+              "field",
+              "label",
+              "width_mm"
+            ],
+            "additionalProperties": false,
+            "x-clause": "14.7.1",
+            "properties": {
+              "field": {
+                "enum": [
+                  "rev",
+                  "date",
+                  "description",
+                  "by",
+                  "chk",
+                  "app"
+                ],
+                "x-clause": "14.7.1"
+              },
+              "label": {
+                "type": "string",
+                "maxLength": 30,
+                "pattern": "^[ -~]*$"
+              },
+              "width_mm": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "result": "ok",
+  "viewports": [
+    {
+      "id": "main",
+      "scale": 100,
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 277
+      }
+    }
+  ],
+  "entities": [
+    {
+      "type": "arc",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "centre_mm": [
+        215,
+        158.5
+      ],
+      "radius_mm": 10,
+      "start_deg": 0,
+      "sweep_deg": 180,
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "centre_mm": [
+        215,
+        168.5
+      ],
+      "radius_mm": 5,
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "hatch",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "boundary_mm": [
+        [
+          213,
+          176.5
+        ],
+        [
+          217,
+          176.5
+        ],
+        [
+          215,
+          172.5
+        ]
+      ],
+      "holes_mm": [],
+      "pattern": "solid",
+      "angle_deg": 0,
+      "width_mm": 0.35
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "points_mm": [
+        [
+          205,
+          178.5
+        ],
+        [
+          225,
+          178.5
+        ],
+        [
+          225,
+          158.5
+        ],
+        [
+          205,
+          158.5
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "anchor_mm": [
+        215,
+        146.5
+      ],
+      "text": "T-1",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "middle"
+    }
+  ],
+  "origin_prefixes": [
+    "viewport.main.symbol"
+  ]
+}

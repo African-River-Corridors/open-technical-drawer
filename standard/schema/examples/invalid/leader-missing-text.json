@@ -1,0 +1,207 @@
+{
+  "standard_version": "1.0",
+  "sheet": {
+    "size": "A3",
+    "orientation": "landscape"
+  },
+  "layers": [
+    {
+      "name": "OUTLINE"
+    },
+    {
+      "name": "DIMENSIONS"
+    }
+  ],
+  "viewports": [
+    {
+      "id": "main",
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 277
+      },
+      "window": {
+        "xmin_m": 0,
+        "ymin_m": 0,
+        "xmax_m": 10,
+        "ymax_m": 8
+      },
+      "scale": 100,
+      "entities": [
+        {
+          "type": "line",
+          "layer": "OUTLINE",
+          "id": "base",
+          "from_m": [
+            1,
+            1
+          ],
+          "to_m": [
+            9,
+            1
+          ]
+        },
+        {
+          "type": "circle",
+          "layer": "OUTLINE",
+          "id": "c",
+          "centre_m": [
+            5,
+            4
+          ],
+          "radius_m": 1.5
+        },
+        {
+          "type": "dimension",
+          "layer": "DIMENSIONS",
+          "kind": "linear",
+          "orientation": "horizontal",
+          "from": {
+            "ref": "base",
+            "at": "start"
+          },
+          "to": {
+            "ref": "base",
+            "at": "end"
+          },
+          "offset_mm": -10
+        },
+        {
+          "type": "dimension",
+          "layer": "DIMENSIONS",
+          "kind": "aligned",
+          "from": {
+            "point_m": [
+              1,
+              1
+            ]
+          },
+          "to": {
+            "point_m": [
+              4,
+              5
+            ]
+          },
+          "offset_mm": 10,
+          "unit": "mm",
+          "decimals": 0,
+          "text_height_mm": 2.5
+        },
+        {
+          "type": "dimension",
+          "layer": "DIMENSIONS",
+          "kind": "radius",
+          "of": "c",
+          "direction_deg": 30
+        },
+        {
+          "type": "dimension",
+          "layer": "DIMENSIONS",
+          "kind": "diameter",
+          "of": "c",
+          "direction_deg": 90
+        },
+        {
+          "type": "dimension",
+          "layer": "DIMENSIONS",
+          "kind": "angle",
+          "vertex": {
+            "point_m": [
+              2,
+              2
+            ]
+          },
+          "from": {
+            "point_m": [
+              6,
+              2
+            ]
+          },
+          "to": {
+            "point_m": [
+              2,
+              6
+            ]
+          },
+          "arc_radius_mm": 15
+        },
+        {
+          "type": "leader",
+          "layer": "DIMENSIONS",
+          "from": {
+            "ref": "c",
+            "at": "centre"
+          },
+          "label_at_m": [
+            8,
+            6
+          ]
+        },
+        {
+          "type": "dimension",
+          "layer": "DIMENSIONS",
+          "kind": "linear",
+          "orientation": "horizontal",
+          "from": {
+            "point_m": [
+              1,
+              6
+            ]
+          },
+          "to": {
+            "point_m": [
+              3.5,
+              6
+            ]
+          },
+          "offset_mm": 10,
+          "chain": "ch",
+          "chain_role": "part"
+        },
+        {
+          "type": "dimension",
+          "layer": "DIMENSIONS",
+          "kind": "linear",
+          "orientation": "horizontal",
+          "from": {
+            "point_m": [
+              3.5,
+              6
+            ]
+          },
+          "to": {
+            "point_m": [
+              6,
+              6
+            ]
+          },
+          "offset_mm": 10,
+          "chain": "ch",
+          "chain_role": "part"
+        },
+        {
+          "type": "dimension",
+          "layer": "DIMENSIONS",
+          "kind": "linear",
+          "orientation": "horizontal",
+          "from": {
+            "point_m": [
+              1,
+              6
+            ]
+          },
+          "to": {
+            "point_m": [
+              6,
+              6
+            ]
+          },
+          "offset_mm": 20,
+          "chain": "ch",
+          "chain_role": "overall"
+        }
+      ]
+    }
+  ]
+}
