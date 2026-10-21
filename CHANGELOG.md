@@ -7,6 +7,16 @@ All notable changes are recorded here. The format follows
 ## [Unreleased]
 
 ### Added
+- The raster module, `otd::raster`, for an image behind a drawing (clause 9.10). The caller reads the
+  file; the module opens none.
+  - `Grid<T>`: cells in model space, row 0 at the top. `clip` keeps the whole cells inside a window,
+    so the image lies inside the frame. `resample` covers a box exactly, by nearest cell.
+  - `shaded_relief`: a grey relief of a DEM by Horn's slope, with the azimuth, the altitude and a
+    vertical scale (`Light`). No data is white. Every transcendental goes through `libm`.
+  - `jpeg_grey` and `jpeg_rgb`: baseline JPEG through `jpeg-encoder`, which uses integer arithmetic
+    only, so a grid gives the same bytes on every platform. A test pins the SHA-256 of one.
+  - `Backdrop`: the JPEG, its path and box, and the `image` entity that places it. `WithImages`
+    gives the bytes to `run_text` from memory, so a tool need not write the file first.
 - Drawing Format Standard 1.1 (vendored at `a2021a8`). The crate now reads documents of version 1.0
   and 1.1:
   - the `image` entity (clause 9.10): a JPEG placed in model space, checked by its frame header and

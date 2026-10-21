@@ -23,6 +23,9 @@ regex-lite = "0.1"
 pdf-writer = "0.15"
 ttf-parser = { version = "0.25", default-features = false, features = ["std"] }
 miniz_oxide = "0.8"
+# JPEG: integer DCT and colour conversion only, no floating point, so the bytes are the same on every
+# platform. Without the default features it is no_std and opens no file.
+jpeg-encoder = { version = "0.7", default-features = false }
 
 # Second readers for the output tests: they are not the code that writes the files.
 [dev-dependencies]
