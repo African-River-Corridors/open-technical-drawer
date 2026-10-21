@@ -8,6 +8,10 @@ license = "Apache-2.0"
 repository = "https://github.com/African-River-Corridors/open-technical-drawer"
 publish = false
 
+# The core is this package. `imagery` holds the network, apart from it (see its manifest).
+[workspace]
+members = [".", "imagery"]
+
 # Pure Rust and domain-free: no vessel or waterway crate. The core takes strings and values in and
 # out; it opens no file, reads no clock and uses no network. Every transcendental goes through libm
 # so a result is the same on every platform.
