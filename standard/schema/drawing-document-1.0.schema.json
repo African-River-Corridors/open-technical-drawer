@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/African-River-Corridors/technical_drawings_for_agents/docs/standard/schema/drawing-document-1.0.schema.json",
-  "title": "Drawing document, Drawing Format Standard 1.0",
+  "title": "Drawing document, Drawing Format Standard 1.1",
   "description": "Structure of a drawing document. Model coordinates are metres (+y up). Paper values are millimetres. The unit of every number is the end of its member name: _m, _mm or _deg. See docs/standard/drawing-format-standard.md. Rules that a schema cannot state are listed in clause 18.5.",
   "type": "object",
   "x-clause": "4.2",
@@ -57,6 +57,15 @@
             "0.7"
           ],
           "x-clause": "8.2.1"
+        },
+        "print_profile": {
+          "description": "monochrome (black on white, clause 8.6.1) or colour (clause 8.6.4). From version 1.1.",
+          "enum": [
+            "monochrome",
+            "colour"
+          ],
+          "default": "monochrome",
+          "x-clause": "8.6.4"
         }
       }
     },
@@ -430,6 +439,25 @@
           "minimum": 1,
           "maximum": 255,
           "x-clause": "8.6.2"
+        },
+        "print_colour": {
+          "description": "Print colour of the entities on the layer, #RRGGBB. Colour profile only (clause 8.6.5).",
+          "type": "string",
+          "pattern": "^#[0-9A-F]{6}$",
+          "x-clause": "8.6.5"
+        },
+        "fill_opacity": {
+          "description": "Opacity of the solid hatches on the layer. Colour profile only (clause 8.6.5).",
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1,
+          "x-clause": "8.6.5"
+        },
+        "halo_colour": {
+          "description": "Colour of a halo behind the text on the layer, #RRGGBB. Colour profile only (clause 8.6.5).",
+          "type": "string",
+          "pattern": "^#[0-9A-F]{6}$",
+          "x-clause": "8.6.5"
         }
       },
       "if": {
@@ -544,7 +572,7 @@
           }
         },
         "scale": {
-          "description": "The denominator N of the ratio 1:N (an ISO preferred ratio or a house ratio), or the word fit.",
+          "description": "The denominator N of the ratio 1:N (an ISO preferred ratio, a house ratio, or from version 1.1 a map ratio), or the word fit.",
           "enum": [
             1,
             2,
@@ -566,6 +594,12 @@
             20000,
             50000,
             100000,
+            200000,
+            500000,
+            1000000,
+            2000000,
+            5000000,
+            10000000,
             "fit"
           ],
           "x-clause": "7.3.2"
@@ -649,7 +683,8 @@
             "text",
             "dimension",
             "leader",
-            "symbol"
+            "symbol",
+            "image"
           ],
           "x-clause": "9.1"
         }
@@ -803,6 +838,21 @@
           },
           "then": {
             "$ref": "#/$defs/entity_symbol"
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "const": "image"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/entity_image"
           }
         }
       ]
@@ -2298,6 +2348,61 @@
           "description": "One line, in the character set of clause 11.6.2."
         }
       }
+    },
+    "entity_image": {
+      "required": [
+        "type",
+        "layer",
+        "path",
+        "sha256",
+        "bbox_m"
+      ],
+      "properties": {
+        "type": {
+          "const": "image",
+          "x-clause": "9.1"
+        },
+        "layer": {
+          "$ref": "#/$defs/layer_name"
+        },
+        "id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "path": {
+          "description": "The JPEG file, relative to the document, with / as the separator. No .. part.",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255,
+          "pattern": "^(?!/)(?!.*(^|/)\\.\\.(/|$))[A-Za-z0-9_./-]+$",
+          "x-clause": "9.10.1"
+        },
+        "sha256": {
+          "description": "The SHA-256 of the file, 64 lower-case hex digits.",
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "x-clause": "9.10.2"
+        },
+        "bbox_m": {
+          "description": "The model box the image covers: xmin, ymin, xmax, ymax in metres.",
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "type": "number"
+          },
+          "x-clause": "9.10.3"
+        },
+        "opacity": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1,
+          "default": 1,
+          "x-clause": "9.10.6"
+        }
+      },
+      "x-clause": "9.10",
+      "type": "object",
+      "additionalProperties": false
     }
   }
 }

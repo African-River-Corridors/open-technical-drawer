@@ -32,7 +32,9 @@ symbols, sheet furniture, the outputs, and the normalised content that two imple
 agree on.
 
 **1.2** This standard does not define what a drawing of a given kind must show. It does not define
-geographic backdrops, build graphs, or any private title block.
+how a geographic backdrop is made (clipped, projected or rendered), build graphs, or any private
+title block. From version 1.1 it defines how a finished raster image is placed on a sheet
+(clause 9.10).
 
 ## 2 Conformance and language
 
@@ -98,8 +100,8 @@ of its member name:
 | `_mm` | millimetres on paper |
 | `_deg` | degrees |
 
-A number whose member name has none of these endings has no unit. Examples are counts and the scale
-denominator. The schema states which members are whole numbers.
+A number whose member name has none of these endings has no unit. Examples are counts, the scale
+denominator and an opacity (clauses 8.6.5 and 9.10.6). The schema states which members are whole numbers.
 *Basis: house choice H-02. The rule keeps the two length units visible at every number.*
 
 **4.6** A check gives **findings**. An **error** stops the build: no output is written. A
@@ -342,6 +344,18 @@ possible in version 1.0.
 They are allowed in the same way as the preferred ratios, and give no warning.
 *Basis: house choice H-37. A barge of 80 m must fit an A3 sheet at 1:250, and site plans use 1:1250
 and 1:2500. These four ratios are not in the ISO list.*
+
+**7.3.5 Map ratios.** From version 1.1, the **map ratios** are those where N is one of:
+
+> 200000, 500000, 1000000, 2000000, 5000000, 10000000
+
+A document of version 1.1 or later may use them in the same way as the preferred ratios, and `fit`
+(clause 7.5.2) tries them after the ratios of clauses 7.3.1 and 7.3.4. In a document of version 1.0
+a map ratio is error `18.2.1`, and `fit` does not try them, so the result of a 1.0 document does not
+change.
+*Basis: house choice H-54. A route plan of tens of kilometres, or a regional overview of a thousand,
+needs ratios smaller than 1:100000. The values carry on the 1, 2, 5 series of clause 7.3.1 by
+powers of ten.*
 
 **7.4 The map from model to paper.** Let the window be `xmin, ymin, xmax, ymax`, the frame be
 `x, y, w, h`, the scale denominator be N and the rotation be theta.
@@ -750,6 +764,44 @@ the common CAD palette. The standard makes no other claim about the hue.*
 **8.6.3** A custom layer MUST NOT have the same colour number as any other layer declared in the
 same document. Error `8.6.3`.
 
+**8.6.4 Print profile.** From version 1.1, the member `print_profile` of `sheet` is `monochrome` or
+`colour`. The default is `monochrome`, which is clause 8.6.1: everything is black. Under the
+`colour` profile, clause 8.6.1 holds for every entity except those that clauses 8.6.5 and 9.10 give
+a colour, a fill opacity, a halo or pixels.
+*Basis: house choice H-55. A map sheet draws routes and boundaries over an image (clause 9.10). Black
+line work cannot be read over a photograph. The default keeps the ISO black-on-white drawing.*
+
+**8.6.5 Colour members of a layer.** Under the `colour` profile, a layer declaration MAY have:
+
+| Member | Value | What it does |
+|---|---|---|
+| `print_colour` | `#RRGGBB`, upper-case hex | The colour of the lines, the fills, the hatch marks and the text of the viewport entities on the layer. |
+| `fill_opacity` | more than 0, at most 1 | The opacity of each solid hatch on the layer. Its other entities are opaque. |
+| `halo_colour` | `#RRGGBB`, upper-case hex | A halo drawn behind each text on the layer (clause 8.6.6). |
+
+Any of these members in a document whose profile is `monochrome` is error `8.6.5`. In a document of
+version 1.0, `print_profile` and these members are error `18.2.1`.
+
+**8.6.6 What gets a colour.** A colour member applies to each entity of the normalised content whose
+origin starts `viewport.` and whose layer has the member, including the marks of its hatches and the
+parts of its dimensions, leaders and symbols. The sheet furniture (clause 16.6.1), the title block,
+the register, the notes, the status line, and the scale bar and north arrow of every viewport stay
+black. A halo is a stroke of the outline of each glyph, of width `0.2 h` for a text of height `h`,
+drawn under the fill of the text. A layer without `print_colour` draws in black.
+*Basis: house choice H-56. The furniture is the record of the drawing. It prints the same on every
+sheet.*
+
+**8.6.7 Plates.** Under the `colour` profile, in a viewport that holds an image (clause 9.10), the
+scale bar and the north arrow each stand on a white **plate**: a `hatch` with the pattern `solid`, on
+the layer `TITLEBLOCK`, with the origin `viewport.<id>.backing` and `print_colour` `#FFFFFF`. Its
+width is the thin width of the line group. With the frame `x, y, w, h`, and `L` the paper length of
+the scale bar (clause 16.6.3), the plate of the scale bar is the rectangle from `(x + 2, y + h - 22)`
+to `(x + 6 + L + 10, y + h - 2)`. The plate of the north arrow is the rectangle from `(x + 8, y + 2)`
+to `(x + 30, y + 30)`. The boundary runs from the top-left corner, to the right, then down.
+*Basis: house choice H-59. Black furniture cannot be read over a photograph. A white plate is the
+paper itself, so the furniture stays black. The origin sorts before the scale bar and the north
+arrow (clause 16.8), so the plate is drawn under them.*
+
 **8.7 What an entity gets.** For an entity on a declared layer, in this order:
 
 1. The role is the role of the entity if it has one, else the default of its entity type (clause
@@ -768,17 +820,18 @@ and 1.4 on A0.
 
 ## 9 Geometry
 
-This clause defines the entities of the core schema: line, polyline, arc, circle, centre line, and
-text (clause 11). Hatches are in clause 10. Dimensions and leaders are in clause 12. Symbols are in
+This clause defines the entities of the core schema: line, polyline, arc, circle, centre line,
+image (clause 9.10, from version 1.1), and text (clause 11). Hatches are in clause 10. Dimensions and leaders are in clause 12. Symbols are in
 clause 13.
 
 **9.1 Entities.** Each viewport holds a list `entities`. Every entity is an object with a member
 `type`. The types are `line`, `polyline`, `arc`, `circle`, `centre_line`, `hatch`, `text`,
-`dimension`, `leader` and `symbol`. Any other type is error `9.1`.
+`dimension`, `leader`, `symbol` and, from version 1.1, `image`. Any other type is error `9.1`.
 
 **9.1.1 Common members.** Every entity has `type` and `layer`. The layer name MUST be declared
 (clause 8.5.1). An entity MAY have `id` (clause 9.8). Every entity except `text` MAY have `role`
-(clause 8.5.6). Every entity except `text`, `hatch`, `dimension`, `leader` and `symbol` MAY have `line_type`.
+(clause 8.5.6). Every entity except `text`, `hatch`, `dimension`, `leader`, `symbol` and `image` MAY have
+`line_type`. An `image` has no `role`.
 
 **9.2 Points.** A point is a list of two numbers: x then y. A point in model space is in metres. The
 member name ends in `_m`.
@@ -814,6 +867,41 @@ Two entities, or an entity and a viewport, MUST NOT share an `id` in one documen
 
 **9.9 Order.** The order of entities in the list has no effect on the normalised content.
 *Basis: house choice H-31. Clause 16 sorts the entities.*
+
+**9.10 Image.** From version 1.1, an `image` places a raster file in model space: an orthophoto, a
+satellite image or a shaded relief, already clipped and projected into the coordinates of the
+viewport. The standard does not make, reproject or clip images. An `image` has:
+
+| Member | Meaning |
+|---|---|
+| `path` | The file, relative to the folder of the document, with `/` between parts. It has no `..` part and does not start with `/`. |
+| `sha256` | The SHA-256 of the file, 64 lower-case hex digits. |
+| `bbox_m` | The model box the image covers: `[xmin, ymin, xmax, ymax]`, in metres. The first row of pixels is the top edge, `ymax`. |
+| `opacity` | More than 0, at most 1. Default 1. |
+
+**9.10.1** The file MUST exist and be a JPEG with 8-bit samples and 1 (grey) or 3 (colour)
+components, coded as baseline, extended or progressive DCT. Error `9.10.1`.
+*Basis: house choice H-57. One raster format keeps every implementation small. The width, the
+height and the components come from the frame header, so no image is decoded. The PDF and the SVG
+can carry JPEG bytes as they are.*
+
+**9.10.2** The SHA-256 of the file MUST equal `sha256`. Error `9.10.2`.
+*Basis: house choice H-58. An image found at a path is not evidence that it is the image that was
+meant. The hash fixes the backdrop that the drawing was checked with.*
+
+**9.10.3** In `bbox_m`, `xmax` MUST be more than `xmin` and `ymax` more than `ymin`. Error `9.10.3`.
+The image is stretched to the box. Its pixels need not be square.
+
+**9.10.4** An image MUST be in a viewport whose rotation is 0. Error `9.10.4`.
+
+**9.10.5** An image MUST be in a document whose print profile is `colour` (clause 8.6.4). Error
+`9.10.5`.
+
+**9.10.6** The box MUST lie inside the frame, as for any entity (clause 7.7.1). An image takes no
+colour members (clause 8.6.5). Its opacity is its own.
+
+**9.10.7** In every output, the images are drawn first, in the order of clause 16.8, under all other
+entities.
 
 ## 10 Hatches
 
@@ -1483,12 +1571,16 @@ document with an error is not written (clause 16.1.1).
 **15.2 SVG.** One SVG user unit is one millimetre of paper. The root has the width and height of the
 trimmed sheet in `mm` and a `viewBox` of the same size. Every entity of the normalised content is
 drawn, in the order of the list, in black (clause 8.6.1), with its width and its dash pattern
-(clause 8.4.1) in paper millimetres. A `text` is placed at the first corner of its text box
+(clause 8.4.1) in paper millimetres. Under the `colour` profile, an entity with `print_colour`,
+`fill_opacity` or `halo_colour` is drawn with them (clause 8.6.6). The images are drawn first
+(clause 9.10.7), stretched to `box_mm`, with their opacity, and embedded as JPEG data. A `text` is placed at the first corner of its text box
 (clause 11.7), with the font size `h / 0.7` and the width of clause 11.7.1. A hatch with the pattern
 `solid` is filled by the even-odd rule. A hatch with another pattern draws nothing, because its marks
 are entities of their own (clause 10.5.8). The font MAY be embedded in the SVG.
 
-**15.3 PDF.** The PDF has one page, of the size of the trimmed sheet. It is drawn in black. The font
+**15.3 PDF.** The PDF has one page, of the size of the trimmed sheet. It is drawn in black, or with
+the colour members of clause 8.6.6. An image is an image XObject that holds the JPEG bytes as they are
+(filter `DCTDecode`), drawn first. The font
 of clause 11.6 is embedded (clause 11.6.4). A text is placed and rotated as in clause 15.2. Two builds
 of one document give the same bytes.
 
@@ -1553,6 +1645,13 @@ the view centre, scale and twist of the viewport named by its `vp`. A text heigh
 The conformance of the DXF output is tested in this way, with a reader that does not use the library
 that wrote the file.
 
+**15.4.12 Images and colour.** An image (clause 9.10) is a DXF IMAGE in model space, over its model
+box, with an IMAGEDEF that links the file by the `path` of the document. The DXF does not hold the
+pixels. A reader that opens the DXF from another folder must copy the image files with it. The
+extended data of the IMAGE holds `sha256`, `components` and `opacity`. Under the `colour` profile,
+a layer with `print_colour` has that true colour, and the extended data of each LAYER record holds
+the colour members of clause 8.6.5, so that the read back of clause 15.4.11 gives them again.
+
 ## 16 Normalised content
 
 **16.1 What it is.** The **normalised content** of a drawing document is a JSON object. It holds the
@@ -1568,12 +1667,12 @@ list of errors.
 | Member | Content |
 |---|---|
 | `standard_version` | The version string of the document. |
-| `sheet` | `size`, `orientation`, `line_group` (the group name, always present), `width_mm`, `height_mm` of the trimmed sheet, and `drawing_space` with `x_mm`, `y_mm`, `width_mm`, `height_mm`. |
+| `sheet` | `size`, `orientation`, `line_group` (the group name, always present), `width_mm`, `height_mm` of the trimmed sheet, and `drawing_space` with `x_mm`, `y_mm`, `width_mm`, `height_mm`. Under the `colour` profile only, `print_profile` with the value `colour` (clause 8.6.4). |
 | `viewports` | One object for each viewport, sorted by `id` (compared byte by byte). Each has `id`, `scale` (the resolved denominator, a whole number) and `frame` (`x_mm`, `y_mm`, `width_mm`, `height_mm`). |
 | `entities` | The sorted list of entities (clause 16.8). |
 
 **16.3 Entities: common members.** Every entity has `type`, `origin` and `layer`. It has `id` only if
-the document gave one. The types are `line`, `polyline`, `arc`, `circle`, `hatch` and `text`. A
+the document gave one. The types are `line`, `polyline`, `arc`, `circle`, `hatch`, `text` and `image`. A
 `dimension`, a `leader` and a `symbol` do not appear: they are written as these types (clauses 12.7
 and 13.7).
 `origin` says where the entity came from (clause 16.5).
@@ -1590,8 +1689,14 @@ the range 0 up to, but not including, 360. A rounded 360 is written 0. A point i
 | `circle` | `centre_mm`, `radius_mm`, `line_type`, `width_mm` |
 | `hatch` | `boundary_mm`, `holes_mm` (always present, a list that may be empty), `pattern`, `angle_deg`, `width_mm` |
 | `text` | `anchor_mm`, `text`, `height_mm`, `rotation_deg`, `align_h`, `align_v` |
+| `image` | `box_mm` (`[x0, y0, x1, y1]`: the top-left and bottom-right corners on the paper), `sha256`, `size_px` (`[width, height]`), `components` (1 or 3), `opacity` (rounded to 3 places) |
 
-A `text` has no `line_type` and no `width_mm`. A `hatch` has no `line_type`. The width is the final
+A `text` has no `line_type` and no `width_mm`. An `image` has neither.
+
+**16.4.1 Colour members.** Under the `colour` profile, an entity that clause 8.6.6 gives a colour
+member has it, with the value of its layer: `print_colour` on any type but `image`, `fill_opacity`
+on a `hatch` with the pattern `solid`, and `halo_colour` on a `text`. A plate (clause 8.6.7) has
+`print_colour` `#FFFFFF`. No other entity has these members. Under the `monochrome` profile, no entity has them. A `hatch` has no `line_type`. The width is the final
 width of clause 8.7, in paper millimetres. The line type is an identifier of clause 8.4.
 
 **16.5 Origins.** The `origin` of an entity is one of:
@@ -1602,7 +1707,8 @@ width of clause 8.7, in paper millimetres. The line type is an identifier of cla
 - `viewport.<id>.hatch`, for the marks of the hatches of that viewport (clause 10.5.8);
 - `viewport.<id>.dimension` and `viewport.<id>.leader`, for the parts of the dimensions and leaders of that viewport (clause 12.7);
 - `viewport.<id>.symbol`, for the parts and labels of the symbols of that viewport (clause 13.7);
-- `viewport.<id>.scale_bar` and `viewport.<id>.north_arrow`, for the furniture of that viewport.
+- `viewport.<id>.scale_bar` and `viewport.<id>.north_arrow`, for the furniture of that viewport;
+- `viewport.<id>.backing`, for the plates of clause 8.6.7.
 
 **16.6 How each source becomes entities.** Rounding (clause 5.5) is applied at the end, to each
 number that is written. Nothing is rounded before.
@@ -1646,6 +1752,8 @@ The layer is the layer of the entity. The role, line type and width follow claus
   `(start_deg + rotation) mod 360`. `sweep_deg` is the sweep of clause 9.5.
 - `hatch`: the boundary and each hole are mapped. `angle_deg` is `(angle_deg + rotation) mod 360`.
   The width is the width of the role (clause 10.4). Its marks are generated as clause 10.5 says.
+- `image`: the corners `(xmin, ymax)` and `(xmax, ymin)` of `bbox_m` are mapped, and are `box_mm`.
+  `size_px` and `components` come from the frame header of the file (clause 9.10.1).
 - `text`: the anchor is mapped. The height, the rotation (a paper angle, clause 11.3.2) and the
   alignments are copied. The rotation is taken modulo 360.
 
@@ -1702,7 +1810,9 @@ part that differs decides.
    - `hatch`: every boundary point's x, y; then the number of holes; then every hole point's x, y
      in order; then `angle_deg`.
    - `text`: anchor x, y, `height_mm`, `rotation_deg`.
-6. A final string: for a `text` the `text`; for a `hatch` the `pattern`; else the empty string.
+   - `image`: the four numbers of `box_mm`.
+6. A final string: for a `text` the `text`; for a `hatch` the `pattern`; for an `image` the
+   `sha256`; else the empty string.
    Then `align_h`, then `align_v` (empty for other types).
 
 Entities that are equal in every part stay, as many as there are.
@@ -1801,25 +1911,34 @@ version is the version of the standard.
 
 **18.1 Version.** The standard has a version of the form `MAJOR.MINOR`. A drawing document names the
 version it follows in `standard_version`. A missing or wrongly formed value is error `18.1`.
-This draft is version `1.0`.
+This draft is version `1.1`.
 
 **18.2 Reading rule.** A reader of version `A.B` MUST accept a document of version `A.C` when `C` is
 not more than `B`. It MUST reject a document with another major number, or a larger minor number,
 with error `18.2`. A change of the minor number only adds members or values. A change of the major
 number may change meaning.
 
-**18.3 The schema.** The JSON Schema of this version is the file
-`docs/standard/schema/drawing-document-1.0.schema.json`. It follows JSON Schema draft 2020-12. The
-standard and the schema have the same version. A change to one without the other is a defect.
+**18.2.1** A document MUST NOT use a member or a value that was added after the version it names.
+Error `18.2.1`. In version 1.1 these are: `print_profile` and the colour members of a layer (clause
+8.6), the `image` entity (clause 9.10) and the map ratios (clause 7.3.5).
+
+**18.2.2 Versions.** Version 1.0 was the first. Version 1.1 adds clauses 7.3.5, 8.6.4 to 8.6.7, 9.10,
+16.4.1 and 18.2.1. A 1.0 document has the same result under a 1.1 reader as under a 1.0 reader.
+
+**18.3 The schema.** The JSON Schema of major version 1 is the file
+`docs/standard/schema/drawing-document-1.0.schema.json`. It follows JSON Schema draft 2020-12. A minor
+version adds to that file, and the file keeps its name. The schema allows the members of every minor
+version, and clause 18.2.1 holds a document to the version it names. The standard and the schema
+change together. A change to one without the other is a defect.
 
 **18.4 What the schema checks.** The schema checks the structure of a document: the members, their
 types, their units (by name), the allowed values, and the unknown keys (clause 4.3).
 
 **18.5 What the schema cannot check.** A reader MUST also check these rules, and report them with
 the clause number: 4.4 (repeated keys); 6.1 to 6.6 (sheet and drawing space); 7.2 to 7.10 (viewports,
-fit, furniture); 8.2.2, 8.3.2, 8.5.1, 8.5.3 to 8.5.5 and 8.6.3 (line group, widths, layers); 9.3 to
-9.5 and 9.8 (geometry and identifiers); 10.3 (hatch validity); 12.2 to 12.8 (dimensions and
-leaders); 18.2 (version reading).
+fit, furniture); 8.2.2, 8.3.2, 8.5.1, 8.5.3 to 8.5.5, 8.6.3 and 8.6.5 (line group, widths, layers,
+colour); 9.3 to 9.5, 9.8 and 9.10.1 to 9.10.5 (geometry, identifiers and images); 10.3 (hatch
+validity); 12.2 to 12.8 (dimensions and leaders); 18.2 and 18.2.1 (version reading).
 
 **18.6 Annotation.** Each place in the schema that gives a rule has an `x-clause` annotation. It
 names the clause of this standard that the place enforces. A reader that reports a schema error

@@ -77,6 +77,9 @@
         },
         "drawing_space": {
           "$ref": "#/$defs/frame"
+        },
+        "print_profile": {
+          "const": "colour"
         }
       }
     },
@@ -117,7 +120,8 @@
             "arc",
             "circle",
             "hatch",
-            "text"
+            "text",
+            "image"
           ]
         }
       },
@@ -211,6 +215,21 @@
           "then": {
             "$ref": "#/$defs/entity_text"
           }
+        },
+        {
+          "if": {
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "const": "image"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/entity_image"
+          }
         }
       ],
       "unevaluatedProperties": false
@@ -267,6 +286,10 @@
         "width_mm": {
           "type": "number",
           "exclusiveMinimum": 0
+        },
+        "print_colour": {
+          "type": "string",
+          "pattern": "^#[0-9A-F]{6}$"
         }
       },
       "additionalProperties": false
@@ -321,6 +344,10 @@
         "width_mm": {
           "type": "number",
           "exclusiveMinimum": 0
+        },
+        "print_colour": {
+          "type": "string",
+          "pattern": "^#[0-9A-F]{6}$"
         }
       },
       "additionalProperties": false
@@ -385,6 +412,10 @@
         "width_mm": {
           "type": "number",
           "exclusiveMinimum": 0
+        },
+        "print_colour": {
+          "type": "string",
+          "pattern": "^#[0-9A-F]{6}$"
         }
       },
       "additionalProperties": false
@@ -437,6 +468,10 @@
         "width_mm": {
           "type": "number",
           "exclusiveMinimum": 0
+        },
+        "print_colour": {
+          "type": "string",
+          "pattern": "^#[0-9A-F]{6}$"
         }
       },
       "additionalProperties": false
@@ -510,6 +545,15 @@
         "width_mm": {
           "type": "number",
           "exclusiveMinimum": 0
+        },
+        "print_colour": {
+          "type": "string",
+          "pattern": "^#[0-9A-F]{6}$"
+        },
+        "fill_opacity": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
         }
       },
       "additionalProperties": false
@@ -582,6 +626,14 @@
             "middle",
             "top"
           ]
+        },
+        "print_colour": {
+          "type": "string",
+          "pattern": "^#[0-9A-F]{6}$"
+        },
+        "halo_colour": {
+          "type": "string",
+          "pattern": "^#[0-9A-F]{6}$"
         }
       },
       "additionalProperties": false
@@ -718,6 +770,67 @@
           }
         }
       ]
+    },
+    "entity_image": {
+      "type": "object",
+      "required": [
+        "type",
+        "origin",
+        "layer",
+        "box_mm",
+        "sha256",
+        "size_px",
+        "components",
+        "opacity"
+      ],
+      "properties": {
+        "type": {
+          "const": "image"
+        },
+        "origin": {
+          "type": "string",
+          "pattern": "^(sheet\\.(border|centring_mark|zone_mark|zone_label|title_block|revision_register|notes|references|status_line)|viewport\\.[A-Za-z][A-Za-z0-9_.-]{0,63})$"
+        },
+        "layer": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "box_mm": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "type": "number"
+          }
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "size_px": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "components": {
+          "enum": [
+            1,
+            3
+          ]
+        },
+        "opacity": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        }
+      },
+      "additionalProperties": false
     }
   }
 }

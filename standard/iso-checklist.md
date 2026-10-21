@@ -132,6 +132,12 @@ hand. They do not change the normalised content. The DXF can be read back withou
 | H-51 | The status `issued` needs a title block and a register whose latest entry has an approver and a valid seal | A drawing is issued by a person who signs. A flag that an agent can set is not a signature | 14.9.1 |
 | H-52 | Strip sizes: heading 3.5 mm, items 2.5 mm, pitch 4.5 mm, edge space 2 mm; strips are cut from the strip area above the register | Simple, and the same in every implementation | 14.10.1 |
 | H-53 | The status `draft` or `concept` is shown by one line of text of height 2.5 mm (`DRAFT – NOT FOR CONSTRUCTION`, `CONCEPT – NOT FOR CONSTRUCTION`), in the notes strip or in a small reserved region at the bottom-left of the drawing space. `issued` shows no line. There is no mark across the drawing | A mark across the drawing covers notes and dimensions. One small line states the status and covers nothing | 14.9 |
+| H-54 | Map ratios 1:200000 to 1:10000000 (1, 2, 5 by powers of ten), from version 1.1 | A route or a regional overview needs ratios smaller than 1:100000 | 7.3.5 |
+| H-55 | The print profile `colour`, from version 1.1. The default `monochrome` is clause 8.6.1 | Black line work cannot be read over a photograph. The default keeps the ISO drawing | 8.6.4 |
+| H-56 | Colour members apply to viewport entities only. The furniture stays black. A halo is a stroke of width 0.2 h under the text | The furniture is the record of the drawing and prints the same on every sheet | 8.6.6 |
+| H-57 | An image is a JPEG (8-bit, 1 or 3 components), read from its frame header only | One raster format keeps every implementation small. PDF and SVG carry JPEG bytes as they are | 9.10.1 |
+| H-58 | An image names the SHA-256 of its file | A file found at a path is not evidence that it is the file that was meant | 9.10.2 |
+| H-59 | Under the colour profile, the scale bar and north arrow of a viewport with an image stand on a white plate | Black furniture cannot be read over a photograph. White is the paper, so the furniture stays black | 8.6.7 |
 
 ## E Visible changes for 1.0
 
@@ -140,3 +146,13 @@ Changes a reader of an earlier draft of the standard will see. One row for each 
 | Change | Before | Now | Clause |
 |---|---|---|---|
 | The status of a draft or concept drawing | A 20 mm diagonal watermark across the drawing space (`DRAFT`, `CONCEPT - NOT FOR CONSTRUCTION`, `ISSUED FOR CONSTRUCTION`), on the layer `WATERMARK` | One line of 2.5 mm text (`DRAFT – NOT FOR CONSTRUCTION`, `CONCEPT – NOT FOR CONSTRUCTION`) in the notes strip, or in a small reserved region at the bottom-left. `issued` shows no line. The layer `WATERMARK` and the origin `sheet.status_watermark` are gone; the origin is `sheet.status_line`. House choice H-53 | 14.9 |
+
+## F Visible changes for 1.1
+
+Version 1.1 only adds members and values (clause 18.2). A 1.0 document has the same result.
+
+| Change | Before | Now | Clause |
+|---|---|---|---|
+| Map ratios | The smallest ratio was 1:100000 | From 1.1, also 1:200000, 1:500000, 1:1000000, 1:2000000, 1:5000000 and 1:10000000. House choice H-54 | 7.3.5 |
+| Colour | Everything prints black | From 1.1, `sheet.print_profile: colour` lets a layer declare `print_colour`, `fill_opacity` and `halo_colour`. House choices H-55, H-56, H-59 | 8.6.4 to 8.6.7 |
+| Images | No raster could be placed | From 1.1, the `image` entity places a JPEG, named by its SHA-256, in a model box. House choices H-57, H-58 | 9.10 |

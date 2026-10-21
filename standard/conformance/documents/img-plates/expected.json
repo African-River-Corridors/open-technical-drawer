@@ -1,0 +1,64 @@
+{
+  "result": "ok",
+  "origin_prefixes": [
+    "viewport.main.backing"
+  ],
+  "entities": [
+    {
+      "type": "hatch",
+      "origin": "viewport.main.backing",
+      "layer": "TITLEBLOCK",
+      "boundary_mm": [
+        [
+          22,
+          265
+        ],
+        [
+          86,
+          265
+        ],
+        [
+          86,
+          285
+        ],
+        [
+          22,
+          285
+        ]
+      ],
+      "holes_mm": [],
+      "pattern": "solid",
+      "angle_deg": 0,
+      "width_mm": 0.18,
+      "print_colour": "#FFFFFF"
+    },
+    {
+      "type": "hatch",
+      "origin": "viewport.main.backing",
+      "layer": "TITLEBLOCK",
+      "boundary_mm": [
+        [
+          28,
+          12
+        ],
+        [
+          50,
+          12
+        ],
+        [
+          50,
+          40
+        ],
+        [
+          28,
+          40
+        ]
+      ],
+      "holes_mm": [],
+      "pattern": "solid",
+      "angle_deg": 0,
+      "width_mm": 0.18,
+      "print_colour": "#FFFFFF"
+    }
+  ]
+}
