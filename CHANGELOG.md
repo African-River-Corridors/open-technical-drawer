@@ -6,6 +6,8 @@ All notable changes are recorded here. The format follows
 
 ## [Unreleased]
 
+## [0.3.0]
+
 ### Added
 - `otd-imagery`, a crate apart from the core (a workspace member in `imagery/`): the network lives
   there, not in `otd`. It fetches EOxCloudless 2016 tiles (CC BY 4.0, Web Mercator layer
@@ -27,6 +29,11 @@ All notable changes are recorded here. The format follows
     furniture and the white plates;
   - `outside-frame` (error): a point of a viewport entity lies outside its frame.
   Every sheet of the conformance suite passes with no finding.
+
+### Changed
+- No output moves. Since 0.2.0 the core gained `src/review.rs` and one line in `src/lib.rs`, and
+  nothing else in `src/` or `standard/` changed, so every document gives the same normalised content,
+  SVG, PDF and DXF as in 0.2.0.
 
 ## [0.2.0]
 
