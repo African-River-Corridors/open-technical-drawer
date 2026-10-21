@@ -62,6 +62,19 @@ pub fn all_ratios() -> Vec<u32> {
     all
 }
 
+/// The map ratios (clause 7.3.5, from version 1.1).
+pub const MAP_RATIOS: [u32; 6] = [200000, 500000, 1000000, 2000000, 5000000, 10000000];
+
+/// The ratios a document of version `1.<minor>` may use, smallest denominator first (clauses 7.3.5
+/// and 18.2.1). `fit` tries them in this order.
+pub fn ratios(minor: u32) -> Vec<u32> {
+    let mut all = all_ratios();
+    if minor >= 1 {
+        all.extend(MAP_RATIOS);
+    }
+    all
+}
+
 pub const BAR_INSET: f64 = 6.0;
 pub const BAR_HEIGHT: f64 = 3.0;
 pub const TICK_LENGTH: f64 = 1.5;
@@ -168,10 +181,18 @@ pub fn window_fits(frame: Rect, window: Window, denominator: u32, rotation_deg: 
     rw <= frame.w + FIT_TOL_MM && rh <= frame.h + FIT_TOL_MM
 }
 
-/// The first ratio, from 1:1 upward, at which the window fits (clause 7.5.2).
+/// The first ratio, from 1:1 upward, at which the window fits (clause 7.5.2), for a document of
+/// version 1.0.
 pub fn fit_scale(frame: Rect, window: Window, rotation_deg: f64) -> Option<u32> {
-    all_ratios()
-        .into_iter()
+    fit_scale_in(&all_ratios(), frame, window, rotation_deg)
+}
+
+/// The first ratio of `ratios` at which the window fits (clause 7.5.2). Give it [`ratios`] of the
+/// document's minor version.
+pub fn fit_scale_in(ratios: &[u32], frame: Rect, window: Window, rotation_deg: f64) -> Option<u32> {
+    ratios
+        .iter()
+        .copied()
         .find(|&n| window_fits(frame, window, n, rotation_deg))
 }
 

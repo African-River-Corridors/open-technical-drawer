@@ -494,6 +494,7 @@ pub fn part_points(entity: &Entity) -> Vec<P> {
         Shape::Line { from, to, .. } => vec![*from, *to],
         Shape::Hatch { boundary, .. } => boundary.clone(),
         Shape::Polyline { points, .. } => points.clone(),
+        Shape::Image { box_mm, .. } => vec![[box_mm[0], box_mm[1]], [box_mm[2], box_mm[3]]],
         Shape::Text {
             anchor,
             text,

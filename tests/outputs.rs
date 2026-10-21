@@ -16,6 +16,9 @@ impl Files for DirFiles {
     fn read(&self, relative_path: &str) -> Option<String> {
         fs::read_to_string(self.0.join(relative_path)).ok()
     }
+    fn read_bytes(&self, relative_path: &str) -> Option<Vec<u8>> {
+        fs::read(self.0.join(relative_path)).ok()
+    }
 }
 
 fn case(id: &str) -> Normalised {
@@ -308,6 +311,7 @@ fn the_writers_need_only_normalised_content() {
                 w: 267.0,
                 h: 190.0,
             },
+            colour: false,
         },
         viewports: vec![],
         entities: vec![
@@ -332,6 +336,7 @@ fn the_writers_need_only_normalised_content() {
                 None,
             ),
         ],
+        images: Default::default(),
     };
     let svg = to_svg(&norm, &SvgOptions { embed_font: false });
     assert!(svg.contains("stroke-dasharray=\"2.16 0.54\""), "{svg}");
@@ -362,4 +367,108 @@ fn an_arc_and_a_circle_are_curves_of_the_right_extent() {
         })
         .sum();
     assert_eq!(curves, expected);
+}
+
+/// The colour cases of standard 1.1 (clauses 8.6.4 to 8.6.7 and 9.10).
+const COLOUR_CASES: &[&str] = &["img-colour-basic", "img-plates", "img-sheet-colour"];
+
+fn backdrop() -> Vec<u8> {
+    fs::read(
+        Path::new(env!("CARGO_MANIFEST_DIR"))
+            .join("standard/conformance/documents/img-colour-basic/backdrop.jpg"),
+    )
+    .expect("the backdrop of the suite")
+}
+
+#[test]
+fn the_pdf_holds_each_image_as_its_jpeg_bytes() {
+    for id in COLOUR_CASES {
+        let norm = case(id);
+        let pdf = to_pdf(&norm);
+        let doc = Document::load_mem(&pdf).unwrap();
+        let images: Vec<&lopdf::Stream> = doc
+            .objects
+            .values()
+            .filter_map(|o| match o {
+                Object::Stream(s)
+                    if s.dict.get(b"Subtype").ok() == Some(&Object::Name(b"Image".to_vec())) =>
+                {
+                    Some(s)
+                }
+                _ => None,
+            })
+            .collect();
+        assert_eq!(images.len(), 1, "{id}: one image XObject");
+        let s = images[0];
+        assert_eq!(
+            s.dict.get(b"Filter").unwrap(),
+            &Object::Name(b"DCTDecode".to_vec())
+        );
+        assert_eq!(s.content, backdrop(), "{id}: the JPEG bytes as they are");
+        let page_id = *doc.get_pages().values().next().unwrap();
+        let content = String::from_utf8(doc.get_page_content(page_id)).unwrap();
+        let first_draw = content
+            .lines()
+            .position(|l| l.ends_with(" Do Q"))
+            .expect("the image is drawn");
+        let first_other = content
+            .lines()
+            .position(|l| l.ends_with(" S") || l == "S" || l.ends_with("f*") || l.contains(" Tj"))
+            .unwrap_or(usize::MAX);
+        assert!(
+            first_draw < first_other,
+            "{id}: the image is drawn first (9.10.7)"
+        );
+    }
+}
+
+#[test]
+fn the_pdf_draws_the_colour_members() {
+    let norm = case("img-plates");
+    let doc = Document::load_mem(&to_pdf(&norm)).unwrap();
+    let page_id = *doc.get_pages().values().next().unwrap();
+    let content = String::from_utf8(doc.get_page_content(page_id)).unwrap();
+    assert!(content.contains("1 1 1 RG 1 1 1 rg"), "the white plates");
+    assert!(content.contains("/GS0 gs"), "the image opacity: {content}");
+    let resources = doc.get_page_resources(page_id).unwrap().0.unwrap();
+    let states = dict(&doc, resources.get(b"ExtGState").unwrap());
+    let alpha = dict(&doc, states.get(b"GS0").unwrap()).get(b"ca").unwrap();
+    assert!((alpha.as_float().unwrap() - 0.8).abs() < 1e-6);
+}
+
+#[test]
+fn the_svg_draws_the_colour_members_and_the_image() {
+    for id in COLOUR_CASES {
+        let norm = case(id);
+        let svg = to_svg(&norm, &SvgOptions { embed_font: false });
+        let doc = roxmltree::Document::parse(&svg).expect("well-formed XML");
+        let drawn: Vec<roxmltree::Node> = doc
+            .descendants()
+            .filter(|n| n.attribute("data-origin").is_some())
+            .collect();
+        assert_eq!(drawn[0].tag_name().name(), "image", "{id}: drawn first");
+        assert!(
+            drawn[0]
+                .attribute("href")
+                .unwrap()
+                .starts_with("data:image/jpeg;base64,/9j/"),
+            "{id}"
+        );
+        // every colour in the SVG is one of a layer, a plate, or black
+        for e in &norm.entities {
+            if let Some(c) = &e.paint.print_colour {
+                assert!(svg.contains(&format!("\"{c}\"")), "{id}: {c}");
+            }
+        }
+    }
+}
+
+#[test]
+fn a_monochrome_sheet_names_no_print_profile() {
+    let norm = case("tb-minimal");
+    assert!(!norm.sheet.colour);
+    assert!(norm.to_value()["sheet"].get("print_profile").is_none());
+    assert!(norm.entities.iter().all(|e| e.paint == Default::default()));
+    let colour = case("img-plates");
+    assert_eq!(colour.to_value()["sheet"]["print_profile"], "colour");
 }

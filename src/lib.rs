@@ -22,6 +22,7 @@ pub mod dimensions;
 pub mod entities;
 pub mod furniture;
 pub mod hatch;
+pub mod image;
 pub mod json;
 pub mod numbers;
 pub mod pipeline;

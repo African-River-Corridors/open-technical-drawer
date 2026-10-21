@@ -6,7 +6,7 @@
 // Two test crates include this file, and each uses a part of it.
 #![allow(dead_code)]
 
-use otd::entities::Entity;
+use otd::entities::{Entity, Paint, Shape};
 use otd::numbers::{angle, cos_sin, mm};
 use otd::rules::{AlignH, AlignV, Mapper, Rect, Window};
 use std::collections::BTreeMap;
@@ -286,7 +286,9 @@ pub fn read_normalised(text: &str) -> Back {
     for r in &paper {
         let x = r.xdata();
         if x.contains_key("origin") {
-            entities.push(paper_entity(r, &x, height));
+            let mut e = paper_entity(r, &x, height);
+            e.paint.print_colour = x.get("print_colour").cloned(); // a plate (8.6.7)
+            entities.push(e);
         }
     }
     for r in &model {
@@ -296,16 +298,79 @@ pub fn read_normalised(text: &str) -> Back {
         };
         if r.kind == "INSERT" {
             entities.extend(expand_insert(r, &x, vp, &recs));
+        } else if r.kind == "IMAGE" {
+            entities.push(image_entity(r, &x, vp));
         } else {
             entities.push(model_entity(r, &x, vp, &Identity, 1.0, 0.0, ""));
         }
     }
+    apply_layer_colours(&mut entities, &recs);
     Back {
         width,
         height,
         viewports,
         entities,
     }
+}
+
+/// Clause 8.6.6 from the DXF: the colour members are extended data of the LAYER records (15.4.12).
+fn apply_layer_colours(entities: &mut [Entity], recs: &[Record]) {
+    let table: BTreeMap<String, BTreeMap<String, String>> = recs
+        .iter()
+        .filter(|r| r.kind == "LAYER" && !r.xdata().is_empty())
+        .map(|r| (r.get(2).unwrap().to_string(), r.xdata()))
+        .collect();
+    for e in entities {
+        let o = e.origin.as_str();
+        let Some(c) = table.get(&e.layer) else {
+            continue;
+        };
+        if matches!(e.shape, Shape::Image { .. })
+            || !o.starts_with("viewport.")
+            || o.ends_with(".scale_bar")
+            || o.ends_with(".north_arrow")
+            || o.ends_with(".backing")
+        {
+            continue;
+        }
+        let solid = matches!(&e.shape, Shape::Hatch { pattern, .. } if pattern == "solid");
+        let text = matches!(e.shape, Shape::Text { .. });
+        e.paint = Paint {
+            print_colour: c.get("print_colour").cloned(),
+            fill_opacity: c
+                .get("fill_opacity")
+                .filter(|_| solid)
+                .map(|v| v.parse().expect("a number")),
+            halo_colour: c.get("halo_colour").filter(|_| text).cloned(),
+        };
+    }
+}
+
+/// An IMAGE: the insert point (10, 20), the u and v vectors of one pixel (11, 21 and 12, 22), the
+/// size in pixels (13, 23).
+fn image_entity(r: &Record, x: &BTreeMap<String, String>, vp: &ViewportBack) -> Entity {
+    let window = Window {
+        xmin: vp.centre[0],
+        xmax: vp.centre[0],
+        ymin: vp.centre[1],
+        ymax: vp.centre[1],
+    };
+    let mapper = Mapper::new(vp.frame, window, vp.n, vp.twist);
+    let (w, h) = (r.f(13).round() as u32, r.f(23).round() as u32);
+    let (x0, y0) = (r.f(10), r.f(20));
+    let (x1, y1) = (x0 + r.f(11) * f64::from(w), y0 + r.f(22) * f64::from(h));
+    let [px0, py0] = mapper.point([x0, y1]);
+    let [px1, py1] = mapper.point([x1, y0]);
+    Entity::image(
+        &format!("viewport.{}", x["vp"]),
+        r.get(8).unwrap(),
+        [px0, py0, px1, py1],
+        &x["sha256"],
+        [w, h],
+        x["components"].parse().expect("1 or 3"),
+        x["opacity"].parse().expect("a number"),
+        x.get("id").filter(|v| *v != "None").map(String::as_str),
+    )
 }
 
 fn common(

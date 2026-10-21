@@ -12,6 +12,19 @@ pub struct Entity {
     pub layer: String,
     pub id: Option<String>,
     pub shape: Shape,
+    /// The colour members of clause 16.4.1. All empty under the monochrome profile.
+    pub paint: Paint,
+}
+
+/// The colour members of an entity under the colour profile (clauses 8.6.5, 8.6.6 and 16.4.1).
+#[derive(Debug, Clone, Default, PartialEq)]
+pub struct Paint {
+    /// `#RRGGBB`, upper-case hex.
+    pub print_colour: Option<String>,
+    /// On a solid hatch only: more than 0, at most 1.
+    pub fill_opacity: Option<f64>,
+    /// On a text only: `#RRGGBB`.
+    pub halo_colour: Option<String>,
 }
 
 /// What an entity draws (clause 16.4).
@@ -58,6 +71,18 @@ pub enum Shape {
         align_h: AlignH,
         align_v: AlignV,
     },
+    /// A raster image (clause 9.10, from version 1.1).
+    Image {
+        /// `[x0, y0, x1, y1]`: the top-left and bottom-right corners on the paper.
+        box_mm: [f64; 4],
+        sha256: String,
+        /// `[width, height]` in pixels, from the frame header of the file.
+        size_px: [u32; 2],
+        /// 1 (grey) or 3 (colour).
+        components: u8,
+        /// Rounded to 3 places.
+        opacity: f64,
+    },
 }
 
 /// Round a paper point to 3 places.
@@ -72,7 +97,34 @@ impl Entity {
             layer: layer.to_string(),
             id: id.filter(|s| !s.is_empty()).map(str::to_string),
             shape,
+            paint: Paint::default(),
         }
+    }
+
+    /// An image (clause 16.6.2): the box is rounded here.
+    #[allow(clippy::too_many_arguments)]
+    pub fn image(
+        origin: &str,
+        layer: &str,
+        box_mm: [f64; 4],
+        sha256: &str,
+        size_px: [u32; 2],
+        components: u8,
+        opacity: f64,
+        id: Option<&str>,
+    ) -> Entity {
+        Entity::make(
+            origin,
+            layer,
+            id,
+            Shape::Image {
+                box_mm: box_mm.map(mm),
+                sha256: sha256.to_string(),
+                size_px,
+                components,
+                opacity: mm(opacity),
+            },
+        )
     }
 
     pub fn line(
@@ -232,6 +284,7 @@ impl Entity {
             Shape::Circle { .. } => "circle",
             Shape::Hatch { .. } => "hatch",
             Shape::Text { .. } => "text",
+            Shape::Image { .. } => "image",
         }
     }
 
@@ -246,7 +299,7 @@ impl Entity {
         }
     }
 
-    /// The width, or 0 for a text (clause 16.8, part 4).
+    /// The width, or 0 for a text or an image (clause 16.8, part 4).
     pub fn width(&self) -> f64 {
         match &self.shape {
             Shape::Line { width, .. }
@@ -254,7 +307,7 @@ impl Entity {
             | Shape::Arc { width, .. }
             | Shape::Circle { width, .. }
             | Shape::Hatch { width, .. } => *width,
-            Shape::Text { .. } => 0.0,
+            Shape::Text { .. } | Shape::Image { .. } => 0.0,
         }
     }
 
@@ -358,6 +411,34 @@ impl Entity {
                 m.insert("align_h".into(), align_h.word().into());
                 m.insert("align_v".into(), align_v.word().into());
             }
+            Shape::Image {
+                box_mm,
+                sha256,
+                size_px,
+                components,
+                opacity,
+            } => {
+                m.insert(
+                    "box_mm".into(),
+                    Value::Array(box_mm.iter().map(|x| num(*x)).collect()),
+                );
+                m.insert("sha256".into(), sha256.clone().into());
+                m.insert(
+                    "size_px".into(),
+                    Value::Array(vec![size_px[0].into(), size_px[1].into()]),
+                );
+                m.insert("components".into(), (*components).into());
+                m.insert("opacity".into(), num(*opacity));
+            }
+        }
+        if let Some(c) = &self.paint.print_colour {
+            m.insert("print_colour".into(), c.clone().into());
+        }
+        if let Some(o) = self.paint.fill_opacity {
+            m.insert("fill_opacity".into(), num(o));
+        }
+        if let Some(c) = &self.paint.halo_colour {
+            m.insert("halo_colour".into(), c.clone().into());
         }
         Value::Object(m)
     }
@@ -415,6 +496,7 @@ fn geometry(e: &Entity) -> Vec<f64> {
             rotation,
             ..
         } => vec![anchor[0], anchor[1], *height, *rotation],
+        Shape::Image { box_mm, .. } => box_mm.to_vec(),
     }
 }
 
@@ -422,6 +504,7 @@ fn last_text(e: &Entity) -> &str {
     match &e.shape {
         Shape::Text { text, .. } => text,
         Shape::Hatch { pattern, .. } => pattern,
+        Shape::Image { sha256, .. } => sha256,
         _ => "",
     }
 }
