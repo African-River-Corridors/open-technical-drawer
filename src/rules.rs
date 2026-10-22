@@ -86,6 +86,26 @@ pub const NORTH_INSET: f64 = 10.0;
 pub const NORTH_LABEL_HEIGHT: f64 = 3.5;
 pub const MIN_BAR_FRAME_HEIGHT: f64 = 46.0;
 pub const MIN_NORTH_FRAME: f64 = 38.0;
+/// The vertical scale bar of an exaggerated viewport (clauses 7.9.11 and 7.9.12, from version 1.2):
+/// its bottom end above the bottom of the frame, its divisions, the gap from the bar to its labels,
+/// the gap from its top to the ratio text, and the baseline of the words above the scale bar.
+pub const VBAR_BOTTOM: f64 = 26.0;
+pub const VBAR_DIVISIONS: u32 = 5;
+pub const VBAR_LABEL_GAP: f64 = 2.5;
+pub const VBAR_RATIO_GAP: f64 = 3.0;
+pub const WORDS_BASELINE: f64 = 13.0;
+/// The lowest frame of an exaggerated viewport (clause 7.9.12).
+pub const MIN_EXAGGERATED_FRAME_HEIGHT: f64 = 100.0;
+
+/// The vertical denominator `N / E` (clause 7.3.6.2), or `None` when it is not a whole number in
+/// `ratios`.
+pub fn vertical_denominator(denominator: u32, exaggeration: u32, ratios: &[u32]) -> Option<u32> {
+    if exaggeration == 0 || !denominator.is_multiple_of(exaggeration) {
+        return None;
+    }
+    let nv = denominator / exaggeration;
+    ratios.contains(&nv).then_some(nv)
+}
 
 /// A rectangle on the paper: top-left corner, width and height, in millimetres.
 #[derive(Debug, Clone, Copy, PartialEq)]
@@ -134,6 +154,7 @@ pub struct Mapper {
     fx: f64,
     fy: f64,
     pub k: f64,
+    kv: f64,
     cos: f64,
     sin: f64,
 }
@@ -148,9 +169,32 @@ impl Mapper {
             fx: frame.x + frame.w / 2.0,
             fy: frame.y + frame.h / 2.0,
             k: 1000.0 / f64::from(denominator),
+            kv: 1000.0 / f64::from(denominator),
             cos,
             sin,
         }
+    }
+
+    /// A map with a vertical exaggeration `E` (clauses 7.3.6 and 7.4): model y is drawn at
+    /// `k_v = 1000 / (N / E)`. With `E = 1` it is [`Mapper::new`], bit for bit.
+    pub fn exaggerated(
+        frame: Rect,
+        window: Window,
+        denominator: u32,
+        rotation_deg: f64,
+        exaggeration: u32,
+    ) -> Mapper {
+        let mut m = Mapper::new(frame, window, denominator, rotation_deg);
+        if exaggeration > 1 {
+            m.kv = 1000.0 / (f64::from(denominator) / f64::from(exaggeration));
+        }
+        m
+    }
+
+    /// The paper millimetres per metre of model height (clause 7.3.6). It is `k` with no
+    /// exaggeration.
+    pub fn kv(&self) -> f64 {
+        self.kv
     }
 
     /// The paper point of a model point. Not rounded.
@@ -159,7 +203,7 @@ impl Mapper {
         let dy = p[1] - self.cy;
         let rx = dx * self.cos - dy * self.sin;
         let ry = dx * self.sin + dy * self.cos;
-        [self.fx + rx * self.k, self.fy - ry * self.k]
+        [self.fx + rx * self.k, self.fy - ry * self.kv]
     }
 }
 
@@ -175,9 +219,44 @@ pub fn required_size(window: Window, denominator: u32, rotation_deg: f64) -> (f6
     )
 }
 
+/// The paper size of clause 7.5.1 with a vertical exaggeration `E`: the height is at `k_v`. With
+/// `E = 1` it is [`required_size`]. A turned exaggerated window is an error of its own (clause
+/// 7.3.6.3); it is sized here as the map of clause 7.4 draws it.
+pub fn required_size_exaggerated(
+    window: Window,
+    denominator: u32,
+    rotation_deg: f64,
+    exaggeration: u32,
+) -> (f64, f64) {
+    if exaggeration <= 1 {
+        return required_size(window, denominator, rotation_deg);
+    }
+    let (c, s) = cos_sin(rotation_deg);
+    let wm = window.xmax - window.xmin;
+    let hm = window.ymax - window.ymin;
+    let k = 1000.0 / f64::from(denominator);
+    let kv = 1000.0 / (f64::from(denominator) / f64::from(exaggeration));
+    (
+        (wm * c).abs() * k + (hm * s).abs() * kv,
+        (wm * s).abs() * k + (hm * c).abs() * kv,
+    )
+}
+
 /// Does the window fit the frame at the scale (clause 7.5.1)?
 pub fn window_fits(frame: Rect, window: Window, denominator: u32, rotation_deg: f64) -> bool {
     let (rw, rh) = required_size(window, denominator, rotation_deg);
+    rw <= frame.w + FIT_TOL_MM && rh <= frame.h + FIT_TOL_MM
+}
+
+/// [`window_fits`] with a vertical exaggeration `E` (clauses 7.3.6 and 7.5.1).
+pub fn window_fits_exaggerated(
+    frame: Rect,
+    window: Window,
+    denominator: u32,
+    rotation_deg: f64,
+    exaggeration: u32,
+) -> bool {
+    let (rw, rh) = required_size_exaggerated(window, denominator, rotation_deg, exaggeration);
     rw <= frame.w + FIT_TOL_MM && rh <= frame.h + FIT_TOL_MM
 }
 
@@ -194,6 +273,50 @@ pub fn fit_scale_in(ratios: &[u32], frame: Rect, window: Window, rotation_deg: f
         .iter()
         .copied()
         .find(|&n| window_fits(frame, window, n, rotation_deg))
+}
+
+/// [`fit_scale_in`] with a vertical exaggeration `E` (clause 7.5.2): only the ratios whose vertical
+/// ratio `N / E` is in `ratios` are tried (clause 7.3.6.2). With `E = 1` it is [`fit_scale_in`].
+pub fn fit_scale_exaggerated(
+    ratios: &[u32],
+    frame: Rect,
+    window: Window,
+    rotation_deg: f64,
+    exaggeration: u32,
+) -> Option<u32> {
+    if exaggeration <= 1 {
+        return fit_scale_in(ratios, frame, window, rotation_deg);
+    }
+    ratios.iter().copied().find(|&n| {
+        vertical_denominator(n, exaggeration, ratios).is_some()
+            && window_fits_exaggerated(frame, window, n, rotation_deg, exaggeration)
+    })
+}
+
+/// The length of the vertical scale bar (clause 7.9.11): the largest `{1, 2, 5} x 10^n` metres, n
+/// from -3 to 6, that is at most a quarter of the frame height on paper at the vertical scale.
+pub fn vertical_bar_length(frame_height: f64, vertical_denominator: u32) -> Option<f64> {
+    let kv = 1000.0 / f64::from(vertical_denominator);
+    let target = (frame_height / 4.0) / kv;
+    let mut best: Option<f64> = None;
+    for exponent in -3..=6 {
+        for multiple in [1.0, 2.0, 5.0] {
+            let value = multiple * libm::pow(10.0, f64::from(exponent));
+            if value <= target + 1e-12 {
+                best = Some(best.map_or(value, |b| b.max(value)));
+            }
+        }
+    }
+    best
+}
+
+/// The words of a vertical exaggeration under the scale bar (clause 7.9.11), never initials.
+pub fn exaggeration_words(exaggeration: u32) -> String {
+    label!(
+        "draw-vertical-exaggeration",
+        "Vertical exaggeration \u{00d7}{e}",
+        e = exaggeration
+    )
 }
 
 /// The available width of a scale bar (clause 7.9.3).

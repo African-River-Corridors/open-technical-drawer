@@ -95,6 +95,10 @@ fn dxf_read_back_gives_the_same_normalised_content() {
         for vp in &norm.viewports {
             let b = &back.viewports[&vp.id];
             assert_eq!(b.n, vp.scale, "{id}: the viewport holds the stated scale");
+            assert_eq!(
+                b.vertical_exaggeration, vp.vertical_exaggeration,
+                "{id}: the vertical exaggeration"
+            );
             let close = |a: f64, c: f64| (a - c).abs() < 1e-6;
             assert!(
                 close(b.frame.x, vp.frame.x)

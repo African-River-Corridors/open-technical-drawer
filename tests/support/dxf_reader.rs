@@ -1,7 +1,8 @@
 //! A small reader of ASCII DXF, written for the tests. It shares no code with the writer
 //! (`otd::render::dxf`): it works on the group codes of the file itself, and it rebuilds the
 //! normalised content of the standard (clause 16) from the DXF as clause 15.4.11 says: paper-space
-//! entities as they are, model-space entities through the viewports (clause 7.4).
+//! entities as they are, model-space entities through the viewports (clause 7.4). The entities of
+//! an exaggerated viewport are paper-space entities (clause 15.4.13), so they need no map.
 
 // Two test crates include this file, and each uses a part of it.
 #![allow(dead_code)]
@@ -229,6 +230,9 @@ pub struct ViewportBack {
     pub twist: f64,
     pub view_height: f64,
     pub height: f64,
+    /// The vertical exaggeration in the extended data (clause 15.4.8), from version 1.2. The
+    /// entities of such a viewport are in paper space (clause 15.4.13).
+    pub vertical_exaggeration: Option<u32>,
 }
 
 pub struct Back {
@@ -278,6 +282,9 @@ pub fn read_normalised(text: &str) -> Back {
                     twist: r.f_or(51, 0.0),
                     view_height: r.f(45),
                     height: h,
+                    vertical_exaggeration: x
+                        .get("vertical_exaggeration")
+                        .map(|v| v.parse().expect("a whole number")),
                 },
             );
         }
@@ -328,6 +335,7 @@ fn apply_layer_colours(entities: &mut [Entity], recs: &[Record]) {
         if matches!(e.shape, Shape::Image { .. })
             || !o.starts_with("viewport.")
             || o.ends_with(".scale_bar")
+            || o.ends_with(".vertical_scale_bar")
             || o.ends_with(".north_arrow")
             || o.ends_with(".backing")
         {

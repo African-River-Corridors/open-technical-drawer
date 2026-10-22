@@ -37,8 +37,12 @@ writers are in `otd::render` (`svg`, `pdf`, `dxf`).
 | `otd` | Drawing Format Standard |
 |---|---|
 | 0.1.x | 1.0 (`4936998`) |
+| 0.2.x, 0.3.x | 1.1 (`a2021a8`) |
+| unreleased | 1.2 (`1d16f5c`) |
 
-Standard 1.1 (the image entity, the colour print profile, map ratios) comes in `otd` 0.2.0.
+Each version reads documents of its own minor version and every earlier one (clause 18.2).
+Standard 1.1 adds the image entity, the colour print profile and the map ratios. Standard 1.2 adds
+the vertical exaggeration of a viewport.
 
 ## Build and test
 

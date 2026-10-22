@@ -10,6 +10,10 @@
 //! viewport of the document at its scale. Every entity carries extended data of the application `TDFA`, so
 //! that the normalised content can be made again from the file (clause 15.4.11).
 //!
+//! From version 1.2, the entities of a viewport with a vertical exaggeration are written in paper
+//! space, as drawn, because a DXF VIEWPORT has one scale (clause 15.4.13). Its VIEWPORT is still
+//! written at the horizontal scale, with `vertical_exaggeration` in its extended data.
+//!
 //! From version 1.1, an image is an IMAGE in model space with an IMAGEDEF that links the file by its
 //! path, and the colour members of a layer are its true colour and extended data (clause 15.4.12). A
 //! document with neither gives the same bytes as before.
@@ -473,8 +477,19 @@ pub fn to_dxf(document: &Value, norm: &Normalised, files: &dyn Files) -> DxfOutp
             .find(|v| v.id == id)
             .map_or(1, |v| v.scale)
     };
+    // 15.4.13: a DXF VIEWPORT has one scale, so the entities of an exaggerated viewport are written
+    // in paper space, as drawn, and model space holds nothing of it.
+    let exaggerated: Vec<&str> = norm
+        .viewports
+        .iter()
+        .filter(|v| v.vertical_exaggeration.is_some())
+        .map(|v| v.id.as_str())
+        .collect();
     for vp in arr(&document["viewports"]) {
         let vid = st(&vp["id"]);
+        if exaggerated.contains(&vid) {
+            continue;
+        }
         let n = scale_of(vid);
         let rotation = rotation_of(vp);
         for e in entities_of(vp) {
@@ -508,8 +523,13 @@ pub fn to_dxf(document: &Value, norm: &Normalised, files: &dyn Files) -> DxfOutp
     };
     for e in &norm.entities {
         let origin = e.origin.as_str();
+        let paper_vp = origin
+            .strip_prefix("viewport.")
+            .is_some_and(|rest| exaggerated.contains(&rest));
         if origin.starts_with("viewport.")
+            && !paper_vp
             && !origin.ends_with(".scale_bar")
+            && !origin.ends_with(".vertical_scale_bar")
             && !origin.ends_with(".north_arrow")
             && !origin.ends_with(".hatch")
             && !origin.ends_with(".dimension")
@@ -547,6 +567,10 @@ pub fn to_dxf(document: &Value, norm: &Normalised, files: &dyn Files) -> DxfOutp
         let tags = [
             ("id", Some(v.id.clone())),
             ("scale", Some(v.scale.to_string())),
+            (
+                "vertical_exaggeration",
+                v.vertical_exaggeration.map(|e| e.to_string()),
+            ),
         ];
         write_viewport(
             &mut paper,

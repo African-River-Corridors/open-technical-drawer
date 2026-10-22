@@ -304,7 +304,9 @@ pub fn review(norm: &Normalised, options: &ReviewOptions) -> Vec<Finding> {
             // place their own labels by the standard's geometry (clauses 7.9 and 7.10).
             if he.origin.ends_with(".backing")
                 || (te.origin == he.origin
-                    && (he.origin.ends_with(".scale_bar") || he.origin.ends_with(".north_arrow")))
+                    && (he.origin.ends_with(".scale_bar")
+                        || he.origin.ends_with(".vertical_scale_bar")
+                        || he.origin.ends_with(".north_arrow")))
             {
                 continue;
             }

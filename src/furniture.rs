@@ -494,7 +494,12 @@ fn field_value(
         "scale" => {
             if scales.is_empty() || scales.iter().any(Option::is_none) {
                 String::new()
-            } else if scales.iter().all(|s| *s == scales[0]) {
+            } else if scales.iter().all(|s| *s == scales[0])
+                && !arr(&doc["viewports"])
+                    .iter()
+                    .any(|vp| vp.get("vertical_exaggeration").is_some())
+            {
+                // 14.4.4: a sheet with an exaggerated viewport is AS SHOWN.
                 format!("1:{}", scales[0].unwrap_or(1))
             } else {
                 label!("draw-scale-as-shown", "AS SHOWN").to_string()
