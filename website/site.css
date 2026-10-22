@@ -1,0 +1,83 @@
+/* ARC open library docs page. Matches the ARC website's open-source page (arc_website
+   public/styles.css): white ground, slate headings, a muted page-head band, Manrope.
+   Colours and fonts come from tokens.css; this file holds layout only. */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--fg);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; }
+
+h1, h2, h3 {
+  color: var(--ink);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+  margin: 0 0 .6em;
+}
+h2 { font-size: clamp(1.5rem, 3vw, 1.9rem); margin-top: 2.2em; }
+h3 { font-size: 1.15rem; margin-top: 1.6em; }
+
+a { color: var(--accent); text-underline-offset: 3px; }
+a:hover { color: var(--accent-strong); }
+
+.container { max-width: var(--maxw); margin: 0 auto; padding: 0 16px; }
+@media (min-width: 720px) { .container { padding: 0 32px; } }
+
+/* Header: the site's name, as text, and the way back to the open-source page */
+.site-header { border-bottom: 1px solid var(--line); background: var(--bg); }
+.site-header .bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; flex-wrap: wrap; }
+.site-header .home { color: var(--ink); font-weight: 800; text-decoration: none; letter-spacing: -0.01em; }
+.site-header nav a { color: var(--muted); text-decoration: none; font-weight: 600; font-size: .95rem; margin-left: 20px; }
+.site-header nav a:first-child { margin-left: 0; }
+.site-header nav a:hover { color: var(--ink); }
+
+/* Page head: the mark beside the family line and the name (the lockup, as live text) */
+.page-head { padding: clamp(2.5rem, 6vw, 4.5rem) 0 2rem; background: var(--bg-muted); }
+.page-head .title { display: flex; align-items: center; gap: 20px; margin-bottom: 1.2rem; }
+.page-head .mark { width: 72px; height: 72px; flex: none; }
+.page-head .mark-dark { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .page-head .mark-light { display: none; }
+  :root:not([data-theme="light"]) .page-head .mark-dark { display: block; }
+}
+.page-head h1 { font-size: clamp(1.9rem, 5vw, 3rem); margin: 0; }
+.eyebrow {
+  display: inline-block; color: var(--accent); font-weight: 700; font-size: .8rem;
+  letter-spacing: var(--track-caps); text-transform: uppercase; margin-bottom: .3rem;
+}
+.page-head .lead { font-size: 1.15rem; color: var(--muted); max-width: var(--maxw-prose); margin: 0; }
+
+/* Facts: version, standard, language, licence */
+.facts { display: flex; flex-wrap: wrap; gap: 8px 28px; margin: 1.6rem 0 0; padding: 0; list-style: none; font-size: .95rem; }
+.facts li { color: var(--muted); }
+.facts strong { color: var(--ink); font-weight: 700; }
+.status { display: inline-block; border: 1.5px solid var(--line-strong); border-radius: 999px; padding: 2px 12px; font-weight: 700; font-size: .85rem; color: var(--ink); }
+
+main { padding-bottom: 4rem; }
+.prose { max-width: var(--maxw-prose); }
+.prose ul { padding-left: 1.2em; }
+.prose li { margin: .3em 0; }
+
+code, pre { font-family: var(--font-mono); font-size: .88em; }
+:not(pre) > code { background: var(--bg-muted); padding: 1px 5px; border-radius: 4px; }
+pre { background: var(--bg-muted); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 14px 16px; overflow-x: auto; line-height: 1.5; }
+
+table { border-collapse: collapse; margin: 1em 0; font-size: .95rem; display: block; overflow-x: auto; }
+th, td { text-align: left; padding: 8px 14px 8px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { color: var(--ink); font-weight: 700; border-bottom: 1.5px solid var(--line-strong); }
+
+.links { display: flex; flex-wrap: wrap; gap: 10px 22px; padding: 0; list-style: none; font-weight: 700; }
+
+/* Footer: the light endorsement and the font credits */
+.site-footer { border-top: 1px solid var(--line); padding: 1.6rem 0 2.4rem; color: var(--muted); font-size: .9rem; }
+.site-footer p { margin: .3em 0; }
+.page-head h1 .initials { color: var(--muted); font-weight: 600; }

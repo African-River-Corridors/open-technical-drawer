@@ -1,4 +1,10 @@
-# open-technical-drawer
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="website/assets/otd-lockup-dark.svg">
+  <img alt="OTD, Open Technical Drawer: an ARC open library" src="website/assets/otd-lockup.svg" width="440">
+</picture>
+
+**The Drawing Format Standard in Rust.**
+[Docs page](https://www.africanrivercorridors.com/otd) · [The standard](https://www.africanrivercorridors.com/dfs) · [Changelog](CHANGELOG.md)
 
 `otd` is the [Drawing Format Standard](https://github.com/African-River-Corridors/technical_drawings_for_agents)
 in Rust. A drawing document goes in. Normalised content comes out, and from it SVG, PDF and DXF.
@@ -22,7 +28,7 @@ It began as the `ovcd-draw` crate of
 
 ```toml
 [dependencies]
-otd = { git = "https://github.com/African-River-Corridors/open-technical-drawer", tag = "v0.1.0" }
+otd = { git = "https://github.com/African-River-Corridors/open-technical-drawer", tag = "v0.4.0" }
 ```
 
 ```rust
@@ -38,7 +44,7 @@ writers are in `otd::render` (`svg`, `pdf`, `dxf`).
 |---|---|
 | 0.1.x | 1.0 (`4936998`) |
 | 0.2.x, 0.3.x | 1.1 (`a2021a8`) |
-| unreleased | 1.2 (`1d16f5c`) |
+| 0.4.x | 1.2 (`1d16f5c`) |
 
 Each version reads documents of its own minor version and every earlier one (clause 18.2).
 Standard 1.1 adds the image entity, the colour print profile and the map ratios. Standard 1.2 adds
@@ -57,4 +63,8 @@ say why in the pull request.
 
 ## Licence
 
-Apache-2.0. The vendored font under `standard/fonts/` has its own licence, beside it.
+Apache-2.0. The vendored font under `standard/fonts/` has its own licence, beside it. The fonts
+under `website/fonts/` (SIL OFL 1.1) have theirs beside them. The project names and logos are covered by
+[TRADEMARKS.md](TRADEMARKS.md).
+
+Hosted by African River Corridors.

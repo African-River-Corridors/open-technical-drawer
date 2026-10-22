@@ -1,0 +1,83 @@
+/* ARC open library tokens: the family look for ARC's open-source libraries (OTD, ORD, DFS).
+
+   Libraries are tools that other tools use, not apps people open. So they do not get a world of
+   their own (as OVCD and OWD do). They wear the ARC website's own colours and face, because their
+   docs pages sit on that site: slate ink, one gold accent, white ground, Manrope.
+
+   Rules:
+   - Slate for every line and letter. Gold is the one accent: the mark's cue, links, the eyebrow.
+   - --gold is the ARC logo's gold. It is under 3:1 on white, so it is decoration only (rules, the
+     cue in the large mark). --accent carries meaning and text.
+   - No status colours: a library page has no pass or fail to show.
+   Light: white ground, as the ARC site. Dark: the site's deepest navy, for GitHub dark mode and
+   readers who ask for it. Every text pair meets WCAG 2.2 AA (tools/contrast.py). */
+
+@font-face {
+  font-family: "Manrope";
+  src: url("fonts/Manrope[wght].woff2") format("woff2");
+  font-weight: 200 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("fonts/IBMPlexMono-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  /* ARC site colours (arc_website public/styles.css), the same in both themes */
+  --slate: #283845;           /* the ARC logo's slate: the mark, headings */
+  --gold: #bb9e66;            /* the ARC logo's gold. Decoration only, never text */
+
+  /* Surfaces */
+  --bg: #ffffff;
+  --bg-muted: #f5f7fa;        /* the page head band, code blocks */
+  --line: #e4e7ee;            /* hairlines (not text) */
+  --line-strong: #7f8a9b;     /* table rules and the mark's frame on muted (3:1) */
+
+  /* Ink */
+  --ink: #283845;             /* headings and the mark */
+  --fg: #1b2630;              /* body text */
+  --muted: #5a6478;           /* lead text, captions */
+
+  /* The one accent */
+  --accent: #8a6a2e;          /* the site's darkened gold: links, eyebrow, the mark's cue */
+  --accent-strong: #6f5523;   /* link hover */
+
+  /* Type */
+  --font: "Manrope", system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --track-caps: 0.14em;       /* the eyebrow "ARC OPEN LIBRARY" */
+
+  /* Layout (as the ARC site) */
+  --maxw: 1120px;
+  --maxw-prose: 68ch;
+  --radius: 14px;
+  --radius-sm: 10px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #151f28;
+    --bg-muted: #1f2c37;
+    --line: #33424f;
+    --line-strong: #6f7d8d;
+    --ink: #e8ecf1;
+    --fg: #d7dde5;
+    --muted: #a9b4c2;
+    --accent: #d4b77e;
+    --accent-strong: #e6cf9f;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #151f28;
+  --bg-muted: #1f2c37;
+  --line: #33424f;
+  --line-strong: #6f7d8d;
+  --ink: #e8ecf1;
+  --fg: #d7dde5;
+  --muted: #a9b4c2;
+  --accent: #d4b77e;
+  --accent-strong: #e6cf9f;
+}
