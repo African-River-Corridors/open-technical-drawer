@@ -103,6 +103,10 @@
           },
           "frame": {
             "$ref": "#/$defs/frame"
+          },
+          "vertical_exaggeration": {
+            "type": "integer",
+            "minimum": 2
           }
         }
       }

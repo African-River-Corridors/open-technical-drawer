@@ -1,0 +1,87 @@
+{
+  "standard_version": "1.2",
+  "sheet": {
+    "size": "A3",
+    "orientation": "landscape"
+  },
+  "layers": [
+    {
+      "name": "OUTLINE"
+    },
+    {
+      "name": "WATER"
+    },
+    {
+      "name": "TEXT"
+    },
+    {
+      "name": "DIMENSIONS"
+    }
+  ],
+  "viewports": [
+    {
+      "id": "main",
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 200
+      },
+      "window": {
+        "xmin_m": 0,
+        "ymin_m": 0,
+        "xmax_m": 1800,
+        "ymax_m": 80
+      },
+      "scale": 5000,
+      "vertical_exaggeration": 10,
+      "scale_bar": {},
+      "entities": [
+        {
+          "type": "symbol",
+          "layer": "OUTLINE",
+          "library": "std",
+          "symbol": "mark",
+          "position_m": [
+            900,
+            40
+          ]
+        }
+      ]
+    }
+  ],
+  "symbol_libraries": [
+    {
+      "id": "std",
+      "symbols": {
+        "mark": {
+          "units": "paper_mm",
+          "geometry": [
+            {
+              "type": "line",
+              "from": [
+                -2,
+                0
+              ],
+              "to": [
+                2,
+                0
+              ]
+            },
+            {
+              "type": "line",
+              "from": [
+                0,
+                -2
+              ],
+              "to": [
+                0,
+                2
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

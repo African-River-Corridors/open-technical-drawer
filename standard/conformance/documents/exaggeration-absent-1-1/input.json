@@ -1,0 +1,89 @@
+{
+  "standard_version": "1.1",
+  "sheet": {
+    "size": "A3",
+    "orientation": "landscape"
+  },
+  "layers": [
+    {
+      "name": "OUTLINE"
+    },
+    {
+      "name": "WATER"
+    },
+    {
+      "name": "TEXT"
+    },
+    {
+      "name": "DIMENSIONS"
+    }
+  ],
+  "viewports": [
+    {
+      "id": "main",
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 200
+      },
+      "window": {
+        "xmin_m": 0,
+        "ymin_m": 0,
+        "xmax_m": 1800,
+        "ymax_m": 80
+      },
+      "scale": 5000,
+      "scale_bar": {},
+      "north": {},
+      "entities": [
+        {
+          "type": "polyline",
+          "layer": "OUTLINE",
+          "id": "bed",
+          "points_m": [
+            [
+              0,
+              40
+            ],
+            [
+              600,
+              38
+            ],
+            [
+              1200,
+              35
+            ],
+            [
+              1800,
+              32
+            ]
+          ]
+        },
+        {
+          "type": "line",
+          "layer": "WATER",
+          "id": "water",
+          "from_m": [
+            0,
+            46
+          ],
+          "to_m": [
+            1800,
+            41
+          ]
+        },
+        {
+          "type": "text",
+          "layer": "TEXT",
+          "anchor_m": [
+            900,
+            50
+          ],
+          "text": "WATER LEVEL",
+          "height_mm": 2.5
+        }
+      ]
+    }
+  ]
+}

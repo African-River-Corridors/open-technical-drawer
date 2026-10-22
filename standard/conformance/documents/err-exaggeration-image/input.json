@@ -1,0 +1,62 @@
+{
+  "standard_version": "1.2",
+  "sheet": {
+    "size": "A3",
+    "orientation": "landscape",
+    "print_profile": "colour"
+  },
+  "layers": [
+    {
+      "name": "OUTLINE"
+    },
+    {
+      "name": "WATER"
+    },
+    {
+      "name": "TEXT"
+    },
+    {
+      "name": "DIMENSIONS"
+    },
+    {
+      "name": "IMAGERY",
+      "role": "thin",
+      "line_type": "continuous",
+      "aci": 40
+    }
+  ],
+  "viewports": [
+    {
+      "id": "main",
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 200
+      },
+      "window": {
+        "xmin_m": 0,
+        "ymin_m": 0,
+        "xmax_m": 1800,
+        "ymax_m": 80
+      },
+      "scale": 5000,
+      "vertical_exaggeration": 10,
+      "scale_bar": {},
+      "entities": [
+        {
+          "type": "image",
+          "layer": "IMAGERY",
+          "path": "backdrop.jpg",
+          "sha256": "2395efc890236dadf74089ec4efc8b3a6eb88b3a45fffa73b777faa9f654e955",
+          "bbox_m": [
+            600,
+            20,
+            1200,
+            60
+          ]
+        }
+      ]
+    }
+  ]
+}
