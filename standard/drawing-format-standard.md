@@ -101,7 +101,7 @@ of its member name:
 | `_deg` | degrees |
 
 A number whose member name has none of these endings has no unit. Examples are counts, the scale
-denominator and an opacity (clauses 8.6.5 and 9.10.6). The schema states which members are whole numbers.
+denominator, an opacity (clauses 8.6.5 and 9.10.6) and a vertical exaggeration (clause 7.3.6). The schema states which members are whole numbers.
 *Basis: house choice H-02. The rule keeps the two length units visible at every number.*
 
 **4.6** A check gives **findings**. An **error** stops the build: no output is written. A
@@ -299,6 +299,7 @@ A viewport has these members. The schema is final for names.
 | `window` | The model window: `xmin_m`, `ymin_m`, `xmax_m`, `ymax_m`. |
 | `scale` | A preferred or house ratio, or `fit` (clause 7.3 and 7.5). |
 | `rotation_deg` | How far the model turns on the paper, in degrees (clause 7.4). Default 0. |
+| `vertical_exaggeration` | From version 1.2: how many times the height is drawn larger than the length (clause 7.3.6). Optional. |
 | `scale_bar` | An optional scale bar (clause 7.9). |
 | `north` | An optional north arrow (clause 7.10). |
 | `entities` | The entities of the viewport (clause 9). The list may be empty. |
@@ -333,9 +334,12 @@ version 1.0.
 *Basis: house choice H-10. The standard has two short lists of scales, so every scale on a sheet can
 be set on a scale rule.*
 
-**7.3.3** A viewport has one scale. Both axes use it. A view with exaggerated height is not
-possible in version 1.0.
-*Basis: house choice H-11. A wrong exaggeration is worse than none.*
+**7.3.3** A viewport has one scale, its `scale`. Both axes use it, unless the viewport has a
+vertical exaggeration (clause 7.3.6). Then `scale` is the horizontal scale, and the vertical scale
+is derived from it. A viewport without `vertical_exaggeration` is drawn exactly as in versions 1.0
+and 1.1.
+*Basis: house choice H-11. A wrong exaggeration is worse than none, so an exaggeration is always
+stated, printed in words and checked (clause 7.3.6). Versions 1.0 and 1.1 did not allow one.*
 
 **7.3.4 House ratios.** The **house ratios** are those where N is one of:
 
@@ -357,6 +361,48 @@ change.
 needs ratios smaller than 1:100000. The values carry on the 1, 2, 5 series of clause 7.3.1 by
 powers of ten.*
 
+**7.3.6 Vertical exaggeration.** From version 1.2, a viewport MAY have `vertical_exaggeration`, a
+factor `E`. The height is then drawn `E` times larger than the length. Let `N` be the scale
+denominator (the horizontal scale 1:N). The **vertical scale** is 1:`N_v`, where
+`N_v = N / E`. One metre of model height is `k_v = 1000 / N_v` millimetres on the paper. A viewport
+without the member has `E = 1`, so `N_v = N` and `k_v = k`. A viewport with it is called an
+**exaggerated viewport**. Members and words name it "vertical exaggeration", never by initials.
+
+**7.3.6.1** `E` MUST be a whole number of 2 or more. A number that is not whole, or a number of 1 or
+less, is error `7.3.6.1`.
+*Basis: house choice H-60. A whole factor is read and checked without error, and every slope on the
+sheet is steeper by exactly that factor. The value 1 would state an exaggeration that is not there.*
+
+**7.3.6.2** `N_v` MUST be a whole number and one of the ratios that the document may use (clauses
+7.3.1, 7.3.4 and 7.3.5). Otherwise that is error `7.3.6.2`. Example: 1:5000 with `E = 10` gives the
+vertical scale 1:500, which is allowed. 1:5000 with `E = 3` gives 1:1666.67, which is error `7.3.6.2`.
+*Basis: house choice H-60, after H-10. Both scales of the view can then be set on a scale rule.*
+
+**7.3.6.3** The rotation of an exaggerated viewport MUST be 0. Error `7.3.6.3`.
+
+**7.3.6.4** An exaggerated viewport MUST have a scale bar (clause 7.9). Error `7.3.6.4`. The scale bar
+carries the vertical scale bar and the words of clause 7.9.11, so neither can be left out.
+
+**7.3.6.5** An exaggerated viewport MUST NOT hold an `image` (clause 9.10). Error `7.3.6.5`.
+
+**7.3.6.6** An exaggerated viewport MUST NOT hold a `circle` or an `arc`. Error `7.3.6.6`.
+
+**7.3.6.7** An exaggerated viewport MUST NOT hold a `symbol` (clause 13). Error `7.3.6.7`.
+
+**7.3.6.8** A `dimension` in an exaggerated viewport MUST be of the kind `linear` with the
+orientation `horizontal` (clause 12.4). Any other dimension is error `7.3.6.8`. A `leader` is
+allowed: it measures nothing, and its parts are made on the paper after the map (clause 12.6).
+
+**7.3.6.9** An exaggerated viewport MUST NOT have `north` (clause 7.10). Error `7.3.6.9`, whatever
+the bearing. An exaggerated plan is therefore not allowed to carry a north arrow.
+*Basis: house choice H-61. A section or a profile has no north. In an exaggerated plan the bearings
+are distorted, so an arrow misleads whichever way it points.*
+
+*Basis for 7.3.6.3 to 7.3.6.8: house choice H-61. An exaggerated view stretches only the model y
+axis. A turned view, a circle, an arc, a symbol and an image would draw distorted. A dimension
+along y, an aligned or angle dimension, and a radius would measure on the paper at the wrong scale.
+A horizontal dimension, a leader, a line, a polyline, a hatch and a text keep their meaning.*
+
 **7.4 The map from model to paper.** Let the window be `xmin, ymin, xmax, ymax`, the frame be
 `x, y, w, h`, the scale denominator be N and the rotation be theta.
 
@@ -365,7 +411,10 @@ powers of ten.*
 3. For a model point `(px, py)`, let `dx = px - cx` and `dy = py - cy`.
 4. Turn the offset by theta, counter-clockwise, with +y up:
    `rx = dx cos(theta) - dy sin(theta)` and `ry = dx sin(theta) + dy cos(theta)`.
-5. The paper point is `(fx + rx * k, fy - ry * k)`, where `k = 1000 / N`.
+5. The paper point is `(fx + rx * k, fy - ry * k_v)`, where `k = 1000 / N` and `k_v` is the
+   millimetres per metre of the vertical scale (clause 7.3.6). With no vertical exaggeration,
+   `k_v = k`. In an exaggerated viewport the rotation is 0 (clause 7.3.6.3), so the map multiplies
+   the model height by `E` relative to the length.
 
 **7.4.1** The map acts on coordinates only. A line width, a dash length and a text height are
 paper values. They are never multiplied by `k`.
@@ -387,6 +436,18 @@ by 1/N.*
 **7.4.4** Model +y maps to paper "up" (-y) when the rotation is 0. When the rotation is 90 degrees,
 model +y maps to paper left.
 
+**7.4.5** Worked numbers, with a vertical exaggeration. Frame `20, 10, 390, 200` (centre 215, 110).
+Window `0, 0, 1800, 80` (centre 900, 40). Scale 1:5000 with `E = 10`, so `k = 0.2`, `N_v = 500` and
+`k_v = 2`.
+
+| Model point | Offset (dx, dy) | Paper point |
+|---|---|---|
+| (0, 40) | (-900, 0) | (35, 110) |
+| (1800, 32) | (900, -8) | (395, 126) |
+| (900, 50) | (0, 10) | (215, 90) |
+
+The fall of 8 m over 1800 m is 16 mm on the paper. At one scale it would be 1.6 mm.
+
 **7.5 Fit.**
 
 **7.5.1** The window MUST fit the frame at the scale. The window is turned by theta. Its
@@ -395,12 +456,15 @@ bounding box has the paper size:
 - width: `(|w_m cos(theta)| + |h_m sin(theta)|) * k`
 - height: `(|w_m sin(theta)| + |h_m cos(theta)|) * k`
 
-where `w_m` and `h_m` are the window width and height in metres. The window **fits** when both
+where `w_m` and `h_m` are the window width and height in metres. In an exaggerated viewport the
+rotation is 0 (clause 7.3.6.3), and the paper size is `w_m * k` by `h_m * k_v`. The window **fits** when both
 numbers are not larger than the frame width and height (clause 5.7). If it does not fit, that is
 error `7.5.1`. The message MUST name the largest scale of clauses 7.3.1 and 7.3.4 that does fit, if there is one.
 
 **7.5.2** Declared fit. When `scale` is `fit`, the scale is the first ratio, from 1:1 upward, in the
-lists of clauses 7.3.1 and 7.3.4 taken together, at which the window fits. The first ratio is the
+lists of clauses 7.3.1 and 7.3.4 taken together, at which the window fits. In an exaggerated
+viewport, only the ratios whose vertical scale meets clause 7.3.6.2 are tried, and the window fits
+by the paper size of clause 7.5.1 at that vertical scale. The first ratio is the
 largest scale. If no ratio fits, that is error `7.5.2`. The resolved ratio, not the word `fit`, is the
 scale of the viewport in every later rule and every output.
 
@@ -416,6 +480,17 @@ scale of the viewport in every later rule and every output.
 | 80 x 20 | 0 | 1:200 | 400 x 100 mm | error 7.5.1; the message names 1:250 |
 | 80 x 20 | 0 | fit | 320 x 80 mm at 1:250 | 1:250 |
 | 390 x 277 | 0 | 1:1000 | 390 x 277 mm | fits exactly |
+
+With a vertical exaggeration, frame 390 x 120 mm, window 3000 x 100 m, `E = 20`, scale `fit`:
+
+| Ratio | Vertical scale | Paper size needed | Result |
+|---|---|---|---|
+| 1:5000 | 1:250 | 600 x 400 mm | does not fit |
+| 1:10000 | 1:500 | 300 x 200 mm | does not fit: too high |
+| 1:20000 | 1:1000 | 150 x 100 mm | fits, so the scale is 1:20000 |
+
+Ratios such as 1:1250 and 1:2500 are never tried: 1250 / 20 and 2500 / 20 are not ratios of clause
+7.3. With no exaggeration the same window would fit at 1:10000 (300 x 10 mm).
 
 **7.6 Window.**
 
@@ -496,7 +571,8 @@ trailing decimal point. The last label has the unit after it, with one space. Be
 on it, on the ratio baseline, the text is the scale, written `1:N`.
 
 **7.9.8 The bar does not turn.** The rotation of the viewport never changes the bar. A map has one
-scale in every direction.
+scale in every direction. In an exaggerated viewport the bar of this clause is at the horizontal
+scale, and clause 7.9.11 adds a vertical bar at the vertical scale.
 
 **7.9.9 Worked numbers.** Frame width 390 mm. The available width is 378 mm.
 
@@ -518,6 +594,51 @@ needs 379 mm and is error 7.9.3. 390 m needs 390 mm and is error 7.9.3. The erro
 **7.9.10** A viewport that has a scale bar MUST have a frame at least 46 mm high (so that the bar and
 the north arrow of clause 7.10 do not touch), and wide enough for clause 7.9.3. Error `7.9.10`.
 *Basis: house choice H-16.*
+
+**7.9.11 Vertical scale bar.** An exaggerated viewport (clause 7.3.6) has a **vertical scale bar**
+at the vertical scale 1:`N_v`, and the words of the exaggeration. Both come with the scale bar,
+which the viewport must have (clause 7.3.6.4). Neither has an input. All values are paper
+millimetres. Let the frame be `x, y, w, h`.
+
+- **Place.** The bar is 3 mm wide (the bar height of clause 7.9.1). Its left edge is at `x + 6`, in
+  line with the left end of the scale bar. Its bottom end is `26` mm above the bottom of the frame:
+  8 mm above the top of the scale bar. It runs up.
+- **Length.** The length is the largest number in the series `{1, 2, 5} x 10^n` metres, with n a
+  whole number from -3 to 6, that is not more than the **target** `(h / 4) / k_v` metres: a quarter
+  of the frame height on paper. Its paper length `L_v` is the length times `k_v`.
+- **Division.** The bar has 5 segments of equal paper length. Counting from the bottom, segments
+  0, 2 and 4 are solid black. A tick 1.5 mm long runs to the right from the right edge of the bar at
+  each of the 6 boundaries.
+- **Labels.** Only the two ends are labelled, so that no two labels touch: `0` at the bottom, and the
+  length with the unit `m` at the top (written as clause 7.9.7 says). Each label is 2.5 mm high,
+  `left` and `middle`, 2.5 mm right of the right edge of the bar (1 mm past the tick).
+- **Ratio.** Above the bar, the text `Vertical 1:N_v` (for example `Vertical 1:500`), 2.5 mm high,
+  `left` and `baseline`, at the left edge of the bar, 3 mm above its top end.
+- **Words.** Under the ratio text of the scale bar, the text `Vertical exaggeration ×E` (for example
+  `Vertical exaggeration ×10`), with the multiplication sign `×` (U+00D7), 2.5 mm high, `left` and
+  `baseline`, at `x + 6`, 2 mm above the bottom of the frame. It is never written with initials.
+
+The vertical bar never touches the scale bar. The scale bar block lies in the lowest 18 mm of the
+frame, and the bottom label of the vertical bar ends 24.75 mm above the bottom. An exaggerated
+viewport has no north arrow (clause 7.3.6.9). The ratio text of the vertical bar starts at least
+`37 - 5.5 = 31.5` mm below the top of the frame, because `L_v` is at most `h / 4`, which is at most
+`h - 63` for every frame of clause 7.9.12.
+*Basis: house choice H-62. The bar repeats the look of the scale bar, turned upright. The words state
+the factor in full, because initials can be missed or misread. Labels at the ends only keep 2.5 mm
+text clear on a short bar.*
+
+**7.9.12** An exaggerated viewport MUST have a frame at least 100 mm high, and the words of clause
+7.9.11 MUST fit the available width of clause 7.9.3 (`w - 12`), by the width of clause 11.7.1.
+Otherwise that is error `7.9.12`.
+*Basis: house choice H-62. With 100 mm the vertical bar and the scale bar always fit apart, and the
+vertical bar always has a length of at least 10 mm.*
+
+**7.9.13 Worked numbers.** Frame `20, 10, 390, 200`. Scale 1:5000, `E = 10`, so the vertical scale is
+1:500 and `k_v = 2`. The target is `(200 / 4) / 2 = 25` m, so the length is 20 m and `L_v = 40` mm.
+The bar runs from `(26, 144)` to `(29, 184)`. The segments are 8 mm. The labels are `0` at
+`(31.5, 184)` and `20 m` at `(31.5, 144)`. The ratio text `Vertical 1:500` is at `(26, 141)`. The
+scale bar of clause 7.9 is 40 mm long (200 m at 1:5000) with its top at `y = 192`, and the words
+`Vertical exaggeration ×10` are at `(26, 208)`, under the ratio text `1:5000` at `y = 204`.
 
 **7.10 North arrow.** A viewport MAY have a north arrow. The arrow direction is derived. It is never
 typed. The inputs are `model_bearing_deg` (default 0) and `label` (default `N`).
@@ -575,8 +696,8 @@ tip turns to `(30, 29)`.
 fit. Error `7.10.7`.
 *Basis: house choice H-16.*
 
-**7.11** In version 1.0 the standard does not check whether the scale bar or the north arrow
-overlaps the entities of the viewport. The author places the window so that they are clear.
+**7.11** In version 1.0 the standard does not check whether the scale bar, the vertical scale bar or
+the north arrow overlaps the entities of the viewport. The author places the window so that they are clear.
 
 ## 8 Layers, line types, line groups and colour
 
@@ -785,7 +906,7 @@ version 1.0, `print_profile` and these members are error `18.2.1`.
 **8.6.6 What gets a colour.** A colour member applies to each entity of the normalised content whose
 origin starts `viewport.` and whose layer has the member, including the marks of its hatches and the
 parts of its dimensions, leaders and symbols. The sheet furniture (clause 16.6.1), the title block,
-the register, the notes, the status line, and the scale bar and north arrow of every viewport stay
+the register, the notes, the status line, and the scale bars and north arrow of every viewport stay
 black. A halo is a stroke of the outline of each glyph, of width `0.2 h` for a text of height `h`,
 drawn under the fill of the text. A layer without `print_colour` draws in black.
 *Basis: house choice H-56. The furniture is the record of the drawing. It prints the same on every
@@ -1433,7 +1554,7 @@ choice H-48 for the layout and the sizes: ISO 7200 sets the data and not the lay
 | `checked_by` | The `chk` of that entry, or empty. |
 | `approved_by` | The `app` of that entry, or empty. It is **never** defaulted, and never taken from another entry or from another field. |
 | `status` | The status in capitals, or empty. |
-| `scale` | `1:N` when all viewports have the scale 1:N, else `AS SHOWN`. |
+| `scale` | `1:N` when all viewports have the scale 1:N and none has a vertical exaggeration, else `AS SHOWN` (clause 14.4.4). |
 | `sheet` | `n/m`, from `sheet_number` and `sheet_count`, when both are given, else empty. |
 | `sheet_size` | The size of the sheet, for example `A3`. |
 
@@ -1442,6 +1563,12 @@ approver is the signature of a person: it comes only from the latest revision en
 
 **14.4.3** A cell with `required` true and an empty text, and a given field that the template has no
 cell for, are error `14.4.3`. An empty cell draws no text.
+
+**14.4.4** A sheet with an exaggerated viewport (clause 7.3.6) has the scale `AS SHOWN`. The two
+scales and the factor are printed in the viewport, in words (clause 7.9.11).
+*Basis: house choice H-64. One ratio alone would invite a reader to measure heights at the horizontal
+scale. Both ratios in words, such as `1:5000 (vertical 1:500)`, are 41.91 mm wide at 3.5 mm, and the
+scale cell of the shipped template gives 33 mm (clause 14.3). A text is never cut (clause 14.6).*
 
 **14.5 Placement.** Let `(x, y, w, h)` be the drawing space. The block of width `W` and height `H`
 stands in its bottom-right corner: its top-left corner is `(x + w - W, y + h - H)`. The register stands
@@ -1601,7 +1728,8 @@ or a layer change does not move it. The line type `continuous` is `CONTINUOUS`. 
 with the line width `w` mm is `TDFA_<TYPE>_<w in hundredths>`, for example `TDFA_DASHED_018`. Its
 pattern is the pattern of clause 8.4.1, in millimetres.
 
-**15.4.4 Model space.** The entities of every viewport are written in model space, in metres:
+**15.4.4 Model space.** The entities of every viewport that has no vertical exaggeration are written
+in model space, in metres:
 `line` and `centre_line` as LINE; `polyline` as LWPOLYLINE; `circle` as CIRCLE; `arc` as ARC, with the
 start and end angles of the document; `hatch` as HATCH with its boundary and holes, filled solid. A
 hatch whose pattern is not `solid` is written invisible (its marks are in paper space, clause 15.4.5). A
@@ -1611,7 +1739,8 @@ The horizontal and vertical alignments are the DXF alignments of the same names.
 
 **15.4.5 Paper space.** The layout is named `SHEET`. Its paper size is the trimmed sheet. It holds the
 entities of the normalised content that are not entities of a viewport: the sheet furniture, the
-furniture of each viewport, and the marks of the hatches. A `line` is a LINE, a `polyline` a
+furniture of each viewport (the scale bar, the vertical scale bar and the north arrow), and the marks
+of the hatches. It also holds the entities of every exaggerated viewport (clause 15.4.13). A `line` is a LINE, a `polyline` a
 LWPOLYLINE, a `circle` a CIRCLE, a `hatch` a HATCH (solid), a `text` a TEXT.
 
 **15.4.6 Viewports.** Each viewport of the document is a DXF VIEWPORT in paper space, on the layer
@@ -1625,7 +1754,7 @@ is the rotation of the viewport in degrees.
 **15.4.8 Extended data.** Every entity and every viewport carries extended data of the application
 `TDFA`, as strings `key=value`. Paper-space entities have `origin` (clause 16.5) and `type`.
 Model-space entities have `vp` (the viewport) and `type`. Both may have `id`. A hatch has `pattern`
-and `angle`. A viewport has `id` and `scale`.
+and `angle`. A viewport has `id` and `scale`, and `vertical_exaggeration` when it has one.
 
 **15.4.9 Overlapping windows.** The viewports of one DXF share one model space. If the model windows of
 two viewports overlap, each viewport shows the content of the other in a CAD program. The writer MUST
@@ -1652,6 +1781,17 @@ extended data of the IMAGE holds `sha256`, `components` and `opacity`. Under the
 a layer with `print_colour` has that true colour, and the extended data of each LAYER record holds
 the colour members of clause 8.6.5, so that the read back of clause 15.4.11 gives them again.
 
+**15.4.13 Exaggerated viewports.** A DXF VIEWPORT has one scale, so it cannot show model space with
+a vertical exaggeration. The entities of an exaggerated viewport (clause 7.3.6) are therefore written in
+paper space, in paper millimetres, as drawn: the entities of the normalised content whose origin is
+`viewport.<id>`, with the forms of clause 15.4.5 and the extended data of a paper-space entity. Model
+space holds nothing of that viewport. Its VIEWPORT is still written, at the horizontal scale, as
+clause 15.4.6 says, with `vertical_exaggeration` in its extended data. The read back of clause
+15.4.11 then reads these entities as it reads any paper-space entity.
+*Basis: house choice H-63. Model space stays true to scale in both directions, so a CAD user who
+measures it is never misled. The exaggerated drawing is in paper space, as the hatch marks and the
+dimensions already are.*
+
 ## 16 Normalised content
 
 **16.1 What it is.** The **normalised content** of a drawing document is a JSON object. It holds the
@@ -1668,7 +1808,7 @@ list of errors.
 |---|---|
 | `standard_version` | The version string of the document. |
 | `sheet` | `size`, `orientation`, `line_group` (the group name, always present), `width_mm`, `height_mm` of the trimmed sheet, and `drawing_space` with `x_mm`, `y_mm`, `width_mm`, `height_mm`. Under the `colour` profile only, `print_profile` with the value `colour` (clause 8.6.4). |
-| `viewports` | One object for each viewport, sorted by `id` (compared byte by byte). Each has `id`, `scale` (the resolved denominator, a whole number) and `frame` (`x_mm`, `y_mm`, `width_mm`, `height_mm`). |
+| `viewports` | One object for each viewport, sorted by `id` (compared byte by byte). Each has `id`, `scale` (the resolved denominator, a whole number) and `frame` (`x_mm`, `y_mm`, `width_mm`, `height_mm`). An exaggerated viewport also has `vertical_exaggeration` (clause 7.3.6), the whole number `E`. No other viewport has it. |
 | `entities` | The sorted list of entities (clause 16.8). |
 
 **16.3 Entities: common members.** Every entity has `type`, `origin` and `layer`. It has `id` only if
@@ -1708,6 +1848,7 @@ width of clause 8.7, in paper millimetres. The line type is an identifier of cla
 - `viewport.<id>.dimension` and `viewport.<id>.leader`, for the parts of the dimensions and leaders of that viewport (clause 12.7);
 - `viewport.<id>.symbol`, for the parts and labels of the symbols of that viewport (clause 13.7);
 - `viewport.<id>.scale_bar` and `viewport.<id>.north_arrow`, for the furniture of that viewport;
+- `viewport.<id>.vertical_scale_bar`, for the vertical scale bar and the words of an exaggerated viewport (clause 16.6.5);
 - `viewport.<id>.backing`, for the plates of clause 8.6.7.
 
 **16.6 How each source becomes entities.** Rounding (clause 5.5) is applied at the end, to each
@@ -1741,7 +1882,8 @@ entities, so that two implementations write the same ones. The ends of each side
 because the border is there.*
 
 **16.6.2 Viewport entities.** Each entity of a viewport is mapped with clause 7.4 (let `k` be the
-paper millimetres per metre and `rotation` the viewport rotation). Its origin is `viewport.<id>`.
+paper millimetres per metre and `rotation` the viewport rotation). In an exaggerated viewport the map
+uses `k_v` for the model height (clause 7.4, step 5). Its origin is `viewport.<id>`.
 The layer is the layer of the entity. The role, line type and width follow clause 8.7.
 
 - `line` and `centre_line` become a `line`, with the two points mapped. `from_mm` is the mapped
@@ -1789,6 +1931,26 @@ This turns clockwise on the sheet. Clause 5.6.1 applies to the sine and cosine. 
    `baseline`. The text itself is not turned.
 
 *Basis: house choice H-35.*
+
+**16.6.5 Vertical scale bar.** For an exaggerated viewport (clause 7.9.11), let the frame be
+`x, y, w, h`, `E` the exaggeration, `N_v` the vertical denominator, `Lv` the length in metres,
+`total = Lv * k_v`, `seg = total / 5`, `xl = x + 6`, `xr = xl + 3`, `y1 = y + h - 26` and
+`y0 = y1 - total`. The origin is `viewport.<id>.vertical_scale_bar`. The layer is `TITLEBLOCK`.
+Every line is `continuous` and has the thin width of `g`. The entities are:
+
+1. One closed `polyline`: `(xl, y0)`, `(xr, y0)`, `(xr, y1)`, `(xl, y1)`.
+2. For `i` from 1 to 4: a `line` from `(xl, y1-i*seg)` to `(xr, y1-i*seg)`.
+3. For `i` in 0, 2 and 4: a `hatch`, pattern `solid`, angle 0, no holes, with the boundary
+   `(xl, y1-i*seg)`, `(xr, y1-i*seg)`, `(xr, y1-(i+1)*seg)`, `(xl, y1-(i+1)*seg)`. The width is the
+   thin width of `g`.
+4. For `i` from 0 to 5: a tick `line` from `(xr, y1-i*seg)` to `(xr+1.5, y1-i*seg)`.
+5. Two `text` entities, height 2.5, rotation 0, `left`, `middle`: `0` at `(xr+2.5, y1)`, and the
+   label of the length (clause 7.9.7, with the unit `m`) at `(xr+2.5, y0)`.
+6. One `text`, `Vertical 1:N_v`, at `(xl, y0-3)`, height 2.5, rotation 0, `left`, `baseline`.
+7. One `text`, `Vertical exaggeration ×E`, at `(x+6, y+h-2)`, height 2.5, rotation 0, `left`,
+   `baseline`.
+
+*Basis: house choice H-62.*
 
 **16.7 Rounding.** A number is written after rounding to the places of clause 5.4. A length or angle
 that rounds to a negative zero is written 0 (clause 5.5, step 5).
@@ -1911,7 +2073,7 @@ version is the version of the standard.
 
 **18.1 Version.** The standard has a version of the form `MAJOR.MINOR`. A drawing document names the
 version it follows in `standard_version`. A missing or wrongly formed value is error `18.1`.
-This draft is version `1.1`.
+This draft is version `1.2`.
 
 **18.2 Reading rule.** A reader of version `A.B` MUST accept a document of version `A.C` when `C` is
 not more than `B`. It MUST reject a document with another major number, or a larger minor number,
@@ -1920,10 +2082,14 @@ number may change meaning.
 
 **18.2.1** A document MUST NOT use a member or a value that was added after the version it names.
 Error `18.2.1`. In version 1.1 these are: `print_profile` and the colour members of a layer (clause
-8.6), the `image` entity (clause 9.10) and the map ratios (clause 7.3.5).
+8.6), the `image` entity (clause 9.10) and the map ratios (clause 7.3.5). In version 1.2 it is the
+member `vertical_exaggeration` of a viewport (clause 7.3.6).
 
 **18.2.2 Versions.** Version 1.0 was the first. Version 1.1 adds clauses 7.3.5, 8.6.4 to 8.6.7, 9.10,
 16.4.1 and 18.2.1. A 1.0 document has the same result under a 1.1 reader as under a 1.0 reader.
+Version 1.2 adds clauses 7.3.6 to 7.3.6.9, 7.4.5, 7.9.11 to 7.9.13, 14.4.4, 15.4.13 and 16.6.5, and
+changes the text of clauses 7.3.3, 7.4, 7.5.1, 7.5.2 and 14.4.2 only for an exaggerated viewport. A 1.0
+or 1.1 document has the same result under a 1.2 reader as under the reader of its own version.
 
 **18.3 The schema.** The JSON Schema of major version 1 is the file
 `docs/standard/schema/drawing-document-1.0.schema.json`. It follows JSON Schema draft 2020-12. A minor

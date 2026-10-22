@@ -51,7 +51,7 @@ purpose. It needs a reason. It does not need an ISO check.
 | H-08 | Either orientation for every size | The standard sets no rule that ties a size to one orientation | 6.2 |
 | H-09 | The border line is centred on the border rectangle | The simplest rule. The line is at most 1.4 mm wide | 6.3.3 |
 | H-10 | Only the ISO preferred ratios, the four house ratios and `fit`. Any other ratio, and any enlargement, is an error | Two short lists of scales, so every scale can be set on a scale rule | 7.3.2 |
-| H-11 | One scale per viewport, no exaggerated height | A wrong exaggeration is worse than none | 7.3.3 |
+| H-11 | One scale per viewport. From version 1.2 a viewport may state a vertical exaggeration: the scale is the horizontal one, the factor is stated, checked and printed in words, never in initials (H-60 to H-64). Until 1.1 there was no exaggerated height (part G) | A wrong exaggeration is worse than none, so it is never implied. A long section of tens of kilometres cannot show a few metres of height at one scale. The maintainer's decision on issue #46: "Let's allow different VE scales - say vertical exaggeration rather than the initials so people see it clearly." | 7.3.3, 7.3.6 |
 | H-12 | The scale applies to coordinates only, never to widths or text | A scale on the whole drawing would also scale every line width by 1/N | 7.4.1 |
 | H-13 | An entity outside its viewport frame is an error | A stray point is a loud error, never a silent clip | 7.7 |
 | H-14 | Scale bar constants: inset 6, bar height 3, tick 1.5, label baseline 5.0, ratio baseline 9.0, alternate segments solid | ISO sets no size for a scale bar. The baselines leave clear gaps for 2.5 mm text | 7.9.1, 7.9.5 |
@@ -138,6 +138,11 @@ hand. They do not change the normalised content. The DXF can be read back withou
 | H-57 | An image is a JPEG (8-bit, 1 or 3 components), read from its frame header only | One raster format keeps every implementation small. PDF and SVG carry JPEG bytes as they are | 9.10.1 |
 | H-58 | An image names the SHA-256 of its file | A file found at a path is not evidence that it is the file that was meant | 9.10.2 |
 | H-59 | Under the colour profile, the scale bar and north arrow of a viewport with an image stand on a white plate | Black furniture cannot be read over a photograph. White is the paper, so the furniture stays black | 8.6.7 |
+| H-60 | A vertical exaggeration is a whole number from 2, and the vertical scale N / E is a ratio of clause 7.3 | A whole factor is read and checked without error. Both scales can be set on a scale rule (as H-10) | 7.3.6.1, 7.3.6.2 |
+| H-61 | An exaggerated viewport has no rotation, image, circle, arc, symbol or north arrow; its dimensions are horizontal linear ones only; it must have a scale bar | These would draw distorted or measure at the wrong scale. A section or a profile has no north, and in an exaggerated plan the bearings are distorted, so a north arrow misleads whichever way it points. The scale bar carries the vertical bar and the words, so they cannot be left out | 7.3.6.3 to 7.3.6.9 |
+| H-62 | The vertical scale bar: 3 mm wide at `x + 6`, bottom 26 mm above the frame bottom, a quarter of the frame height, 5 segments, labels at the ends only, `Vertical 1:N` above it; the words `Vertical exaggeration ×E` 2 mm above the frame bottom; the frame at least 100 mm high | The bar repeats the scale bar, upright. The fixed places keep it clear of the scale bar. Words, not initials, so the factor cannot be missed | 7.9.11, 7.9.12, 16.6.5 |
+| H-63 | In the DXF, the entities of an exaggerated viewport are written in paper space, as drawn | A DXF viewport has one scale. Model space stays true to scale, so a CAD user who measures it is not misled | 15.4.13 |
+| H-64 | The title block scale of a sheet with an exaggerated viewport is `AS SHOWN` | One ratio alone invites a reading at the wrong scale. Both ratios in words do not fit the 33 mm scale cell of the shipped template, and a text is never cut | 14.4.4 |
 
 ## E Visible changes for 1.0
 
@@ -156,3 +161,13 @@ Version 1.1 only adds members and values (clause 18.2). A 1.0 document has the s
 | Map ratios | The smallest ratio was 1:100000 | From 1.1, also 1:200000, 1:500000, 1:1000000, 1:2000000, 1:5000000 and 1:10000000. House choice H-54 | 7.3.5 |
 | Colour | Everything prints black | From 1.1, `sheet.print_profile: colour` lets a layer declare `print_colour`, `fill_opacity` and `halo_colour`. House choices H-55, H-56, H-59 | 8.6.4 to 8.6.7 |
 | Images | No raster could be placed | From 1.1, the `image` entity places a JPEG, named by its SHA-256, in a model box. House choices H-57, H-58 | 9.10 |
+
+## G Visible changes for 1.2
+
+Version 1.2 only adds a member (clause 18.2). A 1.0 or 1.1 document has the same result.
+
+| Change | Before | Now | Clause |
+|---|---|---|---|
+| Vertical exaggeration | House choice H-11 read: "One scale per viewport, no exaggerated height. A wrong exaggeration is worse than none." Clause 7.3.3 read: "A viewport has one scale. Both axes use it. A view with exaggerated height is not possible in version 1.0." | From 1.2, a viewport may have `vertical_exaggeration`, a whole number from 2. The scale is the horizontal one; the vertical scale is N / E. The viewport shows a vertical scale bar and the words `Vertical exaggeration ×E`. House choices H-11 (revised) and H-60 to H-64 | 7.3.3, 7.3.6, 7.9.11 |
+| Title block scale | `1:N` when all viewports have one scale, else `AS SHOWN` | Also `AS SHOWN` when a viewport has a vertical exaggeration. House choice H-64 | 14.4.2, 14.4.4 |
+| DXF of an exaggerated viewport | Every viewport entity was in model space | The entities of an exaggerated viewport are in paper space. House choice H-63 | 15.4.13 |

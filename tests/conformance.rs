@@ -74,7 +74,7 @@ fn whole_suite() {
     let suite = suite_dir();
     let list = read_json(&suite.join("suite.json"));
     let cases = list["cases"].as_array().expect("cases");
-    assert_eq!(cases.len(), 217, "the pinned suite has 217 cases");
+    assert_eq!(cases.len(), 234, "the pinned suite has 234 cases");
     let expected: BTreeSet<&str> = EXPECTED_TO_FAIL.iter().copied().collect();
     let mut failing = BTreeSet::new();
     let mut report = Vec::new();

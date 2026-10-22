@@ -1,0 +1,179 @@
+{
+  "result": "ok",
+  "viewports": [
+    {
+      "id": "main",
+      "scale": 5000,
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 200
+      },
+      "vertical_exaggeration": 10
+    }
+  ],
+  "entities": [
+    {
+      "type": "hatch",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "boundary_mm": [
+        [
+          95,
+          100
+        ],
+        [
+          98.6,
+          100.45
+        ],
+        [
+          98.6,
+          99.55
+        ]
+      ],
+      "holes_mm": [],
+      "pattern": "solid",
+      "angle_deg": 0,
+      "width_mm": 0.18
+    },
+    {
+      "type": "hatch",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "boundary_mm": [
+        [
+          335,
+          100
+        ],
+        [
+          331.4,
+          99.55
+        ],
+        [
+          331.4,
+          100.45
+        ]
+      ],
+      "holes_mm": [],
+      "pattern": "solid",
+      "angle_deg": 0,
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "from_mm": [
+        95,
+        90.9
+      ],
+      "to_mm": [
+        95,
+        101.8
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "from_mm": [
+        95,
+        100
+      ],
+      "to_mm": [
+        335,
+        100
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "from_mm": [
+        335,
+        90.9
+      ],
+      "to_mm": [
+        335,
+        101.8
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "anchor_mm": [
+        215,
+        99.1
+      ],
+      "text": "1200.00",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "centre",
+      "align_v": "baseline"
+    },
+    {
+      "type": "hatch",
+      "origin": "viewport.main.leader",
+      "layer": "DIMENSIONS",
+      "boundary_mm": [
+        [
+          335,
+          90
+        ],
+        [
+          337.52,
+          87.39
+        ],
+        [
+          336.8,
+          86.85
+        ]
+      ],
+      "holes_mm": [],
+      "pattern": "solid",
+      "angle_deg": 0,
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.leader",
+      "layer": "DIMENSIONS",
+      "from_mm": [
+        365,
+        50
+      ],
+      "to_mm": [
+        335,
+        90
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main.leader",
+      "layer": "DIMENSIONS",
+      "anchor_mm": [
+        365.9,
+        50
+      ],
+      "text": "CREST",
+      "height_mm": 3.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "middle"
+    }
+  ],
+  "origin_prefixes": [
+    "viewport.main.dimension",
+    "viewport.main.leader"
+  ]
+}

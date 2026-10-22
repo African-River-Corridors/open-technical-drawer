@@ -1767,7 +1767,7 @@
       "clauses": [
         "18.2"
       ],
-      "description": "Version 1.1 is newer than 1.0."
+      "description": "Version 1.3 is newer than 1.2."
     },
     {
       "id": "err-version-not-formed",
@@ -2125,6 +2125,171 @@
         "16.8"
       ],
       "description": "White plates under the scale bar and the north arrow of a viewport with an image."
+    },
+    {
+      "id": "exaggeration-long-section",
+      "kind": "document",
+      "dir": "documents/exaggeration-long-section",
+      "clauses": [
+        "7.3.6",
+        "7.4",
+        "7.9.11",
+        "16.2",
+        "16.6.2",
+        "16.6.5"
+      ],
+      "description": "A long section at 1:5000 with vertical exaggeration 10: lines and text drawn with y at 1:500, the vertical scale bar and the words under the scale bar (worked in clauses 7.4.5 and 7.9.13)."
+    },
+    {
+      "id": "exaggeration-dimension-leader",
+      "kind": "document",
+      "dir": "documents/exaggeration-dimension-leader",
+      "clauses": [
+        "7.3.6.8",
+        "12.4",
+        "12.6"
+      ],
+      "description": "A horizontal linear dimension and a leader in an exaggerated viewport: the text is the model length 1200.00, the extension lines stand at the exaggerated height."
+    },
+    {
+      "id": "exaggeration-fit",
+      "kind": "document",
+      "dir": "documents/exaggeration-fit",
+      "clauses": [
+        "7.3.6.2",
+        "7.5.1",
+        "7.5.2"
+      ],
+      "description": "fit with vertical exaggeration 20: the height is taken at the vertical scale, so 1:10000 is too high and 1:20000 is the scale (worked in clause 7.5.3)."
+    },
+    {
+      "id": "exaggeration-title-block-as-shown",
+      "kind": "document",
+      "dir": "documents/exaggeration-title-block-as-shown",
+      "clauses": [
+        "14.4.2"
+      ],
+      "description": "A sheet with an exaggerated viewport: the scale cell of the title block says AS SHOWN."
+    },
+    {
+      "id": "exaggeration-absent-1-1",
+      "kind": "document",
+      "dir": "documents/exaggeration-absent-1-1",
+      "clauses": [
+        "7.3.3",
+        "18.2.2"
+      ],
+      "description": "The long section as a 1.1 document with no vertical_exaggeration: one scale, no vertical scale bar, no new member in the normalised content."
+    },
+    {
+      "id": "err-exaggeration-not-whole",
+      "kind": "document",
+      "dir": "documents/err-exaggeration-not-whole",
+      "clauses": [
+        "7.3.6.1",
+        "18.6"
+      ],
+      "description": "A vertical exaggeration of 2.5 is not a whole number (schema error)."
+    },
+    {
+      "id": "err-exaggeration-one",
+      "kind": "document",
+      "dir": "documents/err-exaggeration-one",
+      "clauses": [
+        "7.3.6.1",
+        "18.6"
+      ],
+      "description": "A vertical exaggeration of 1 is not more than 1 (schema error)."
+    },
+    {
+      "id": "err-exaggeration-vertical-ratio",
+      "kind": "document",
+      "dir": "documents/err-exaggeration-vertical-ratio",
+      "clauses": [
+        "7.3.6.2"
+      ],
+      "description": "1:5000 with exaggeration 3 gives a vertical ratio of 1:1666.67, which is not a ratio of clause 7.3."
+    },
+    {
+      "id": "err-exaggeration-rotated",
+      "kind": "document",
+      "dir": "documents/err-exaggeration-rotated",
+      "clauses": [
+        "7.3.6.3"
+      ],
+      "description": "An exaggerated viewport turned by 90 degrees."
+    },
+    {
+      "id": "err-exaggeration-no-scale-bar",
+      "kind": "document",
+      "dir": "documents/err-exaggeration-no-scale-bar",
+      "clauses": [
+        "7.3.6.4"
+      ],
+      "description": "An exaggerated viewport with no scale bar."
+    },
+    {
+      "id": "err-exaggeration-image",
+      "kind": "document",
+      "dir": "documents/err-exaggeration-image",
+      "clauses": [
+        "7.3.6.5"
+      ],
+      "description": "An image in an exaggerated viewport, under the colour profile."
+    },
+    {
+      "id": "err-exaggeration-circle-arc",
+      "kind": "document",
+      "dir": "documents/err-exaggeration-circle-arc",
+      "clauses": [
+        "7.3.6.6"
+      ],
+      "description": "A circle and an arc in an exaggerated viewport."
+    },
+    {
+      "id": "err-exaggeration-symbol",
+      "kind": "document",
+      "dir": "documents/err-exaggeration-symbol",
+      "clauses": [
+        "7.3.6.7"
+      ],
+      "description": "A symbol insert in an exaggerated viewport."
+    },
+    {
+      "id": "err-exaggeration-dimension-vertical",
+      "kind": "document",
+      "dir": "documents/err-exaggeration-dimension-vertical",
+      "clauses": [
+        "7.3.6.8"
+      ],
+      "description": "A vertical linear dimension in an exaggerated viewport."
+    },
+    {
+      "id": "err-exaggeration-north",
+      "kind": "document",
+      "dir": "documents/err-exaggeration-north",
+      "clauses": [
+        "7.3.6.9"
+      ],
+      "description": "A north arrow, at bearing 0, in an exaggerated viewport."
+    },
+    {
+      "id": "err-exaggeration-frame-low",
+      "kind": "document",
+      "dir": "documents/err-exaggeration-frame-low",
+      "clauses": [
+        "7.9.12"
+      ],
+      "description": "An exaggerated viewport whose frame is 90 mm high."
+    },
+    {
+      "id": "err-version-1-1-exaggeration",
+      "kind": "document",
+      "dir": "documents/err-version-1-1-exaggeration",
+      "clauses": [
+        "18.2.1"
+      ],
+      "description": "A 1.1 document names a vertical exaggeration."
     }
   ]
 }

@@ -1,0 +1,84 @@
+{
+  "standard_version": "1.2",
+  "sheet": {
+    "size": "A3",
+    "orientation": "landscape"
+  },
+  "layers": [
+    {
+      "name": "OUTLINE"
+    },
+    {
+      "name": "WATER"
+    },
+    {
+      "name": "TEXT"
+    },
+    {
+      "name": "DIMENSIONS"
+    }
+  ],
+  "viewports": [
+    {
+      "id": "main",
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 200
+      },
+      "window": {
+        "xmin_m": 0,
+        "ymin_m": 0,
+        "xmax_m": 1800,
+        "ymax_m": 80
+      },
+      "scale": 5000,
+      "vertical_exaggeration": 10,
+      "scale_bar": {},
+      "entities": [
+        {
+          "type": "line",
+          "layer": "OUTLINE",
+          "id": "crest",
+          "from_m": [
+            300,
+            50
+          ],
+          "to_m": [
+            1500,
+            50
+          ]
+        },
+        {
+          "type": "dimension",
+          "layer": "DIMENSIONS",
+          "kind": "linear",
+          "orientation": "horizontal",
+          "from": {
+            "ref": "crest",
+            "at": "start"
+          },
+          "to": {
+            "ref": "crest",
+            "at": "end"
+          },
+          "offset_mm": -10
+        },
+        {
+          "type": "leader",
+          "layer": "DIMENSIONS",
+          "from": {
+            "ref": "crest",
+            "at": "end"
+          },
+          "label_at_m": [
+            1650,
+            70
+          ],
+          "text": "CREST"
+        }
+      ]
+    }
+  ]
+}

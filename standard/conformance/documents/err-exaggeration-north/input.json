@@ -1,0 +1,43 @@
+{
+  "standard_version": "1.2",
+  "sheet": {
+    "size": "A3",
+    "orientation": "landscape"
+  },
+  "layers": [
+    {
+      "name": "OUTLINE"
+    },
+    {
+      "name": "WATER"
+    },
+    {
+      "name": "TEXT"
+    },
+    {
+      "name": "DIMENSIONS"
+    }
+  ],
+  "viewports": [
+    {
+      "id": "main",
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 200
+      },
+      "window": {
+        "xmin_m": 0,
+        "ymin_m": 0,
+        "xmax_m": 1800,
+        "ymax_m": 80
+      },
+      "scale": 5000,
+      "vertical_exaggeration": 10,
+      "scale_bar": {},
+      "entities": [],
+      "north": {}
+    }
+  ]
+}

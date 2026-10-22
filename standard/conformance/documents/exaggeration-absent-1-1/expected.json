@@ -1,0 +1,19 @@
+{
+  "result": "ok",
+  "viewports": [
+    {
+      "id": "main",
+      "scale": 5000,
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 200
+      }
+    }
+  ],
+  "entities": [],
+  "origin_prefixes": [
+    "viewport.main.vertical_scale_bar"
+  ]
+}
