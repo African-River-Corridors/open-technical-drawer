@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Open Technical Drawer (OTD): an ARC open library</title>
+<meta name="description" content="OTD is the Drawing Format Standard in Rust: a drawing document in; SVG, PDF and DXF out.">
+<link rel="canonical" href="https://www.africanrivercorridors.com/otd">
+<link rel="icon" href="/otd/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/otd/tokens.css">
+<link rel="stylesheet" href="/otd/site.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container bar">
+    <a class="home" href="/">African River Corridors</a>
+    <nav aria-label="Site">
+      <a href="/opensource">Open source</a>
+      <a href="https://github.com/African-River-Corridors/open-technical-drawer">GitHub</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <section class="page-head">
+    <div class="container">
+      <div class="title">
+        <img class="mark mark-light" src="/otd/assets/otd-mark.svg" alt="" width="72" height="72">
+        <img class="mark mark-dark" src="/otd/assets/otd-mark-dark.svg" alt="" width="72" height="72">
+        <div>
+          <span class="eyebrow">ARC open library</span>
+          <h1>Open Technical Drawer <span class="initials">(OTD)</span></h1>
+        </div>
+      </div>
+      <p class="lead">The Drawing Format Standard in Rust. A drawing document goes in. Normalised content comes out, and from it SVG, PDF and DXF.</p>
+      <ul class="facts"><li>Version: <strong>0.4.0</strong></li><li>Standard: <strong>1.2</strong></li><li>Language: <strong>Rust</strong></li><li>Licence: <strong>Apache 2.0</strong></li></ul>
+    </div>
+  </section>
+  <div class="container">
+<h2>What it is</h2>
+<div class="prose">
+<ul>
+  <li><strong>Domain-free.</strong> OTD knows sheets, viewports, entities, dimensions, hatches, the title block and
+  the writers. It knows nothing about what is drawn. The tool that uses it owns its own checks.</li>
+  <li><strong>Pure.</strong> The core opens no file, reads no clock and uses no network. It builds for WebAssembly.</li>
+  <li><strong>The same on every platform.</strong> Every transcendental function goes through <code>libm</code>.</li>
+  <li><strong>Checked against the standard.</strong> The standard's conformance suite is vendored, pinned by commit
+  and hash. Every case must pass in CI.</li>
+</ul>
+</div>
+
+<h2>Use it</h2>
+<div class="prose">
+<p>OTD is not on crates.io. Pin it by git tag:</p>
+<pre><code>[dependencies]
+otd = { git = "https://github.com/African-River-Corridors/open-technical-drawer", tag = "v0.4.0" }</code></pre>
+<pre><code>let result = otd::run_text(&amp;drawing_document_json, &amp;otd::NoFiles);</code></pre>
+<p><code>run_text</code> returns the normalised content, or the errors the standard defines. The writers are in
+<code>otd::render</code>: <code>svg</code>, <code>pdf</code> and <code>dxf</code>.</p>
+</div>
+
+<h2>Standard versions</h2>
+<table>
+  <tr><th>OTD</th><th>Drawing Format Standard</th></tr>
+  <tr><td>0.1.x</td><td>1.0</td></tr>
+  <tr><td>0.2.x, 0.3.x</td><td>1.1</td></tr>
+  <tr><td>0.4.x</td><td>1.2</td></tr>
+</table>
+<p class="prose">Each version reads documents of its own minor version and every earlier one.</p>
+
+<h2>Who uses it</h2>
+<div class="prose">
+<p><a href="/ovcd">Open Vessel Concept Design (OVCD)</a> and <a href="/owd">Open Waterway Designer (OWD)</a>
+draw their sheets with OTD.</p>
+</div>
+    <h2>Links</h2>
+    <ul class="links"><li><a href="https://github.com/African-River-Corridors/open-technical-drawer">Code on GitHub</a></li><li><a href="https://github.com/African-River-Corridors/open-technical-drawer/blob/main/CHANGELOG.md">Changelog</a></li><li><a href="/dfs">The standard</a></li></ul>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <p>Hosted by African River Corridors. Code under the Apache License 2.0.
+    The names and marks follow the <a href="https://github.com/African-River-Corridors/open-technical-drawer/blob/main/TRADEMARKS.md">trademark policy</a>.</p>
+    <p>Set in Manrope and IBM Plex Mono (SIL Open Font License 1.1), served from this site.</p>
+  </div>
+</footer>
+</body>
+</html>

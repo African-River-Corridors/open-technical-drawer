@@ -6,6 +6,15 @@ All notable changes are recorded here. The format follows
 
 ## [Unreleased]
 
+### Added
+- The ARC open library look: the OTD mark and lockup at the top of the README, and a docs page in
+  `website/`, served at https://www.africanrivercorridors.com/otd once GitHub Pages is on. The
+  `website` workflow checks its links and deploys it.
+- `TRADEMARKS.md`, the ARC open-source trademark policy.
+
+### Fixed
+- The README pinned `v0.1.0` and listed standard 1.2 as unreleased. It now pins `v0.4.0`.
+
 ## [0.4.0]
 
 ### Added
