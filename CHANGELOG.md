@@ -6,6 +6,8 @@ All notable changes are recorded here. The format follows
 
 ## [Unreleased]
 
+## [0.4.0]
+
 ### Added
 - Drawing Format Standard 1.2 (vendored at `1d16f5c`). The crate now reads documents of version 1.0,
   1.1 and 1.2. `SUPPORTED_VERSION` is `(1, 2)`.
