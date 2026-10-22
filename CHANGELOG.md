@@ -6,6 +6,42 @@ All notable changes are recorded here. The format follows
 
 ## [Unreleased]
 
+### Added
+- Drawing Format Standard 1.2 (vendored at `1d16f5c`). The crate now reads documents of version 1.0,
+  1.1 and 1.2. `SUPPORTED_VERSION` is `(1, 2)`.
+  - the `vertical_exaggeration` member of a viewport (clause 7.3.6): a whole factor `E` of 2 or more.
+    The scale is the horizontal one, 1:N, and the vertical scale is 1:(N / E). The map of clause 7.4
+    draws model height at `k_v = 1000 / (N / E)`, and fit, window fit and containment use it
+    (clauses 7.5.1 and 7.5.2). `fit` tries only the ratios whose vertical ratio is a ratio;
+  - the checks of an exaggerated viewport: errors `7.3.6.1` (from the schema) to `7.3.6.9`, `7.9.12`,
+    and `18.2.1` for the member in a document of version 1.0 or 1.1;
+  - the vertical scale bar and the words "Vertical exaggeration ×E", never initials (clauses 7.9.11
+    and 16.6.5), on the origin `viewport.<id>.vertical_scale_bar`. They stay black under the colour
+    profile, as the scale bar does;
+  - `AS SHOWN` in the title block of a sheet with an exaggerated viewport (clause 14.4.4);
+  - in the normalised content, `vertical_exaggeration` on an exaggerated viewport only (clause 16.2);
+  - in the DXF, the entities of an exaggerated viewport in paper space, as drawn, and nothing of it in
+    model space (clause 15.4.13). Its VIEWPORT is at the horizontal scale, with
+    `vertical_exaggeration` in its extended data. The read-back test gives the same normalised
+    content.
+- `ViewportInfo::vertical_exaggeration` (`Option<u32>`).
+- `rules::Mapper::exaggerated` and `Mapper::kv`, `rules::required_size_exaggerated`,
+  `rules::window_fits_exaggerated`, `rules::fit_scale_exaggerated`, `rules::vertical_denominator`,
+  `rules::vertical_bar_length`, `rules::exaggeration_words`, and the constants `VBAR_BOTTOM`,
+  `VBAR_DIVISIONS`, `VBAR_LABEL_GAP`, `VBAR_RATIO_GAP`, `WORDS_BASELINE` and
+  `MIN_EXAGGERATED_FRAME_HEIGHT`. `Mapper::new`, `required_size`, `window_fits`, `fit_scale` and
+  `fit_scale_in` are unchanged.
+- The layout review leaves out the labels of the vertical scale bar on its own hatches, as it does
+  for the scale bar.
+
+### Changed
+- Nothing in the output of a document of version 1.0 or 1.1: its normalised content, SVG, PDF and
+  DXF are the same bytes as in 0.3.0. Checked for the 274 documents of version 1.0 and 1.1 in the
+  suite and the schema examples: 273 are the same. The other is the new case
+  `err-version-1-1-exaggeration`, a 1.1 document that uses the 1.2 member, which is now error
+  `18.2.1`. A tool that builds `ViewportInfo` with a struct literal must add
+  `vertical_exaggeration: None`.
+
 ## [0.3.0]
 
 ### Added

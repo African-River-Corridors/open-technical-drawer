@@ -19,7 +19,7 @@ use std::collections::{BTreeMap, BTreeSet, HashMap};
 /// The furniture layer (clause 16.6.1). It is declared without the document declaring it.
 pub const FURNITURE_LAYER: &str = "TITLEBLOCK";
 /// The version of the standard that this crate reads (clause 18.2).
-pub const SUPPORTED_VERSION: (u32, u32) = (1, 1);
+pub const SUPPORTED_VERSION: (u32, u32) = (1, 2);
 
 /// Where a runner may read the files that a document names (clause 17.3): symbol libraries,
 /// private title block templates and, from version 1.1, images. The path is relative to the folder
@@ -74,6 +74,9 @@ pub struct ViewportInfo {
     pub id: String,
     pub scale: u32,
     pub frame: Rect,
+    /// The vertical exaggeration `E` of an exaggerated viewport (clause 7.3.6, from version 1.2),
+    /// or `None`. `scale` is then the horizontal scale.
+    pub vertical_exaggeration: Option<u32>,
 }
 
 fn rect_value(r: Rect) -> Value {
@@ -106,6 +109,9 @@ impl Normalised {
                 m.insert("id".into(), v.id.clone().into());
                 m.insert("scale".into(), v.scale.into());
                 m.insert("frame".into(), rect_value(v.frame));
+                if let Some(e) = v.vertical_exaggeration {
+                    m.insert("vertical_exaggeration".into(), e.into()); // 16.2: only when there is one
+                }
                 Value::Object(m)
             })
             .collect();
@@ -404,15 +410,31 @@ fn check_entity(
     }
 }
 
+/// The vertical exaggeration of a viewport (clause 7.3.6): 1 when it has none.
+pub(crate) fn exaggeration_of(vp: &Value) -> u32 {
+    match vp.get("vertical_exaggeration") {
+        None => 1,
+        Some(v) => v
+            .as_u64()
+            .map(|x| u32::try_from(x).unwrap_or(u32::MAX))
+            .or_else(|| v.as_f64().map(|x| x as u32))
+            .unwrap_or(1),
+    }
+}
+
 fn resolved_scale(vp: &Value, ratios: &[u32]) -> Option<u32> {
     let window = window_of(&vp["window"]);
     if window.xmax <= window.xmin || window.ymax <= window.ymin {
         return None;
     }
     match &vp["scale"] {
-        Value::String(_) => {
-            rules::fit_scale_in(ratios, rect_of(&vp["frame"]), window, rotation_of(vp))
-        }
+        Value::String(_) => rules::fit_scale_exaggerated(
+            ratios,
+            rect_of(&vp["frame"]),
+            window,
+            rotation_of(vp),
+            exaggeration_of(vp),
+        ),
         n => n
             .as_u64()
             .map(|x| x as u32)
@@ -442,6 +464,54 @@ fn check_scale_bar(
                 errors.insert("7.9.4".into());
             }
         }
+    }
+}
+
+/// Clauses 7.3.6.3 to 7.3.6.9 and 7.9.12: what an exaggerated viewport must have, and may not hold.
+fn check_exaggerated(
+    vp: &Value,
+    frame: Rect,
+    rotation: f64,
+    exaggeration: u32,
+    errors: &mut BTreeSet<String>,
+) {
+    if rotation != 0.0 {
+        errors.insert("7.3.6.3".into());
+    }
+    if vp.get("scale_bar").is_none() {
+        errors.insert("7.3.6.4".into());
+    }
+    if vp.get("north").is_some() {
+        errors.insert("7.3.6.9".into()); // a section has no north; an exaggerated plan distorts every bearing
+    }
+    for e in entities_of(vp) {
+        match st(&e["type"]) {
+            "image" => {
+                errors.insert("7.3.6.5".into());
+            }
+            "circle" | "arc" => {
+                errors.insert("7.3.6.6".into());
+            }
+            "symbol" => {
+                errors.insert("7.3.6.7".into());
+            }
+            "dimension"
+                if !(e.get("kind").map(st) == Some("linear")
+                    && e.get("orientation").map(st) == Some("horizontal")) =>
+            {
+                errors.insert("7.3.6.8".into());
+            }
+            _ => {}
+        }
+    }
+    let words = rules::text_width(
+        &rules::exaggeration_words(exaggeration),
+        rules::BAR_TEXT_HEIGHT,
+    );
+    if frame.h < rules::MIN_EXAGGERATED_FRAME_HEIGHT - FIT_TOL_MM
+        || words.is_none_or(|w| w > rules::bar_available(frame.w) + FIT_TOL_MM)
+    {
+        errors.insert("7.9.12".into());
     }
 }
 
@@ -542,22 +612,39 @@ pub fn check_document(doc: &Value, files: &dyn Files) -> BTreeSet<String> {
         if !window_ok {
             errors.insert("7.6.1".into());
         }
+        let ex = exaggeration_of(vp);
+        let exaggerated = vp.get("vertical_exaggeration").is_some();
+        if exaggerated && minor < 2 {
+            errors.insert("18.2.1".into()); // 7.3.6 is from version 1.2
+        }
         let mut denominator = None;
         if window_ok {
             if vp["scale"].is_string() {
-                denominator = rules::fit_scale_in(&ratios, frame, window, rotation);
+                denominator = rules::fit_scale_exaggerated(&ratios, frame, window, rotation, ex);
                 if denominator.is_none() {
                     errors.insert("7.5.2".into());
                 }
             } else if !resolved_scale(vp, &ratios).is_some_and(|n| ratios.contains(&n)) {
                 errors.insert("18.2.1".into()); // a map ratio (7.3.5) in a document of version 1.0
+            } else if exaggerated
+                && rules::vertical_denominator(
+                    resolved_scale(vp, &ratios).unwrap_or(1),
+                    ex,
+                    &ratios,
+                )
+                .is_none()
+            {
+                errors.insert("7.3.6.2".into());
             } else {
                 let n = resolved_scale(vp, &ratios).unwrap_or(1);
                 denominator = Some(n);
-                if !rules::window_fits(frame, window, n, rotation) {
+                if !rules::window_fits_exaggerated(frame, window, n, rotation, ex) {
                     errors.insert("7.5.1".into());
                 }
             }
+        }
+        if exaggerated && minor >= 2 {
+            check_exaggerated(vp, frame, rotation, ex, &mut errors);
         }
         if vp.get("scale_bar").is_some() {
             check_scale_bar(vp, frame, denominator, &mut errors);
@@ -567,7 +654,7 @@ pub fn check_document(doc: &Value, files: &dyn Files) -> BTreeSet<String> {
         {
             errors.insert("7.10.7".into());
         }
-        let mapper = denominator.map(|n| Mapper::new(frame, window, n, rotation));
+        let mapper = denominator.map(|n| Mapper::exaggerated(frame, window, n, rotation, ex));
         let index: HashMap<String, &Value> = entities_of(vp)
             .iter()
             .filter_map(|e| e.get("id").map(|id| (st(id).to_string(), e)))
@@ -959,6 +1046,111 @@ fn scale_bar(vid: &str, frame: Rect, denominator: u32, sb: &Value, thin: f64) ->
     out
 }
 
+/// The vertical scale bar and the words of an exaggerated viewport (clauses 7.9.11 and 16.6.5).
+fn vertical_scale_bar(
+    vid: &str,
+    frame: Rect,
+    denominator: u32,
+    exaggeration: u32,
+    thin: f64,
+) -> Vec<Entity> {
+    let nv = (denominator / exaggeration).max(1);
+    let kv = 1000.0 / f64::from(nv);
+    let length = rules::vertical_bar_length(frame.h, nv).unwrap_or(0.0);
+    let total = length * kv;
+    let div = rules::VBAR_DIVISIONS;
+    let seg = total / f64::from(div);
+    let xl = frame.x + rules::BAR_INSET;
+    let xr = xl + rules::BAR_HEIGHT;
+    let y1 = frame.y + frame.h - rules::VBAR_BOTTOM;
+    let y0 = y1 - total;
+    let at = |i: u32| y1 - f64::from(i) * seg;
+    let origin = format!("viewport.{vid}.vertical_scale_bar");
+    let (lay, solid) = (FURNITURE_LAYER, "continuous");
+    let mut out = vec![Entity::polyline(
+        &origin,
+        lay,
+        &[[xl, y0], [xr, y0], [xr, y1], [xl, y1]],
+        true,
+        solid,
+        thin,
+        None,
+    )];
+    for i in 1..div {
+        out.push(Entity::line(
+            &origin,
+            lay,
+            [xl, at(i)],
+            [xr, at(i)],
+            solid,
+            thin,
+            None,
+        ));
+    }
+    for i in (0..div).step_by(2) {
+        out.push(Entity::hatch(
+            &origin,
+            lay,
+            &[[xl, at(i)], [xr, at(i)], [xr, at(i + 1)], [xl, at(i + 1)]],
+            &[],
+            "solid",
+            0.0,
+            thin,
+            None,
+        ));
+    }
+    for i in 0..=div {
+        out.push(Entity::line(
+            &origin,
+            lay,
+            [xr, at(i)],
+            [xr + rules::TICK_LENGTH, at(i)],
+            solid,
+            thin,
+            None,
+        ));
+    }
+    // 7.9.11: the two ends only, "0" and the length with its unit.
+    let labels = rules::bar_labels(length, 1, "m");
+    for (y, label) in [(y1, &labels[0]), (y0, &labels[1])] {
+        out.push(Entity::text(
+            &origin,
+            lay,
+            [xr + rules::VBAR_LABEL_GAP, y],
+            label,
+            rules::BAR_TEXT_HEIGHT,
+            0.0,
+            AlignH::Left,
+            AlignV::Middle,
+            None,
+        ));
+    }
+    out.push(Entity::text(
+        &origin,
+        lay,
+        [xl, y0 - rules::VBAR_RATIO_GAP],
+        &label!("draw-vertical-ratio", "Vertical 1:{nv}", nv = nv),
+        rules::BAR_TEXT_HEIGHT,
+        0.0,
+        AlignH::Left,
+        AlignV::Baseline,
+        None,
+    ));
+    let yb = frame.y + frame.h - 18.0 + rules::BAR_HEIGHT; // the bottom of the scale bar (16.6.3)
+    out.push(Entity::text(
+        &origin,
+        lay,
+        [xl, yb + rules::WORDS_BASELINE],
+        &rules::exaggeration_words(exaggeration),
+        rules::BAR_TEXT_HEIGHT,
+        0.0,
+        AlignH::Left,
+        AlignV::Baseline,
+        None,
+    ));
+    out
+}
+
 fn north_arrow(vid: &str, frame: Rect, rotation: f64, nb: &Value, thin: f64) -> Vec<Entity> {
     let cx = frame.x + rules::NORTH_INSET + rules::NORTH_SIZE / 2.0;
     let cy = frame.y + rules::NORTH_INSET + rules::NORTH_SIZE / 2.0;
@@ -1067,6 +1259,7 @@ fn apply_colours(entities: &mut [Entity], colours: &BTreeMap<String, Paint>) {
         let o = e.origin.as_str();
         if !o.starts_with("viewport.")
             || o.ends_with(".scale_bar")
+            || o.ends_with(".vertical_scale_bar")
             || o.ends_with(".north_arrow")
             || o.ends_with(".backing")
         {
@@ -1245,11 +1438,14 @@ pub fn normalise_document(doc: &Value, files: &dyn Files) -> Normalised {
         let frame = rect_of(&vp["frame"]);
         let rotation = rotation_of(vp);
         let denominator = resolved_scale(vp, &ratios).unwrap_or(1);
-        let mapper = Mapper::new(frame, window_of(&vp["window"]), denominator, rotation);
+        let ex = exaggeration_of(vp);
+        let mapper =
+            Mapper::exaggerated(frame, window_of(&vp["window"]), denominator, rotation, ex);
         viewports.push(ViewportInfo {
             id: st(&vp["id"]).to_string(),
             scale: denominator,
             frame,
+            vertical_exaggeration: (ex > 1).then_some(ex), // 16.2: only when there is one
         });
         entities.extend(viewport_entities(
             vp,
@@ -1305,6 +1501,15 @@ pub fn normalise_document(doc: &Value, files: &dyn Files) -> Normalised {
                     st(&vp["id"]),
                     frame,
                     Some((denominator, sb)),
+                    group.thin,
+                ));
+            }
+            if ex > 1 {
+                entities.extend(vertical_scale_bar(
+                    st(&vp["id"]),
+                    frame,
+                    denominator,
+                    ex,
                     group.thin,
                 ));
             }

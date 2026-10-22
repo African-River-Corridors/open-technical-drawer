@@ -170,6 +170,7 @@ fn an_entity_outside_its_frame_is_an_error() {
             id: "v.1".into(),
             scale: 100,
             frame,
+            vertical_exaggeration: None,
         }],
         entities: vec![
             Entity::line(
