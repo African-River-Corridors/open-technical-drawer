@@ -1162,7 +1162,7 @@ the character set of clause 11.6.2. Any other text is error `11.3.3`.
 **11.6 Font.** The standard has one font.
 
 **11.6.1** The font is **Barlow Semi Condensed Regular**, version 1.408, designed by Jeremy Tribby.
-The file is `src/technical_drawings_for_agents/data/fonts/BarlowSemiCondensed-Regular.ttf`. Its
+The file is `src/dfs/data/fonts/BarlowSemiCondensed-Regular.ttf`. Its
 SHA-256 is `e8c7242f612b13d026e18a94b63b0fd079e91a3faf009d1b6981dbb5f16d1153`. Its licence is the SIL
 Open Font License 1.1. The licence text is in `OFL.txt` in the same directory. The source and the
 check of the licence text are in `SOURCE.txt` there. The licence allows embedding the font in a PDF

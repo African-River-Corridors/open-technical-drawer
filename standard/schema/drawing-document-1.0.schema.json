@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/African-River-Corridors/technical_drawings_for_agents/docs/standard/schema/drawing-document-1.0.schema.json",
+  "$id": "https://github.com/African-River-Corridors/drawing-format-standard/docs/standard/schema/drawing-document-1.0.schema.json",
   "title": "Drawing document, Drawing Format Standard 1.1",
   "description": "Structure of a drawing document. Model coordinates are metres (+y up). Paper values are millimetres. The unit of every number is the end of its member name: _m, _mm or _deg. See docs/standard/drawing-format-standard.md. Rules that a schema cannot state are listed in clause 18.5.",
   "type": "object",

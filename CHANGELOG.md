@@ -12,6 +12,11 @@ All notable changes are recorded here. The format follows
   `website` workflow checks its links and deploys it.
 - `TRADEMARKS.md`, the ARC open-source trademark policy.
 
+### Changed
+- The standard's repository is now `drawing-format-standard` (Python package `drawing-format-standard`,
+  import and command `dfs`). The vendored copy is re-pinned at `c225b86`, the rename commit. Only names
+  changed in it: the schema `$id`s, the font path and the links. No clause, schema rule or test case changed.
+
 ### Fixed
 - The README pinned `v0.1.0` and listed standard 1.2 as unreleased. It now pins `v0.4.0`.
 

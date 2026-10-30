@@ -19,7 +19,7 @@ Both must pass. CI runs them on every push and pull request.
 ## Rules for the crate
 
 - `otd` implements the standard. If the standard is unclear or wrong, open an issue on the
-  [standard's repository](https://github.com/African-River-Corridors/technical_drawings_for_agents);
+  [standard's repository](https://github.com/African-River-Corridors/drawing-format-standard);
   do not work around it here.
 - Every change comes with tests. A new clause comes with its conformance cases, vendored from the
   standard.

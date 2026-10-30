@@ -1,6 +1,6 @@
 """Copy the Drawing Format Standard into standard/ and pin it.
 
-    python3 tools/vendor_standard.py --from <clone of technical_drawings_for_agents> [--commit <sha>]
+    python3 tools/vendor_standard.py --from <clone of drawing-format-standard> [--commit <sha>]
     python3 tools/vendor_standard.py --check
 
 The copy holds the clone's docs/standard/ folder and, under fonts/, the standard's font with its
@@ -22,8 +22,8 @@ import sys
 from pathlib import Path
 
 DEST = Path(__file__).resolve().parent.parent / "standard"
-FONT_SRC = Path("src/technical_drawings_for_agents/data/fonts")
-REPO = "African-River-Corridors/technical_drawings_for_agents"
+FONT_SRC = Path("src/dfs/data/fonts")
+REPO = "African-River-Corridors/drawing-format-standard"
 
 
 def copy_hash(root: Path) -> tuple[str, int]:
