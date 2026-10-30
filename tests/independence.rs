@@ -5,7 +5,7 @@ use std::fs;
 use std::path::Path;
 
 const ROOT: &str = env!("CARGO_MANIFEST_DIR");
-const TOOL_CRATES: [&str; 2] = ["ovcd", "owd"];
+const TOOL_CRATES: [&str; 2] = ["ovd", "owd"];
 
 /// The dependency names of every `[…dependencies]` table of the manifest.
 fn dependencies(manifest: &str) -> Vec<String> {

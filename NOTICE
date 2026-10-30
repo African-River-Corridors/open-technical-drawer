@@ -1,5 +1,5 @@
 open-technical-drawer
 Copyright 2026 African River Corridors Limited
 
-This crate began as the ovcd-draw crate of open-vessel-concept-drawings
-(https://github.com/African-River-Corridors/open-vessel-concept-drawings), Apache-2.0.
+This crate began as the ovcd-draw crate of open-vessel-concept-drawings, now
+open-vessel-designer (https://github.com/African-River-Corridors/open-vessel-designer), Apache-2.0.

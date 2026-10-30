@@ -8,7 +8,7 @@ you may use them.
 
 Our marks are these, registered or not:
 - the name "African River Corridors" and its logo;
-- the names of our open-source projects, in full and in short: "Open Vessel Concept Design" (OVCD),
+- the names of our open-source projects, in full and in short: "Open Vessel Designer" (OVD),
   "Open Waterway Designer" (OWD), "Open Technical Drawer" (OTD), "Open Report Designer" (ORD), the
   "Drawing Format Standard" (DFS), and any project we add later;
 - the logos of those projects.

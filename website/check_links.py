@@ -16,7 +16,7 @@ from pathlib import Path
 
 SLUG = "otd"
 HERE = Path(__file__).resolve().parent
-SITE_ROUTES = {"/", "/opensource", "/ovcd", "/owd", "/otd", "/ord", "/dfs"}
+SITE_ROUTES = {"/", "/opensource", "/ovd", "/owd", "/otd", "/ord", "/dfs"}
 
 errors = []
 for page in sorted(HERE.glob("*.html")):
