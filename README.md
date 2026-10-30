@@ -18,8 +18,8 @@ in Rust. A drawing document goes in. Normalised content comes out, and from it S
   pinned by commit and hash in `standard/PIN.json`. Every case must pass.
 
 It began as the `ovcd-draw` crate of
-[open-vessel-concept-drawings](https://github.com/African-River-Corridors/open-vessel-concept-drawings)
-(OVCD) and moved here so that more than one tool can draw through it. OVCD and
+[Open Vessel Designer](https://github.com/African-River-Corridors/open-vessel-designer)
+(OVD, then named OVCD) and moved here so that more than one tool can draw through it. OVD and
 [open-waterway-designer](https://github.com/African-River-Corridors/open-waterway-designer) use it.
 
 ## Use it
