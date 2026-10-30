@@ -6,7 +6,7 @@
 **The Drawing Format Standard in Rust.**
 [Docs page](https://www.africanrivercorridors.com/otd) · [The standard](https://www.africanrivercorridors.com/dfs) · [Changelog](CHANGELOG.md)
 
-`otd` is the [Drawing Format Standard](https://github.com/African-River-Corridors/technical_drawings_for_agents)
+`otd` is the [Drawing Format Standard](https://github.com/African-River-Corridors/drawing-format-standard)
 in Rust. A drawing document goes in. Normalised content comes out, and from it SVG, PDF and DXF.
 
 - **Domain-free.** `otd` knows sheets, viewports, entities, dimensions, hatches, the title block and

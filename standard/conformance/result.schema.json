@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/African-River-Corridors/technical_drawings_for_agents/docs/standard/conformance/result.schema.json",
+  "$id": "https://github.com/African-River-Corridors/drawing-format-standard/docs/standard/conformance/result.schema.json",
   "title": "Runner result, normalised content and expected file (Drawing Format Standard, clauses 16 and 17)",
   "anyOf": [
     {

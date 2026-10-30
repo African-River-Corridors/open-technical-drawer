@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/African-River-Corridors/technical_drawings_for_agents/docs/standard/schema/symbol-library-1.0.schema.json",
+  "$id": "https://github.com/African-River-Corridors/drawing-format-standard/docs/standard/schema/symbol-library-1.0.schema.json",
   "title": "Symbol library file, Drawing Format Standard 1.0",
   "description": "A library of symbols (clause 13). In a symbol, lengths have the unit named by units and no unit ending (clause 13.2.1).",
   "type": "object",

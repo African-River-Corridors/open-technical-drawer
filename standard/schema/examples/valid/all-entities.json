@@ -174,5 +174,5 @@
       }
     }
   ],
-  "$schema": "https://github.com/African-River-Corridors/technical_drawings_for_agents/docs/standard/schema/drawing-document-1.0.schema.json"
+  "$schema": "https://github.com/African-River-Corridors/drawing-format-standard/docs/standard/schema/drawing-document-1.0.schema.json"
 }

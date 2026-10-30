@@ -1,7 +1,7 @@
 {
  "note": "Advance widths of the font of clause 11.6, in font units (1000 per em). Text width in mm = sum of advances * height_mm / cap_height_units. No kerning, no ligatures. Read from the font file; a test checks it.",
  "font": "Barlow Semi Condensed Regular 1.408",
- "file": "src/technical_drawings_for_agents/data/fonts/BarlowSemiCondensed-Regular.ttf",
+ "file": "src/dfs/data/fonts/BarlowSemiCondensed-Regular.ttf",
  "sha256": "e8c7242f612b13d026e18a94b63b0fd079e91a3faf009d1b6981dbb5f16d1153",
  "units_per_em": 1000,
  "cap_height_units": 700,

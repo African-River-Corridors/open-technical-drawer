@@ -75,7 +75,7 @@ fn the_pin_names_a_commit() {
     assert!(commit.bytes().all(|b| b.is_ascii_hexdigit()));
     assert_eq!(
         pin["repository"].as_str(),
-        Some("African-River-Corridors/technical_drawings_for_agents")
+        Some("African-River-Corridors/drawing-format-standard")
     );
 }
 

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/African-River-Corridors/technical_drawings_for_agents/docs/standard/schema/title-block-template-1.0.schema.json",
+  "$id": "https://github.com/African-River-Corridors/drawing-format-standard/docs/standard/schema/title-block-template-1.0.schema.json",
   "title": "Title block template, Drawing Format Standard 1.0",
   "description": "A title block in paper millimetres, origin at its top-left corner, +y down (clause 14.2).",
   "type": "object",
