@@ -1,4 +1,4 @@
-# sankofa-prepush: the pre-push hook (tool in African-River-Corridors/workflows).
+# arc-prepush: the pre-push hook (tool in African-River-Corridors/workflows).
 # Format and lint run on the files a push changes (ruff from uv.lock; cargo fmt on changed
 # crates). The release guard runs too: CI gates on it and AGENTS.md asks for it before every
 # push. Its --history mode reads every local branch, as CI reads every pushed one.
