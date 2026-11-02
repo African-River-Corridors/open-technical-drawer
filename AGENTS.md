@@ -14,6 +14,8 @@ The five default triage labels, each named as its role. See `docs/agents/triage-
 
 How ticketed work is built and merged. See `docs/agents/build-process.md`.
 
+- **Pre-push hook.** `sankofa-prepush` (workflows repo) runs `cargo fmt --check` on the crates a push changes, plus the release guard (tree and history), on every `git push`. Install it once per clone with `sankofa-prepush install` (it covers every worktree). If it blocks, run the fix it prints, commit, and push again; do not `--no-verify` around it.
+
 ## Rules for the crate
 
 - Domain-free: no vessel, waterway or other tool vocabulary in the code. A tool's own checks live in that tool.
